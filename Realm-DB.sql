@@ -24,15 +24,54 @@ CREATE TABLE "ethnicity" (
   "ethnicity" VARCHAR(30)
 );
 
+INSERT INTO "ethnicity" ("id", "ethinicity")
+VALUES
+(1, 'Asian - Chinese'),
+(2, 'Asian - Filipino'),
+(3, 'Asian - Asian Indian'),
+(4, 'Asian - Vietnamese'),
+(5, 'Asian - Korean'),
+(6, 'Asian - Japanese'),
+(7, 'Asian - Other Asian'),
+(8, 'Black or African American'),
+(9, 'Native Hawaiian and Pacific Islander'),
+(10, 'Native Hawaiian'),
+(11, 'Pacific Islander - Samoan'),
+(12, 'Pacific Islander - Chamorro'),
+(13, 'Pacific Islander - Other'),
+(14, 'White'),
+(15, 'Some Other Race');
+
 CREATE TABLE "income_level" (
   "id" SERIAL PRIMARY KEY,
   "range" VARCHAR(20)
 );
 
+INSERT INTO "income_level" ("id, range")
+VALUES
+(1, '$0 - $10,000'),
+(2, '$10,001 - $20,000'),
+(3, '$20,001 - $30,000'),
+(4, '$30,001 - $40,000'),
+(5, '$40,001 - $50,000'),
+(6, '$50,001 - $60,000'),
+(7, '$60,001 - $70,000'),
+(8, '$70,001 - $80,000'),
+(9, '$80,001 - $90,000'),
+(10, '$90,001 - $100,000'),
+(11, '$100,000+');
+
 CREATE TABLE "education_level" (
   "id" SERIAL PRIMARY KEY,
   "education_level" VARCHAR(20)
 );
+
+INSERT INTO "education_level" ("id", "education_level")
+VALUES
+(1, 'Some High School'),
+(2, 'High School Diploma'),
+(2, 'High School Diploma'),
+--TODO
 
 CREATE TABLE "section_order" (
   "id" SERIAL PRIMARY KEY,
@@ -49,6 +88,9 @@ CREATE TABLE "client_list" (
   "other_info" VARCHAR(10000)
 );
 
+INSERT INTO "client_list" ("id", "client_name", "other_info")
+VALUES (1, 'PUBLIC', 'This is a client representing the public curriculum.');
+
 CREATE TABLE "project" (
   "id" SERIAL PRIMARY KEY,
   "project_name" VARCHAR(50),
@@ -59,9 +101,12 @@ CREATE TABLE "project" (
   "end_date" date
 );
 
-CREATE TABLE "realm_course" (
+INSERT INTO "project" ("id", "project_name")
+VALUES (1, "PUBLIC");
+
+CREATE TABLE "realm" (
   "id" SERIAL PRIMARY KEY,
-  "course_name" VARCHAR(50),
+  "realm_name" VARCHAR(50),
   "internal_name" VARCHAR(50)
 );
 
@@ -69,6 +114,7 @@ CREATE TABLE "multiple_choice" (
   "id" SERIAL PRIMARY KEY,
   "question_id" int,
   "content" VARCHAR(50)
+  "correct_answer" boolean
 );
 
 CREATE TABLE "section" (
@@ -85,6 +131,13 @@ CREATE TABLE "resource_type" (
   "id" SERIAL PRIMARY KEY,
   "type_name" VARCHAR(20)
 );
+
+INSERT INTO "resource_type" ("id", "type_name")
+VALUES
+(1, "video"),
+(2, "text"),
+(3, "image"),
+(4, "form");
 
 CREATE TABLE "question" (
   "id" SERIAL PRIMARY KEY,

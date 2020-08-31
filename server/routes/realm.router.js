@@ -7,6 +7,20 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
  * GET route template
  */
 router.get('/', rejectUnauthenticated, async (req, res) => {
+  console.log('Getting realm for', req.user);
+  const queryText = `SELECT * FROM "user"
+                      JOIN "project" ON "user"."project_id" = "project"."id"
+                      JOIN "realm" ON "project"."id" = "realm"."project_id"
+                      JOIN "student_progress" ON "user"."id" = "student_progress"."user_id"
+                      WHERE user_id= $1
+                      ORDER BY "internal_name" ASC`;
+  pool.query(queryText, [req.user.id])
+    .then((result) => res.send(result.rows))
+    .catch(() => res.sendStatus(500));
+});
+
+// Get route to get each form question page.
+router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 });
 

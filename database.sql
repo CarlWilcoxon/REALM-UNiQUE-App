@@ -113,7 +113,7 @@ CREATE TABLE "realm" (
   "realm_name" VARCHAR(50),
   "project_id" int,
   -- "internal_name" VARCHAR(50)
-  "description" VARCHAR(100)
+  "description" VARCHAR(100),
   "cover_photo" VARCHAR(100)
 );
 

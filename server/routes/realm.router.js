@@ -54,35 +54,58 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
   const connection = await pool.connect()
   try {
     await connection.query('BEGIN');
-    const addRealmQuery = `INSERT INTO realm (realm_name, description, cover_photo)
-    VALUES ($1, $2, $3) RETURNING id`;
+    const addRealmQuery = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+    VALUES ($1, $2, $3) RETURNING "id"`;
     // Save the result so we can get the returned value
     const result = await connection.query( addRealmQuery, [realmName, realmDescription, coverPhotoLink]);
     // Get the id from the result - will have 1 row with the id
     const realmId = result.rows[0].id;
 
-    const addsectionQuery = `INSERT INTO section (type)
-    VALUES ($1) RETURNING id`;
+    const addsectionQuery = `INSERT INTO "section" ("type")
+    VALUES ($1) RETURNING "id"`;
     // Save the result so we can get the returned value
-    const sect = await connection.query( addsectionQuery, [5] ); // 5 means form
+    const sectionResponse = await connection.query( addsectionQuery, [5] ); // 5 means form
     // Get the id from the result - will have 1 row with the id
-    const sectionId = sect.rows[0].id;
+    const sectionId = sectionResponse.rows[0].id;
 
     // Loop through the form questions
-    for ( let i = 0; i < req.body.numberOfQuestions; i++ ) {
-      const addQuestionQuery =
-      `INSERT INTO "section_order" (realm_id, index, section_id, content)
-      SELECT * FROM "section_order"
-      JOIN "section" ON "section_order"."section_id" = "section"."id"
-      JOIN "question" ON "section"."id" = "question"."section_id"
-      VALUES ($1, $2, $3, $4);`;
-      const addQuestionValues = [realmId, i, sectionId, req.body.questions[i] ];
+    for ( let i = 0; i < req.body.questions.length; i++ ) {
+      // Insert an entry into section_order to keep track of question order
+      const addOrderQuery =
+      `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+      VALUES ($1, $2, $3);`;
+      const addOrderValues = [realmId, i, sectionId ];
 
-      await connection.query( addQuestionQuery, addQuestionValues );
+      await connection.query( addOrderQuery, addOrderValues );
+
+      // Insert question into question db
+      const addQuestionQuery =
+      `INSERT INTO "question" ("section_id", "content")
+      VALUES ($1, $2 ) RETURNING "id";`;
+      const addQuestionValues = [sectionId, req.body.questions[i].question ]
+
+      const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
+      const questionId = questionResponse.rows[0].id;
+
+      // If the question is multiple choice...
+      // if (req.body.questions[i].questionType === 'multiple_choice') {
+      //   // ...loop through the array of answers, inserting each into the 'multiple_choice' db
+      //   for (let j = 0; j < req.body.questions[i].answers.length; j++) {
+      //     const thisAnswer = req.body.questions[i].answers[j];
+      //     const choiceQuery =
+      //     `INSERT INTO "multiple_choice" ("question_id", "content", "correct_answer")
+      //     VALUES ($1, $2, $3);`;
+      //     const choiceValues = [questionId, thisAnswer.content, thisAnswer.correct_answer ];
+
+      //     await connection.query( choiceQuery, choiceValues );
+
+      //   }
+
+      // }
     }
 
     await connection.query('COMMIT');
-    res.sendStatus(200);
+    res.sendStatus(201);
   } catch ( error ) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);

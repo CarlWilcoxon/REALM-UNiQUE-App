@@ -8,7 +8,7 @@ class EmotionalHome extends Component {
   render() {
     return (
       <div>
-        <img src={Emotional} alt='website logo'/>
+        <img src={Emotional} alt='realm logo'/>
         <h1>Realm 1: Emotional Wellness</h1>
         <p>Emotional health is an important part of overall health. 
           People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. 

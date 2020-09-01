@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 class HomeMobile extends Component {
 
+goEmotional =() => this.props.history.push('/EmotionalHome')
+
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
@@ -10,20 +12,20 @@ class HomeMobile extends Component {
         <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <h3>Choose a Realm to Expore:</h3>
         <div> 
-          <button>Emotional</button>
-          <button>Nutritional</button>
+          <button onClick={this.goEmotional}>Realm 1: Emotional</button>
+          <button>Realm 2: Nutritional</button>
         </div>
         <div>
-          <button>Physical</button>
-          <button>Spiritual</button> 
+          <button>Realm 3: Physical</button>
+          <button>Realm 4: Spiritual</button> 
         </div>
         <div>
-          <button>Financial</button>
-          <button>Environmental</button>
+          <button>Realm 5: Financial</button>
+          <button>Realm 6: Environmental</button>
         </div>
         <div>
-          <button>Social</button>
-          <button>Intellectual</button> 
+          <button>Realm 7: Social</button>
+          <button>Realm 8: Intellectual</button> 
         </div>
         
         

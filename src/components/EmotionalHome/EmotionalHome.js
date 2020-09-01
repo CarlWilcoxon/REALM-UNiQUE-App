@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Emotional from './emotional.png';
 
 class EmotionalHome extends Component {
   goBack =() => this.props.history.push('/')
@@ -7,6 +8,7 @@ class EmotionalHome extends Component {
   render() {
     return (
       <div>
+        <img src={Emotional} alt='website logo'/>
         <h1>Realm 1: Emotional Wellness</h1>
         <p>Emotional health is an important part of overall health. 
           People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. 

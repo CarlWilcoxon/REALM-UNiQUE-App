@@ -42,9 +42,11 @@ const type = [
 
 class AddNewSectionPage extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = { inputs: ['input-0'] };
+  constructor(){
+    super();
+    this.state = {
+        questionInputs: []
+    }
   }
 
   state = {
@@ -95,10 +97,11 @@ class AddNewSectionPage extends Component {
   //   console.log("state:", this.state.questionsCounter);
   //   };
 
-  // appendNewQuestion = () => {
-  //   newInput = `input-${this.state.inputs.length}`;
-  //   this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
-  // }
+  appendNewQuestion = () => {
+    console.log('You clicked add new questions');
+    // newInput = `input-${this.state.inputs.length}`;
+    // this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
+  }
 
 
   //   handleClick = (event) => {
@@ -158,16 +161,16 @@ class AddNewSectionPage extends Component {
                 margin="normal"
               />
             </div>
-              <div id="new-question">
+              {/* <div id="new-question">
               {this.state.question.map(input => <SectionQuestions key={input} />)}
-              </div>
+              </div> */}
             {/* ADD NEW QUESTION BUTTON */}
             <div>
                 <Button
                   variant="contained"
                   className="add-section-question"
-                  type="submit"
-                  name="submit"
+                  // type="submit"
+                  // name="submit"
                   onClick={this.appendNewQuestion}
                   className={classes.button}
                   classes={{ root: classes.root }}

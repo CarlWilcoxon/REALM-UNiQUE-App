@@ -41,6 +41,12 @@ const type = [
 ];
 
 class AddNewSectionPage extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { inputs: ['input-0'] };
+  }
+
   state = {
     title: "",
     type: "",
@@ -82,12 +88,18 @@ class AddNewSectionPage extends Component {
     console.log("state:", this.state);
   };
 
-  handleCounterClick = (event) => {
-    this.setState({
-      // questionsCounter: event.target.value,
-    });
-    console.log("state:", this.state.questionsCounter);
-    };
+  // handleCounterClick = (event) => {
+  //   this.setState({
+  //     // questionsCounter: event.target.value,
+  //   });
+  //   console.log("state:", this.state.questionsCounter);
+  //   };
+
+  // appendNewQuestion = () => {
+  //   newInput = `input-${this.state.inputs.length}`;
+  //   this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
+  // }
+
 
   //   handleClick = (event) => {
   //     this.props.history.push("/");
@@ -146,27 +158,30 @@ class AddNewSectionPage extends Component {
                 margin="normal"
               />
             </div>
+              <div id="new-question">
+              {this.state.question.map(input => <SectionQuestions key={input} />)}
+              </div>
             {/* ADD NEW QUESTION BUTTON */}
-            {/* <div>
+            <div>
                 <Button
                   variant="contained"
                   className="add-section-question"
                   type="submit"
                   name="submit"
-                  onClick={this.addSectionQuestion}
+                  onClick={this.appendNewQuestion}
                   className={classes.button}
                   classes={{ root: classes.root }}
                 >
                   + Add Question
                 </Button>
-            </div> */}
+            </div>
             <div>
               <Button
                 variant="contained"
                 className="submit-new-section"
                 type="submit"
                 name="submit"
-                // onClick={this.submitSection}
+                onClick={this.submitSection}
                 className={classes.button}
                 classes={{ root: classes.root }}
               >

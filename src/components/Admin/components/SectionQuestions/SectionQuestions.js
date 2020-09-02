@@ -12,12 +12,12 @@ const styles = (theme) => ({
     },
 });
 
-const questionTypes = [
-    {
-        value: "Open-Ended",
-        label: "Open-Ended",
-    }
-];
+// const questionTypes = [
+//     {
+//         value: "Open-Ended",
+//         label: "Open-Ended",
+//     }
+// ];
 
 class SectionQuestions extends Component {
     state = {
@@ -53,7 +53,7 @@ class SectionQuestions extends Component {
             <div className="form">
                 <center>
                     <form>
-                        {/* QUESTION TYPE (ETC.) */}
+                        {/* QUESTION TYPE (ETC.)
                         <div>
                             <TextField
                                 select
@@ -75,7 +75,7 @@ class SectionQuestions extends Component {
                                     </MenuItem>
                                 ))}
                             </TextField>
-                        </div>
+                        </div> */}
                         {/* SECTION DESCRIPTION */}
                         <div>
                             <TextField
@@ -86,8 +86,7 @@ class SectionQuestions extends Component {
                                 className={classes.textField}
                                 margin="normal"
                             />
-                        </div>
-          
+                        </div>     
                     </form>
                 </center>
             </div>

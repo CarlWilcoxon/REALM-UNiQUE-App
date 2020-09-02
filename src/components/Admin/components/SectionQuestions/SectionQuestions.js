@@ -21,24 +21,11 @@ const styles = (theme) => ({
 
 class SectionQuestions extends Component {
     state = {
-        questionType: "",
+        // questionType: "",
         question: ""
     };
 
-    // //Packaging new section details and sending to saga to send to database
-    // submitSection = (event) => {
-    //     event.preventDefault();
-    //     this.props.dispatch({
-    //         type: "SUBMIT_SECTION",
-    //         payload: {
-    //             title: this.state.title,
-    //             type: this.state.type,
-    //             description: this.state.description,
-    //             newQuestion1Type: this.state.newQuestion1Type,
-    //             newQuestion1: this.state.newQuestion1,
-    //         },
-    //     });
-    // }; // end submitSection
+
 
     handleInputChangeFor = (propertyName) => (event) => {
         this.setState({

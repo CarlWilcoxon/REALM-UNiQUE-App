@@ -53,7 +53,7 @@ class AddNewSectionPage extends Component {
     title: "",
     type: "",
     description: "",
-    questionsCounter: 0,
+    // questionsCounter: 0,
     questions:[]
     // questions =[
     //   {
@@ -90,17 +90,13 @@ class AddNewSectionPage extends Component {
     console.log("state:", this.state);
   };
 
-  // handleCounterClick = (event) => {
-  //   this.setState({
-  //     // questionsCounter: event.target.value,
-  //   });
-  //   console.log("state:", this.state.questionsCounter);
-  //   };
-
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
-    // newInput = `input-${this.state.inputs.length}`;
-    // this.setState(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
+        this.setState({
+            questionInputs: [
+                ...this.state.questionInputs, <SectionQuestions/>
+            ]
+        });
   }
 
 
@@ -161,22 +157,24 @@ class AddNewSectionPage extends Component {
                 margin="normal"
               />
             </div>
-              {/* <div id="new-question">
-              {this.state.question.map(input => <SectionQuestions key={input} />)}
-              </div> */}
+            <div id="new-question">
+              {this.state.questionInputs.map((questionInputs) => (
+                <SectionQuestions />
+              ))}
+            </div>
             {/* ADD NEW QUESTION BUTTON */}
             <div>
-                <Button
-                  variant="contained"
-                  className="add-section-question"
-                  // type="submit"
-                  // name="submit"
-                  onClick={this.appendNewQuestion}
-                  className={classes.button}
-                  classes={{ root: classes.root }}
-                >
-                  + Add Question
-                </Button>
+              <Button
+                variant="contained"
+                className="add-section-question"
+                // type="submit"
+                // name="submit"
+                onClick={this.appendNewQuestion}
+                className={classes.button}
+                classes={{ root: classes.root }}
+              >
+                + Add Question
+              </Button>
             </div>
             <div>
               <Button

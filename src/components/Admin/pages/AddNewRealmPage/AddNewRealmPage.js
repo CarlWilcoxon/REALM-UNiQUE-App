@@ -143,7 +143,7 @@ class AddNewRealmPage extends Component {
                                     className={classes.button}
                                     classes={{ root: classes.root }}
                                 >
-                                    Save Realm
+                                    Select Sections
                                 </Button>
                             </div>
                         </form>

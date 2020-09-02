@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
 import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
-// import AddNewSectionPage from "../component;
+import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
 import './App.css';
 
 class App extends Component {
@@ -47,6 +47,11 @@ class App extends Component {
               exact
               path="/add-realm"
               component={AddNewRealmPage}
+            />
+            <Route
+              exact
+              path="/add-sections-to-realm"
+              component={AddSectionsToNewRealm}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.

@@ -4,6 +4,7 @@ import Emotional from './emotional.png';
 
 class EmotionalHome extends Component {
   goBack =() => this.props.history.push('/')
+  start =() => this.props.history.push('/EmotionalFormIntro')
 
   render() {
     return (
@@ -24,9 +25,34 @@ class EmotionalHome extends Component {
           But they know how to manage their negative feelings. 
           They can tell when a problem is more than they can handle on their own. 
           They also know when to seek help from their doctor.</p>
-        
-        <button onClick={this.goBack}>Back</button>
-        <button>Start</button>
+        <div>
+          Table of Contents:
+          <div>
+          Intro: Realm Form
+          </div>
+          <div>
+           Section 1: Brain and Mind
+          </div>
+          <div>
+            Section 2: Thoughts and Memories
+          </div>
+          <div>
+            Section 3: Sleep
+          </div>
+          <div>
+            Section 4: Relationship with Self and Self Awareness
+          </div>
+          <div>
+            Section 5: Relationship with Others and Awareness of Others
+          </div>
+          <div>
+            Section 6: Coping Mechanisms
+          </div>          
+        </div>
+        <div>
+          <button onClick={this.goBack}>Back</button>
+          <button onClick={this.start}>Start Realm Form</button> 
+        </div>
       </div>
     );
   }

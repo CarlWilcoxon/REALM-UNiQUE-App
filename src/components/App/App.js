@@ -17,6 +17,10 @@ import AboutPage from '../AboutPage/AboutPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
+import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
+import EmotionalForm from '../EmotionalForm/EmotionalForm'
+import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'
+
 
 import './App.css';
 
@@ -60,6 +64,21 @@ class App extends Component {
               exact
               path="/EmotionalHome"
               component={EmotionalHome}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalFormIntro"
+              component={EmotionalFormIntro}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalForm"
+              component={EmotionalForm}
+            />
+             <ProtectedRoute
+              exact
+              path="/EmotionalFormFinished"
+              component={EmotionalFormFinished}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

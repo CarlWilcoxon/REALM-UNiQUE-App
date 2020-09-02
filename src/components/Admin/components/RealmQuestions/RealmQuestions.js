@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-// import MenuItem from "@material-ui/core/MenuItem";
+// import MenuItem from "@material-ui/core/MenuItem"; 
 
 const styles = (theme) => ({
     textField: {
@@ -19,7 +19,7 @@ const styles = (theme) => ({
 //     }
 // ];
 
-class SectionQuestions extends Component {
+class RealmQuestions extends Component {
     state = {
         // questionType: "",
         question: ""
@@ -73,7 +73,7 @@ class SectionQuestions extends Component {
                                 className={classes.textField}
                                 margin="normal"
                             />
-                        </div>     
+                        </div>
                     </form>
                 </center>
             </div>
@@ -81,7 +81,7 @@ class SectionQuestions extends Component {
     }
 }
 
-SectionQuestions.propTypes = {
+RealmQuestions.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
@@ -90,5 +90,5 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 export default withStyles(styles)(
-    connect(mapReduxStateToProps)(SectionQuestions)
+    connect(mapReduxStateToProps)(RealmQuestions)
 );

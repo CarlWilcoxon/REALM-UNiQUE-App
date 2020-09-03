@@ -18,6 +18,7 @@ import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
+import EditSectionPage from "../Admin/pages/EditSectionPage/EditSectionPage";
 import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
 import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
@@ -42,20 +43,18 @@ class App extends Component {
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
-            <Route
-              exact
-              path="/add-section"
-              component={AddNewSectionPage}
-            />
-            <Route
-              exact
-              path="/add-realm"
-              component={AddNewRealmPage}
-            />
+            {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
+            <Route exact path="/add-section" component={AddNewSectionPage} />
+            <Route exact path="/add-realm" component={AddNewRealmPage} />
             <Route
               exact
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
+            />
+            <Route
+              exact
+              path="/edit-section"
+              component={EditSectionPage}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
@@ -80,7 +79,7 @@ class App extends Component {
               path="/EmotionalForm"
               component={EmotionalForm}
             />
-             <ProtectedRoute
+            <ProtectedRoute
               exact
               path="/EmotionalFormFinished"
               component={EmotionalFormFinished}

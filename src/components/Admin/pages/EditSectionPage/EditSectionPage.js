@@ -40,7 +40,7 @@ const type = [
   },
 ];
 
-class AddNewSectionPage extends Component {
+class EditSectionPage extends Component {
   state = {
     title: "",
     type: "",
@@ -134,6 +134,7 @@ class AddNewSectionPage extends Component {
               </div>
               {/* DYNAMIC INFORMATION SECTION */}
               {/* 1=video, 2=text, 3=image */}
+              {/* type needs to be retrieved from the database */}
               {this.state.type === 1 ? (
                 <div>
                   <TextField
@@ -238,5 +239,5 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 export default withStyles(styles)(
-  connect(mapReduxStateToProps)(AddNewSectionPage)
+  connect(mapReduxStateToProps)(EditSectionPage)
 );

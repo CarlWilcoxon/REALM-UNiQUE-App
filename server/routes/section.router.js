@@ -50,9 +50,9 @@ router.post('/add', rejectUnauthenticated, async (req, res) => {
     type,
     description,
     questions,
-    imageLink,
-    videoLink,
-    textContent
+    imageLink = null,
+    videoLink = null,
+    textContent = null
   } = req.body;
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
   console.log('req.body:', req.body);
@@ -62,7 +62,7 @@ router.post('/add', rejectUnauthenticated, async (req, res) => {
   const connection = await pool.connect()
   try {
     await connection.query('BEGIN');
-    const addSectionQuery = `INSERT INTO "section" ( "title", "type", "description", "imageLink", "videoLink", "textContent" )
+    const addSectionQuery = `INSERT INTO "section" ( "title", "type", "description", "image_link", "video_link", "text_content" )
     VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"`;
     // Save the result so we can get the returned value
     const result = await connection.query( addSectionQuery, [title, type, description, imageLink, videoLink, textContent]);

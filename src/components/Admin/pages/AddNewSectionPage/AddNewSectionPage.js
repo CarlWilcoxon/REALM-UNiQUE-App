@@ -27,32 +27,44 @@ const styles = (theme) => ({
 
 const type = [
   {
-    value: "Text",
+    value: 2,
     label: "Text",
   },
   {
-    value: "Video",
+    value: 1,
     label: "Video",
   },
   {
-    value: "Image",
+    value: 3,
     label: "Image",
-  }
+  },
 ];
 
 class AddNewSectionPage extends Component {
-  
-  constructor(){
-    super();
-    this.state = {
-        questionInputs: []
-    }
-  }
+
 
   state = {
     title: "",
     type: "",
-    description: ""
+    // description: ""
+
+    description: "",
+    questions:[],
+    // questions =[
+    //   {
+    //     question = ...,
+    //     questionType = ...},
+    //   {
+    //     question = ...,
+    //     questionType = ...},
+    //   {
+    //     question = ...,
+    //     questionType = ...},
+    // ]
+    imageLink:"",
+    videoLink:"",
+    textContent:"",
+    questionInputs: [],
   };
 
 //Packaging new section details and sending to saga to send to database
@@ -60,17 +72,20 @@ class AddNewSectionPage extends Component {
     event.preventDefault();
     this.props.dispatch({
       type: "SUBMIT_SECTION",
-      payload: {
-        title: this.state.title,
-        type: this.state.type,
-        description: this.state.description,
-        ///questions need to be added to payload
-      },
+      // payload: {
+      //   title: this.state.title,
+      //   type: this.state.type,
+      //   description: this.state.description,
+      //   ///questions need to be added to payload
+      // },
+
+      payload: this.state,
     });
   }; // end submitSection
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
+      ...this.state,
       [propertyName]: event.target.value,
     });
     console.log("state:", this.state);
@@ -148,36 +163,126 @@ class AddNewSectionPage extends Component {
                 {this.state.questionInputs.map((questionInputs) => (
                   <SectionQuestion />
                 ))}
-              </div>
-              {/* ADD NEW QUESTION BUTTON */}
+
+      //         </div>
+      //         {/* ADD NEW QUESTION BUTTON */}
+      //         <div>
+      //           <Button
+      //             variant="contained"
+      //             className="add-section-question"
+      //             onClick={this.appendNewQuestion}
+      //             className={classes.button}
+      //             classes={{ root: classes.root }}
+      //           >
+      //             + Add Question
+      //           </Button>
+      //         </div>
+      //         <div>
+      //           <Button
+      //             variant="contained"
+      //             className="submit-new-section"
+      //             type="submit"
+      //             name="submit"
+      //             onClick={this.submitSection}
+      //             className={classes.button}
+      //             classes={{ root: classes.root }}
+      //           >
+      //             Save Section
+      //           </Button>
+      //         </div>
+      //       </form>
+      //   </div>
+      // </center>
+      // </>
+              </TextField>
+            </div>
+            {/* SECTION DESCRIPTION */}
+            <div>
+              <TextField
+                required
+                label="Resource Description"
+                value={this.state.description}
+                onChange={this.handleInputChangeFor("description")}
+                className={classes.textField}
+                margin="normal"
+              />
+            </div>
+            {/* DYNAMIC INFORMATION SECTION */}
+            {/* 1=video, 2=text, 3=image */}
+            { this.state.type === 1 ?
               <div>
-                <Button
-                  variant="contained"
-                  className="add-section-question"
-                  onClick={this.appendNewQuestion}
-                  className={classes.button}
-                  classes={{ root: classes.root }}
-                >
-                  + Add Question
-                </Button>
+                <TextField
+                  required
+                  label="Video Link"
+                  type="text"
+                  value={this.state.videoLink}
+                  onChange={this.handleInputChangeFor("videoLink")}
+                  className={classes.textField}
+                  margin="normal"
+                />
               </div>
+              : this.state.type === 2 ?
               <div>
-                <Button
-                  variant="contained"
-                  className="submit-new-section"
-                  type="submit"
-                  name="submit"
-                  onClick={this.submitSection}
-                  className={classes.button}
-                  classes={{ root: classes.root }}
-                >
-                  Save Section
-                </Button>
+                <TextField
+                  required
+                  label="Text Content"
+                  type="text"
+                  value={this.state.textContent}
+                  onChange={this.handleInputChangeFor("textContent")}
+                  className={classes.textField}
+                  margin="normal"
+                />
               </div>
-            </form>
-        </div>
-      </center>
-      </>
+              : this.state.type === 3 ?
+              <div>
+                <TextField
+                  required
+                  label="Image Link"
+                  type="text"
+                  value={this.state.imageLink}
+                  onChange={this.handleInputChangeFor("imageLink")}
+                  className={classes.textField}
+                  margin="normal"
+                />
+              </div>
+              : <></> }
+              {/* NEW QUESTION MAP */}
+            <div className="new-question">
+              {this.state.questionInputs.map((questionInputs, index) => (
+                <SectionQuestions key={index} />
+              ))}
+            </div>
+            {/* ADD NEW QUESTION BUTTON */}
+            <div>
+              <Button
+                variant="contained"
+                id="add-section-question"
+                // type="submit"
+                // name="submit"
+                onClick={this.appendNewQuestion}
+                className={classes.button}
+                classes={{ root: classes.root }}
+              >
+                + Add Question
+              </Button>
+            </div>
+            <div>
+              <Button
+                variant="contained"
+                id="submit-new-section"
+                type="submit"
+                name="submit"
+                onClick={this.submitSection}
+                className={classes.button}
+                classes={{ root: classes.root }}
+              >
+                Save Section
+              </Button>
+            </div>
+          </form>
+        </center>
+      </div>
+>>>>>>> master
     );
   }
 }

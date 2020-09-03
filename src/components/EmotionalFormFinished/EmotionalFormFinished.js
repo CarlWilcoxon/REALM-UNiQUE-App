@@ -25,7 +25,7 @@ class EmotionalFormFinished extends Component {
 
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  state
 });
 
 // this allows us to use <App /> in index.js

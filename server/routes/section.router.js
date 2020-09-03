@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../modules/authentication-middleware');
 
 // router.get('/', rejectUnauthenticated, (req, res) => {
 //   console.log('Getting section for', req.user);
@@ -42,7 +42,7 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 
 // Route for creating a new Section
-router.post('/add', rejectUnauthenticated, async (req, res) => {
+router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
 
   // Deconstructing most of req.body to make references later clearer to read.
   const {

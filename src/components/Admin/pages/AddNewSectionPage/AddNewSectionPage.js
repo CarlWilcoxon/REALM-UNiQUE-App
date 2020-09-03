@@ -27,21 +27,21 @@ const styles = (theme) => ({
 
 const type = [
   {
-    value: "Text",
+    value: 2,
     label: "Text",
   },
   {
-    value: "Video",
+    value: 1,
     label: "Video",
   },
   {
-    value: "Image",
+    value: 3,
     label: "Image",
-  }
+  },
 ];
 
 class AddNewSectionPage extends Component {
-  
+
   constructor(){
     super();
     this.state = {
@@ -51,10 +51,9 @@ class AddNewSectionPage extends Component {
 
   state = {
     title: "",
-    type: "",
+    type: 0,
     description: "",
-    // questionsCounter: 0,
-    questions:[]
+    questions:[],
     // questions =[
     //   {
     //     question = ...,
@@ -66,6 +65,9 @@ class AddNewSectionPage extends Component {
     //     question = ...,
     //     questionType = ...},
     // ]
+    imageLink:"",
+    videoLink:"",
+    textContent:"",
   };
 
 //Packaging new section details and sending to saga to send to database
@@ -73,13 +75,7 @@ class AddNewSectionPage extends Component {
     event.preventDefault();
     this.props.dispatch({
       type: "SUBMIT_SECTION",
-      payload: {
-        title: this.state.title,
-        type: this.state.type,
-        description: this.state.description,
-        newQuestion1Type: this.state.newQuestion1Type,
-        newQuestion1: this.state.newQuestion1,
-      },
+      payload: this.state,
     });
   }; // end submitSection
 
@@ -157,6 +153,46 @@ class AddNewSectionPage extends Component {
                 margin="normal"
               />
             </div>
+            {/* DYNAMIC INFORMATION SECTION */}
+            {/* 1=video, 2=text, 3=image */}
+            { this.state.type === 1 ?
+              <div>
+                <TextField
+                  required
+                  label="Video Link"
+                  type="text"
+                  value={this.state.videoLink}
+                  onChange={this.handleInputChangeFor("videoLink")}
+                  className={classes.textField}
+                  margin="normal"
+                />
+              </div>
+              : this.state.type === 2 ?
+              <div>
+                <TextField
+                  required
+                  label="Text Content"
+                  type="text"
+                  value={this.state.textContent}
+                  onChange={this.handleInputChangeFor("textContent")}
+                  className={classes.textField}
+                  margin="normal"
+                />
+              </div>
+              : this.state.type === 3 ?
+              <div>
+                <TextField
+                  required
+                  label="Image Link"
+                  type="text"
+                  value={this.state.imageLink}
+                  onChange={this.handleInputChangeFor("imageLink")}
+                  className={classes.textField}
+                  margin="normal"
+                />
+              </div>
+              : <></> }
+              {/* NEW QUESTION MAP */}
             <div id="new-question">
               {this.state.questionInputs.map((questionInputs) => (
                 <SectionQuestions />
@@ -166,7 +202,7 @@ class AddNewSectionPage extends Component {
             <div>
               <Button
                 variant="contained"
-                className="add-section-question"
+                id="add-section-question"
                 // type="submit"
                 // name="submit"
                 onClick={this.appendNewQuestion}
@@ -179,7 +215,7 @@ class AddNewSectionPage extends Component {
             <div>
               <Button
                 variant="contained"
-                className="submit-new-section"
+                id="submit-new-section"
                 type="submit"
                 name="submit"
                 onClick={this.submitSection}

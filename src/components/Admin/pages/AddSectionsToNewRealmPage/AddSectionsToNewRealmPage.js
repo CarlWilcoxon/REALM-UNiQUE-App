@@ -1,22 +1,3 @@
-// import React, { Component } from 'react';
-
-// class AddSectionsToNewRealmPage extends Component {
-
-//     render() {
-//         return (
-//           <div>
-//             <center>
-//               <h1>Add Sections to New Realm</h1>
-//               <div className="sections-new-realm-form"></div>
-//             </center>
-//           </div>
-//         );
-//     }
-// }
-
-// export default AddSectionsToNewRealmPage;
-
-
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";

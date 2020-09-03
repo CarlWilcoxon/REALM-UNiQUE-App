@@ -18,10 +18,8 @@ import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
-// import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
-// import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
-
-// import AddNewSectionPage from "../component;
+import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
+import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
 import EmotionalForm from '../EmotionalForm/EmotionalForm'
 import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'

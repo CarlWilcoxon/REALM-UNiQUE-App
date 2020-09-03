@@ -107,10 +107,10 @@ class AddNewSectionPage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <>
+      <div>
         <center>
-        <h1>Add New Section</h1>
-        <div className="form">
+          <h1>Add New Section</h1>
+          <div className="form">
             <form>
               {/* SECTION TITLE */}
               <div>
@@ -148,6 +148,95 @@ class AddNewSectionPage extends Component {
                 </TextField>
               </div>
               {/* SECTION DESCRIPTION */}
+              {/* <div>
+                  <TextField
+                    required
+                    label="Resource Description"
+                    value={this.state.description}
+                    onChange={this.handleInputChangeFor("description")}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div> */}
+              {/* WHERE NEW QUESTION INPUTS GO
+                <div id="new-question">
+                  {this.state.questionInputs.map((questionInputs) => (
+                    <SectionQuestion />
+                  ))}
+                </div> */}
+              {/* ADD NEW QUESTION BUTTON */}
+              {/*<div> */}
+              {/* <Button
+                  variant="contained"
+                  className="add-section-question"
+                  onClick={this.appendNewQuestion}
+                  className={classes.button}
+                  classes={{ root: classes.root }}
+                >
+                  + Add Question
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  className="submit-new-section"
+                  type="submit"
+                  name="submit"
+                  onClick={this.submitSection}
+                  className={classes.button}
+                  classes={{ root: classes.root }}
+                >
+                  Save Section
+                </Button>
+              </div>
+            </form>
+        </div>
+      </center>
+      </>
+              </TextField>
+            </div> */}
+              {/* DYNAMIC INFORMATION SECTION */}
+              {/* 1=video, 2=text, 3=image */}
+              {this.state.type === 1 ? (
+                <div>
+                  <TextField
+                    required
+                    label="Video Link"
+                    type="text"
+                    value={this.state.videoLink}
+                    onChange={this.handleInputChangeFor("videoLink")}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div>
+              ) : this.state.type === 2 ? (
+                <div>
+                  <TextField
+                    required
+                    label="Text Content"
+                    type="text"
+                    value={this.state.textContent}
+                    onChange={this.handleInputChangeFor("textContent")}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div>
+              ) : this.state.type === 3 ? (
+                <div>
+                  <TextField
+                    required
+                    label="Image Link"
+                    type="text"
+                    value={this.state.imageLink}
+                    onChange={this.handleInputChangeFor("imageLink")}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+              {/* SECTION DESCRIPTION */}
               <div>
                 <TextField
                   required
@@ -158,131 +247,43 @@ class AddNewSectionPage extends Component {
                   margin="normal"
                 />
               </div>
-              {/* WHERE NEW QUESTION INPUTS GO */}
-              <div id="new-question">
-                {this.state.questionInputs.map((questionInputs) => (
-                  <SectionQuestion />
-                ))}
-
-      //         </div>
-      //         {/* ADD NEW QUESTION BUTTON */}
-      //         <div>
-      //           <Button
-      //             variant="contained"
-      //             className="add-section-question"
-      //             onClick={this.appendNewQuestion}
-      //             className={classes.button}
-      //             classes={{ root: classes.root }}
-      //           >
-      //             + Add Question
-      //           </Button>
-      //         </div>
-      //         <div>
-      //           <Button
-      //             variant="contained"
-      //             className="submit-new-section"
-      //             type="submit"
-      //             name="submit"
-      //             onClick={this.submitSection}
-      //             className={classes.button}
-      //             classes={{ root: classes.root }}
-      //           >
-      //             Save Section
-      //           </Button>
-      //         </div>
-      //       </form>
-      //   </div>
-      // </center>
-      // </>
-              </TextField>
-            </div>
-            {/* SECTION DESCRIPTION */}
-            <div>
-              <TextField
-                required
-                label="Resource Description"
-                value={this.state.description}
-                onChange={this.handleInputChangeFor("description")}
-                className={classes.textField}
-                margin="normal"
-              />
-            </div>
-            {/* DYNAMIC INFORMATION SECTION */}
-            {/* 1=video, 2=text, 3=image */}
-            { this.state.type === 1 ?
-              <div>
-                <TextField
-                  required
-                  label="Video Link"
-                  type="text"
-                  value={this.state.videoLink}
-                  onChange={this.handleInputChangeFor("videoLink")}
-                  className={classes.textField}
-                  margin="normal"
-                />
-              </div>
-              : this.state.type === 2 ?
-              <div>
-                <TextField
-                  required
-                  label="Text Content"
-                  type="text"
-                  value={this.state.textContent}
-                  onChange={this.handleInputChangeFor("textContent")}
-                  className={classes.textField}
-                  margin="normal"
-                />
-              </div>
-              : this.state.type === 3 ?
-              <div>
-                <TextField
-                  required
-                  label="Image Link"
-                  type="text"
-                  value={this.state.imageLink}
-                  onChange={this.handleInputChangeFor("imageLink")}
-                  className={classes.textField}
-                  margin="normal"
-                />
-              </div>
-              : <></> }
               {/* NEW QUESTION MAP */}
-            <div className="new-question">
-              {this.state.questionInputs.map((questionInputs, index) => (
-                <SectionQuestions key={index} />
-              ))}
-            </div>
-            {/* ADD NEW QUESTION BUTTON */}
-            <div>
-              <Button
-                variant="contained"
-                id="add-section-question"
-                // type="submit"
-                // name="submit"
-                onClick={this.appendNewQuestion}
-                className={classes.button}
-                classes={{ root: classes.root }}
-              >
-                + Add Question
-              </Button>
-            </div>
-            <div>
-              <Button
-                variant="contained"
-                id="submit-new-section"
-                type="submit"
-                name="submit"
-                onClick={this.submitSection}
-                className={classes.button}
-                classes={{ root: classes.root }}
-              >
-                Save Section
-              </Button>
-            </div>
-          </form>
+              <div className="new-question">
+                {this.state.questionInputs.map((questionInputs, index) => (
+                  <SectionQuestion key={index} />
+                ))}
+              </div>
+              {/* ADD NEW QUESTION BUTTON */}
+              <div>
+                <Button
+                  variant="contained"
+                  id="add-section-question"
+                  // type="submit"
+                  // name="submit"
+                  onClick={this.appendNewQuestion}
+                  className={classes.button}
+                  classes={{ root: classes.root }}
+                >
+                  + Add Question
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant="contained"
+                  id="submit-new-section"
+                  type="submit"
+                  name="submit"
+                  onClick={this.submitSection}
+                  className={classes.button}
+                  classes={{ root: classes.root }}
+                >
+                  Save Section
+                </Button>
+              </div>
+            </form>
+          </div>
         </center>
       </div>
->>>>>>> master
     );
   }
 }

@@ -43,45 +43,39 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 // Route for creating a new Section
 router.post('/add', rejectUnauthenticated, async (req, res) => {
-  const {title} = req.body;
-  const {description} = req.body;
-  const {type} = req.body;
 
+  // Deconstructing most of req.body to make references later clearer to read.
+  const {
+    title,
+    type,
+    description,
+    questions,
+    imageLink,
+    videoLink,
+    textContent
+  } = req.body;
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
   console.log('req.body:', req.body);
+  console.log('title:', title);
+  console.log('type:', type);
 
   const connection = await pool.connect()
   try {
     await connection.query('BEGIN');
-    const addRealmQuery = `INSERT INTO "section" ("realm_name", "description", "cover_photo")
-    VALUES ($1, $2, $3) RETURNING "id"`;
+    const addSectionQuery = `INSERT INTO "section" ( "title", "type", "description", "imageLink", "videoLink", "textContent" )
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"`;
     // Save the result so we can get the returned value
-    const result = await connection.query( addRealmQuery, [realmName, realmDescription, coverPhotoLink]);
+    const result = await connection.query( addSectionQuery, [title, type, description, imageLink, videoLink, textContent]);
     // Get the id from the result - will have 1 row with the id
-    const realmId = result.rows[0].id;
+    const sectionId = result.rows[0].id;
 
-    const addsectionQuery = `INSERT INTO "section" ("type")
-    VALUES ($1) RETURNING "id"`;
-    // Save the result so we can get the returned value
-    const sectionResponse = await connection.query( addsectionQuery, [5] ); // 5 means form
-    // Get the id from the result - will have 1 row with the id
-    const sectionId = sectionResponse.rows[0].id;
-
-    // Loop through the form questions
-    for ( let i = 0; i < req.body.questions.length; i++ ) {
-      // Insert an entry into section_order to keep track of question order
-      const addOrderQuery =
-      `INSERT INTO "section_order" ("realm_id", "index", "section_id")
-      VALUES ($1, $2, $3);`;
-      const addOrderValues = [realmId, i, sectionId ];
-
-      await connection.query( addOrderQuery, addOrderValues );
-
+    // Loop through the questions
+    for ( let i = 0; i < questions.length; i++ ) {
       // Insert question into question db
       const addQuestionQuery =
-      `INSERT INTO "question" ("section_id", "content")
-      VALUES ($1, $2 ) RETURNING "id";`;
-      const addQuestionValues = [sectionId, req.body.questions[i].question ]
+      `INSERT INTO "question" ("section_id", "question_index", "content")
+      VALUES ($1, $2, $3 ) RETURNING "id";`;
+      const addQuestionValues = [sectionId, i, questions[i].question ]
 
       const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
       const questionId = questionResponse.rows[0].id;

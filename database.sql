@@ -158,6 +158,7 @@ CREATE TABLE "student_progress" (
 CREATE TABLE "question" (
   "id" SERIAL PRIMARY KEY,
   "section_id" int,
+  "question_index", int
   "content" VARCHAR(10000)
 );
 

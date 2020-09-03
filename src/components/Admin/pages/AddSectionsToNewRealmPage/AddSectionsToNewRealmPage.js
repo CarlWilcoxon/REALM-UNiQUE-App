@@ -32,12 +32,25 @@ import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import SearchIcon from "@material-ui/icons/Search";
+import Button from "@material-ui/core/Button";
 
 
 const styles = (theme) => ({
+  button: {
+    background: "blue",
+    // borderRadius: 3,
+    // border: 0,
+    color: "white",
+    height: 48,
+    padding: "0 30px",
+    fontWeight: "bold",
+    margin: "10px",
+    justify: "center",
+  },
   root: {
     width: "40%",
     marginTop: "5%",
+    marginBottom: "3%",
     overflowX: "auto",
   },
   table: {
@@ -59,9 +72,9 @@ const styles = (theme) => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade("#ffffff", 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade("#ffffff", 0.25),
     },
     marginLeft: 0,
     width: "100%",
@@ -91,7 +104,7 @@ const styles = (theme) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: 120,
+      width: 160,
       "&:focus": {
         width: 200,
       },
@@ -105,6 +118,7 @@ function createData(name, type) {
   return { id, name, type };
 }
 
+//SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
 const rows = [
   createData("Ted Talk No.5", "Video"),
   createData("Text No.1", "Text"),
@@ -129,7 +143,7 @@ render() {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search Sections…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
@@ -167,6 +181,32 @@ render() {
             </TableBody>
           </Table>
         </Paper>
+        <div>
+          <Button
+            variant="contained"
+            className="submit-new-section"
+            // type="submit"
+            // name="submit"
+            // onClick={this.submitSection}
+            className={classes.button}
+            classes={{ root: classes.button }}
+          >
+            Name Realm
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            className="submit-new-section"
+            // type="submit"
+            // name="submit"
+            // onClick={this.submitSection}
+            className={classes.button}
+            classes={{ root: classes.button }}
+          >
+            Organize Sections
+          </Button>
+        </div>
       </center>
     </div>
   );

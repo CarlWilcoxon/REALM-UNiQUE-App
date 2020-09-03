@@ -23,6 +23,7 @@ import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddS
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
 import EmotionalForm from '../EmotionalForm/EmotionalForm'
 import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'
+import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1'
 import './App.css';
 
 class App extends Component {
@@ -83,6 +84,11 @@ class App extends Component {
               exact
               path="/EmotionalFormFinished"
               component={EmotionalFormFinished}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalSec1"
+              component={EmotionalSec1}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

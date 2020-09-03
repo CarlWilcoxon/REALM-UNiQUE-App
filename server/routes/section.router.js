@@ -20,10 +20,13 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 router.get('/:id', rejectUnauthenticated, async (req, res) => {
   console.log('Getting section for', req.user);
   const queryText =
-    `SELECT * FROM "user"`
-  const queryValue = [req.stuff]
-  pool.query(queryText, [req.user.id])
-    .then((result) => res.send(result.rows))
+    `SELECT * FROM "section"
+    WHERE "id"= $1`
+  const queryValue = [req.params.id]
+  pool.query(queryText, queryValue)
+    .then((result) => {
+      console.log("success!")
+      res.send(result.rows)})
     .catch(() => res.sendStatus(500));
 });
 

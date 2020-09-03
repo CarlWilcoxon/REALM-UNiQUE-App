@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
 // import AddNewSectionPage from "../component;
+import Section from '../Section/Section';
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
 import EmotionalForm from '../EmotionalForm/EmotionalForm'
 import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'
@@ -47,6 +48,9 @@ class App extends Component {
               path="/add-section"
               component={AddNewSectionPage}
             />
+
+
+            <ProtectedRoute exact path="/section/:id" component={Section} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

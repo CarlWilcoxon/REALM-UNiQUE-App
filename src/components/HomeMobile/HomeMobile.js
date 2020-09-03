@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+
 class HomeMobile extends Component {
 
 goEmotional =() => this.props.history.push('/EmotionalHome')

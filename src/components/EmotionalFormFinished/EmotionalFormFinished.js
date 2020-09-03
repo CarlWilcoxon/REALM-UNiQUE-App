@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class EmotionalFormFinished extends Component {
 
   goBack =() => this.props.history.push('/EmotionalForm')
-  continue =() => this.props.history.push('/EmotionalSection1')
+  continue =() => this.props.history.push('/EmotionalSec1')
 
   render() {
     return (

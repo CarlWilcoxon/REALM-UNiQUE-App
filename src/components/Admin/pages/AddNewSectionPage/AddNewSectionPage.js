@@ -42,16 +42,10 @@ const type = [
 
 class AddNewSectionPage extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-        questionInputs: []
-    }
-  }
 
   state = {
     title: "",
-    type: 0,
+    type: "",
     description: "",
     questions:[],
     // questions =[
@@ -68,6 +62,7 @@ class AddNewSectionPage extends Component {
     imageLink:"",
     videoLink:"",
     textContent:"",
+    questionInputs: [],
   };
 
 //Packaging new section details and sending to saga to send to database
@@ -81,6 +76,7 @@ class AddNewSectionPage extends Component {
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
+      ...this.state,
       [propertyName]: event.target.value,
     });
     console.log("state:", this.state);
@@ -193,9 +189,9 @@ class AddNewSectionPage extends Component {
               </div>
               : <></> }
               {/* NEW QUESTION MAP */}
-            <div id="new-question">
-              {this.state.questionInputs.map((questionInputs) => (
-                <SectionQuestions />
+            <div className="new-question">
+              {this.state.questionInputs.map((questionInputs, index) => (
+                <SectionQuestions key={index} />
               ))}
             </div>
             {/* ADD NEW QUESTION BUTTON */}

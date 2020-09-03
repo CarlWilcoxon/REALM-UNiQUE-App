@@ -20,8 +20,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/:id', rejectUnauthenticated, async (req, res) => {
   console.log('Getting section for', req.user);
   const queryText =
-    `SELECT * FROM "user"
-      JOIN `
+    `SELECT * FROM "user"`
   const queryValue = [req.stuff]
   pool.query(queryText, [req.user.id])
     .then((result) => res.send(result.rows))
@@ -44,9 +43,9 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 // Route for creating a new Section
 router.post('/add', rejectUnauthenticated, async (req, res) => {
-  const realmName = req.body.realmName;
-  const coverPhotoLink = req.body.coverPhotoLink;
-  const realmDescription = req.body.realmDescription;
+  const {title} = req.body;
+  const {description} = req.body;
+  const {type} = req.body;
 
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
   console.log('req.body:', req.body);
@@ -54,7 +53,7 @@ router.post('/add', rejectUnauthenticated, async (req, res) => {
   const connection = await pool.connect()
   try {
     await connection.query('BEGIN');
-    const addRealmQuery = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+    const addRealmQuery = `INSERT INTO "section" ("realm_name", "description", "cover_photo")
     VALUES ($1, $2, $3) RETURNING "id"`;
     // Save the result so we can get the returned value
     const result = await connection.query( addRealmQuery, [realmName, realmDescription, coverPhotoLink]);

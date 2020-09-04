@@ -61,6 +61,7 @@ class App extends Component {
             <Route exact path="/add-client" component={AddNewClientPage} />
             <Route exact path="/view-sections" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
+            <Route exact path="/section/:id" component={Section} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

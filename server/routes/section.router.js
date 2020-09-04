@@ -21,7 +21,8 @@ router.get('/:id', rejectUnauthenticated, async (req, res) => {
   console.log('Getting section for', req.user);
   const queryText =
     `SELECT * FROM "section"
-    WHERE "id"= $1`
+    JOIN "question" ON "section"."id" = "question"."section_id"
+    WHERE "section"."id"= $1`
   const queryValue = [req.params.id]
   pool.query(queryText, queryValue)
     .then((result) => {

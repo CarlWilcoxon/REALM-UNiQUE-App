@@ -108,6 +108,20 @@ router.post('/add', rejectUnauthenticated, async (req, res) => {
   }
 
 });
+//GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
+router.get("/", (req, res) => {
+  const queryText = `SELECT * FROM section`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      console.log("in /section GET");
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
 

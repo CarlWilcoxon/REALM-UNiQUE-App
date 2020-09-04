@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -7,14 +8,13 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
-
+import Checkbox from "@material-ui/core/Checkbox";
+// import AppBar from "@material-ui/core/AppBar";
+// import Toolbar from "@material-ui/core/Toolbar";
+// import InputBase from "@material-ui/core/InputBase";
+// import SearchIcon from "@material-ui/icons/Search";
 
 const styles = (theme) => ({
   button: {
@@ -115,6 +115,15 @@ const rows = [
 ];
 
 class ViewSectionsPage extends Component {
+
+  componentDidMount = () => {
+    this.getAllSections();
+  };
+
+  getAllSections = () => {
+    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+  };
+
     render() {
         const { classes } = this.props;
 
@@ -167,12 +176,12 @@ class ViewSectionsPage extends Component {
                   </TableHead>
                   <TableBody>
                     {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                    {rows.map((row) => (
-                      <TableRow key={row.id}>
+                    {this.props.sections.map((section) => (
+                      <TableRow key={this.props.sections.id}>
                         <TableCell align="left" component="th" scope="row">
-                          {row.name}
+                          {section.title}
                         </TableCell>
-                        <TableCell align="left">{row.type}</TableCell>
+                        <TableCell align="left">TYPE</TableCell>
                         <Button
                           variant="contained"
                           className="submit-new-section"
@@ -199,4 +208,8 @@ ViewSectionsPage.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ViewSectionsPage);
+const mapReduxStateToProps = (reduxState) => ({
+  sections: reduxState.allSections
+});
+
+export default connect(mapReduxStateToProps)(withStyles(styles)(ViewSectionsPage));

@@ -25,8 +25,19 @@ function* submitSection(action) {
   }
 }
 
+function* getAllSections() {
+  try {
+    const response = yield axios.get("/api/section/");
+    yield put({ type: "SET_ALL_SECTIONS", payload: response.data });
+    // console.log('test console:',response.data);
+  } catch (error) {
+    console.log("Error with GET:", error);
+  }
+}
+
 function* sectionSaga() {
   yield takeLatest('SUBMIT_SECTION', submitSection);
+  yield takeLatest('FETCH_ALL_SECTIONS', getAllSections);
 }
 
 export default sectionSaga;

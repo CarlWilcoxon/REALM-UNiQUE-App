@@ -19,16 +19,44 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // Get route for each Section
 router.get('/:id', rejectUnauthenticated, async (req, res) => {
   console.log('Getting section for', req.user);
-  const queryText =
-    `SELECT * FROM "section"
-    JOIN "question" ON "section"."id" = "question"."section_id"
-    WHERE "section"."id"= $1`
-  const queryValue = [req.params.id]
-  pool.query(queryText, queryValue)
-    .then((result) => {
-      console.log("success!")
-      res.send(result.rows)})
-    .catch(() => res.sendStatus(500));
+
+
+  try {
+    await connection.query('BEGIN');
+
+      const queryText =
+      `SELECT * FROM "section"
+      WHERE "section"."id"= $1;`
+    const queryValue = [req.params.id]
+    result = await connection.query(queryText, queryValue)
+
+  // Loop through the questions
+  for ( let i = 0; i < questions.length; i++ ) {
+    // Select each question into question db
+    const addQuestionQuery =
+    `SELECT * FROM "question"
+    WHERE "section_id" = $1;`;
+    const addQuestionValues = [ req.params.id, i ]
+
+    const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
+    const questionId = questionResponse.rows[0].id;
+  }
+
+
+
+
+    await connection.query('COMMIT');
+    console.log("success!", result.rows)
+    res.send(result.rows)
+} catch ( error ) {
+    await connection.query('ROLLBACK');
+    console.log(`Transaction Error - Rolling back new account`, error);
+    res.sendStatus(500);
+  } finally {
+    connection.release()
+  }
+
+
 });
 
 

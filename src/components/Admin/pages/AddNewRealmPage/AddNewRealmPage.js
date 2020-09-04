@@ -25,7 +25,7 @@ const styles = (theme) => ({
 });
 
 class AddNewRealmPage extends Component {
-    
+
     constructor() {
         super();
         this.state = {
@@ -90,7 +90,7 @@ class AddNewRealmPage extends Component {
                                     className={classes.textField}
                                     margin="normal"
                                 />
-                            </div> 
+                            </div>
                             {/* REALM COVER PHOTO LINK */}
                             <div>
                                 <TextField
@@ -125,7 +125,7 @@ class AddNewRealmPage extends Component {
                             <div>
                                 <Button
                                     variant="contained"
-                                    className="add-section-question"
+                                    // className="add-section-question"
                                     onClick={this.appendNewQuestion}
                                     className={classes.button}
                                     classes={{ root: classes.root }}
@@ -136,7 +136,7 @@ class AddNewRealmPage extends Component {
                             <div>
                                 <Button
                                     variant="contained"
-                                    className="submit-new-realm"
+                                    // className="submit-new-realm"
                                     type="submit"
                                     name="submit"
                                     onClick={this.submitRealm}

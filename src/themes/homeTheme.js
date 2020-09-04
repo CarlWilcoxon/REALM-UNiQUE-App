@@ -1,6 +1,5 @@
-import { withTheme } from '@material-ui/core';
-
 // import { withTheme } from '@material-ui/core';
+
 const styles = (theme) => ({
   welcomeMessage: {
     font: '400 20px Poppins, sans-serif',
@@ -22,7 +21,7 @@ const styles = (theme) => ({
     padding: '0px 20px 0px 20px',
   },
   gridListTile: { width: '100%' },
-  buttonContainer: { width: '95%', padding: 0, padding: '0px 0px 0px 0px' },
+  buttonContainer: { width: '95%', padding: '0px' },
   buttonPaper: {
     // width: '100%', padding: 0
     '&:hover': {

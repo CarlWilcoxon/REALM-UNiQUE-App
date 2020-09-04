@@ -40,21 +40,19 @@ const type = [
   },
 ];
 
-class AddNewSectionPage extends Component {
-
-
+class EditSectionPage extends Component {
   state = {
     title: "",
     type: "",
     description: "",
-    questions:[],
-    imageLink:"",
-    videoLink:"",
-    textContent:"",
+    questions: [],
+    imageLink: "",
+    videoLink: "",
+    textContent: "",
     questionInputs: [],
   };
 
-//Packaging new section details and sending to saga to send to database
+  //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
     this.props.dispatch({
@@ -79,13 +77,11 @@ class AddNewSectionPage extends Component {
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
-        this.setState({
-            questionInputs: [
-                ...this.state.questionInputs, <SectionQuestion/>
-            ]
-        });
-  }
+    console.log("You clicked add new questions");
+    this.setState({
+      questionInputs: [...this.state.questionInputs, <SectionQuestion />],
+    });
+  };
 
   //   handleClick = (event) => {
   //     this.props.history.push("/");
@@ -96,7 +92,7 @@ class AddNewSectionPage extends Component {
     return (
       <div>
         <center>
-          <h1>Add New Section</h1>
+          <h1>Edit [SECTION TITLE]</h1>
           <div className="form">
             <form>
               {/* SECTION TITLE */}
@@ -105,7 +101,8 @@ class AddNewSectionPage extends Component {
                   required
                   label="Section Title"
                   type="text"
-                  value={this.state.type}
+                  defaultValue="EXAMPLE SECTION TITLE"
+                  // value={this.state.title}
                   onChange={this.handleInputChangeFor("title")}
                   className={classes.textField}
                   margin="normal"
@@ -118,7 +115,8 @@ class AddNewSectionPage extends Component {
                   required
                   label="Resource Type"
                   className={classes.textField}
-                  value={this.state.type}
+                  defaultValue="3" //A type was selected as an example here
+                  // value={this.state.type}
                   onChange={this.handleInputChangeFor("type")}
                   SelectProps={{
                     MenuProps: {
@@ -136,13 +134,15 @@ class AddNewSectionPage extends Component {
               </div>
               {/* DYNAMIC INFORMATION SECTION */}
               {/* 1=video, 2=text, 3=image */}
+              {/* type needs to be retrieved from the database */}
               {this.state.type === 1 ? (
                 <div>
                   <TextField
                     required
                     label="Video Link"
                     type="text"
-                    value={this.state.videoLink}
+                    // value={this.state.videoLink}
+                    defaultValue="EXAMPLE VIDEO LINK"
                     onChange={this.handleInputChangeFor("videoLink")}
                     className={classes.textField}
                     margin="normal"
@@ -154,7 +154,8 @@ class AddNewSectionPage extends Component {
                     required
                     label="Text Content"
                     type="text"
-                    value={this.state.textContent}
+                    // value={this.state.textContent}
+                    defaultValue="EXAMPLE TEXT CONTENT"
                     onChange={this.handleInputChangeFor("textContent")}
                     className={classes.textField}
                     margin="normal"
@@ -166,7 +167,8 @@ class AddNewSectionPage extends Component {
                     required
                     label="Image Link"
                     type="text"
-                    value={this.state.imageLink}
+                    // value={this.state.imageLink}
+                    defaultValue="EXAMPLE IMAGE LINK"
                     onChange={this.handleInputChangeFor("imageLink")}
                     className={classes.textField}
                     margin="normal"
@@ -180,13 +182,14 @@ class AddNewSectionPage extends Component {
                 <TextField
                   required
                   label="Resource Description"
-                  value={this.state.description}
+                  // value={this.state.description}
+                  defaultValue="EXAMPLE DESCRIPTION"
                   onChange={this.handleInputChangeFor("description")}
                   className={classes.textField}
                   margin="normal"
                 />
               </div>
-              {/* NEW QUESTION MAP */}
+              {/* ORGINAL QUESTIONS MAP <--------- NEEDS TO BE FINISHED*/}
               <div className="new-question">
                 {this.state.questionInputs.map((questionInputs, index) => (
                   <SectionQuestion key={index} />
@@ -227,7 +230,7 @@ class AddNewSectionPage extends Component {
   }
 }
 
-AddNewSectionPage.propTypes = {
+EditSectionPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -235,4 +238,6 @@ const mapReduxStateToProps = (reduxState) => ({
   reduxState,
 });
 
-export default withStyles(styles)(connect(mapReduxStateToProps)(AddNewSectionPage));
+export default withStyles(styles)(
+  connect(mapReduxStateToProps)(EditSectionPage)
+);

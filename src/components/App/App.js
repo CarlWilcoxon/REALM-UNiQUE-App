@@ -17,9 +17,14 @@ import AboutPage from '../AboutPage/AboutPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
+import ViewSectionsPage from "../Admin/pages/ViewSectionsPage/ViewSectionsPage";
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
 import EditSectionPage from "../Admin/pages/EditSectionPage/EditSectionPage";
+import ViewRealmsPage from "../Admin/pages/ViewRealmsPage/ViewRealmsPage";
 import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
+import ViewClientsPage from "../Admin/pages/ViewClientsPage/ViewClientsPage";
+import AddNewClientPage from "../Admin/pages/AddNewClientPage/AddNewClientPage";
+import EditClientPage from "../Admin/pages/EditClientPage/EditClientPage";
 import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
 import EmotionalForm from '../EmotionalForm/EmotionalForm'
@@ -46,16 +51,13 @@ class App extends Component {
             {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
             <Route exact path="/add-section" component={AddNewSectionPage} />
             <Route exact path="/add-realm" component={AddNewRealmPage} />
-            <Route
-              exact
-              path="/add-sections-to-realm"
-              component={AddSectionsToNewRealm}
-            />
-            <Route
-              exact
-              path="/edit-section"
-              component={EditSectionPage}
-            />
+            <Route exact path="/add-sections-to-realm" component={AddSectionsToNewRealm}/>
+            <Route exact path="/edit-section" component={EditSectionPage} />
+            <Route exact path="/view-realms" component={ViewRealmsPage} />
+            <Route exact path="/view-sections" component={ViewSectionsPage} />
+            <Route exact path="/add-client" component={AddNewClientPage} />
+            <Route exact path="/view-sections" component={ViewClientsPage} />
+            <Route exact path="/edit-client" component={EditClientPage} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

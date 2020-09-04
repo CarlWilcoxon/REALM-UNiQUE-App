@@ -116,7 +116,7 @@ render() {
     <div>
       <center>
         <h1>Add Sections to New Realm</h1>
-        <AppBar position="static">
+        {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
             <div className={classes.search}>
@@ -132,7 +132,7 @@ render() {
               />
             </div>
           </Toolbar>
-        </AppBar>
+        </AppBar> */}
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>

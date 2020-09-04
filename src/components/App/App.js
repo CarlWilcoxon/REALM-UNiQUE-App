@@ -19,6 +19,12 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 // import AddNewSectionPage from "../component;
+import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
+import EmotionalForm from '../EmotionalForm/EmotionalForm'
+import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'
+import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1'
+
+
 import './App.css';
 
 class App extends Component {
@@ -51,6 +57,26 @@ class App extends Component {
               exact
               path="/EmotionalHome"
               component={EmotionalHome}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalFormIntro"
+              component={EmotionalFormIntro}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalForm"
+              component={EmotionalForm}
+            />
+             <ProtectedRoute
+              exact
+              path="/EmotionalFormFinished"
+              component={EmotionalFormFinished}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalSec1"
+              component={EmotionalSec1}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

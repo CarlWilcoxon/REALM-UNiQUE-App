@@ -46,7 +46,11 @@ class LoginPage extends Component {
     return (
       <Grid container spacing={0}>
         <img
-          className={classes.videoContainer}
+          className={
+            window.screen.width > 420
+              ? classes.videoContainer
+              : classes.videoContainerMobile
+          }
           src="/images/scenery-2846778.jpg"
         ></img>
         {/* The one at the top only shows up bc I have video speed controller on */}

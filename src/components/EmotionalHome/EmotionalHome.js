@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Emotional from './emotional.png';
+import styles from '../../themes/realmHomeTheme';
+import {
+  withStyles,
+  // FormControl,
+  // Grid,
+  // Link,
+  // TextField,
+  // Button,
+  // Paper,
+  // Hidden,
+  // GridList,
+  // GridListTile,
+} from '@material-ui/core';
 
 class EmotionalHome extends Component {
   goBack =() => this.props.history.push('/')
   start =() => this.props.history.push('/EmotionalFormIntro')
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <img src={Emotional} alt='realm logo'/>
+        <img classname={classes.realmImage} src={Emotional} alt="realm logo" />
         <h1>Realm 1: Emotional Wellness</h1>
         <p>Emotional health is an important part of overall health. 
           People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. 
@@ -58,10 +72,9 @@ class EmotionalHome extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
   state
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(EmotionalHome);
+export default withStyles(styles)(connect(mapStateToProps)(EmotionalHome));

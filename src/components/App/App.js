@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,18 +6,18 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
-import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
+import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 // import AddNewSectionPage from "../component;
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
 import EmotionalForm from '../EmotionalForm/EmotionalForm'
@@ -28,26 +28,23 @@ import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1'
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' });
   }
 
   render() {
     return (
       <Router>
         <div>
-          <Nav />
+          {this.props.user.id ? <Nav /> : <span />}
+          {/* <Nav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
-            <Route
-              exact
-              path="/add-section"
-              component={AddNewSectionPage}
-            />
+            <Route exact path="/add-section" component={AddNewSectionPage} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -84,10 +81,15 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {this.props.user.id ? <Footer /> : <span />}
         </div>
       </Router>
-    );}
+    );
+  }
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(App);

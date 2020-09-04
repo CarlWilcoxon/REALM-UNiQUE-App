@@ -63,14 +63,15 @@ class SectionQuestions extends Component {
             </div> */}
             {/* SECTION DESCRIPTION */}
             <div>
-                <TextField
-                    required
-                    label="Question"
-                    value={this.state.question}
-                    onChange={this.handleInputChangeFor("question")}
-                    className={classes.textField}
-                    margin="normal"
-                />
+              <TextField
+                required
+                label="Question"
+                variant="outlined"
+                value={this.state.question}
+                onChange={this.handleInputChangeFor("question")}
+                className={classes.textField}
+                margin="normal"
+              />
             </div>
           </>
         );

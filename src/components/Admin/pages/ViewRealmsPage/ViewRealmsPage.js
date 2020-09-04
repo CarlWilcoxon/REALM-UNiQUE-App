@@ -17,15 +17,21 @@ import Button from "@material-ui/core/Button";
 
 const styles = (theme) => ({
   button: {
-    background: "blue",
-    // borderRadius: 3,
-    // border: 0,
+    font: " 300  16px  Poppins , sans-serif",
     color: "white",
-    height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
+    backgroundColor: "#457b9d",
+    "&:hover": {
+      backgroundColor: "#a8dadc",
+      color: "#457b9d",
+    },
+    "&:focus": {
+      backgroundColor: "a8dadc",
+      color: "#457b9d",
+    },
+    "text-transform": "capitalize",
+    "text-align": "center",
+    "margin-top": "10px",
+    "border-radius": "5px",
   },
   root: {
     width: "40%",
@@ -152,7 +158,7 @@ class ViewRealmsPage extends Component {
                   <TableCell align="left" width="30%">
                     Realm Name
                   </TableCell>
-                  <TableCell width="30%"></TableCell>
+                  <TableCell width="10%" align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -165,6 +171,7 @@ class ViewRealmsPage extends Component {
                     <Button
                       variant="contained"
                       className="submit-new-section"
+                      align="right"
                       // type="submit"
                       // name="submit"
                       // onClick={this.submitSection}
@@ -172,7 +179,7 @@ class ViewRealmsPage extends Component {
                       classes={{ root: classes.button }}
                     >
                       Preview Realm
-            </Button>
+                    </Button>
                   </TableRow>
                 ))}
               </TableBody>

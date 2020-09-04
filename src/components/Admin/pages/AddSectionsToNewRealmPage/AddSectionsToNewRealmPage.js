@@ -18,15 +18,21 @@ import Button from "@material-ui/core/Button";
 
 const styles = (theme) => ({
   button: {
-    background: "blue",
-    // borderRadius: 3,
-    // border: 0,
+    font: " 300  16px  Poppins , sans-serif",
     color: "white",
-    height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
+    backgroundColor: "#457b9d",
+    "&:hover": {
+      backgroundColor: "#a8dadc",
+      color: "#457b9d",
+    },
+    "&:focus": {
+      backgroundColor: "a8dadc",
+      color: "#457b9d",
+    },
+    "text-transform": "capitalize",
+    "text-align": "center",
+    "margin-top": "20px",
+    "border-radius": "5px",
   },
   root: {
     width: "40%",

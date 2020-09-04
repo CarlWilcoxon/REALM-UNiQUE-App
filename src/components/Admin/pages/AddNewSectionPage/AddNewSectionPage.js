@@ -112,7 +112,7 @@ class AddNewSectionPage extends Component {
                   required
                   label="Section Title"
                   type="text"
-                  value={this.state.type}
+                  value={this.state.title}
                   onChange={this.handleInputChangeFor("title")}
                   className={classes.textField}
                   margin="normal"

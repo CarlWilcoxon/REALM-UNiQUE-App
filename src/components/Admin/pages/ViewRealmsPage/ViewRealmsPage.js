@@ -7,12 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
 
 const styles = (theme) => ({
@@ -118,7 +113,7 @@ class ViewRealmsPage extends Component {
           <div>
             <Button
               variant="contained"
-              className="submit-new-section"
+              id="submit-new-section"
               // type="submit"
               // name="submit"
               // onClick={this.submitSection}
@@ -164,7 +159,6 @@ class ViewRealmsPage extends Component {
                     </TableCell>
                     <Button
                       variant="contained"
-                      className="submit-new-section"
                       // type="submit"
                       // name="submit"
                       // onClick={this.submitSection}

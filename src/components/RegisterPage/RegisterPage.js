@@ -78,7 +78,8 @@ class RegisterPage extends Component {
           }
           src="https://github.com/brunoreyes/videos/blob/master/goodVideo.mp4?raw=true"
         ></video> */}
-        {/* <img
+        <img
+        alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
@@ -114,7 +115,7 @@ class RegisterPage extends Component {
             {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               {/* <Fade> */}
-              <img className={classes.colorLogo} src="images/logo.png" />
+              <img className={classes.colorLogo} alt="realm logo" src="images/logo.png" />
               {/* </Fade> */}
               <p className={classes.infinitytext}>Aspire to Inspire</p>
             </div>

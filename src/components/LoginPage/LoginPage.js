@@ -46,6 +46,7 @@ class LoginPage extends Component {
     return (
       <Grid container spacing={0}>
         <img
+        alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
@@ -75,7 +76,7 @@ class LoginPage extends Component {
             {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               {/* <Fade> */}
-              <img className={classes.colorLogo} src="images/logo.png" />
+              <img  alt="logo" className={classes.colorLogo} src="images/logo.png" />
               {/* </Fade> */}
               <p className={classes.infinitytext}>Aspire to Inspire</p>
             </div>

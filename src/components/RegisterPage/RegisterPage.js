@@ -36,7 +36,11 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.username && this.state.password && (this.state.password === this.state.confirm_password) ) {
+    if (
+      this.state.username &&
+      this.state.password &&
+      this.state.password === this.state.confirm_password
+    ) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
@@ -82,7 +86,17 @@ class RegisterPage extends Component {
               : classes.videoContainerMobile
           }
           src="/images/scenery-2846778.jpg"
-        ></img>
+        ></img> */}
+        {/* <iframe
+          src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0; fullscreen"
+          width="640"
+          height="360"
+          allowfullscreen
+          className={classes.videoContainer}
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe> */}
         {this.props.errors.registrationMessage && (
           <h2 className="alert" role="alert">
             {this.props.errors.registrationMessage}

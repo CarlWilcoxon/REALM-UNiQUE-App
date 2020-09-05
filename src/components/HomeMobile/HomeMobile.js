@@ -20,7 +20,6 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import SpaIcon from '@material-ui/icons/Spa';
 import styles from '../../themes/homeTheme';
 
-
 class HomeMobile extends Component {
   goEmotional = () => this.props.history.push('/EmotionalHome');
 

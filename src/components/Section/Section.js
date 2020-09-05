@@ -29,11 +29,11 @@ class Section extends Component {
         :
         'loading'}
 
-        {/* <div>{ this.props.reduxState.section !== undefined ?
-          // <iframe width="420" height="315" src={this.props.reduxState.section.video_link}></iframe>
+        <div>{ this.props.reduxState.section !== undefined ?
+          <iframe width="420" height="315" src={this.props.reduxState.section.video_link}></iframe>
         :
         'loading'}
-        </div> */}
+        </div>
 
         { this.props.reduxState.section !== undefined ?
           JSON.stringify(this.props.reduxState.section)
@@ -41,8 +41,7 @@ class Section extends Component {
         'loading'}
 
         { this.props.reduxState.section.questions !== undefined ?
-          this.props.reduxState.section.questions.map(question =>
-            <Question question={question} />)
+            <Question question={this.props.reduxState.section.questions} />
         :
         'loading'}
 

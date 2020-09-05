@@ -17,9 +17,10 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // });
 
 // Get route for each Section
-router.get('/:id', rejectUnauthenticated, async (req, res) => {
+router.get('/:id', async (req, res) => {
   console.log('Getting section for', req.user);
 
+  const connection = await pool.connect()
 
   try {
     await connection.query('BEGIN');
@@ -28,26 +29,24 @@ router.get('/:id', rejectUnauthenticated, async (req, res) => {
       `SELECT * FROM "section"
       WHERE "section"."id"= $1;`
     const queryValue = [req.params.id]
-    result = await connection.query(queryText, queryValue)
+    let result = await connection.query(queryText, queryValue)
 
-  // Loop through the questions
-  for ( let i = 0; i < questions.length; i++ ) {
-    // Select each question into question db
+    // get the questions for that section
     const addQuestionQuery =
     `SELECT * FROM "question"
-    WHERE "section_id" = $1;`;
-    const addQuestionValues = [ req.params.id, i ]
+    WHERE "section_id" = $1
+    ORDER BY "question_index";`;
+    const addQuestionValues = [ req.params.id ]
 
     const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
-    const questionId = questionResponse.rows[0].id;
-  }
+    // append the questions to the result
+    result.rows[0].questions = questionResponse.rows;
+    console.log(questionResponse.rows);
 
-
-
-
+    // send the section and question data back
     await connection.query('COMMIT');
-    console.log("success!", result.rows)
-    res.send(result.rows)
+    console.log("success!", result.rows[0])
+    res.send(result.rows[0])
 } catch ( error ) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);

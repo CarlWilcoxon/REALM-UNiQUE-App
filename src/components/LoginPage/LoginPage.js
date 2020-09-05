@@ -53,18 +53,16 @@ class LoginPage extends Component {
           }
           src="/images/scenery-2846778.jpg"
         ></img>
-        {/* The one at the top only shows up bc I have video speed controller on */}
-        {/* <video
-          // autoPlay
-          playsinline
-          preload
-          muted
-          // controls="false"
-          loop
-          type="video/mp4"
+        {/* <iframe
+          src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
           className={classes.videoContainer}
-          src="https://github.com/brunoreyes/videos/blob/master/goodVideo.mp4?raw=true"
-        ></video> */}
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          // allow="autoplay; fullscreen"
+        ></iframe> */}
+        {/* The one at the top only shows up bc I have video speed controller on */}
+
         <Hidden xsDown smDown>
           <Grid
             className={classes.leftSideFlex}

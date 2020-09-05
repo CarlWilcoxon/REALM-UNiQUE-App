@@ -1,5 +1,7 @@
 // import { withTheme } from '@material-ui/core';
 
+import { authorize } from 'passport';
+
 const styles = (theme) => ({
   allContainer: {},
   videoContainer: {
@@ -9,10 +11,11 @@ const styles = (theme) => ({
     width: '100%',
     overflow: 'hidden',
     'object-fit': 'cover',
+    // margin: '-50px 0px -30px 0px',
   },
+
   videoContainerMobile: {
     position: 'absolute',
-
     height: '135%',
     width: '100%',
     overflow: 'hidden',

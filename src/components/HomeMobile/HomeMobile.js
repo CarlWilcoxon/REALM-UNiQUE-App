@@ -2,13 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   withStyles,
-  FormControl,
   Grid,
-  Link,
-  TextField,
-  Button,
   Paper,
-  Hidden,
   GridList,
   GridListTile,
 } from '@material-ui/core';

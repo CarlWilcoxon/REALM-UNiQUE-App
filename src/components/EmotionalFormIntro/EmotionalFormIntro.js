@@ -12,7 +12,7 @@ class EmotionalFormIntro extends Component {
       <div>
         <Grid
           container
-          spacing={5}
+          spacing={0}
           alignItems="center"
           justify="center"
           direction="column"

@@ -132,6 +132,52 @@ const styles = (theme) => ({
     width: '100%',
     'text-align': 'center',
   },
+  // cssLabel: {
+  //   color: '#1f3556',
+  //   '&.Mui-focused': {
+  //     color: '#1f3556',
+  //   },
+  //   cssOutlinedSelect: {
+  //     '&$cssFocused $notchedOutline': {
+  //       borderColor: `#1f3556 !important`,
+  //       color: '#1f3556',
+  //     },
+  //   },
+  // },
+
+  notchedOutline: {
+    borderWidth: '2px',
+    borderColor: '#1f3556 !important',
+  },
+  // helperText: {
+  //   color: '#1f3556',
+  // },
+  cssOutlinedInput: {
+    // padding: 0
+  },
+  input: {
+    color: '#1f3556',
+    padding: '5px 5px 5px 5px',
+  },
+
+  formContainer: { 'text-align': 'center', width: '100%' },
+  QandAContainer: { 'text-align': 'center', margin: '10px 0px 20px 0px' },
+  formQuestion: {
+    font: '300 16px Poppins, sans-serif',
+    color: '#1f3556',
+    padding: '0px 10% 0px 10%',
+    margin: '0% 0px 10px 0px',
+    // width: '90%',
+    'text-align': 'center',
+    // borderBottom: '#1f3556 solid 1px',
+  },
+  inputControl: {
+    margin: '0px 0px 0px 0px',
+    padding: '0px 0px 0px 0px',
+    width: '60%',
+    font: '300 10px Poppins, sans-serif',
+    color: '#fff',
+  },
 });
 
 export default styles;

@@ -10,8 +10,9 @@ import {
   // Paper,
 } from '@material-ui/core';
 
-class EmotionalSec1 extends Component {
-  saveAndContinue = () => this.props.history.push('/EmotionalSec2');
+class EmotionalSec3 extends Component {
+    // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
+    // EmotionalSec4 doesn't exist
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
@@ -32,18 +33,6 @@ class EmotionalSec1 extends Component {
               <h3 className={classes.sectionTitle}>
                 Brain & Mind & Carbohydrates
               </h3>
-              <div className={classes.sectionVideoContainer}>
-                <div>
-                  <iframe
-                    frameborder="0"
-                    className={classes.sectionVideo}
-                    src="https://www.youtube.com/embed/pRFXSjkpKWA"
-                    //www.youtube.com/embed?v=pRFXSjkpKWA"
-                    // src="https://www.youtube.com/watch?v=pRFXSjkpKWA"
-                  ></iframe>
-                </div>
-                {/* </Paper> */}
-              </div>
 
               <p className={classes.sectionDescription}>
                 The brain is an organ that serves as the center of the nervous
@@ -86,7 +75,7 @@ class EmotionalSec1 extends Component {
               <div className={classes.realmButtonContainer}>
                 <Button
                   className={classes.realmButton}
-                  onClick={this.saveAndContinue}
+                //   onClick={this.saveAndContinue}
                 >
                   Save & Continue
                 </Button>{' '}
@@ -110,4 +99,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec1));
+export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec3));

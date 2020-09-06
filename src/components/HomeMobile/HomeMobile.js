@@ -140,15 +140,6 @@ class HomeMobile extends Component {
                   </div>
                 </GridListTile>
               </GridList>
-              {/* </div> */}
-              {/* <button >Realm 1: Emotional</button>
-              <button>Realm 2: Nutritional</button>
-              <button>Realm 3: Physical</button>
-              <button>Realm 4: Spiritual</button>
-              <button>Realm 5: Financial</button>
-              <button>Realm 6: Environmental</button>
-              <button>Realm 7: Social</button>
-              <button>Realm 8: Intellectual</button> */}
             </div>
           </Grid>
         </Grid>

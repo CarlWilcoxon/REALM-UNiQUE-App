@@ -405,7 +405,7 @@ class EmotionalForm extends Component {
               and sleep? <input></input>
             </div> */}
             <div className={classes.realmButtonContainer}>
-              <Button className={classes.realmButton} onClick={this.start}>
+              <Button className={classes.realmButton} onClick={this.complete}>
                 Submit
               </Button>{' '}
               <Button className={classes.realmButton} onClick={this.goBack}>

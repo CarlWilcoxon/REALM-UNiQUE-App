@@ -13,10 +13,9 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
-import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
+import AutoRealmHome from '../EmotionalHome/AutoRealmHome';
 import ViewSectionsPage from "../Admin/pages/ViewSectionsPage/ViewSectionsPage";
 import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
 import EditSectionPage from "../Admin/pages/EditSectionPage/EditSectionPage";
@@ -42,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <>
           {this.props.user.id ? <Nav /> : <span />}
           {/* <Nav /> */}
           <Switch>
@@ -50,7 +49,6 @@ class App extends Component {
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-            <Route exact path="/about" component={AboutPage} />
             {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
             <Route exact path="/add-section" component={AddNewSectionPage} />
             <Route exact path="/add-realm" component={AddNewRealmPage} />
@@ -62,6 +60,7 @@ class App extends Component {
             <Route exact path="/view-sections" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
             <Route exact path="/section/:id" component={Section} />
+
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -69,11 +68,15 @@ class App extends Component {
             <ProtectedRoute exact path="/home" component={HomeMobile} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute
               exact
               path="/EmotionalHome"
               component={EmotionalHome}
+            />
+            <ProtectedRoute
+              exact
+              path="/AutoEmotionalHome"
+              component={AutoRealmHome}
             />
             <ProtectedRoute
               exact
@@ -99,7 +102,7 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
           {this.props.user.id ? <Footer /> : <span />}
-        </div>
+        </>
       </Router>
     );
   }

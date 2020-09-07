@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -12,15 +13,21 @@ import Button from "@material-ui/core/Button";
 
 const styles = (theme) => ({
   button: {
-    background: "blue",
-    // borderRadius: 3,
-    // border: 0,
+    font: " 300  16px  Poppins , sans-serif",
     color: "white",
-    height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
+    backgroundColor: "#457b9d",
+    "&:hover": {
+      backgroundColor: "#a8dadc",
+      color: "#457b9d",
+    },
+    "&:focus": {
+      backgroundColor: "a8dadc",
+      color: "#457b9d",
+    },
+    "text-transform": "capitalize",
+    "text-align": "center",
+    "margin-top": "10px",
+    "border-radius": "5px",
   },
   root: {
     width: "40%",
@@ -103,6 +110,15 @@ const rows = [
 ];
 
 class ViewRealmsPage extends Component {
+  
+  componentDidMount = () => {
+    this.getAllRealms();
+  };
+
+  getAllRealms = () => {
+    this.props.dispatch({ type: "FETCH_ALL_REALMS" });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -147,26 +163,26 @@ class ViewRealmsPage extends Component {
                   <TableCell align="left" width="30%">
                     Realm Name
                   </TableCell>
-                  <TableCell width="30%"></TableCell>
+                  <TableCell width="10%" align="right"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                {rows.map((row) => (
-                  <TableRow key={row.id}>
+                {this.props.realms.map((realm) => (
+                  <TableRow key={this.props.realms.id}>
                     <TableCell align="left" component="th" scope="row">
-                      {row.name}
+                      {realm.title}
                     </TableCell>
                     <Button
                       variant="contained"
+                      className="submit-new-section"
                       // type="submit"
                       // name="submit"
-                      // onClick={this.submitSection}
+                      // onClick={}
                       className={classes.button}
                       classes={{ root: classes.button }}
                     >
-                      Preview Realm
-            </Button>
+                      View Realm
+                    </Button>
                   </TableRow>
                 ))}
               </TableBody>
@@ -182,5 +198,9 @@ class ViewRealmsPage extends Component {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)( ViewRealmsPage);
+const mapReduxStateToProps = (reduxState) => ({
+  realms: reduxState.allRealms,
+});
+
+export default connect(mapReduxStateToProps)(withStyles(styles)(ViewRealmsPage));
 

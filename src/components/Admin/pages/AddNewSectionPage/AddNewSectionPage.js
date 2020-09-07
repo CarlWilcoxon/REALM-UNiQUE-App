@@ -9,15 +9,21 @@ import SectionQuestion from "../../components/SectionQuestions/SectionQuestions"
 
 const styles = (theme) => ({
   root: {
-    background: "blue",
-    // borderRadius: 3,
-    // border: 0,
+    font: " 300  16px  Poppins , sans-serif",
     color: "white",
-    height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
+    backgroundColor: "#457b9d",
+    "&:hover": {
+      backgroundColor: "#a8dadc",
+      color: "#457b9d",
+    },
+    "&:focus": {
+      backgroundColor: "a8dadc",
+      color: "#457b9d",
+    },
+    "text-transform": "capitalize",
+    "text-align": "center",
+    "margin-top": "20px",
+    "border-radius": "5px",
   },
   textField: {
     width: 400,
@@ -102,10 +108,11 @@ class AddNewSectionPage extends Component {
               {/* SECTION TITLE */}
               <div>
                 <TextField
+                  variant="outlined"
                   required
                   label="Section Title"
                   type="text"
-                  value={this.state.type}
+                  value={this.state.title}
                   onChange={this.handleInputChangeFor("title")}
                   className={classes.textField}
                   margin="normal"
@@ -117,6 +124,7 @@ class AddNewSectionPage extends Component {
                   select
                   required
                   label="Resource Type"
+                  variant="outlined"
                   className={classes.textField}
                   value={this.state.type}
                   onChange={this.handleInputChangeFor("type")}
@@ -141,6 +149,7 @@ class AddNewSectionPage extends Component {
                   <TextField
                     required
                     label="Video Link"
+                    variant="outlined"
                     type="text"
                     value={this.state.videoLink}
                     onChange={this.handleInputChangeFor("videoLink")}
@@ -153,6 +162,7 @@ class AddNewSectionPage extends Component {
                   <TextField
                     required
                     label="Text Content"
+                    variant="outlined"
                     type="text"
                     value={this.state.textContent}
                     onChange={this.handleInputChangeFor("textContent")}
@@ -164,6 +174,7 @@ class AddNewSectionPage extends Component {
                 <div>
                   <TextField
                     required
+                    variant="outlined"
                     label="Image Link"
                     type="text"
                     value={this.state.imageLink}
@@ -180,6 +191,7 @@ class AddNewSectionPage extends Component {
                 <TextField
                   required
                   label="Resource Description"
+                  variant="outlined"
                   value={this.state.description}
                   onChange={this.handleInputChangeFor("description")}
                   className={classes.textField}

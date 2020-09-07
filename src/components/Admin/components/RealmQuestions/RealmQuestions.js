@@ -37,10 +37,10 @@ class RealmQuestions extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className="form">
-                <center>
-                    <form>
-                        {/* QUESTION TYPE (ETC.)
+          <div className="form">
+            <center>
+              <form>
+                {/* QUESTION TYPE (ETC.)
                         <div>
                             <TextField
                                 select
@@ -63,20 +63,21 @@ class RealmQuestions extends Component {
                                 ))}
                             </TextField>
                         </div> */}
-                        {/* SECTION DESCRIPTION */}
-                        <div>
-                            <TextField
-                                required
-                                label="Question"
-                                value={this.state.question}
-                                onChange={this.handleInputChangeFor("question")}
-                                className={classes.textField}
-                                margin="normal"
-                            />
-                        </div>
-                    </form>
-                </center>
-            </div>
+                {/* SECTION DESCRIPTION */}
+                <div>
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="Question"
+                    value={this.state.question}
+                    onChange={this.handleInputChangeFor("question")}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div>
+              </form>
+            </center>
+          </div>
         );
     }
 }

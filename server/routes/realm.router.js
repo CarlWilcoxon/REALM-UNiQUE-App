@@ -116,6 +116,23 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
 
 });
 
+//GETTING ALL REALMS FOR "VIEW REALMS" PAGE
+router.get("/all", (req, res) => {
+  const queryText = `SELECT * FROM "realm";`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      console.log("in /realm GET");
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
+});
+
+
+
 module.exports = router;
 
 

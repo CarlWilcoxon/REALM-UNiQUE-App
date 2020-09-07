@@ -99,21 +99,6 @@ const styles = (theme) => ({
   },
 });
 
-let id = 0;
-function createData(name, type) {
-    id += 1;
-    return { id, name, type };
-}
-
-//SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
-const rows = [
-    createData("Ted Talk No.5", "Video"),
-    createData("Text No.1", "Text"),
-    createData("Photo No.10", "Photo"),
-    createData("Ted Talk No.2", "Video"),
-    createData("Youtube Video No.12", "Video"),
-];
-
 class ViewSectionsPage extends Component {
 
   componentDidMount = () => {
@@ -175,7 +160,6 @@ class ViewSectionsPage extends Component {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
                     {this.props.sections.map((section) => (
                       <TableRow key={this.props.sections.id}>
                         <TableCell align="left" component="th" scope="row">
@@ -187,7 +171,7 @@ class ViewSectionsPage extends Component {
                           className="submit-new-section"
                           // type="submit"
                           // name="submit"
-                          // onClick={this.submitSection}
+                          // onClick={}
                           className={classes.button}
                           classes={{ root: classes.button }}
                         >
@@ -200,47 +184,6 @@ class ViewSectionsPage extends Component {
               </Paper>
             </center>
           </div>
-
-//WHAT WAS CHANGED HERE?
-                //     <Paper className={classes.root}>
-                //         <Table className={classes.table}>
-                //             <TableHead>
-                //                 <TableRow>
-                //                     <TableCell align="left" width="20%">
-                //                         Section Name
-                //                     </TableCell>
-                //                     <TableCell align="left" width="20%">
-                //                         Resource Type
-                //                     </TableCell>
-                //                     <TableCell width="30%"></TableCell>
-                //                 </TableRow>
-                //             </TableHead>
-                //             <TableBody>
-                //                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                //                 {rows.map((row) => (
-                //                     <TableRow key={row.id}>
-                //                         <TableCell align="left" component="th" scope="row">
-                //                             {row.name}
-                //                         </TableCell>
-                //                         <TableCell align="left">{row.type}</TableCell>
-                //                         <Button
-                //                             variant="contained"
-                //                             // className="submit-new-section"
-                //                             // type="submit"
-                //                             // name="submit"
-                //                             // onClick={this.submitSection}
-                //                             className={classes.button}
-                //                             classes={{ root: classes.button }}
-                //                         >
-                //                             View Section
-                //                         </Button>
-                //                     </TableRow>
-                //                 ))}
-                //             </TableBody>
-                //         </Table>
-                //     </Paper>
-                // </center>
-            // </div>
         );
     }
 }

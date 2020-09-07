@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -109,6 +110,15 @@ const rows = [
 ];
 
 class ViewRealmsPage extends Component {
+  
+  componentDidMount = () => {
+    this.getAllRealms();
+  };
+
+  getAllRealms = () => {
+    this.props.dispatch({ type: "FETCH_ALL_REALMS" });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -157,23 +167,21 @@ class ViewRealmsPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                {rows.map((row) => (
-                  <TableRow key={row.id}>
+                {this.props.realms.map((realm) => (
+                  <TableRow key={this.props.realms.id}>
                     <TableCell align="left" component="th" scope="row">
-                      {row.name}
+                      {realm.title}
                     </TableCell>
                     <Button
                       variant="contained"
                       className="submit-new-section"
-                      align="right"
                       // type="submit"
                       // name="submit"
-                      // onClick={this.submitSection}
+                      // onClick={}
                       className={classes.button}
                       classes={{ root: classes.button }}
                     >
-                      Preview Realm
+                      View Realm
                     </Button>
                   </TableRow>
                 ))}
@@ -190,5 +198,9 @@ class ViewRealmsPage extends Component {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)( ViewRealmsPage);
+const mapReduxStateToProps = (reduxState) => ({
+  realms: reduxState.allRealms,
+});
+
+export default connect(mapReduxStateToProps)(withStyles(styles)(ViewRealmsPage));
 

@@ -54,7 +54,7 @@ class Section extends Component {
               {this.props.state.section.video_link !== undefined ? (
                 <Grid className={classes.sectionVideoContainer}>
                   <iframe
-                    title={'section video'}
+                    title={this.props.state.section.title + ' video'}
                     frameborder="0"
                     className={classes.sectionVideo}
                     src={this.props.state.section.video_link.replace("/watch?v=","/embed/")}

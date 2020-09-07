@@ -65,7 +65,7 @@ class App extends Component {
             <Route exact path="/view-realms" component={ViewRealmsPage} />
             <Route exact path="/view-sections" component={ViewSectionsPage} />
             <Route exact path="/add-client" component={AddNewClientPage} />
-            <Route exact path="/view-sections" component={ViewClientsPage} />
+            <Route exact path="/view-clients" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
             {/* THIS ROUTE ISN'T WORKING */}
             <Route exact path="/section/:id" component={Section} />

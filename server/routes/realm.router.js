@@ -20,7 +20,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // Get route for each Realm
-router.get('/:id', rejectUnauthenticated, async (req, res) => {
+router.get('/:realm', rejectUnauthenticated, async (req, res) => {
   console.log('Getting realm for', req.user);
   const queryText = `SELECT * FROM "user"`
   pool.query(queryText, [req.user.id])

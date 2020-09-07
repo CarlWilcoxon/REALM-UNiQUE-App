@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../modules/authentication-middleware');
 
 // router.get('/', rejectUnauthenticated, (req, res) => {
 //   console.log('Getting section for', req.user);
@@ -17,14 +17,45 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // });
 
 // Get route for each Section
-router.get('/:id', rejectUnauthenticated, async (req, res) => {
+router.get('/:id', async (req, res) => {
   console.log('Getting section for', req.user);
-  const queryText =
-    `SELECT * FROM "user"`
-  const queryValue = [req.stuff]
-  pool.query(queryText, [req.user.id])
-    .then((result) => res.send(result.rows))
-    .catch(() => res.sendStatus(500));
+
+  const connection = await pool.connect()
+
+  try {
+    await connection.query('BEGIN');
+
+      const queryText =
+      `SELECT * FROM "section"
+      WHERE "section"."id"= $1;`
+    const queryValue = [req.params.id]
+    let result = await connection.query(queryText, queryValue)
+
+    // get the questions for that section
+    const addQuestionQuery =
+    `SELECT * FROM "question"
+    WHERE "section_id" = $1
+    ORDER BY "question_index";`;
+    const addQuestionValues = [ req.params.id ]
+
+    const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
+    // append the questions to the result
+    result.rows[0].questions = questionResponse.rows;
+    console.log(questionResponse.rows);
+
+    // send the section and question data back
+    await connection.query('COMMIT');
+    console.log("success!", result.rows[0])
+    res.send(result.rows[0])
+} catch ( error ) {
+    await connection.query('ROLLBACK');
+    console.log(`Transaction Error - Rolling back new account`, error);
+    res.sendStatus(500);
+  } finally {
+    connection.release()
+  }
+
+
 });
 
 
@@ -42,7 +73,7 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 
 // Route for creating a new Section
-router.post('/add', rejectUnauthenticated, async (req, res) => {
+router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
 
   // Deconstructing most of req.body to make references later clearer to read.
   const {

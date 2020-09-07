@@ -9,121 +9,8 @@ import {
   Button,
   Hidden,
 } from '@material-ui/core';
-
-const styles = (theme) => ({
-  allContainer: {},
-
-  videoContainer: {
-    position: 'absolute',
-    height: '765px',
-    width: '100%',
-    overflow: 'hidden',
-    'object-fit': 'cover',
-  },
-  infinityControl: {
-    'text-align': 'center',
-    position: 'relative',
-    width: '100%',
-    margin: 'auto',
-  },
-  colorLogo: {
-    width: '40%',
-    // filter: 'grayscale(100%)',
-    filter: 'brightness(0) invert(1)',
-  },
-  infinitytext: {
-    font: '300 40px Poppins, sans-serif',
-    color: '#fff',
-    padding: '80px 0px 0px 0px',
-  },
-  leftSideFlex: {
-    flexGrow: 1,
-    height: '765px',
-    display: 'flex',
-  },
-  leftSide: {
-    flexGrow: 1,
-    height: '765px',
-    display: 'none',
-  },
-  rightSide: {
-    flexGrow: 1,
-    height: '765px',
-  },
-  formContainer: {
-    margin: '40px auto 20px auto',
-    'background-color': 'transparent',
-    'text-align': 'center',
-    position: 'relative',
-    color: '#f1f1f1',
-    width: '50%',
-    padding: '40px 0px 0px 0px',
-  },
-  brandNameControl: {
-    font: '600 50px Poppins, sans-serif',
-    position: 'relative',
-    width: '100%',
-  },
-  formControl: {
-    margin: '0px 0px 15px 0px',
-    width: '70%',
-  },
-  inputControl: {
-    margin: '0px 0px 15px 0px',
-    width: '100%',
-    font: '500 10px Poppins, sans-serif',
-    color: '#fff',
-  },
-  cssLabel: {
-    color: 'white',
-    '&.Mui-focused': {
-      color: 'white',
-    },
-    cssOutlinedInput: {
-      '&$cssFocused $notchedOutline': {
-        borderColor: `white !important`,
-        color: 'white',
-      },
-    },
-  },
-  input: {
-    color: 'white',
-  },
-  notchedOutline: {
-    borderWidth: '2px',
-    borderColor: 'white !important',
-  },
-  helperText: {
-    color: 'white',
-  },
-  submitButtonContainer: { width: '100%', position: 'relative' },
-  submitButton: {
-    color: { opacity: 0 },
-    // 'mix-blend-mode': 'color-burn',
-    'mix-blend-mode': 'screen',
-    'background-color': 'white',
-    font: '600 16px Poppins, sans-serif',
-    'text-transform': 'capitalize',
-    border: '#fff solid 2px',
-    margin: '10px auto 60px auto',
-    padding: '10px auto 0px auto',
-    'border-radius': '25px',
-    '&:hover': {
-      'background-color': { opacity: 0 },
-      border: '#fff solid 2px',
-      color: '#fff',
-    },
-    width: '70%',
-    position: 'relative',
-  },
-  register: {
-    'text-align': 'center',
-    font: '500 15px Poppins, sans-serif',
-    color: '#fff',
-    width: '100%',
-    position: 'relative',
-  },
-});
+// import RegisterPage from '../RegisterPage/RegisterPage';
+import styles from '../../themes/loginRegisterTheme';
 
 class LoginPage extends Component {
   state = {
@@ -158,36 +45,27 @@ class LoginPage extends Component {
 
     return (
       <Grid container spacing={0}>
-        <div>
-          <img
-            className={classes.videoContainer}
-            src="/images/scenery-2846778.jpg"
-          ></img>
-          {/* <video className={classes.videoContainer} autoPlay muted loop> */}
-          {/* <source src=" */}
-          {/* <iframe
-            className={classes.videoContainer}
-            autoPlay
-            muted
-            loop
-            src="https://player.vimeo.com/video/454034298"
-          ></iframe> */}
-          {/* <iframe
-            className={classes.videoContainer}
-            src="https://player.vimeo.com/video/454034298"
-            width="640"
-            height="480"
-            frameborder="0"
-            autoplay="1"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-          ></iframe> */}
-          {/* " type="video/mp4" /> */}
-          {/* </video> */}
-        </div>
+        <img
+        alt="a calming ocean view with a rainbow"
+          className={
+            window.screen.width > 420
+              ? classes.videoContainer
+              : classes.videoContainerMobile
+          }
+          src="/images/scenery-2846778.jpg"
+        ></img>
+        {/* <iframe
+          src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
+          className={classes.videoContainer}
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          // allow="autoplay; fullscreen"
+        ></iframe> */}
+        {/* The one at the top only shows up bc I have video speed controller on */}
+
         <Hidden xsDown smDown>
           <Grid
-            // className={classes.leftSide}
             className={classes.leftSideFlex}
             item
             xs={0}
@@ -198,7 +76,7 @@ class LoginPage extends Component {
             {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               {/* <Fade> */}
-              <img className={classes.colorLogo} src="images/logo.png" />
+              <img  alt="logo" className={classes.colorLogo} src="images/logo.png" />
               {/* </Fade> */}
               <p className={classes.infinitytext}>Aspire to Inspire</p>
             </div>
@@ -238,7 +116,6 @@ class LoginPage extends Component {
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
-
                         className: classes.floatingLabelFocusStyle,
                       },
                     }}
@@ -295,7 +172,7 @@ class LoginPage extends Component {
                   name="submit"
                   value="Log In"
                 >
-                  Submit
+                  Login
                 </Button>
               </div>
               <Link
@@ -305,7 +182,7 @@ class LoginPage extends Component {
                   this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
                 }}
               >
-                Register
+                Sign Up
               </Link>
             </form>
           </div>

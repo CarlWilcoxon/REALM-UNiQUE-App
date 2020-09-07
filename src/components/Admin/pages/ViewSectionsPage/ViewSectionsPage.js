@@ -200,6 +200,47 @@ class ViewSectionsPage extends Component {
               </Paper>
             </center>
           </div>
+
+//WHAT WAS CHANGED HERE?
+                //     <Paper className={classes.root}>
+                //         <Table className={classes.table}>
+                //             <TableHead>
+                //                 <TableRow>
+                //                     <TableCell align="left" width="20%">
+                //                         Section Name
+                //                     </TableCell>
+                //                     <TableCell align="left" width="20%">
+                //                         Resource Type
+                //                     </TableCell>
+                //                     <TableCell width="30%"></TableCell>
+                //                 </TableRow>
+                //             </TableHead>
+                //             <TableBody>
+                //                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
+                //                 {rows.map((row) => (
+                //                     <TableRow key={row.id}>
+                //                         <TableCell align="left" component="th" scope="row">
+                //                             {row.name}
+                //                         </TableCell>
+                //                         <TableCell align="left">{row.type}</TableCell>
+                //                         <Button
+                //                             variant="contained"
+                //                             // className="submit-new-section"
+                //                             // type="submit"
+                //                             // name="submit"
+                //                             // onClick={this.submitSection}
+                //                             className={classes.button}
+                //                             classes={{ root: classes.button }}
+                //                         >
+                //                             View Section
+                //                         </Button>
+                //                     </TableRow>
+                //                 ))}
+                //             </TableBody>
+                //         </Table>
+                //     </Paper>
+                // </center>
+            // </div>
         );
     }
 }

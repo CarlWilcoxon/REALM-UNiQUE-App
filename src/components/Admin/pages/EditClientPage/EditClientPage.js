@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
-import SectionQuestion from "../../components/SectionQuestions/SectionQuestions";
 
 const styles = (theme) => ({
     root: {

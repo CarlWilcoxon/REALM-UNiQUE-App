@@ -31,7 +31,7 @@ const styles = (theme) => ({
 });
 
 class AddNewRealmPage extends Component {
-    
+
     constructor() {
         super();
         this.state = {
@@ -159,6 +159,83 @@ class AddNewRealmPage extends Component {
               </div>
             </center>
           </>
+//WHAT WAS CHANGED HERE?
+//             <>
+//                 <center>
+//                 <h1>Add New Realm</h1>
+//                 <div className="form">
+//                         <form>
+//                             {/* REALM NAME */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Name"
+//                                     type="text"
+//                                     value={this.state.name}
+//                                     onChange={this.handleInputChangeFor("name")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* REALM COVER PHOTO LINK */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Cover Photo Link"
+//                                     type="text"
+//                                     value={this.state.photoLink}
+//                                     onChange={this.handleInputChangeFor("photoLink")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* REALM DESCRIPTION */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Description"
+//                                     type="text"
+//                                     value={this.state.description}
+//                                     onChange={this.handleInputChangeFor("description")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* WHERE NEW QUESTION INPUTS GO */}
+//                             <div id="new-question">
+//                                 {this.state.questionInputs.map((questionInputs) => (
+//                                     <RealmQuestion />
+//                                 ))}
+//                             </div>
+//                             {/* ADD NEW QUESTION BUTTON */}
+//                             <div>
+//                                 <Button
+//                                     variant="contained"
+//                                     // className="add-section-question"
+//                                     onClick={this.appendNewQuestion}
+//                                     className={classes.button}
+//                                     classes={{ root: classes.root }}
+//                                 >
+//                                     + Add Question
+//                                 </Button>
+//                             </div>
+//                             <div>
+//                                 <Button
+//                                     variant="contained"
+//                                     // className="submit-new-realm"
+//                                     type="submit"
+//                                     name="submit"
+//                                     onClick={this.submitRealm}
+//                                     className={classes.button}
+//                                     classes={{ root: classes.root }}
+//                                 >
+//                                     Select Sections
+//                                 </Button>
+//                             </div>
+//                         </form>
+//                 </div>
+//                 </center>
+//             </>
         );
     }
 }

@@ -13,7 +13,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                       JOIN "realm" ON "project"."id" = "realm"."project_id"
                       JOIN "student_progress" ON "user"."id" = "student_progress"."user_id"
                       WHERE user_id= $1
-                      ORDER BY "internal_name" ASC`;
+                      ORDER BY "section_order"."index" ASC`;
   pool.query(queryText, [req.user.id])
     .then((result) => res.send(result.rows))
     .catch(() => res.sendStatus(500));

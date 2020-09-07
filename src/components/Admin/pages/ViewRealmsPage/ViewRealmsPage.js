@@ -170,7 +170,7 @@ class ViewRealmsPage extends Component {
                 {this.props.realms.map((realm) => (
                   <TableRow key={this.props.realms.id}>
                     <TableCell align="left" component="th" scope="row">
-                      {realm.title}
+                      {realm.realm_name}
                     </TableCell>
                     <Button
                       variant="contained"

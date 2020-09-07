@@ -94,21 +94,6 @@ const styles = (theme) => ({
   },
 });
 
-let id = 0;
-function createData(name) {
-  id += 1;
-  return { id, name };
-}
-
-//SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
-const rows = [
-  createData("Realm One"),
-  createData("Realm Two"),
-  createData("Realm Three"),
-  createData("Realm Four"),
-  createData("Realm Five"),
-];
-
 class ViewRealmsPage extends Component {
   
   componentDidMount = () => {

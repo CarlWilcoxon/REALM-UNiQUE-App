@@ -26,7 +26,7 @@ import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
 import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
-// import AddNewSectionPage from "../component;
+import OrganizeSections from "../Admin/pages/OrganizeNewRealmSectionsPage/OrganizeNewRealmSectionsPage";
 import Section from '../Section/Section';
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro';
 import EmotionalForm from '../EmotionalForm/EmotionalForm';
@@ -60,6 +60,11 @@ class App extends Component {
               exact
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
+            />
+            <Route
+              exact
+              path="/organize-realm-sections"
+              component={OrganizeSections}
             />
             <Route exact path="/edit-section" component={EditSectionPage} />
             <Route exact path="/view-realms" component={ViewRealmsPage} />

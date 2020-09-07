@@ -8,6 +8,7 @@ import {
   Paper,
   BottomNavigation,
   BottomNavigationAction,
+  Fab,
 } from '@material-ui/core';
 
 import ForwardSharpIcon from '@material-ui/icons/ForwardSharp';
@@ -47,31 +48,14 @@ class EmotionalFormIntro extends Component {
               </p>
             </div>
           </Grid>{' '}
-          {window.screen.width > 420 ? (
-            <div className={classes.formButtonContainer}>
-              <Button className={classes.realmButton} onClick={this.start}>
-                Start Form
-              </Button>{' '}
-              <Button className={classes.realmButton} onClick={this.goBack}>
-                Back
-              </Button>
-            </div>
-          ) : (
-            <BottomNavigation showLabels className={classes.bottomNav}>
-              <BottomNavigationAction
-                className={classes.bottomNavActionLeft}
-                onClick={this.goBack}
-                label={<span className={classes.tabLabel}>Back to Realm</span>}
-                // icon={<ArrowForwardSharpIcon className={classes.rotate} />}
-              />
-              <BottomNavigationAction
-                onClick={this.start}
-                className={classes.bottomNavActionRight}
-                label={<span className={classes.tabLabel}>Start Form</span>}
-                // icon={<ArrowForwardSharpIcon />}
-              />
-            </BottomNavigation>
-          )}
+          <div className={classes.bottomNav}>
+            <Button className={classes.realmButton} onClick={this.start}>
+              Start Form
+            </Button>{' '}
+            <Button className={classes.realmButton} onClick={this.goBack}>
+              Back
+            </Button>
+          </div>
         </Grid>
       </div>
     );

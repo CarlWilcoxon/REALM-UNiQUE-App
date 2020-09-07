@@ -249,42 +249,46 @@ const styles = (theme) => ({
     'text-align': 'center',
     // borderBottom: '#1f3556 solid 1px',
   },
+
+  // bottomNavActionLeft: {
+  //   backgroundColor: '#1f3556',
+  //   font: '400 14px Poppins, sans-serif',
+  //   '&:hover': {
+  //     backgroundColor: '#457b9d',
+  //   },
+    // borderRight: '#fff solid 2px',
+    // borderLeft: '#fff solid 4px',
+    // borderTop: '#fff solid 4px',
+    // borderBottom: '#fff solid 4px',
+  // },
+  // bottomNavActionRight: {
+  //   backgroundColor: '#1f3556',
+
+  //   '&:hover': {
+  //     backgroundColor: '#457b9d',
+  //   },
+
+  //   borderLeft: '#fff solid 2px',
+  //   borderRight: '#fff solid 4px',
+  //   borderTop: '#fff solid 4px',
+  //   borderBottom: '#fff solid 4px',
+  // },
+  // tabLabel: {
+  //   font: '500 14px Poppins, sans-serif',
+  //   color: '#fff',
+  // },
+  // rotate: {
+  //   transform: 'rotate(180deg)' /* Equal to rotateZ(45deg) */,
+  // },
   bottomNav: {
     width: '100%',
-    bottom: 0,
-    // left: 0,
-    // right: 0,
+    bottom: 10,
+    // left: 10,
+    // right: 10,
     position: 'absolute',
-  },
-  bottomNavActionLeft: {
-    backgroundColor: '#1f3556',
-    font: '400 14px Poppins, sans-serif',
-    '&:hover': {
-      backgroundColor: '#457b9d',
-    },
-    borderRight: '#fff solid 2px',
-    borderLeft: '#fff solid 4px',
-    borderTop: '#fff solid 4px',
-    borderBottom: '#fff solid 4px',
-  },
-  bottomNavActionRight: {
-    backgroundColor: '#1f3556',
-
-    '&:hover': {
-      backgroundColor: '#457b9d',
-    },
-
-    borderLeft: '#fff solid 2px',
-    borderRight: '#fff solid 4px',
-    borderTop: '#fff solid 4px',
-    borderBottom: '#fff solid 4px',
-  },
-  tabLabel: {
-    font: '500 14px Poppins, sans-serif',
-    color: '#fff',
-  },
-  rotate: {
-    transform: 'rotate(180deg)' /* Equal to rotateZ(45deg) */,
+    // margin: 'auto',
+    'text-align': 'center',
+    // backgroundColor: '#1f3556',
   },
 });
 

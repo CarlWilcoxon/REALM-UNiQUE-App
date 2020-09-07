@@ -35,7 +35,7 @@ class EmotionalFormFinished extends Component {
               </p>
             </div>
           </Grid>{' '}
-          <div className={classes.formButtonContainer}>
+          <div className={classes.bottomNav}>
             <Button className={classes.realmButton} onClick={this.continue}>
               Start Realm Course
             </Button>{' '}

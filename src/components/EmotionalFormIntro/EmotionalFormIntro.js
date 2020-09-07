@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import { withStyles, Grid, Button, Paper } from '@material-ui/core';
+import { withStyles, Grid, Button } from '@material-ui/core';
 
 class EmotionalFormIntro extends Component {
   goBack = () => this.props.history.push('/EmotionalHome');
@@ -12,7 +12,7 @@ class EmotionalFormIntro extends Component {
       <div>
         <Grid
           container
-          spacing={5}
+          spacing={0}
           alignItems="center"
           justify="center"
           direction="column"
@@ -37,7 +37,7 @@ class EmotionalFormIntro extends Component {
               </p>
             </div>
           </Grid>{' '}
-          <div className={classes.formButtonContainer}>
+          <div className={classes.bottomNav}>
             <Button className={classes.realmButton} onClick={this.start}>
               Start Form
             </Button>{' '}
@@ -45,7 +45,6 @@ class EmotionalFormIntro extends Component {
               Back
             </Button>
           </div>
-          {/*end container */}
         </Grid>
       </div>
     );

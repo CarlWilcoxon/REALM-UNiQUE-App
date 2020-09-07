@@ -10,8 +10,8 @@ import {
   // Paper,
 } from '@material-ui/core';
 
-class EmotionalSec1 extends Component {
-  saveAndContinue = () => this.props.history.push('/EmotionalSec2');
+class EmotionalSec2 extends Component {
+  saveAndContinue = () => this.props.history.push('/EmotionalSec3');
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
@@ -27,19 +27,19 @@ class EmotionalSec1 extends Component {
             lg={6}
           >
             <div>
-              {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
                 Brain & Mind & Carbohydrates
               </h3>
-              <div className={classes.sectionVideoContainer}>
+              <div className={classes.sectionCoverContainer}>
+                {/* <Paper square={false} className={classes.realmCoverPaper}> */}
                 <div>
-                  <iframe
-                    title={'section video'}
-                    frameborder="0"
-                    className={classes.sectionVideo}
-                    src="https://www.youtube.com/embed/pRFXSjkpKWA"
-                  ></iframe>
+                  <img
+                    className={classes.realmCover}
+                    src="images/emotionalRealmCover.jpg"
+                    // src="images/emotions.png"
+                    alt="realm logo"
+                  />
                 </div>
                 {/* </Paper> */}
               </div>
@@ -93,7 +93,7 @@ class EmotionalSec1 extends Component {
                   className={classes.realmButton}
                   onClick={this.saveAndReturn}
                 >
-                  Save & Exit
+      Save & Exit
                 </Button>
               </div>
             </FormControl>
@@ -109,4 +109,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec1));
+export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec2));

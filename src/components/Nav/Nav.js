@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import LogOutButton from '../LogOutButton/LogOutButton';
+// import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import './Nav.css';
 
 const Nav = (props) => (
@@ -28,8 +29,10 @@ const Nav = (props) => (
         <>
           {/* <Link className="nav-link" to="/info">
             Info Page
-          </Link>
-          <LogOutButton className="nav-link" /> */}
+          </Link> */}
+          {/* <LogOutButton className="nav-link">
+            <ExitToAppIcon />
+          </LogOutButton> */}
         </>
       )}
       {/* Always show this link since the about page is not protected */}

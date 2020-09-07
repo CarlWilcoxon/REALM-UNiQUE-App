@@ -128,32 +128,6 @@ class EmotionalHome extends Component {
                   <LockIcon />
                 </div>
               </div>
-              {/* <div className={classes.realmTableofContentSection}>
-                Section 1: Brain and Mind <CheckBoxIcon />
-                {/* <div>
-                  <CheckBoxOutlineBlankIcon />
-                </div> */}
-              {/* </div>
-              <div className={classes.realmTableofContentSectionContainer}>
-                <div className={classes.realmTableofContentSection}>
-                  Section 2:<br></br> Thoughts and Memories{' '}
-                </div>
-                <div className={classes.realmTableofContentSectionIcon}>
-                  <LockIcon />
-                </div>
-              </div>
-              <div className={classes.realmTableofContentSection}>
-                Section 3: Sleep
-              </div>
-              <div className={classes.realmTableofContentSection}>
-                Section 4: Relationship with Self and Self Awareness
-              </div>
-              <div className={classes.realmTableofContentSection}>
-                Section 5: Relationship with Others and Awareness of Others
-              </div>
-              <div className={classes.realmTableofContentSection}>
-                Section 6: Coping Mechanisms
-              </div> */}
               <div className={classes.realmButtonContainer}>
                 <Button className={classes.realmButton} onClick={this.start}>
                   Start

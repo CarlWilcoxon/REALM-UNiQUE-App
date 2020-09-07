@@ -1,7 +1,3 @@
-// import { withTheme } from '@material-ui/core';
-
-import { authorize } from 'passport';
-
 const styles = (theme) => ({
   allContainer: {},
   videoContainer: {

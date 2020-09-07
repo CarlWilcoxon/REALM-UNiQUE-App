@@ -17,21 +17,23 @@ import AboutPage from '../AboutPage/AboutPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
-import ViewSectionsPage from "../Admin/pages/ViewSectionsPage/ViewSectionsPage";
-import AddNewSectionPage from "../Admin/pages/AddNewSectionPage/AddNewSectionPage.js";
-import EditSectionPage from "../Admin/pages/EditSectionPage/EditSectionPage";
-import ViewRealmsPage from "../Admin/pages/ViewRealmsPage/ViewRealmsPage";
-import AddNewRealmPage from "../Admin/pages/AddNewRealmPage/AddNewRealmPage";
-import ViewClientsPage from "../Admin/pages/ViewClientsPage/ViewClientsPage";
-import AddNewClientPage from "../Admin/pages/AddNewClientPage/AddNewClientPage";
-import EditClientPage from "../Admin/pages/EditClientPage/EditClientPage";
-import AddSectionsToNewRealm from "../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage";
+import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
+import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
+import EditSectionPage from '../Admin/pages/EditSectionPage/EditSectionPage';
+import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
+import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
+import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
+import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
+import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
+import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
 // import AddNewSectionPage from "../component;
 import Section from '../Section/Section';
-import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro'
-import EmotionalForm from '../EmotionalForm/EmotionalForm'
-import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished'
-import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1'
+import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro';
+import EmotionalForm from '../EmotionalForm/EmotionalForm';
+import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished';
+import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
+import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
+import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
 import './App.css';
 
 class App extends Component {
@@ -54,7 +56,11 @@ class App extends Component {
             {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
             <Route exact path="/add-section" component={AddNewSectionPage} />
             <Route exact path="/add-realm" component={AddNewRealmPage} />
-            <Route exact path="/add-sections-to-realm" component={AddSectionsToNewRealm}/>
+            <Route
+              exact
+              path="/add-sections-to-realm"
+              component={AddSectionsToNewRealm}
+            />
             <Route exact path="/edit-section" component={EditSectionPage} />
             <Route exact path="/view-realms" component={ViewRealmsPage} />
             <Route exact path="/view-sections" component={ViewSectionsPage} />
@@ -94,6 +100,16 @@ class App extends Component {
               exact
               path="/EmotionalSec1"
               component={EmotionalSec1}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalSec2"
+              component={EmotionalSec2}
+            />
+            <ProtectedRoute
+              exact
+              path="/EmotionalSec3"
+              component={EmotionalSec3}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

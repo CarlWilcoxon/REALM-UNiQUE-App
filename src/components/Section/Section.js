@@ -4,11 +4,13 @@ import { Button } from '@material-ui/core';
 import Question from '../Question/Question';
 
 class Section extends Component {
-
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_SECTION',
-    payload: {
-      sectionId: this.props.match.params.id } });
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.match.params.id,
+      },
+    });
   }
 
   // submitHandler = () => {
@@ -19,38 +21,46 @@ class Section extends Component {
     return (
       <div>
         <h1>THIS IS SECTION {this.props.match.params.id}</h1>
-        { this.props.reduxState.section.title !== undefined ?
+        {this.props.reduxState.section.title !== undefined ? (
           <h3>{this.props.reduxState.section.title}</h3>
-        :
-        'loading'}
+        ) : (
+          'loading'
+        )}
 
-        { this.props.reduxState.section.description !== undefined ?
+        {this.props.reduxState.section.description !== undefined ? (
           <p>{this.props.reduxState.section.description}</p>
-        :
-        'loading'}
+        ) : (
+          'loading'
+        )}
 
-        <div>{ this.props.reduxState.section !== undefined ?
-          <iframe width="420" height="315" src={this.props.reduxState.section.video_link}></iframe>
-        :
-        'loading'}
+        <div>
+          {this.props.reduxState.section !== undefined ? (
+            <iframe
+              width="420"
+              title="section video"
+              height="315"
+              src={this.props.reduxState.section.video_link}
+            ></iframe>
+          ) : (
+            'loading'
+          )}
         </div>
 
-        { this.props.reduxState.section !== undefined ?
-          JSON.stringify(this.props.reduxState.section)
-        :
-        'loading'}
+        {this.props.reduxState.section !== undefined
+          ? JSON.stringify(this.props.reduxState.section)
+          : 'loading'}
 
-        { this.props.reduxState.section.questions !== undefined ?
-            <Question question={this.props.reduxState.section.questions} />
-        :
-        'loading'}
+        {this.props.reduxState.section.questions !== undefined ? (
+          <Question question={this.props.reduxState.section.questions} />
+        ) : (
+          'loading'
+        )}
 
         <Button>Submit</Button>
       </div>
     );
   }
 }
-
 
 const mapStateToProps = (reduxState) => ({
   user: reduxState.user,
@@ -59,5 +69,3 @@ const mapStateToProps = (reduxState) => ({
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(Section);
-
-

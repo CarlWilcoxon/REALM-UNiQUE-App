@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import {
-  withStyles,
-  Grid,
-  Button,
-  FormControl,
-  TextField,
-  // Paper,
-} from '@material-ui/core';
+import { withStyles, Grid, Button, FormControl, Box } from '@material-ui/core';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import Rating from '@material-ui/lab/Rating';
 
 class EmotionalSec2 extends Component {
   saveAndContinue = () => this.props.history.push('/EmotionalSec3');
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
+
+    const customIcons: {
+      [index: string]: { icon: React.ReactElement, label: string },
+    } = {
+      1: {
+        icon: <SentimentVeryDissatisfiedIcon className={classes.ratingIcon} />,
+        label: 'Very Dissatisfied',
+      },
+      2: {
+        icon: <SentimentDissatisfiedIcon className={classes.ratingIcon} />,
+        label: 'Dissatisfied',
+      },
+      3: {
+        icon: <SentimentSatisfiedIcon className={classes.ratingIcon} />,
+        label: 'Neutral',
+      },
+      4: {
+        icon: <SentimentSatisfiedAltIcon className={classes.ratingIcon} />,
+        label: 'Satisfied',
+      },
+      5: {
+        icon: <SentimentVerySatisfiedIcon className={classes.ratingIcon} />,
+        label: 'Very Satisfied',
+      },
+    };
+    function IconContainer(props: IconContainerProps) {
+      const { value, ...other } = props;
+      return <span {...other}>{customIcons[value].icon}</span>;
+    }
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
@@ -29,7 +57,8 @@ class EmotionalSec2 extends Component {
             <div>
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
-                Brain & Mind & Carbohydrates
+                Brain & Mind & Carbohydrates{' '}
+                <span className={classes.sectionOrder}> 2 of 10 </span>
               </h3>
               <div className={classes.sectionCoverContainer}>
                 {/* <Paper square={false} className={classes.realmCoverPaper}> */}
@@ -61,26 +90,16 @@ class EmotionalSec2 extends Component {
             <FormControl className={classes.formContainerSection}>
               <div className={classes.QandAContainerSection}>
                 <div className={classes.sectionQuestion}>
-                  How much do we really know about the mind?
+                  How did you feel about this content?
                 </div>
-                <TextField
-                  id="outlined-helperText"
-                  // label="What do you think about most of the time?"
-                  // helperText="Required"
-                  variant="outlined"
-                  multiline
-                  rows={2}
-                  className={classes.inputControlSection}
-                  // value={this.state.password}
-                  // onChange={this.handleInputChangeFor('password')}
-                  InputProps={{
-                    classes: {
-                      input: classes.input,
-                      root: classes.cssOutlinedInput,
-                      notchedOutline: classes.notchedOutline,
-                    },
-                  }}
-                />
+                <Box component="fieldset" mb={3} borderColor="transparent">
+                  <Rating
+                    name="customized-icons"
+                    // defaultValue={2}
+                    getLabelText={(value: number) => customIcons[value].label}
+                    IconContainerComponent={IconContainer}
+                  />
+                </Box>
               </div>
               <div className={classes.realmButtonContainer}>
                 <Button
@@ -93,7 +112,7 @@ class EmotionalSec2 extends Component {
                   className={classes.realmButton}
                   onClick={this.saveAndReturn}
                 >
-      Save & Exit
+                  Save & Exit
                 </Button>
               </div>
             </FormControl>

@@ -194,6 +194,10 @@ const styles = (theme) => ({
     padding: '0px 0px 0px 0px',
     'text-align': 'center',
   },
+  sectionOrder: {
+    font: '500 16px Poppins, sans-serif',
+    padding: '0px 0px 0px 10px',
+  },
   sectionCoverContainer: {
     'text-align': 'center',
     width: '100%',
@@ -239,7 +243,7 @@ const styles = (theme) => ({
     borderBottom: '#1f3556 solid 2px',
   },
   sectionQuestion: {
-    font: '400 14px Poppins, sans-serif',
+    font: '400 120% Poppins, sans-serif',
     color: '#1f3556',
     padding: '0px 15% 0px 15%',
     margin: '10% 0px 10px 0px',
@@ -247,20 +251,62 @@ const styles = (theme) => ({
     'text-align': 'center',
     // borderBottom: '#1f3556 solid 1px',
   },
-
+  sectionRadio: {
+    font: '400 120% Poppins, sans-serif',
+    color: '#1f3556',
+    margin: '10px 20% 10px 20%',
+    'text-align': 'center',
+  },
+  sectionRadioIcon: { color: 'blue' },
+  icon: {
+    borderRadius: '50%',
+    width: 20,
+    height: 20,
+    boxShadow:
+      'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+    backgroundColor: '#f5f8fa',
+    backgroundImage:
+      'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
+    '$root.Mui-focusVisible &': {
+      outline: '2px auto rgba(19,124,189,.6)',
+      outlineOffset: 2,
+    },
+    'input:hover ~ &': {
+      backgroundColor: '#ebf1f5',
+    },
+    'input:disabled ~ &': {
+      boxShadow: 'none',
+      background: 'rgba(206,217,224,.5)',
+    },
+  },
+  checkedIcon: {
+    backgroundColor: '#457b9d',
+    backgroundImage:
+      'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
+    '&:before': {
+      display: 'block',
+      width: 20,
+      height: 20,
+      backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
+      content: '""',
+    },
+    'input:hover ~ &': {
+      backgroundColor: '#106ba3',
+    },
+  },
+  sectionRadioButtonLabel: { font: '400 90% Poppins, sans-serif' },
   // rotate: {
   //   transform: 'rotate(180deg)' /*
   // },
   bottomNav: {
     width: '100%',
     bottom: 10,
-    // left: 10,
-    // right: 10,
+
     position: 'absolute',
-    // margin: 'auto',
+
     'text-align': 'center',
-    // backgroundColor: '#1f3556',
   },
+  ratingIcon: { 'font-size': '150%' },
 });
 
 export default styles;

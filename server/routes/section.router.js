@@ -73,8 +73,8 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 
 // Route for creating a new Section
-router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
-
+// router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
+router.post('/add', async (req, res) => {
   // Deconstructing most of req.body to make references later clearer to read.
   const {
     title,
@@ -142,8 +142,8 @@ router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 router.get("/", (req, res) => {
   // router.get("/", rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT * FROM section`;
-// JOIN "resource_type" ON "resource_type"."id" = "section"."type"`;
+  const queryText = `SELECT * FROM "section"
+  JOIN "resource_type" ON "resource_type"."id" = "section"."type";`;
 
   pool
     .query(queryText)

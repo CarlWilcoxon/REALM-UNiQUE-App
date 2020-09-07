@@ -165,7 +165,7 @@ class ViewSectionsPage extends Component {
                         <TableCell align="left" component="th" scope="row">
                           {section.title}
                         </TableCell>
-                        <TableCell align="left">TYPE</TableCell>
+                        <TableCell align="left">{section.type_name}</TableCell>
                         <Button
                           variant="contained"
                           className="submit-new-section"

@@ -11,8 +11,8 @@ import {
 } from '@material-ui/core';
 
 class EmotionalSec3 extends Component {
-    // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
-    // EmotionalSec4 doesn't exist
+  // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
+  // EmotionalSec4 doesn't exist
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
@@ -75,7 +75,7 @@ class EmotionalSec3 extends Component {
               <div className={classes.realmButtonContainer}>
                 <Button
                   className={classes.realmButton}
-                //   onClick={this.saveAndContinue}
+                  //   onClick={this.saveAndContinue}
                 >
                   Save & Continue
                 </Button>{' '}
@@ -83,7 +83,7 @@ class EmotionalSec3 extends Component {
                   className={classes.realmButton}
                   onClick={this.saveAndReturn}
                 >
-                  Save & Return to Realm
+                  Save & Exit
                 </Button>
               </div>
             </FormControl>

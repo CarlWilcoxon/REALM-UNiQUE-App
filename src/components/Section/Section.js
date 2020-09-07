@@ -37,6 +37,7 @@ class Section extends Component {
           {this.props.reduxState.section !== undefined ? (
             <iframe
               width="420"
+              title="section video"
               height="315"
               src={this.props.reduxState.section.video_link}
             ></iframe>

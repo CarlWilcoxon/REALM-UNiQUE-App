@@ -1,5 +1,3 @@
-import { withTheme } from '@material-ui/core';
-import { authorize } from 'passport';
 const styles = (theme) => ({
   realmCoverContainer: {
     'text-align': 'center',
@@ -174,7 +172,7 @@ const styles = (theme) => ({
   QandAContainer: { 'text-align': 'center', margin: '10px 0px 20px 0px' },
   QandAContainerSection: { margin: '-30px 0px 20px 0px' },
   formQuestion: {
-    font: '300 12px Poppins, sans-serif',
+    font: '300 14px Poppins, sans-serif',
     color: '#1f3556',
     padding: '0px 10% 0px 10%',
     margin: '10% 0px 10px 0px',
@@ -250,35 +248,8 @@ const styles = (theme) => ({
     // borderBottom: '#1f3556 solid 1px',
   },
 
-  // bottomNavActionLeft: {
-  //   backgroundColor: '#1f3556',
-  //   font: '400 14px Poppins, sans-serif',
-  //   '&:hover': {
-  //     backgroundColor: '#457b9d',
-  //   },
-    // borderRight: '#fff solid 2px',
-    // borderLeft: '#fff solid 4px',
-    // borderTop: '#fff solid 4px',
-    // borderBottom: '#fff solid 4px',
-  // },
-  // bottomNavActionRight: {
-  //   backgroundColor: '#1f3556',
-
-  //   '&:hover': {
-  //     backgroundColor: '#457b9d',
-  //   },
-
-  //   borderLeft: '#fff solid 2px',
-  //   borderRight: '#fff solid 4px',
-  //   borderTop: '#fff solid 4px',
-  //   borderBottom: '#fff solid 4px',
-  // },
-  // tabLabel: {
-  //   font: '500 14px Poppins, sans-serif',
-  //   color: '#fff',
-  // },
   // rotate: {
-  //   transform: 'rotate(180deg)' /* Equal to rotateZ(45deg) */,
+  //   transform: 'rotate(180deg)' /*
   // },
   bottomNav: {
     width: '100%',

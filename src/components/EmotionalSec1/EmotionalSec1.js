@@ -35,11 +35,10 @@ class EmotionalSec1 extends Component {
               <div className={classes.sectionVideoContainer}>
                 <div>
                   <iframe
+                    title={'section video'}
                     frameborder="0"
                     className={classes.sectionVideo}
                     src="https://www.youtube.com/embed/pRFXSjkpKWA"
-                    //www.youtube.com/embed?v=pRFXSjkpKWA"
-                    // src="https://www.youtube.com/watch?v=pRFXSjkpKWA"
                   ></iframe>
                 </div>
                 {/* </Paper> */}
@@ -94,7 +93,7 @@ class EmotionalSec1 extends Component {
                   className={classes.realmButton}
                   onClick={this.saveAndReturn}
                 >
-                  Save & Return to Realm
+                  Save & Exit
                 </Button>
               </div>
             </FormControl>

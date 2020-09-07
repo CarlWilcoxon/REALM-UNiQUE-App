@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import { withStyles, Grid, Button, Paper } from '@material-ui/core';
+import { withStyles, Grid, Button } from '@material-ui/core';
 
 class EmotionalFormFinished extends Component {
   goBack = () => this.props.history.push('/EmotionalForm');

@@ -93,7 +93,7 @@ class EmotionalSec2 extends Component {
                   className={classes.realmButton}
                   onClick={this.saveAndReturn}
                 >
-                  Save & Return to Realm
+      Save & Exit
                 </Button>
               </div>
             </FormControl>

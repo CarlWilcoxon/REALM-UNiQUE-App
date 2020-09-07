@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import {
-  withStyles,
-  Grid,
-  Button,
-  Paper,
-  BottomNavigation,
-  BottomNavigationAction,
-  Fab,
-} from '@material-ui/core';
-
-import ForwardSharpIcon from '@material-ui/icons/ForwardSharp';
-import ArrowForwardSharpIcon from '@material-ui/icons/ArrowForwardSharp';
+import { withStyles, Grid, Button } from '@material-ui/core';
 
 class EmotionalFormIntro extends Component {
   goBack = () => this.props.history.push('/EmotionalHome');

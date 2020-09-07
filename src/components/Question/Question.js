@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, Grid, TextField } from '@material-ui/core';
+import { withStyles, Grid, TextField, Typography } from '@material-ui/core';
 import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
@@ -36,11 +36,8 @@ class Question extends Component {
       question,
      } = this.props;
     return (
-      <Grid item>
-        { question.content !== undefined ?
-          <p>{ question.content}</p>
-        :
-        'loading'}
+      <>
+        <Typography>{ question.content}</Typography>
 
         <TextField
         label="Answer"
@@ -57,7 +54,7 @@ class Question extends Component {
             root: classes.cssOutlinedInput,
             notchedOutline: classes.notchedOutline,
           }}} />
-      </Grid>
+      </>
     );
   }
 }

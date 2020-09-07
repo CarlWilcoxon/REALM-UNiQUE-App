@@ -6,10 +6,13 @@ import {
   Grid,
   Button,
   FormControl,
-  TextField,
+  // TextField,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
   // Paper,
 } from '@material-ui/core';
-
+import clsx from 'clsx';
 class EmotionalSec3 extends Component {
   // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
   // EmotionalSec4 doesn't exist
@@ -31,7 +34,8 @@ class EmotionalSec3 extends Component {
               {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
-                Brain & Mind & Carbohydrates
+                Brain & Mind & Carbohydrates{' '}
+                <span className={classes.sectionOrder}> 1 of 10 </span>
               </h3>
 
               <p className={classes.sectionDescription}>
@@ -48,29 +52,79 @@ class EmotionalSec3 extends Component {
               </p>
               <br></br>
             </div>
-            <FormControl className={classes.formContainerSection}>
+            <FormControl
+              className={classes.formContainerSection}
+              component="fieldset"
+            >
               <div className={classes.QandAContainerSection}>
                 <div className={classes.sectionQuestion}>
-                  How much do we really know about the mind?
+                  Is the brain the mind?
                 </div>
-                <TextField
-                  id="outlined-helperText"
-                  // label="What do you think about most of the time?"
-                  // helperText="Required"
-                  variant="outlined"
-                  multiline
-                  rows={2}
-                  className={classes.inputControlSection}
-                  // value={this.state.password}
-                  // onChange={this.handleInputChangeFor('password')}
-                  InputProps={{
-                    classes: {
-                      input: classes.input,
-                      root: classes.cssOutlinedInput,
-                      notchedOutline: classes.notchedOutline,
-                    },
-                  }}
-                />
+                <RadioGroup
+                  aria-label="answer"
+                  name="answer"
+                  // value={1}
+                  // onChange={handleChange}
+                  className={classes.sectionRadio}
+                >
+                  <FormControlLabel
+                    value="yes"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        Yes
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    value="no"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        No
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    value="I don't know"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        Not Sures
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                </RadioGroup>
               </div>
               <div className={classes.realmButtonContainer}>
                 <Button

@@ -6,6 +6,7 @@ import {
   withStyles,
   Grid,
   Button,
+  Typography,
   // FormControl,
   // TextField,
   // Paper,
@@ -51,7 +52,7 @@ class Section extends Component {
             )}
 
             <Grid>
-              {this.props.state.section.video_link !== undefined ? (
+              {this.props.state.section.video_link !== undefined && this.props.state.section.type === 1 ? (
                 <Grid className={classes.sectionVideoContainer}>
                   <iframe
                     title={this.props.state.section.title + ' video'}
@@ -61,9 +62,30 @@ class Section extends Component {
                   />
                 </Grid>
               ) : (
-                'loading'
+                ''
               )}
             </Grid>
+
+            {this.props.state.section.image_link !== undefined && this.props.state.section.type === 2 ? (
+              <Typography className={classes.sectionDescription}>
+                {this.props.state.section.text_content}
+              </Typography>
+            ) : (
+              ''
+            )}
+
+
+            {this.props.state.section.image_link !== undefined && this.props.state.section.type === 3 ? (
+              <Grid className={classes.sectionCoverContainer}>
+                <img
+                  className={classes.realmCover}
+                  src={this.props.state.section.image_link}
+                  alt={this.props.state.section.title + ' image'}
+                  />
+              </Grid>
+            ) : (
+              ''
+            )}
 
             {this.props.state.section.description !== undefined ? (
               <p>{this.props.state.section.description}</p>

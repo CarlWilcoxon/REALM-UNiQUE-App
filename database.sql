@@ -84,6 +84,7 @@ CREATE TABLE "section_order" (
   "realm_id" int,
   "index" int,
   "section_id" int
+  "sections" int
 );
 
 CREATE TABLE "client_list" (

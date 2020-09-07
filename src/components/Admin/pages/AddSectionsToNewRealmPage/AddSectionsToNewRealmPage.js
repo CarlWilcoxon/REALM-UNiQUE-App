@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -111,14 +112,22 @@ const rows = [
 ];
 
 class AddSectionsToNewRealmPage extends Component {
-render() {
-  const { classes } = this.props;
+  componentDidMount = () => {
+    this.getAllSections();
+  };
 
-  return (
-    <div>
-      <center>
-        <h1>Add Sections to New Realm</h1>
-        {/* <AppBar position="static">
+  getAllSections = () => {
+    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <center>
+          <h1>Add Sections to New Realm</h1>
+          {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
             <div className={classes.search}>
@@ -135,69 +144,72 @@ render() {
             </div>
           </Toolbar>
         </AppBar> */}
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell align="left" width="30%">
-                  Section Name
-                </TableCell>
-                <TableCell align="left" width="30%">
-                  Resource Type
-                </TableCell>
-                <TableCell width="10%"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-              {rows.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell align="left" component="th" scope="row">
-                    {row.name}
+          <Paper className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left" width="30%">
+                    Section Name
                   </TableCell>
-                  <TableCell align="left">{row.type}</TableCell>
-                  <TableCell align="right" padding="checkbox">
-                    <Checkbox />
+                  <TableCell align="left" width="30%">
+                    Resource Type
                   </TableCell>
+                  <TableCell width="10%"></TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
-        <div>
-          <Button
-            variant="contained"
-            // className="submit-new-section"
-            // type="submit"
-            // name="submit"
-            // onClick={this.submitSection}
-            className={classes.button}
-            classes={{ root: classes.button }}
-          >
-            Name Realm
-          </Button>
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            // className="submit-new-section"
-            // type="submit"
-            // name="submit"
-            // onClick={this.submitSection}
-            className={classes.button}
-            classes={{ root: classes.button }}
-          >
-            Organize Sections
-          </Button>
-        </div>
-      </center>
-    </div>
-  );
+              </TableHead>
+              <TableBody>
+                {this.props.sections.map((section) => (
+                  <TableRow key={this.props.sections.id}>
+                    <TableCell align="left" component="th" scope="row">
+                      {section.title}
+                    </TableCell>
+                    <TableCell align="left">{section.type_name}</TableCell>
+                    <TableCell align="right" padding="checkbox">
+                      <Checkbox />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <div>
+            <Button
+              variant="contained"
+              // className="submit-new-section"
+              // type="submit"
+              // name="submit"
+              // onClick={this.submitSection}
+              className={classes.button}
+              classes={{ root: classes.button }}
+            >
+              Name Realm
+            </Button>
+          </div>
+          <div>
+            <Button
+              variant="contained"
+              // className="submit-new-section"
+              // type="submit"
+              // name="submit"
+              // onClick={this.submitSection}
+              className={classes.button}
+              classes={{ root: classes.button }}
+            >
+              Organize Sections
+            </Button>
+          </div>
+        </center>
+      </div>
+    );
+  }
 }
-}
+
+const mapReduxStateToProps = (reduxState) => ({
+  sections: reduxState.allSections,
+});
 
 AddSectionsToNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AddSectionsToNewRealmPage);
+export default connect(mapReduxStateToProps)(withStyles(styles)(AddSectionsToNewRealmPage));

@@ -83,8 +83,8 @@ CREATE TABLE "section_order" (
   "id" SERIAL PRIMARY KEY,
   "realm_id" int,
   "index" int,
-  "section_id" int
-  "sections" int
+  "section_id" int,
+  "max_index" int
 );
 
 CREATE TABLE "client_list" (

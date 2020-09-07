@@ -17,7 +17,7 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // });
 
 // Get route for each Section
-router.get('/:id', async (req, res) => {
+router.get('/:section', async (req, res) => {
   console.log('Getting section for', req.user);
 
   const connection = await pool.connect()
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
       const queryText =
       `SELECT * FROM "section"
       WHERE "section"."id"= $1;`
-    const queryValue = [req.params.id]
+    const queryValue = [req.params.section]
     let result = await connection.query(queryText, queryValue)
 
     // get the questions for that section
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
     `SELECT * FROM "question"
     WHERE "section_id" = $1
     ORDER BY "question_index";`;
-    const addQuestionValues = [ req.params.id ]
+    const addQuestionValues = [ req.params.section ]
 
     const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
     // append the questions to the result

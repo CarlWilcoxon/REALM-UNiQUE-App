@@ -22,25 +22,35 @@ const styles = (theme) => ({
 class RealmQuestions extends Component {
     state = {
         // questionType: "",
-        question: ""
+        question: "",
+        question_index: this.props.index,
     };
 
 
 
-    handleInputChangeFor = (propertyName) => (event) => {
+    handleQuestionChange = (event) => {
+        console.log("old state:", this.state);
+        let newValue = event.target.value;
         this.setState({
-            [propertyName]: event.target.value,
-        });
-        console.log("state:", this.state);
-    };
+          ...this.state,
+          question : newValue,
+        })
+  
+        this.props.dispatch({
+          type: 'UPDATE_QUESTIONS',
+          payload: {
+            question: newValue,
+            question_index: this.state.question_index,
+          }})
+      };
 
     render() {
         const { classes } = this.props;
         return (
-            <div className="form">
-                <center>
-                    <form>
-                        {/* QUESTION TYPE (ETC.)
+          <div className="form">
+            <center>
+              <form>
+                {/* QUESTION TYPE (ETC.)
                         <div>
                             <TextField
                                 select
@@ -63,20 +73,21 @@ class RealmQuestions extends Component {
                                 ))}
                             </TextField>
                         </div> */}
-                        {/* SECTION DESCRIPTION */}
-                        <div>
-                            <TextField
-                                required
-                                label="Question"
-                                value={this.state.question}
-                                onChange={this.handleInputChangeFor("question")}
-                                className={classes.textField}
-                                margin="normal"
-                            />
-                        </div>
-                    </form>
-                </center>
-            </div>
+                {/* SECTION DESCRIPTION */}
+                <div>
+                  <TextField
+                    required
+                    variant="outlined"
+                    label="Question"
+                    value={this.state.question}
+                    onChange={this.handleQuestionChange}
+                    className={classes.textField}
+                    margin="normal"
+                  />
+                </div>
+              </form>
+            </center>
+          </div>
         );
     }
 }

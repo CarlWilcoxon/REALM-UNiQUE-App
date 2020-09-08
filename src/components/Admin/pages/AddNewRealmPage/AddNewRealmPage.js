@@ -7,21 +7,27 @@ import Button from "@material-ui/core/Button";
 import RealmQuestion from "../../components/RealmQuestions/RealmQuestions";
 
 const styles = (theme) => ({
-    root: {
-        background: "blue",
-        // borderRadius: 3,
-        // border: 0,
-        color: "white",
-        height: 48,
-        padding: "0 30px",
-        fontWeight: "bold",
-        margin: "10px",
-        justify: "center",
+  root: {
+    font: " 300  16px  Poppins , sans-serif",
+    color: "white",
+    backgroundColor: "#457b9d",
+    "&:hover": {
+      backgroundColor: "#a8dadc",
+      color: "#457b9d",
     },
-    textField: {
-        width: 400,
-        margin: "10px",
+    "&:focus": {
+      backgroundColor: "a8dadc",
+      color: "#457b9d",
     },
+    "text-transform": "capitalize",
+    "text-align": "center",
+    "margin-top": "20px",
+    "border-radius": "5px",
+  },
+  textField: {
+    width: 400,
+    margin: "10px",
+  }
 });
 
 class AddNewRealmPage extends Component {
@@ -36,19 +42,19 @@ class AddNewRealmPage extends Component {
     state = {
         name: "",
         photoLink: "",
-        description: ""
+        description: "",
+        questions: [],
     };
 
-    //SEND DATA TO SAGA
+    //STORE DATA IN REDUCER
     submitRealm = (event) => {
         event.preventDefault();
+        console.log("this.state:", this.state)
         this.props.dispatch({
-            type: "SUBMIT_REALM",
+            type: "SET_REALM",
             payload: {
-                name: this.state.name,
-                photoLink: this.state.photoLink,
-                description: this.state.description,
-                ///questions need to be added to payload
+                ...this.state,
+                questions: this.props.reduxState.newQuestions,
             },
         });
     };
@@ -58,7 +64,6 @@ class AddNewRealmPage extends Component {
         this.setState({
             [propertyName]: event.target.value,
         });
-        console.log("state:", this.state);
     };
 
     appendNewQuestion = () => {
@@ -74,82 +79,167 @@ class AddNewRealmPage extends Component {
         const { classes } = this.props;
 
         return (
-            <>
-                <center>
-                <h1>Add New Realm</h1>
-                <div className="form">
-                        <form>
-                            {/* REALM NAME */}
-                            <div>
-                                <TextField
-                                    required
-                                    label="Realm Name"
-                                    type="text"
-                                    value={this.state.name}
-                                    onChange={this.handleInputChangeFor("name")}
-                                    className={classes.textField}
-                                    margin="normal"
-                                />
-                            </div>
-                            {/* REALM COVER PHOTO LINK */}
-                            <div>
-                                <TextField
-                                    required
-                                    label="Realm Cover Photo Link"
-                                    type="text"
-                                    value={this.state.photoLink}
-                                    onChange={this.handleInputChangeFor("photoLink")}
-                                    className={classes.textField}
-                                    margin="normal"
-                                />
-                            </div>
-                            {/* REALM DESCRIPTION */}
-                            <div>
-                                <TextField
-                                    required
-                                    label="Realm Description"
-                                    type="text"
-                                    value={this.state.description}
-                                    onChange={this.handleInputChangeFor("description")}
-                                    className={classes.textField}
-                                    margin="normal"
-                                />
-                            </div>
-                            {/* WHERE NEW QUESTION INPUTS GO */}
-                            <div id="new-question">
-                                {this.state.questionInputs.map((questionInputs) => (
-                                    <RealmQuestion />
-                                ))}
-                            </div>
-                            {/* ADD NEW QUESTION BUTTON */}
-                            <div>
-                                <Button
-                                    variant="contained"
-                                    // className="add-section-question"
-                                    onClick={this.appendNewQuestion}
-                                    className={classes.button}
-                                    classes={{ root: classes.root }}
-                                >
-                                    + Add Question
-                                </Button>
-                            </div>
-                            <div>
-                                <Button
-                                    variant="contained"
-                                    // className="submit-new-realm"
-                                    type="submit"
-                                    name="submit"
-                                    onClick={this.submitRealm}
-                                    className={classes.button}
-                                    classes={{ root: classes.root }}
-                                >
-                                    Select Sections
-                                </Button>
-                            </div>
-                        </form>
-                </div>
-                </center>
-            </>
+          <>
+            <center>
+              <h1>Add New Realm</h1>
+              <div className="form">
+                <form>
+                  {/* REALM NAME */}
+                  <div>
+                    <TextField
+                      required
+                      label="Realm Name"
+                      type="text"
+                      variant="outlined"
+                      value={this.state.name}
+                      onChange={this.handleInputChangeFor("name")}
+                      className={classes.textField}
+                      margin="normal"
+                    />
+                  </div>
+                  {/* REALM COVER PHOTO LINK */}
+                  <div>
+                    <TextField
+                      required
+                      label="Realm Cover Photo Link"
+                      variant="outlined"
+                      type="text"
+                      value={this.state.photoLink}
+                      onChange={this.handleInputChangeFor("photoLink")}
+                      className={classes.textField}
+                      margin="normal"
+                    />
+                  </div>
+                  {/* REALM DESCRIPTION */}
+                  <div>
+                    <TextField
+                      required
+                      label="Realm Description"
+                      variant="outlined"
+                      type="text"
+                      value={this.state.description}
+                      onChange={this.handleInputChangeFor("description")}
+                      className={classes.textField}
+                      margin="normal"
+                    />
+                  </div>
+                  {/* WHERE NEW QUESTION INPUTS GO */}
+                  <div id="new-question">
+                    {this.state.questionInputs.map((questionInputs, index) => (
+                      <RealmQuestion 
+                      key={index}
+                      index={index}
+                      handleInputChangeFor={this.handleInputChangeFor}
+                      />
+                      
+                    ))}
+                  </div>
+                  {/* ADD NEW QUESTION BUTTON */}
+                  <div>
+                    <Button
+                      variant="contained"
+                      className="add-section-question"
+                      onClick={this.appendNewQuestion}
+                      className={classes.button}
+                      classes={{ root: classes.root }}
+                    >
+                      + Add Question
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant="contained"
+                      className="submit-new-realm"
+                      type="submit"
+                      name="submit"
+                      onClick={this.submitRealm}
+                      className={classes.button}
+                      classes={{ root: classes.root }}
+                    >
+                      Select Sections
+                    </Button>
+                  </div>
+                </form>
+              </div>
+            </center>
+          </>
+//WHAT WAS CHANGED HERE?
+//             <>
+//                 <center>
+//                 <h1>Add New Realm</h1>
+//                 <div className="form">
+//                         <form>
+//                             {/* REALM NAME */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Name"
+//                                     type="text"
+//                                     value={this.state.name}
+//                                     onChange={this.handleInputChangeFor("name")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* REALM COVER PHOTO LINK */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Cover Photo Link"
+//                                     type="text"
+//                                     value={this.state.photoLink}
+//                                     onChange={this.handleInputChangeFor("photoLink")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* REALM DESCRIPTION */}
+//                             <div>
+//                                 <TextField
+//                                     required
+//                                     label="Realm Description"
+//                                     type="text"
+//                                     value={this.state.description}
+//                                     onChange={this.handleInputChangeFor("description")}
+//                                     className={classes.textField}
+//                                     margin="normal"
+//                                 />
+//                             </div>
+//                             {/* WHERE NEW QUESTION INPUTS GO */}
+//                             <div id="new-question">
+//                                 {this.state.questionInputs.map((questionInputs) => (
+//                                     <RealmQuestion />
+//                                 ))}
+//                             </div>
+//                             {/* ADD NEW QUESTION BUTTON */}
+//                             <div>
+//                                 <Button
+//                                     variant="contained"
+//                                     // className="add-section-question"
+//                                     onClick={this.appendNewQuestion}
+//                                     className={classes.button}
+//                                     classes={{ root: classes.root }}
+//                                 >
+//                                     + Add Question
+//                                 </Button>
+//                             </div>
+//                             <div>
+//                                 <Button
+//                                     variant="contained"
+//                                     // className="submit-new-realm"
+//                                     type="submit"
+//                                     name="submit"
+//                                     onClick={this.submitRealm}
+//                                     className={classes.button}
+//                                     classes={{ root: classes.root }}
+//                                 >
+//                                     Select Sections
+//                                 </Button>
+//                             </div>
+//                         </form>
+//                 </div>
+//                 </center>
+//             </>
         );
     }
 }

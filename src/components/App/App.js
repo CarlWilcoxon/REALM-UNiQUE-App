@@ -26,7 +26,7 @@ import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
 import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
-// import AddNewSectionPage from "../component;
+import OrganizeSections from "../Admin/pages/OrganizeNewRealmSectionsPage/OrganizeNewRealmSectionsPage";
 import Section from '../Section/Section';
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro';
 import EmotionalForm from '../EmotionalForm/EmotionalForm';
@@ -61,11 +61,16 @@ class App extends Component {
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
             />
+            <Route
+              exact
+              path="/organize-realm-sections"
+              component={OrganizeSections}
+            />
             <Route exact path="/edit-section" component={EditSectionPage} />
             <Route exact path="/view-realms" component={ViewRealmsPage} />
             <Route exact path="/view-sections" component={ViewSectionsPage} />
             <Route exact path="/add-client" component={AddNewClientPage} />
-            <Route exact path="/view-sections" component={ViewClientsPage} />
+            <Route exact path="/view-clients" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}

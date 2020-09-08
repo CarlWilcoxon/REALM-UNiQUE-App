@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 /**
  * GET route template
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+  router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('Getting realm for', req.user);
   const queryText = `SELECT * FROM "user"
                       JOIN "project" ON "user"."project_id" = "project"."id"
@@ -19,14 +19,14 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
-// Get route for each Realm
-router.get('/:id', rejectUnauthenticated, async (req, res) => {
-  console.log('Getting realm for', req.user);
-  const queryText = `SELECT * FROM "user"`
-  pool.query(queryText, [req.user.id])
-    .then((result) => res.send(result.rows))
-    .catch(() => res.sendStatus(500));
-});
+// Get route for each Realm - NOT CURRENTLY USED
+// router.get('/:id', rejectUnauthenticated, async (req, res) => {
+//   console.log('Getting realm for', req.user);
+//   const queryText = `SELECT * FROM "user"`
+//   pool.query(queryText, [req.user.id])
+//     .then((result) => res.send(result.rows))
+//     .catch(() => res.sendStatus(500));
+// });
 
 
 // Get route to get each form question page.
@@ -115,6 +115,24 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
   }
 
 });
+
+//GETTING ALL REALMS FOR "VIEW REALMS" PAGE
+router.get("/all", (req, res) => {
+  // router.get("/all", rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT * FROM realm;`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      console.log("in /realm GET");
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
+});
+
+
 
 module.exports = router;
 

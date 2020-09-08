@@ -5,6 +5,7 @@ import user from './userReducer';
 import allSections from './allSectionsReducer';
 import section from './sectionReducer';
 import allRealms from './allRealmsReducer';
+import realm from './realmReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   allSections, //will contain info of all sections
   allRealms, //will contain info of all realms
   section, //will contain the info about what section the user is currently in.
+  realm  //will contain the info about what realm the user is currently in.
 });
 
 export default rootReducer;

@@ -42,19 +42,19 @@ class AddNewRealmPage extends Component {
     state = {
         name: "",
         photoLink: "",
-        description: ""
+        description: "",
+        questions: [],
     };
 
-    //SEND DATA TO SAGA
+    //STORE DATA IN REDUCER
     submitRealm = (event) => {
         event.preventDefault();
+        console.log("this.state:", this.state)
         this.props.dispatch({
-            type: "SUBMIT_REALM",
+            type: "SET_REALM",
             payload: {
-                name: this.state.name,
-                photoLink: this.state.photoLink,
-                description: this.state.description,
-                ///questions need to be added to payload
+                ...this.state,
+                questions: this.props.reduxState.newQuestions,
             },
         });
     };
@@ -64,7 +64,6 @@ class AddNewRealmPage extends Component {
         this.setState({
             [propertyName]: event.target.value,
         });
-        console.log("state:", this.state);
     };
 
     appendNewQuestion = () => {
@@ -126,8 +125,13 @@ class AddNewRealmPage extends Component {
                   </div>
                   {/* WHERE NEW QUESTION INPUTS GO */}
                   <div id="new-question">
-                    {this.state.questionInputs.map((questionInputs) => (
-                      <RealmQuestion />
+                    {this.state.questionInputs.map((questionInputs, index) => (
+                      <RealmQuestion 
+                      key={index}
+                      index={index}
+                      handleInputChangeFor={this.handleInputChangeFor}
+                      />
+                      
                     ))}
                   </div>
                   {/* ADD NEW QUESTION BUTTON */}
@@ -146,9 +150,9 @@ class AddNewRealmPage extends Component {
                     <Button
                       variant="contained"
                       className="submit-new-realm"
-                      // type="submit"
-                      // name="submit"
-                      // onClick={this.submitRealm}
+                      type="submit"
+                      name="submit"
+                      onClick={this.submitRealm}
                       className={classes.button}
                       classes={{ root: classes.root }}
                     >

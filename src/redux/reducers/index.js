@@ -23,8 +23,8 @@ const rootReducer = combineReducers({
   allRealms, //will contain info of all realms
   section, //will contain the info about what section the user is currently in.
   newQuestions, //will contain info for new questions before they are POSTed
-  realm, //holds the chosen realm before posted
-  chosenSections,
+  realm, //holds realm before POSTed
+  chosenSections, //holds chosen sections for a given realm before they are POSTed
 });
 
 export default rootReducer;

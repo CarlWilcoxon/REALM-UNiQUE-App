@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import PreviewSection from "../../components/PreviewSection/PreviewSection";
 import EditSection from "../../components/EditSection/EditSection";
 
-
 const styles = (theme) => ({
 });
 

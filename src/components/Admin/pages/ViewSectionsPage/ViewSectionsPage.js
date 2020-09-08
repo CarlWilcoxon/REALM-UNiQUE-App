@@ -110,7 +110,7 @@ class ViewSectionsPage extends Component {
   };
 
   handleClick = (sectionId) => {
-    // this.props.history.push(`/preview/${sectionId}`);
+    this.props.history.push(`/preview/${sectionId}`);
     console.log("Clicked View Section");
   };
 
@@ -176,7 +176,7 @@ class ViewSectionsPage extends Component {
                           className="submit-new-section"
                           // type="submit"
                           // name="submit"
-                          onClick={this.handleClick(section.id)}
+                          onClick={(event)=> this.handleClick(section.id)}
                           className={classes.button}
                           classes={{ root: classes.button }}
                         >

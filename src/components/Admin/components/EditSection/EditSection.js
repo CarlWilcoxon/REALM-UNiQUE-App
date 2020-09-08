@@ -52,6 +52,15 @@ class EditSection extends Component {
         questionInputs: [],
     };
 
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'FETCH_SECTION',
+            payload: {
+                sectionId: 5//this.props.match.params.section, //hard-coded, needs to be changed this.props.match.params.section
+            },
+        });
+    }
+
     //Packaging new section details and sending to saga to send to database
     submitSection = (event) => {
         event.preventDefault();
@@ -88,7 +97,7 @@ class EditSection extends Component {
     //   };
 
     render() {
-        const { classes } = this.props;
+        const { classes, section } = this.props;
         return (
             <div>
                 <center>
@@ -101,8 +110,8 @@ class EditSection extends Component {
                                     required
                                     label="Section Title"
                                     type="text"
-                                    defaultValue="EXAMPLE SECTION TITLE"
-                                    // value={this.state.title}
+                                    defaultValue={section.title}
+                                    // value={section.title}
                                     onChange={this.handleInputChangeFor("title")}
                                     className={classes.textField}
                                     margin="normal"
@@ -142,7 +151,7 @@ class EditSection extends Component {
                                         label="Video Link"
                                         type="text"
                                         // value={this.state.videoLink}
-                                        defaultValue="EXAMPLE VIDEO LINK"
+                                        defaultValue={section.video_link}
                                         onChange={this.handleInputChangeFor("videoLink")}
                                         className={classes.textField}
                                         margin="normal"
@@ -155,7 +164,7 @@ class EditSection extends Component {
                                         label="Text Content"
                                         type="text"
                                         // value={this.state.textContent}
-                                        defaultValue="EXAMPLE TEXT CONTENT"
+                                        defaultValue={section.text_content}
                                         onChange={this.handleInputChangeFor("textContent")}
                                         className={classes.textField}
                                         margin="normal"
@@ -168,7 +177,7 @@ class EditSection extends Component {
                                         label="Image Link"
                                         type="text"
                                         // value={this.state.imageLink}
-                                        defaultValue="EXAMPLE IMAGE LINK"
+                                        defaultValue= {section.image_link}
                                         onChange={this.handleInputChangeFor("imageLink")}
                                         className={classes.textField}
                                         margin="normal"
@@ -183,7 +192,7 @@ class EditSection extends Component {
                                     required
                                     label="Resource Description"
                                     // value={this.state.description}
-                                    defaultValue="EXAMPLE DESCRIPTION"
+                                    defaultValue={section.description}
                                     onChange={this.handleInputChangeFor("description")}
                                     className={classes.textField}
                                     margin="normal"
@@ -234,10 +243,10 @@ EditSection.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const mapReduxStateToProps = (reduxState) => ({
-    reduxState,
+const mapStateToProps = (state) => ({
+    user: state.user,
+    section: state.section,
 });
 
-export default withStyles(styles)(
-    connect(mapReduxStateToProps)(EditSection)
-);
+export default withStyles(styles)(connect(mapStateToProps)(EditSection));
+

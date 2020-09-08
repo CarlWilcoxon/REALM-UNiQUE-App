@@ -42,19 +42,18 @@ class AddNewRealmPage extends Component {
     state = {
         name: "",
         photoLink: "",
-        description: ""
+        description: "",
+        questions: [],
     };
 
-    //SEND DATA TO SAGA
+    //STORE DATA IN REDUCER
     submitRealm = (event) => {
         event.preventDefault();
         this.props.dispatch({
-            type: "SUBMIT_REALM",
+            type: "SET_REALM",
             payload: {
-                name: this.state.name,
-                photoLink: this.state.photoLink,
-                description: this.state.description,
-                ///questions need to be added to payload
+                ...this.state,
+                questions: this.props.reduxState.newQuestions,
             },
         });
     };
@@ -146,9 +145,9 @@ class AddNewRealmPage extends Component {
                     <Button
                       variant="contained"
                       className="submit-new-realm"
-                      // type="submit"
-                      // name="submit"
-                      // onClick={this.submitRealm}
+                      type="submit"
+                      name="submit"
+                      onClick={this.submitRealm}
                       className={classes.button}
                       classes={{ root: classes.root }}
                     >

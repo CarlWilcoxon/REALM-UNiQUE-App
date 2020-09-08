@@ -22,7 +22,8 @@ const styles = (theme) => ({
 class RealmQuestions extends Component {
     state = {
         // questionType: "",
-        question: ""
+        question: "",
+        question_index: this.props.index,
     };
 
 

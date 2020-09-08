@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField } from '@material-ui/core';
+import { withStyles, Grid, TextField, Typography } from '@material-ui/core';
+import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
 
@@ -25,33 +26,35 @@ class Question extends Component {
       [propertyName]: event.target.value,
     });
     console.log("state:", this.state);
+    console.log("this.props", this.props);
   };
 
   render() {
+    // Deconstructing more props
+    const {
+      classes,
+      question,
+     } = this.props;
     return (
-      <div>
-        { this.props.question[0].content !== undefined ?
-          <p>{this.props.question[0].content}</p>
-        :
-        'loading'}
+      <>
+        <Typography>{ question.content}</Typography>
 
         <TextField
         label="Answer"
         type="text"
+        variant="outlined"
+        multiline
+        rows={2}
+        className={classes.inputControlSection}
         value={this.state.answer}
         onChange={this.handleInputChangeFor("answer")}
-         />
-{/*
-<TextField
-                    required
-                    label="Image Link"
-                    type="text"
-                    value={this.state.imageLink}
-                    onChange={this.handleInputChangeFor("imageLink")}
-                    className={classes.textField}
-                    margin="normal"
-                  /> */}
-      </div>
+        InputProps={{
+          classes: {
+            input: classes.input,
+            root: classes.cssOutlinedInput,
+            notchedOutline: classes.notchedOutline,
+          }}} />
+      </>
     );
   }
 }
@@ -62,4 +65,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Question);
+export default withStyles(styles)(connect(mapStateToProps)(Question));

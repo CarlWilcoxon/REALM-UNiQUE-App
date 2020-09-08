@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -72,8 +72,9 @@ class App extends Component {
             <Route exact path="/add-client" component={AddNewClientPage} />
             <Route exact path="/view-clients" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
-            {/* THIS ROUTE ISN'T WORKING */}
-            <Route exact path="/section/:id" component={Section} />
+            {/* eventually the paths to sections will be like this
+             <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
+            <Route exact path="/section/:section" component={Section} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -120,7 +121,7 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          {this.props.user.id ? <Footer /> : <span />}
+          {/* {this.props.user.id ? <Footer /> : <span />} We aren't rendering the footer anyway*/}
         </div>
       </Router>
     );

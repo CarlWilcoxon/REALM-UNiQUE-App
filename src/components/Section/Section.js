@@ -23,7 +23,7 @@ class Section extends Component {
   }
 
   saveAndContinue = () => {
-    if (this.props.match.params.section === this.props.state.section.)
+    if (this.props.match.params.section === this.props.state.section)
     this.props.history.push('/EmotionalSec2')
   };
   saveAndReturn = () => {
@@ -133,7 +133,7 @@ class Section extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  state,
+  section: state.section,
 });
 
 // this allows us to use <App /> in index.js

@@ -106,26 +106,24 @@ router.post('/add', async (req, res) => {
       const addQuestionQuery =
       `INSERT INTO "question" ("section_id", "question_index", "content")
       VALUES ($1, $2, $3 ) RETURNING "id";`;
-      const addQuestionValues = [sectionId, i, questions[i].question ]
+      const addQuestionValues = [sectionId, i, questions[i] ]
 
       const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
       const questionId = questionResponse.rows[0].id;
 
-      // If the question is multiple choice...
-      // if (req.body.questions[i].questionType === 'multiple_choice') {
-      //   // ...loop through the array of answers, inserting each into the 'multiple_choice' db
-      //   for (let j = 0; j < req.body.questions[i].answers.length; j++) {
-      //     const thisAnswer = req.body.questions[i].answers[j];
-      //     const choiceQuery =
-      //     `INSERT INTO "multiple_choice" ("question_id", "content", "correct_answer")
-      //     VALUES ($1, $2, $3);`;
-      //     const choiceValues = [questionId, thisAnswer.content, thisAnswer.correct_answer ];
+      /* If the question is multiple choice...
+       if (req.body.questions[i].questionType === 'multiple_choice') {
+         // ...loop through the array of answers, inserting each into the 'multiple_choice' db
+         for (let j = 0; j < req.body.questions[i].answers.length; j++) {
+           const thisAnswer = req.body.questions[i].answers[j];
+           const choiceQuery =
+           `INSERT INTO "multiple_choice" ("question_id", "content", "correct_answer")
+           VALUES ($1, $2, $3);`;
+           const choiceValues = [questionId, thisAnswer.content, thisAnswer.correct_answer ];
 
-      //     await connection.query( choiceQuery, choiceValues );
-
-      //   }
-
-      // }
+           await connection.query( choiceQuery, choiceValues );
+         }
+      } */
     }
 
     await connection.query('COMMIT');

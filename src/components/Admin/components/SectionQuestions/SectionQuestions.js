@@ -22,17 +22,29 @@ const styles = (theme) => ({
 class SectionQuestions extends Component {
     state = {
         // questionType: "",
-        question: ""
+        question:"",
+        question_index: this.props.index,
+        // [`question${this.props.index}`]:'',
     };
 
 
+    handleQuestionChange = (event) => {
+      console.log("old state:", this.state);
+      let newValue = event.target.value;
+      this.setState({
+        ...this.state,
+        question : newValue,
+      })
 
-    handleInputChangeFor = (propertyName) => (event) => {
-        this.setState({
-            [propertyName]: event.target.value,
-        });
-        console.log("state:", this.state);
+      this.props.dispatch({
+        type: 'UPDATE_QUESTIONS',
+        payload: {
+          question: newValue,
+          question_index: this.state.question_index,
+        }})
     };
+
+
 
     render() {
         const { classes } = this.props;
@@ -68,7 +80,8 @@ class SectionQuestions extends Component {
                 label="Question"
                 variant="outlined"
                 value={this.state.question}
-                onChange={this.handleInputChangeFor("question")}
+                // value={this.state[`question${this.props.index}`]}
+                onChange={this.handleQuestionChange}
                 className={classes.textField}
                 margin="normal"
               />

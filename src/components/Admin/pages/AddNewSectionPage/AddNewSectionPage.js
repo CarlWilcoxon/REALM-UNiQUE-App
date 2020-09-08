@@ -63,32 +63,30 @@ class AddNewSectionPage extends Component {
 //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
+    console.log("this.state:", this.state);
     this.props.dispatch({
       type: "SUBMIT_SECTION",
-      // payload: {
-      //   title: this.state.title,
-      //   type: this.state.type,
-      //   description: this.state.description,
-      //   ///questions need to be added to payload
-      // },
-
-      payload: this.state,
+      payload: {
+        ...this.state,
+        questions: this.props.reduxState.newQuestions,
+      }
     });
   }; // end submitSection
 
   handleInputChangeFor = (propertyName) => (event) => {
+    console.log("old state:", this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log("state:", this.state);
   };
 
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
         this.setState({
             questionInputs: [
-                ...this.state.questionInputs, <SectionQuestion/>
+                ...this.state.questionInputs,
+                this.state.questionInputs.length
             ]
         });
   }
@@ -201,7 +199,11 @@ class AddNewSectionPage extends Component {
               {/* NEW QUESTION MAP */}
               <div className="new-question">
                 {this.state.questionInputs.map((questionInputs, index) => (
-                  <SectionQuestion key={index} />
+                  <SectionQuestion
+                  key={index}
+                  index={index}
+                  handleInputChangeFor={this.handleInputChangeFor}
+                  />
                 ))}
               </div>
               {/* ADD NEW QUESTION BUTTON */}

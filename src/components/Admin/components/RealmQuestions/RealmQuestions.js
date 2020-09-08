@@ -22,17 +22,27 @@ const styles = (theme) => ({
 class RealmQuestions extends Component {
     state = {
         // questionType: "",
-        question: ""
+        question: "",
+        question_index: this.props.index,
     };
 
 
 
-    handleInputChangeFor = (propertyName) => (event) => {
+    handleQuestionChange = (event) => {
+        console.log("old state:", this.state);
+        let newValue = event.target.value;
         this.setState({
-            [propertyName]: event.target.value,
-        });
-        console.log("state:", this.state);
-    };
+          ...this.state,
+          question : newValue,
+        })
+  
+        this.props.dispatch({
+          type: 'UPDATE_QUESTIONS',
+          payload: {
+            question: newValue,
+            question_index: this.state.question_index,
+          }})
+      };
 
     render() {
         const { classes } = this.props;
@@ -70,7 +80,7 @@ class RealmQuestions extends Component {
                     variant="outlined"
                     label="Question"
                     value={this.state.question}
-                    onChange={this.handleInputChangeFor("question")}
+                    onChange={this.handleQuestionChange}
                     className={classes.textField}
                     margin="normal"
                   />

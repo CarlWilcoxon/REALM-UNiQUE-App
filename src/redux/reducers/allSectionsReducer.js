@@ -6,7 +6,7 @@ const allSectionsReducer = (state = [], action) => {
             // append the new Section to the state
             state.push(action.payload);
             return state;
-        case "REMOVE_SECTION_ALLESCTIONS":
+        case "REMOVE_SECTION_ALLSECTIONS":
             // Remove the section that is the same as the action.payload
             state.splice(state.findIndex( i => i === action.payload ));
             return state;

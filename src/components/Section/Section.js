@@ -17,12 +17,13 @@ class Section extends Component {
     this.props.dispatch({
       type: 'FETCH_SECTION',
       payload: {
-        sectionId: this.props.match.params.id,
+        sectionId: this.props.match.params.section,
       },
     });
   }
 
   saveAndContinue = () => {
+    if (this.props.match.params.section === this.props.state.section.)
     this.props.history.push('/EmotionalSec2')
   };
   saveAndReturn = () => {
@@ -31,7 +32,7 @@ class Section extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, section } = this.props;
     return (
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
@@ -43,22 +44,22 @@ class Section extends Component {
             lg={6}
           >
             {/* <h1>THIS IS SECTION {this.props.match.params.id}</h1> */}
-            {this.props.state.section.title !== undefined ? (
+            {section.title !== undefined ? (
               <h3 className={classes.sectionTitle}>
-                {this.props.state.section.title}
+                {section.title}
               </h3>
             ) : (
               'loading'
             )}
 
             <Grid>
-              {this.props.state.section.video_link !== undefined && this.props.state.section.type === 1 ? (
+              {section.video_link !== undefined && section.type === 1 ? (
                 <Grid className={classes.sectionVideoContainer}>
                   <iframe
-                    title={this.props.state.section.title + ' video'}
+                    title={section.title + ' video'}
                     frameborder="0"
                     className={classes.sectionVideo}
-                    src={this.props.state.section.video_link.replace("/watch?v=","/embed/")}
+                    src={section.video_link.replace("/watch?v=","/embed/")}
                   />
                 </Grid>
               ) : (
@@ -66,46 +67,46 @@ class Section extends Component {
               )}
             </Grid>
 
-            {this.props.state.section.image_link !== undefined && this.props.state.section.type === 2 ? (
+            {section.image_link !== undefined && section.type === 2 ? (
               <Typography className={classes.sectionDescription}>
-                {this.props.state.section.text_content}
+                {section.text_content}
               </Typography>
             ) : (
               ''
             )}
 
 
-            {this.props.state.section.image_link !== undefined && this.props.state.section.type === 3 ? (
+            {section.image_link !== undefined && section.type === 3 ? (
               <Grid className={classes.sectionCoverContainer}>
                 <img
                   className={classes.realmCover}
-                  src={this.props.state.section.image_link}
-                  alt={this.props.state.section.title + ' image'}
+                  src={section.image_link}
+                  alt={section.title + ' image'}
                   />
               </Grid>
             ) : (
               ''
             )}
 
-            {this.props.state.section.description !== undefined ? (
-              <p>{this.props.state.section.description}</p>
+            {section.description !== undefined ? (
+              <p>{section.description}</p>
             ) : (
               'loading'
             )}
 {/*
-            {this.props.state.section !== undefined
-              ? JSON.stringify(this.props.state.section)
+            {section !== undefined
+              ? JSON.stringify(section)
               : 'loading'} */}
 
-            {this.props.state.section.questions !== undefined ? (
+            {section.questions !== undefined ? (
               <Grid
               container
               direction="column"
-              alignItems="stretch"
+              alignItems="center"
               justify="space-evenly"
               >
-                {this.props.state.section.questions.map( (q, i) =>
-                <Question question={q} key={i} />)}
+                {section.questions.map( (q, i) =>
+                <Grid item component={Question} question={q} key={i} />)}
               </Grid>
               ) : (
               'loading'

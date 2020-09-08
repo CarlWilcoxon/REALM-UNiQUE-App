@@ -13,7 +13,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const styles = {
   card: {
     width: "60%",
-    height: "70px"
+    height: "70px",
+    margin: "20px"
   },
 };
 

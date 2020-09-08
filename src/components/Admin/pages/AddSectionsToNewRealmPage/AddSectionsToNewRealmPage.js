@@ -182,7 +182,7 @@ class AddSectionsToNewRealmPage extends Component {
               </TableBody>
             </Table>
           </Paper>
-          <h2>Selected Sections</h2>
+          <h2>Chosen Sections</h2>
           <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>

@@ -11,6 +11,8 @@ import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Button from "@material-ui/core/Button";
+import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
+import ChosenSection from "../../components/ChosenSection/ChosenSection"
 
 
 const styles = (theme) => ({
@@ -168,16 +170,8 @@ class AddSectionsToNewRealmPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.sections.map((section) => (
-                  <TableRow key={this.props.sections.id}>
-                    <TableCell align="left" component="th" scope="row">
-                      {section.title}
-                    </TableCell>
-                    <TableCell align="left">{section.type_name}</TableCell>
-                    <TableCell align="right" padding="checkbox">
-                      <Checkbox />
-                    </TableCell>
-                  </TableRow>
+                {this.props.sections.map((section, id) => (
+                  <SectionToChoose key={id} section={section}/>
                 ))}
               </TableBody>
             </Table>
@@ -197,16 +191,8 @@ class AddSectionsToNewRealmPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.sections.map((section) => (
-                  <TableRow key={this.props.sections.id}>
-                    <TableCell align="left" component="th" scope="row">
-                      {section.title}
-                    </TableCell>
-                    <TableCell align="left">{section.type_name}</TableCell>
-                    <TableCell align="right" padding="checkbox">
-                      <Checkbox />
-                    </TableCell>
-                  </TableRow>
+                {this.props.sections.map((section, id) => (
+                  <SectionToChoose key={id} section={section}/>
                 ))}
               </TableBody>
             </Table>

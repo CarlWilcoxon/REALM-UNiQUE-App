@@ -109,7 +109,7 @@ class RegisterPage extends Component {
             item
             xs={0}
             sm={0}
-            md={6}
+            md={0}
             lg={6}
           >
             {/* To input video on one side of a page we simply place it in one of the child grids */}

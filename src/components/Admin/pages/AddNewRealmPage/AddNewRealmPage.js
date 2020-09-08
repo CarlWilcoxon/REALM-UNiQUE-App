@@ -45,19 +45,6 @@ class AddNewRealmPage extends Component {
         description: ""
     };
 
-    // //SEND DATA TO SAGA
-    // submitRealm = (event) => {
-    //     event.preventDefault();
-    //     this.props.dispatch({
-    //         type: "SUBMIT_REALM",
-    //         payload: {
-    //             name: this.state.name,
-    //             photoLink: this.state.photoLink,
-    //             description: this.state.description,
-    //             ///questions need to be added to payload
-    //         },
-    //     });
-    // };
 
     //STORE DATA IN REDUCER
       submitRealm = (event) => {
@@ -66,6 +53,7 @@ class AddNewRealmPage extends Component {
                       name: this.state.name,
                       photoLink: this.state.photoLink,
                       description: this.state.description,
+                      question: this.state.question,
                       ///questions need to be added to payload
                   },})
       }

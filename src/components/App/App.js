@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
+import PreviewSectionPage from "../Admin/pages/PreviewSectionPage/PreviewSectionPage";
 import EditSectionPage from '../Admin/pages/EditSectionPage/EditSectionPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
@@ -66,6 +67,7 @@ class App extends Component {
               path="/organize-realm-sections"
               component={OrganizeSections}
             />
+            <Route exact path="/preview/:id" component={PreviewSectionPage} />
             <Route exact path="/edit-section" component={EditSectionPage} />
             <Route exact path="/view-realms" component={ViewRealmsPage} />
             <Route exact path="/view-sections" component={ViewSectionsPage} />

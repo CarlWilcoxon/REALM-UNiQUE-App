@@ -27,6 +27,7 @@ class SectionToChoose extends Component {
   render() {
     const { classes } = this.props;
     return (
+
       <TableRow>
         <TableCell align="left" component="th" scope="row">
           {this.props.section.title}
@@ -48,6 +49,7 @@ class SectionToChoose extends Component {
             <AddIcon fontSize="large" />
           </IconButton>
         </TableCell>
+
       </TableRow>
     );
   }

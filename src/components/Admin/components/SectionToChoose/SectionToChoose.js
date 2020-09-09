@@ -8,6 +8,11 @@ import TableRow from '@material-ui/core/TableRow';
 
 class SectionToChoose extends Component {
 
+addchosen = (section) => (event) =>{
+    console.log('addchosen clicked', section)
+
+}
+
   render() {
     return (
         <TableRow>
@@ -16,7 +21,7 @@ class SectionToChoose extends Component {
         </TableCell>
         <TableCell align="left">{this.props.section.type_name}</TableCell>
         <TableCell align="right"> 
-          <Button>Add Section</Button>
+          <Button onClick = {this.addchosen(this.props.section)}>Add Section</Button>
         </TableCell>
       </TableRow>
     );

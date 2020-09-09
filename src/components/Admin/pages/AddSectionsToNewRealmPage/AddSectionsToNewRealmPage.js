@@ -155,7 +155,7 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
-        <h2>Sections</h2>
+        <h2>Available Sections</h2>
           <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>
@@ -191,8 +191,8 @@ class AddSectionsToNewRealmPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.sections.map((section, id) => (
-                  <SectionToChoose key={id} section={section}/>
+                {this.props.chosenSections.map((section, id) => (
+                  <ChosenSection key={id} section={section}/>
                 ))}
               </TableBody>
             </Table>

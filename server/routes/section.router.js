@@ -17,7 +17,7 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // });
 
 // Get route for each Section
-router.get('/:section', async (req, res) => {
+router.get('/get-section/:section', async (req, res) => {
   console.log('Getting section for', req.user);
 
   const connection = await pool.connect()

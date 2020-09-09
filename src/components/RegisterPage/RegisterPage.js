@@ -35,7 +35,7 @@ class RegisterPage extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-
+    console.log("this.state:", this.state);
     if (
       this.state.username &&
       this.state.password &&
@@ -92,8 +92,8 @@ class RegisterPage extends Component {
         /> */}
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0; fullscreen"
-          width="640"
-          height="360"
+          width={640"
+          height={360"
           allowfullscreen
           className={classes.videoContainer}
           frameborder="0"
@@ -157,7 +157,7 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Username*"
                   // helperText="Required"
                   variant="outlined"
@@ -186,7 +186,7 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Password*"
                   type="password"
                   // helperText="Required"
@@ -216,7 +216,7 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Confirm Password*"
                   variant="outlined"
                   type="password"
@@ -245,12 +245,12 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="First Name*"
                   // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.first_name}
+                  value={this.state.first_name || ''}
                   onChange={this.handleInputChangeFor('first_name')}
                   InputLabelProps={{
                     classes: {
@@ -274,12 +274,12 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Last Name*"
                   // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.last_name}
+                  value={this.state.last_name || ''}
                   onChange={this.handleInputChangeFor('last_name')}
                   InputLabelProps={{
                     classes: {
@@ -309,12 +309,12 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Email*"
                   // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.email}
+                  value={this.state.email || ''}
                   onChange={this.handleInputChangeFor('email')}
                   InputLabelProps={{
                     classes: {
@@ -357,7 +357,7 @@ class RegisterPage extends Component {
               <Select
                 label="State *"
                 MenuProps={CategorySelectorProps}
-                value={this.state.state}
+                value={this.state.state || ''}
                 onChange={this.handleInputChangeFor('state')}
                 inputProps={{
                   classes: {
@@ -435,8 +435,7 @@ class RegisterPage extends Component {
               <Select
                 label="Age *"
                 MenuProps={CategorySelectorProps}
-                e
-                value={this.state.age}
+                value={this.state.age || ''}
                 onChange={this.handleInputChangeFor('age')}
                 // className={classes.select}
                 // className={classes.overrides}
@@ -446,7 +445,7 @@ class RegisterPage extends Component {
                     outlined: classes.outlined,
                   },
                 }}
-                InputLabelProps={{
+                inputLabelProps={{
                   classes: {
                     root: classes.cssLabel,
                     className: classes.floatingLabelFocusStyle,
@@ -454,106 +453,106 @@ class RegisterPage extends Component {
                 }}
               >
                 <MenuItem value=""></MenuItem>
-                <MenuItem value="1">1</MenuItem>
-                <MenuItem value="2">2</MenuItem>
-                <MenuItem value="3">3</MenuItem>
-                <MenuItem value="4">4</MenuItem>
-                <MenuItem value="5">5</MenuItem>
-                <MenuItem value="6">6</MenuItem>
-                <MenuItem value="7">7</MenuItem>
-                <MenuItem value="8">8</MenuItem>
-                <MenuItem value="9">9</MenuItem>
-                <MenuItem value="10">10</MenuItem>
-                <MenuItem value="11">11</MenuItem>
-                <MenuItem value="12">12</MenuItem>
-                <MenuItem value="13">13</MenuItem>
-                <MenuItem value="14">14</MenuItem>
-                <MenuItem value="15">15</MenuItem>
-                <MenuItem value="16">16</MenuItem>
-                <MenuItem value="17">17</MenuItem>
-                <MenuItem value="18">18</MenuItem>
-                <MenuItem value="19">19</MenuItem>
-                <MenuItem value="20">20</MenuItem>
-                <MenuItem value="21">21</MenuItem>
-                <MenuItem value="22">22</MenuItem>
-                <MenuItem value="23">23</MenuItem>
-                <MenuItem value="24">24</MenuItem>
-                <MenuItem value="25">25</MenuItem>
-                <MenuItem value="26">26</MenuItem>
-                <MenuItem value="27">27</MenuItem>
-                <MenuItem value="28">28</MenuItem>
-                <MenuItem value="29">29</MenuItem>
-                <MenuItem value="30">30</MenuItem>
-                <MenuItem value="31">31</MenuItem>
-                <MenuItem value="32">32</MenuItem>
-                <MenuItem value="33">33</MenuItem>
-                <MenuItem value="34">34</MenuItem>
-                <MenuItem value="35">35</MenuItem>
-                <MenuItem value="36">36</MenuItem>
-                <MenuItem value="37">37</MenuItem>
-                <MenuItem value="38">38</MenuItem>
-                <MenuItem value="39">39</MenuItem>
-                <MenuItem value="40">40</MenuItem>
-                <MenuItem value="41">41</MenuItem>
-                <MenuItem value="42">42</MenuItem>
-                <MenuItem value="43">43</MenuItem>
-                <MenuItem value="44">44</MenuItem>
-                <MenuItem value="45">45</MenuItem>
-                <MenuItem value="46">46</MenuItem>
-                <MenuItem value="47">47</MenuItem>
-                <MenuItem value="48">48</MenuItem>
-                <MenuItem value="49">49</MenuItem>
-                <MenuItem value="50">50</MenuItem>
-                <MenuItem value="51">51</MenuItem>
-                <MenuItem value="52">52</MenuItem>
-                <MenuItem value="53">53</MenuItem>
-                <MenuItem value="54">54</MenuItem>
-                <MenuItem value="55">55</MenuItem>
-                <MenuItem value="56">56</MenuItem>
-                <MenuItem value="57">57</MenuItem>
-                <MenuItem value="58">58</MenuItem>
-                <MenuItem value="59">59</MenuItem>
-                <MenuItem value="60">60</MenuItem>
-                <MenuItem value="61">61</MenuItem>
-                <MenuItem value="62">62</MenuItem>
-                <MenuItem value="63">63</MenuItem>
-                <MenuItem value="64">64</MenuItem>
-                <MenuItem value="65">65</MenuItem>
-                <MenuItem value="66">66</MenuItem>
-                <MenuItem value="67">67</MenuItem>
-                <MenuItem value="68">68</MenuItem>
-                <MenuItem value="69">69</MenuItem>
-                <MenuItem value="70">70</MenuItem>
-                <MenuItem value="71">71</MenuItem>
-                <MenuItem value="72">72</MenuItem>
-                <MenuItem value="73">73</MenuItem>
-                <MenuItem value="74">74</MenuItem>
-                <MenuItem value="75">75</MenuItem>
-                <MenuItem value="76">76</MenuItem>
-                <MenuItem value="77">77</MenuItem>
-                <MenuItem value="78">78</MenuItem>
-                <MenuItem value="79">79</MenuItem>
-                <MenuItem value="80">80</MenuItem>
-                <MenuItem value="81">81</MenuItem>
-                <MenuItem value="82">82</MenuItem>
-                <MenuItem value="83">83</MenuItem>
-                <MenuItem value="84">84</MenuItem>
-                <MenuItem value="85">85</MenuItem>
-                <MenuItem value="86">86</MenuItem>
-                <MenuItem value="87">87</MenuItem>
-                <MenuItem value="88">88</MenuItem>
-                <MenuItem value="89">89</MenuItem>
-                <MenuItem value="90">90</MenuItem>
-                <MenuItem value="91">91</MenuItem>
-                <MenuItem value="92">92</MenuItem>
-                <MenuItem value="93">93</MenuItem>
-                <MenuItem value="94">94</MenuItem>
-                <MenuItem value="95">95</MenuItem>
-                <MenuItem value="96">96</MenuItem>
-                <MenuItem value="97">97</MenuItem>
-                <MenuItem value="98">98</MenuItem>
-                <MenuItem value="99">99</MenuItem>
-                <MenuItem value="100">100</MenuItem>
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+                <MenuItem value={7}>7</MenuItem>
+                <MenuItem value={8}>8</MenuItem>
+                <MenuItem value={9}>9</MenuItem>
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={11}>11</MenuItem>
+                <MenuItem value={12}>12</MenuItem>
+                <MenuItem value={13}>13</MenuItem>
+                <MenuItem value={14}>14</MenuItem>
+                <MenuItem value={15}>15</MenuItem>
+                <MenuItem value={16}>16</MenuItem>
+                <MenuItem value={17}>17</MenuItem>
+                <MenuItem value={18}>18</MenuItem>
+                <MenuItem value={19}>19</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
+                <MenuItem value={21}>21</MenuItem>
+                <MenuItem value={22}>22</MenuItem>
+                <MenuItem value={23}>23</MenuItem>
+                <MenuItem value={24}>24</MenuItem>
+                <MenuItem value={25}>25</MenuItem>
+                <MenuItem value={26}>26</MenuItem>
+                <MenuItem value={27}>27</MenuItem>
+                <MenuItem value={28}>28</MenuItem>
+                <MenuItem value={29}>29</MenuItem>
+                <MenuItem value={30}>30</MenuItem>
+                <MenuItem value={31}>31</MenuItem>
+                <MenuItem value={32}>32</MenuItem>
+                <MenuItem value={33}>33</MenuItem>
+                <MenuItem value={34}>34</MenuItem>
+                <MenuItem value={35}>35</MenuItem>
+                <MenuItem value={36}>36</MenuItem>
+                <MenuItem value={37}>37</MenuItem>
+                <MenuItem value={38}>38</MenuItem>
+                <MenuItem value={39}>39</MenuItem>
+                <MenuItem value={40}>40</MenuItem>
+                <MenuItem value={41}>41</MenuItem>
+                <MenuItem value={42}>42</MenuItem>
+                <MenuItem value={43}>43</MenuItem>
+                <MenuItem value={44}>44</MenuItem>
+                <MenuItem value={45}>45</MenuItem>
+                <MenuItem value={46}>46</MenuItem>
+                <MenuItem value={47}>47</MenuItem>
+                <MenuItem value={48}>48</MenuItem>
+                <MenuItem value={49}>49</MenuItem>
+                <MenuItem value={50}>50</MenuItem>
+                <MenuItem value={51}>51</MenuItem>
+                <MenuItem value={52}>52</MenuItem>
+                <MenuItem value={53}>53</MenuItem>
+                <MenuItem value={54}>54</MenuItem>
+                <MenuItem value={55}>55</MenuItem>
+                <MenuItem value={56}>56</MenuItem>
+                <MenuItem value={57}>57</MenuItem>
+                <MenuItem value={58}>58</MenuItem>
+                <MenuItem value={59}>59</MenuItem>
+                <MenuItem value={60}>60</MenuItem>
+                <MenuItem value={61}>61</MenuItem>
+                <MenuItem value={62}>62</MenuItem>
+                <MenuItem value={63}>63</MenuItem>
+                <MenuItem value={64}>64</MenuItem>
+                <MenuItem value={65}>65</MenuItem>
+                <MenuItem value={66}>66</MenuItem>
+                <MenuItem value={67}>67</MenuItem>
+                <MenuItem value={68}>68</MenuItem>
+                <MenuItem value={69}>69</MenuItem>
+                <MenuItem value={70}>70</MenuItem>
+                <MenuItem value={71}>71</MenuItem>
+                <MenuItem value={72}>72</MenuItem>
+                <MenuItem value={73}>73</MenuItem>
+                <MenuItem value={74}>74</MenuItem>
+                <MenuItem value={75}>75</MenuItem>
+                <MenuItem value={76}>76</MenuItem>
+                <MenuItem value={77}>77</MenuItem>
+                <MenuItem value={78}>78</MenuItem>
+                <MenuItem value={79}>79</MenuItem>
+                <MenuItem value={80}>80</MenuItem>
+                <MenuItem value={81}>81</MenuItem>
+                <MenuItem value={82}>82</MenuItem>
+                <MenuItem value={83}>83</MenuItem>
+                <MenuItem value={84}>84</MenuItem>
+                <MenuItem value={85}>85</MenuItem>
+                <MenuItem value={86}>86</MenuItem>
+                <MenuItem value={87}>87</MenuItem>
+                <MenuItem value={88}>88</MenuItem>
+                <MenuItem value={89}>89</MenuItem>
+                <MenuItem value={90}>90</MenuItem>
+                <MenuItem value={91}>91</MenuItem>
+                <MenuItem value={92}>92</MenuItem>
+                <MenuItem value={93}>93</MenuItem>
+                <MenuItem value={94}>94</MenuItem>
+                <MenuItem value={95}>95</MenuItem>
+                <MenuItem value={96}>96</MenuItem>
+                <MenuItem value={97}>97</MenuItem>
+                <MenuItem value={98}>98</MenuItem>
+                <MenuItem value={99}>99</MenuItem>
+                <MenuItem value={100}>100</MenuItem>
               </Select>
             </FormControl>
             <FormControl
@@ -569,8 +568,7 @@ class RegisterPage extends Component {
               <Select
                 label="Ethnicity *"
                 MenuProps={CategorySelectorProps}
-                e
-                value={this.state.ethnicity}
+                value={this.state.ethnicity || ''}
                 onChange={this.handleInputChangeFor('ethnicity')}
                 inputProps={{
                   classes: {
@@ -592,23 +590,23 @@ class RegisterPage extends Component {
                 ))} */}
                 {/* <MenuItem value={11}>New Category</MenuItem> */}
                 <MenuItem value=""></MenuItem>
-                <MenuItem value="1">Asian - Chinese</MenuItem>
-                <MenuItem value="2">Asian - Filipino</MenuItem>
-                <MenuItem value="3">Asian - Asian Indian</MenuItem>
-                <MenuItem value="4">Asian - Vietnamese</MenuItem>
-                <MenuItem value="5">Asian - Korean</MenuItem>
-                <MenuItem value="6">Asian - Japanese</MenuItem>
-                <MenuItem value="7">Asian - Other Asian</MenuItem>
-                <MenuItem value="8">Black or African American</MenuItem>
-                <MenuItem value="9">
+                <MenuItem value={1}>Asian - Chinese</MenuItem>
+                <MenuItem value={2}>Asian - Filipino</MenuItem>
+                <MenuItem value={3}>Asian - Asian Indian</MenuItem>
+                <MenuItem value={4}>Asian - Vietnamese</MenuItem>
+                <MenuItem value={5}>Asian - Korean</MenuItem>
+                <MenuItem value={6}>Asian - Japanese</MenuItem>
+                <MenuItem value={7}>Asian - Other Asian</MenuItem>
+                <MenuItem value={8}>Black or African American</MenuItem>
+                <MenuItem value={9}>
                   Native Hawaiian and Pacific Islander
                 </MenuItem>
-                <MenuItem value="10">Native Hawaiian</MenuItem>
-                <MenuItem value="11">Pacific Islander - Samoan</MenuItem>
-                <MenuItem value="12">Pacific Islander - Chamorro</MenuItem>
-                <MenuItem value="13">Pacific Islander - Other</MenuItem>
-                <MenuItem value="14">White</MenuItem>
-                <MenuItem value="15">Some Other Race</MenuItem>
+                <MenuItem value={10}>Native Hawaiian</MenuItem>
+                <MenuItem value={11}>Pacific Islander - Samoan</MenuItem>
+                <MenuItem value={12}>Pacific Islander - Chamorro</MenuItem>
+                <MenuItem value={13}>Pacific Islander - Other</MenuItem>
+                <MenuItem value={14}>White</MenuItem>
+                <MenuItem value={15}>Some Other Race</MenuItem>
               </Select>
               {/* <FormHelperText>
                 Required *
@@ -628,8 +626,7 @@ class RegisterPage extends Component {
               <Select
                 label="Gender *"
                 MenuProps={CategorySelectorProps}
-                e
-                value={this.state.gender}
+                value={this.state.gender || ''}
                 onChange={this.handleInputChangeFor('gender')}
                 // className={classes.select}
                 // className={classes.overrides}
@@ -674,8 +671,7 @@ class RegisterPage extends Component {
               <Select
                 label="Income *"
                 MenuProps={CategorySelectorProps}
-                e
-                value={this.state.income}
+                value={this.state.income || ''}
                 onChange={this.handleInputChangeFor('income')}
                 // className={classes.select}
                 // className={classes.overrides}
@@ -693,17 +689,17 @@ class RegisterPage extends Component {
                 }}
               >
                 <MenuItem value=""></MenuItem>
-                <MenuItem value="1">$0 - $10,000</MenuItem>
-                <MenuItem value="2">10,001 - $20,000</MenuItem>
-                <MenuItem value="3">$20,001 - $30,000</MenuItem>
-                <MenuItem value="4">30,001 - $40,000</MenuItem>
-                <MenuItem value="5">$40,001 - $50,000</MenuItem>
-                <MenuItem value="6">$50,001 - $60,000</MenuItem>
-                <MenuItem value="7">$60,001 - $70,000</MenuItem>
-                <MenuItem value="8">$70,001 - $80,000</MenuItem>
-                <MenuItem value="9">$80,001 - $90,000</MenuItem>
-                <MenuItem value="10">$90,001 - $100,000</MenuItem>
-                <MenuItem value="11">$100,000+</MenuItem>
+                <MenuItem value={1}>$0 - $10,000</MenuItem>
+                <MenuItem value={2}>10,001 - $20,000</MenuItem>
+                <MenuItem value={3}>$20,001 - $30,000</MenuItem>
+                <MenuItem value={4}>30,001 - $40,000</MenuItem>
+                <MenuItem value={5}>$40,001 - $50,000</MenuItem>
+                <MenuItem value={6}>$50,001 - $60,000</MenuItem>
+                <MenuItem value={7}>$60,001 - $70,000</MenuItem>
+                <MenuItem value={8}>$70,001 - $80,000</MenuItem>
+                <MenuItem value={9}>$80,001 - $90,000</MenuItem>
+                <MenuItem value={10}>$90,001 - $100,000</MenuItem>
+                <MenuItem value={11}>$100,000+</MenuItem>
               </Select>
             </FormControl>
             <FormControl
@@ -719,8 +715,7 @@ class RegisterPage extends Component {
               <Select
                 label="Education *"
                 MenuProps={CategorySelectorProps}
-                e
-                value={this.state.education_level}
+                value={this.state.education_level || ''}
                 onChange={this.handleInputChangeFor('education_level')}
                 inputProps={{
                   classes: {
@@ -742,15 +737,15 @@ class RegisterPage extends Component {
                 ))} */}
                 {/* <MenuItem value={11}>New Category</MenuItem> */}
                 <MenuItem value=""></MenuItem>
-                <MenuItem value="1">Some High School</MenuItem>
-                <MenuItem value="2">High School</MenuItem>
-                <MenuItem value="3">Certification</MenuItem>
-                <MenuItem value="4">Some College School</MenuItem>
-                <MenuItem value="5">Associate</MenuItem>
-                <MenuItem value="6">Bachelor's</MenuItem>
-                <MenuItem value="7">Master's</MenuItem>
-                <MenuItem value="8">Doctorate</MenuItem>
-                <MenuItem value="9">Professional</MenuItem>
+                <MenuItem value={1}>Some High School</MenuItem>
+                <MenuItem value={2}>High School</MenuItem>
+                <MenuItem value={3}>Certification</MenuItem>
+                <MenuItem value={4}>Some College School</MenuItem>
+                <MenuItem value={5}>Associate</MenuItem>
+                <MenuItem value={6}>Bachelor's</MenuItem>
+                <MenuItem value={7}>Master's</MenuItem>
+                <MenuItem value={8}>Doctorate</MenuItem>
+                <MenuItem value={9}>Professional</MenuItem>
               </Select>
               {/* <FormHelperText>
                 <span className={classes.invisibleText}>
@@ -767,13 +762,13 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  id="outlined-helperText"
+                  // id="outlined-helperText"
                   label="Registration Code"
                   // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.code}
-                  onChange={this.handleInputChangeFor('code')}
+                  value={this.state.reg_code || ''}
+                  onChange={this.handleInputChangeFor('reg_code')}
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -798,23 +793,22 @@ class RegisterPage extends Component {
               <Button
                 disableElevation
                 className={classes.submitButtonRegister}
-                type="submit"
                 name="submit"
-                value="Submit"
+                onClick={this.registerUser}
               >
                 Submit
               </Button>
             </div>
 
-            <Link
+            <Button
+              component="Link"
               className={classes.register}
-              type="button"
               onClick={() => {
                 this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' });
               }}
             >
               Login
-            </Link>
+            </Button>
           </form>
 
         </Grid>

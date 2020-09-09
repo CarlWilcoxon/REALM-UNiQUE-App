@@ -1,22 +1,22 @@
 const styles = (theme) => ({
   allContainer: {},
-  videoContainer: {
-    position: 'absolute',
-    // height: '765px',
-    height: '100%',
-    width: '100%',
-    overflow: 'hidden',
-    'object-fit': 'cover',
-    // margin: '-50px 0px -30px 0px',
-  },
+  // videoContainer: {
+  //   position: 'absolute',
+  //   // height: '765px',
+  //   height: '100%',
+  //   width: '100%',
+  //   overflow: 'hidden',
+  //   'object-fit': 'cover',
+  //   // margin: '-50px 0px -30px 0px',
+  // },
 
-  videoContainerMobile: {
-    position: 'absolute',
-    height: '135%',
-    width: '100%',
-    overflow: 'hidden',
-    'object-fit': 'cover',
-  },
+  // videoContainerMobile: {
+  //   position: 'absolute',
+  //   height: '135%',
+  //   width: '100%',
+  //   overflow: 'hidden',
+  //   'object-fit': 'cover',
+  // },
   infinityControl: {
     'text-align': 'center',
     position: 'relative',

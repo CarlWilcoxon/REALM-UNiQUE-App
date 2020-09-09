@@ -43,7 +43,7 @@ class Section extends Component {
             md={6}
             lg={6}
           >
-            {/* <h1>THIS IS SECTION {this.props.match.params.id}</h1> */}
+            {/* <h1>THIS IS SECTION {this.props.match.params.section}</h1> */}
             {section.title !== undefined ? (
               <h3 className={classes.sectionTitle}>
                 {section.title}

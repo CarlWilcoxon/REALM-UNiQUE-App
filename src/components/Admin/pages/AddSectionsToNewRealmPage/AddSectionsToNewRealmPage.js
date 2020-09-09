@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   withStyles,
-  Checkbox,
   Button,
   Paper,
   Table,
@@ -13,9 +12,8 @@ import {
   TableRow,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
-import ImageIcon from '@material-ui/icons/Image';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import DescriptionIcon from '@material-ui/icons/Description';
+import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
+import ChosenSection from "../../components/ChosenSection/ChosenSection"
 
 
 class AddSectionsToNewRealmPage extends Component {
@@ -27,9 +25,18 @@ class AddSectionsToNewRealmPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
+  state = {
+    title: "",
+    description: "",
+    type: "",
+    image_link: "",
+    video_link: "",
+    text_content: "",
+ };
+
   render() {
     const { classes } = this.props;
-
+    console.log('rendering')
     return (
       <div>
         <center>
@@ -74,29 +81,29 @@ class AddSectionsToNewRealmPage extends Component {
               </TableHead>
               <TableBody>
                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                {this.props.sections.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell
-                      className={classes.tableCell}
-                      align="left"
-                      component="th"
-                      scope="row"
-                    >
-                      {row.name}
-                    </TableCell>
-                    <TableCell className={classes.tableCell} align="left">
-                      {row.type === 'Photo' || row.type === 3 ? <ImageIcon /> : ''}
-                      {row.type === 'Video'|| row.type === 1 ? <YouTubeIcon /> : ''}
-                      {row.type === 'Text'|| row.type === 2 ? <DescriptionIcon /> : ''}
-                      {/* <div>{JSON.stringify(row.type)} </div> */}
-                    </TableCell>
-                    <TableCell align="right" padding="checkbox">
-                      <Checkbox
-                        className={classes.checkBoxIcon}
-                        color="white"
-                      />
-                    </TableCell>
-                  </TableRow>
+                {this.props.sections.map((section) => (
+                  <SectionToChoose key={section.id} section={section}/>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <h2>Chosen Sections</h2>
+          <Paper className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left" width="30%">
+                    Section Name
+                  </TableCell>
+                  <TableCell align="left" width="30%">
+                    Resource Type
+                  </TableCell>
+                  <TableCell width="10%"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.chosenSections.map((section) => (
+                  <ChosenSection key={section.id} section={section}/>
                 ))}
               </TableBody>
             </Table>
@@ -129,6 +136,7 @@ class AddSectionsToNewRealmPage extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
   sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
 });
 
 AddSectionsToNewRealmPage.propTypes = {

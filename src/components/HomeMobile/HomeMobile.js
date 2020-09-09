@@ -16,6 +16,7 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import SpaIcon from '@material-ui/icons/Spa';
 import styles from '../../themes/homeTheme';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 class HomeMobile extends Component {
   goEmotional = () => this.props.history.push('/EmotionalHome');
@@ -139,6 +140,7 @@ class HomeMobile extends Component {
               </GridList>
             </div>
           </Grid>
+          <LogOutButton/>
         </Grid>
       </div>
     );

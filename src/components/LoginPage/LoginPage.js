@@ -45,16 +45,20 @@ class LoginPage extends Component {
     const { classes } = this.props;
 
     return (
-      <Grid container spacing={0}>
-        <img
-          alt="a calming ocean view with a rainbow"
+      <Grid
+      id="LoginPageContainer"
+      container
+      spacing={0}
+      >
+        {/* <img
+        alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
           src="/images/scenery-2846778.jpg"
-        ></img>
+        /> */}
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
           className={classes.videoContainer}
@@ -65,12 +69,10 @@ class LoginPage extends Component {
         ></iframe> */}
         {/* The one at the top only shows up bc I have video speed controller on */}
 
-        <Hidden xsDown smDown>
+        <Hidden smDown>
           <Grid
             className={classes.leftSideFlex}
             item
-            xs={0}
-            sm={0}
             md={6}
             lg={6}
           >
@@ -106,13 +108,13 @@ class LoginPage extends Component {
             <form
               className={classes.formContainer}
               onSubmit={this.login}
-              autocomplete="off"
+              autoComplete="off"
             >
               <h2 className={classes.brandNameControl}>UNiQUE</h2>
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    id="outlined-helperText"
+                    // id="outlined-helperText"
                     label="Username"
                     helperText="Required"
                     variant="outlined"
@@ -141,7 +143,7 @@ class LoginPage extends Component {
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    id="outlined-helperText"
+                    // id="outlined-helperText"
                     label="Password"
                     type="password"
                     helperText="Required"
@@ -181,15 +183,15 @@ class LoginPage extends Component {
                   Login
                 </Button>
               </div>
-              <Link
+              <Button
+                component="Link"
                 className={classes.register}
-                type="button"
                 onClick={() => {
                   this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
                 }}
               >
                 Sign Up
-              </Link>
+              </Button>
             </form>
           </div>
         </Grid>

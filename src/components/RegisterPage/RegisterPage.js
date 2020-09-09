@@ -189,7 +189,7 @@ class RegisterPage extends Component {
                   // id="outlined-helperText"
                   label="Password*"
                   type="password"
-                  // helperText="Required"
+                  autoComplete="current-password"
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.password}

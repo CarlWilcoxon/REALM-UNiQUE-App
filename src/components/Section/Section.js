@@ -67,7 +67,7 @@ class Section extends Component {
               )}
             </Grid>
 
-            {section.image_link !== undefined && section.type === 2 ? (
+            {section.text_content !== undefined && section.type === 2 ? (
               <Typography className={classes.sectionDescription}>
                 {section.text_content}
               </Typography>

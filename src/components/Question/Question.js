@@ -37,7 +37,7 @@ class Question extends Component {
      } = this.props;
     return (
       <>
-        <Typography>{ question.content}</Typography>
+        <Typography>{ question.content }</Typography>
 
         <TextField
         label="Answer"

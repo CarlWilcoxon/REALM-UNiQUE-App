@@ -1,93 +1,92 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from "@material-ui/core/Button";
-
-
-const styles = (theme) => ({
-  button: {
-    background: "blue",
-    // borderRadius: 3,
-    // border: 0,
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
-  },
-  root: {
-    width: "40%",
-    marginTop: "5%",
-    marginBottom: "3%",
-    overflowX: "auto",
-  },
-  table: {
-    // minWidth: "50%",
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade("#ffffff", 0.15),
-    "&:hover": {
-      backgroundColor: fade("#ffffff", 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit,
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%",
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: 160,
-      "&:focus": {
-        width: 200,
-      },
-    },
-  },
-});
+import PropTypes from 'prop-types';
+import {
+  withStyles,
+  FormControl,
+  Grid,
+  Checkbox,
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  fade,
+} from '@material-ui/core';
+import styles from '/Users/brunoreyes/Desktop/REALM-UNiQUE-App/src/themes/adminTheme.js';
+import ImageIcon from '@material-ui/icons/Image';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import DescriptionIcon from '@material-ui/icons/Description';
+// const styles = (theme) => ({
+//   button: {
+//     background: 'blue',
+//     // borderRadius: 3,
+//     // border: 0,
+//     color: 'white',
+//     height: 48,
+//     padding: '0 30px',
+//     fontWeight: 'bold',
+//     margin: '10px',
+//     justify: 'center',
+//   },
+//
+//
+//   grow: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginLeft: -12,
+//     marginRight: 20,
+//   },
+//   title: {
+//     display: 'none',
+//     [theme.breakpoints.up('sm')]: {
+//       display: 'block',
+//     },
+//   },
+//   search: {
+//     position: 'relative',
+//     borderRadius: theme.shape.borderRadius,
+//     backgroundColor: fade('#ffffff', 0.15),
+//     '&:hover': {
+//       backgroundColor: fade('#ffffff', 0.25),
+//     },
+//     marginLeft: 0,
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//       marginLeft: theme.spacing.unit,
+//       width: 'auto',
+//     },
+//   },
+//   searchIcon: {
+//     width: theme.spacing.unit * 9,
+//     height: '100%',
+//     position: 'absolute',
+//     pointerEvents: 'none',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   inputRoot: {
+//     color: 'inherit',
+//     width: '100%',
+//   },
+//   inputInput: {
+//     paddingTop: theme.spacing.unit,
+//     paddingRight: theme.spacing.unit,
+//     paddingBottom: theme.spacing.unit,
+//     paddingLeft: theme.spacing.unit * 10,
+//     transition: theme.transitions.create('width'),
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//       width: 160,
+//       '&:focus': {
+//         width: 200,
+//       },
+//     },
+//   },
+// });
 
 let id = 0;
 function createData(name, type) {
@@ -97,22 +96,22 @@ function createData(name, type) {
 
 //SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
 const rows = [
-  createData("Ted Talk No.5", "Video"),
-  createData("Text No.1", "Text"),
-  createData("Photo No.10", "Photo"),
-  createData("Ted Talk No.2", "Video"),
-  createData("Youtube Video No.12", "Video"),
+  createData('Ted Talk No.5', 'Video'),
+  createData('Text No.1', 'Text'),
+  createData('Photo No.10', 'Photo'),
+  createData('Ted Talk No.2', 'Video'),
+  createData('Youtube Video No.12', 'Video'),
 ];
 
 class AddSectionsToNewRealmPage extends Component {
-render() {
-  const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
 
-  return (
-    <div>
-      <center>
-        <h1>Add Sections to New Realm</h1>
-        {/* <AppBar position="static">
+    return (
+      <div>
+        <center>
+          <h1 className={classes.header}>Add Sections to New Realm</h1>
+          {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
             <div className={classes.search}>
@@ -129,65 +128,80 @@ render() {
             </div>
           </Toolbar>
         </AppBar> */}
-        <Paper className={classes.root}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell align="left" width="30%">
-                  Section Name
-                </TableCell>
-                <TableCell align="left" width="30%">
-                  Resource Type
-                </TableCell>
-                <TableCell width="10%"></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-              {rows.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell align="left" component="th" scope="row">
-                    {row.name}
+          <Paper className={classes.paper}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
+                    Section Name
                   </TableCell>
-                  <TableCell align="left">{row.type}</TableCell>
-                  <TableCell align="right" padding="checkbox">
-                    <Checkbox />
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
+                    Resource Type
                   </TableCell>
+                  <TableCell width="10%"></TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
-        <div>
-          <Button
-            variant="contained"
-            // className="submit-new-section"
-            // type="submit"
-            // name="submit"
-            // onClick={this.submitSection}
-            className={classes.button}
-            classes={{ root: classes.button }}
-          >
-            Name Realm
-          </Button>
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            // className="submit-new-section"
-            // type="submit"
-            // name="submit"
-            // onClick={this.submitSection}
-            className={classes.button}
-            classes={{ root: classes.button }}
-          >
-            Organize Sections
-          </Button>
-        </div>
-      </center>
-    </div>
-  );
-}
+              </TableHead>
+              <TableBody>
+                {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
+                {rows.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell
+                      className={classes.tableCell}
+                      align="left"
+                      component="th"
+                      scope="row"
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell className={classes.tableCell} align="left">
+                      {row.type === 'Photo' ? <ImageIcon /> : ''}
+                      {row.type === 'Video' ? <YouTubeIcon /> : ''}
+                      {row.type === 'Text' ? <DescriptionIcon /> : ''}
+                      {/* <div>{JSON.stringify(row.type)} </div> */}
+                    </TableCell>
+                    <TableCell align="right" padding="checkbox">
+                      <Checkbox
+                        className={classes.checkBoxIcon}
+                        color="white"
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <div className={classes.adminButtonContainer}>
+            <Button
+              variant="contained"
+              type="submit"
+              name="submit"
+              // onClick={this.submitSection}
+              className={classes.adminButtonAdd}
+            >
+              Name Realm
+            </Button>
+            <Button
+              variant="contained"
+              type="submit"
+              name="submit"
+              // onClick={this.submitSection}
+              className={classes.adminButtonAdd}
+            >
+              Organize Sections
+            </Button>
+          </div>
+        </center>
+      </div>
+    );
+  }
 }
 
 AddSectionsToNewRealmPage.propTypes = {

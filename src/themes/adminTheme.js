@@ -169,6 +169,19 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
+  adminButtonAdd: {
+    font: '300 16px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '30%',
+    padding: '10px 0px 10px 0px',
+    margin: '0px 15% 3% 15%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
   squareButtons: {
     font: '300 40px Poppins, sans-serif',
     backgroundColor: '#1f3556',
@@ -201,6 +214,21 @@ const styles = (theme) => ({
     font: '400 40px Poppins, sans-serif',
     'text-align': 'center',
     color: '#1f3556',
+  },
+  paper: {
+    width: '40%',
+    marginTop: '5%',
+    marginBottom: '3%',
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: '50%',
+  },
+  tableHeader: { font: '500 18px Poppins, sans-serif' },
+  tableCell: { font: '400 16px Poppins, sans-serif' },
+  checkBoxIcon: {
+    color: '#1f3556',
+    padding: '0px 12px 0px 0px',
   },
 });
 

@@ -139,9 +139,8 @@ router.post('/add', async (req, res) => {
 });
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 router.get("/", (req, res) => {
-  // router.get("/", rejectUnauthenticated, (req, res) => {
-  const queryText = `SELECT * FROM "section"
-  JOIN "resource_type" ON "resource_type"."id" = "section"."type";`;
+  const queryText = `SELECT "section".*, "resource_type"."type_name" FROM "section"
+JOIN "resource_type" ON "resource_type"."id" = "section"."id";`;
 
   pool
     .query(queryText)

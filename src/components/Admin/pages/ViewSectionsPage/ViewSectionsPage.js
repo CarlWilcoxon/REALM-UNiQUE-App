@@ -121,6 +121,7 @@ class ViewSectionsPage extends Component {
           <div>
             <center>
               <h1>View Sections</h1>
+              {/* {JSON.stringify(this.props.sections)} */}
               <div>
                 <Button
                   variant="contained"

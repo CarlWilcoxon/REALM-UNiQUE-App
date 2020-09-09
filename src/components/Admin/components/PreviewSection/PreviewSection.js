@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import styles from '../../../../themes/realmHomeTheme';
 import {
     withStyles,
@@ -14,7 +15,7 @@ class PreviewSectionPage extends Component {
         this.props.dispatch({
             type: 'FETCH_SECTION',
             payload: {
-                sectionId: 5//this.props.match.params.section, //hard-coded, needs to be changed this.props.match.params.section
+                sectionId: this.props.match.params.id, //hard-coded, needs to be changed this.props.match.params.section
             },
         });
     }
@@ -26,7 +27,6 @@ class PreviewSectionPage extends Component {
         return (
             <div>
                 <h1>Preview</h1>
-                
                 {section.title !== undefined ? (
                     <p className={classes.sectionTitle}>
                         <b>Title: </b> {section.title}
@@ -86,4 +86,5 @@ const mapStateToProps = (state) => ({
     section: state.section,
 });
 
-export default withStyles(styles)(connect(mapStateToProps)(PreviewSectionPage));
+
+export default withRouter(withStyles(styles)(connect(mapStateToProps)(PreviewSectionPage)));

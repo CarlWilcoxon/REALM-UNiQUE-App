@@ -10,7 +10,7 @@ import {
   Button,
   MenuItem,
 } from '@material-ui/core';
-import styles from '/Users/brunoreyes/Desktop/REALM-UNiQUE-App/src/themes/adminTheme.js';
+import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 // import HelpIcon from '@material-ui/icons/Help';
 import Fade from 'react-reveal/Fade';
@@ -45,32 +45,31 @@ class AddNewSectionPage extends Component {
   //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
+    console.log("this.state:", this.state);
     this.props.dispatch({
-      type: 'SUBMIT_SECTION',
-      // payload: {
-      //   title: this.state.title,
-      //   type: this.state.type,
-      //   description: this.state.description,
-      //   ///questions need to be added to payload
-      // },
-
-      payload: this.state,
+      type: "SUBMIT_SECTION",
+      payload: {
+        ...this.state,
+        questions: this.props.reduxState.newQuestions,
+      }
     });
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
+    console.log("old state:", this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
   };
 
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
     this.setState({
-      questionInputs: [...this.state.questionInputs, <SectionQuestion />],
-    });
+      questionInputs: [
+        ...this.state.questionInputs,
+        this.state.questionInputs.length
+    ]    });
   };
   toggleResourcePreview = () => {
     console.log('You clicked the preview icon');
@@ -314,7 +313,7 @@ class AddNewSectionPage extends Component {
                             <img
                               className={classes.sectionImage}
                               src={this.state.imageLink}
-                              alt="content"
+                              alt="your image"
                             />
                           </div>
                         </div>
@@ -361,7 +360,11 @@ class AddNewSectionPage extends Component {
               <div className="new-question">
                 <FormControl className={classes.formContainerQuestion}>
                   {this.state.questionInputs.map((questionInputs, index) => (
-                    <SectionQuestion key={index} />
+                    <SectionQuestion
+                    key={index}
+                    index={index}
+                    handleInputChangeFor={this.handleInputChangeFor}
+                    />
                   ))}
                 </FormControl>
               </div>
@@ -405,3 +408,50 @@ const mapReduxStateToProps = (reduxState) => ({
 export default withStyles(styles)(
   connect(mapReduxStateToProps)(AddNewSectionPage)
 );
+
+
+
+              // {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
+              // <div>
+              //   <TextField
+              //     select
+              //     required
+              //     label="Resource Type"
+              //     variant="outlined"
+              //     className={classes.textField}
+              //     value={this.state.type}
+              //     onChange={this.handleInputChangeFor("type")}
+              //     SelectProps={{
+              //       MenuProps: {
+              //         className: classes.menu,
+              //       },
+              //     }}
+              //     margin="normal"
+              //   >
+              //     {type.map((option) => (
+              //       <MenuItem key={option.value} value={option.value}>
+              //         {option.label}
+              //       </MenuItem>
+              //     ))}
+              //   </TextField>
+              // </div>
+              // {/* DYNAMIC INFORMATION SECTION */}
+              // {/* 1=video, 2=text, 3=image */}
+              // {this.state.type === 1 ? (
+              //   <div>
+              //     <TextField
+              //       required
+              //       label="Video Link"
+              //       variant="outlined"
+              //       type="text"
+              //       value={this.state.videoLink}
+              //       onChange={this.handleInputChangeFor("videoLink")}
+              //       className={classes.textField}
+              //       margin="normal"
+
+
+              //       variant="outlined"
+              //       value={this.state.description}
+              //       onChange={this.handleInputChangeFor("description")}
+              //       className={classes.textField}
+              //       margin="normal"

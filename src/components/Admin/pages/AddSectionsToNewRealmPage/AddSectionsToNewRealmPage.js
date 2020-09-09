@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   withStyles,
-  FormControl,
-  Grid,
   Checkbox,
   Button,
   Paper,
@@ -12,98 +11,22 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  fade,
 } from '@material-ui/core';
-import styles from '/Users/brunoreyes/Desktop/REALM-UNiQUE-App/src/themes/adminTheme.js';
+import styles from '../../../../themes/adminTheme.js';
 import ImageIcon from '@material-ui/icons/Image';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import DescriptionIcon from '@material-ui/icons/Description';
-// const styles = (theme) => ({
-//   button: {
-//     background: 'blue',
-//     // borderRadius: 3,
-//     // border: 0,
-//     color: 'white',
-//     height: 48,
-//     padding: '0 30px',
-//     fontWeight: 'bold',
-//     margin: '10px',
-//     justify: 'center',
-//   },
-//
-//
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20,
-//   },
-//   title: {
-//     display: 'none',
-//     [theme.breakpoints.up('sm')]: {
-//       display: 'block',
-//     },
-//   },
-//   search: {
-//     position: 'relative',
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: fade('#ffffff', 0.15),
-//     '&:hover': {
-//       backgroundColor: fade('#ffffff', 0.25),
-//     },
-//     marginLeft: 0,
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       marginLeft: theme.spacing.unit,
-//       width: 'auto',
-//     },
-//   },
-//   searchIcon: {
-//     width: theme.spacing.unit * 9,
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   inputRoot: {
-//     color: 'inherit',
-//     width: '100%',
-//   },
-//   inputInput: {
-//     paddingTop: theme.spacing.unit,
-//     paddingRight: theme.spacing.unit,
-//     paddingBottom: theme.spacing.unit,
-//     paddingLeft: theme.spacing.unit * 10,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       width: 160,
-//       '&:focus': {
-//         width: 200,
-//       },
-//     },
-//   },
-// });
 
-let id = 0;
-function createData(name, type) {
-  id += 1;
-  return { id, name, type };
-}
-
-//SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
-const rows = [
-  createData('Ted Talk No.5', 'Video'),
-  createData('Text No.1', 'Text'),
-  createData('Photo No.10', 'Photo'),
-  createData('Ted Talk No.2', 'Video'),
-  createData('Youtube Video No.12', 'Video'),
-];
 
 class AddSectionsToNewRealmPage extends Component {
+  componentDidMount = () => {
+    this.getAllSections();
+  };
+
+  getAllSections = () => {
+    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -151,7 +74,7 @@ class AddSectionsToNewRealmPage extends Component {
               </TableHead>
               <TableBody>
                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
-                {rows.map((row) => (
+                {this.props.sections.map((row) => (
                   <TableRow key={row.id}>
                     <TableCell
                       className={classes.tableCell}
@@ -162,9 +85,9 @@ class AddSectionsToNewRealmPage extends Component {
                       {row.name}
                     </TableCell>
                     <TableCell className={classes.tableCell} align="left">
-                      {row.type === 'Photo' ? <ImageIcon /> : ''}
-                      {row.type === 'Video' ? <YouTubeIcon /> : ''}
-                      {row.type === 'Text' ? <DescriptionIcon /> : ''}
+                      {row.type === 'Photo' || row.type === 3 ? <ImageIcon /> : ''}
+                      {row.type === 'Video'|| row.type === 1 ? <YouTubeIcon /> : ''}
+                      {row.type === 'Text'|| row.type === 2 ? <DescriptionIcon /> : ''}
                       {/* <div>{JSON.stringify(row.type)} </div> */}
                     </TableCell>
                     <TableCell align="right" padding="checkbox">
@@ -204,8 +127,12 @@ class AddSectionsToNewRealmPage extends Component {
   }
 }
 
+const mapReduxStateToProps = (reduxState) => ({
+  sections: reduxState.allSections,
+});
+
 AddSectionsToNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AddSectionsToNewRealmPage);
+export default withStyles(styles)(connect(mapReduxStateToProps)(AddSectionsToNewRealmPage));

@@ -7,7 +7,7 @@ import {
   TextField,
 } from '@material-ui/core/';
 // import MenuItem from "@material-ui/core/MenuItem";
-import styles from '/Users/brunoreyes/Desktop/REALM-UNiQUE-App/src/themes/adminTheme.js';
+import styles from '../../../../themes/adminTheme.js';
 
 // const styles = (theme) => ({
 //   textField: {
@@ -27,13 +27,6 @@ class SectionQuestions extends Component {
   state = {
     // questionType: "",
     question: '',
-  };
-
-  handleInputChangeFor = (propertyName) => (event) => {
-    this.setState({
-      [propertyName]: event.target.value,
-    });
-    console.log('state:', this.state);
   };
 
   render() {
@@ -73,7 +66,7 @@ class SectionQuestions extends Component {
             variant="outlined"
             className={classes.inputControlQuestion}
             value={this.state.question}
-            onChange={this.handleInputChangeFor('question')}
+            onChange={this.handleQuestionChange}
             InputLabelProps={{
               classes: {
                 root: classes.cssLabel,

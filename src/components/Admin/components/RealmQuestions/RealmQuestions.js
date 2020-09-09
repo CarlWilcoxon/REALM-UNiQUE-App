@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles, TextField } from '@material-ui/core/';
-import styles from '/Users/brunoreyes/Desktop/REALM-UNiQUE-App/src/themes/adminTheme.js';
+import styles from '../../../../themes/adminTheme.js';
 
-// const styles = (theme) => ({
-//   textField: {
-//     width: 400,
-//     margin: '10px',
-//   },
-// });
 
 // const questionTypes = [
 //     {
@@ -24,18 +18,12 @@ class RealmQuestions extends Component {
     question: '',
   };
 
-  handleInputChangeFor = (propertyName) => (event) => {
-    this.setState({
-      [propertyName]: event.target.value,
-    });
-    console.log('state:', this.state);
-  };
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-        {/* QUESTION TYPE (ETC.)
+                {/* QUESTION TYPE (ETC.)
                         <div>
                             <TextField
                                 select
@@ -68,7 +56,7 @@ class RealmQuestions extends Component {
           variant="outlined"
           className={classes.inputControlQuestion}
           value={this.state.question}
-          onChange={this.handleInputChangeFor('question')}
+          onChange={this.handleQuestionChange}
           InputLabelProps={{
             classes: {
               root: classes.cssLabel,

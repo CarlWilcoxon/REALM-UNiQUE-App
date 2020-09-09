@@ -17,7 +17,7 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // });
 
 // Get route for each Section
-router.get('/:id', async (req, res) => {
+router.get('/get-section/:section', async (req, res) => {
   console.log('Getting section for', req.user);
 
   const connection = await pool.connect()
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
       const queryText =
       `SELECT * FROM "section"
       WHERE "section"."id"= $1;`
-    const queryValue = [req.params.id]
+    const queryValue = [req.params.section]
     let result = await connection.query(queryText, queryValue)
 
     // get the questions for that section
@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
     `SELECT * FROM "question"
     WHERE "section_id" = $1
     ORDER BY "question_index";`;
-    const addQuestionValues = [ req.params.id ]
+    const addQuestionValues = [ req.params.section ]
 
     const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
     // append the questions to the result
@@ -73,8 +73,8 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 
 
 // Route for creating a new Section
-router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
-
+// router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
+router.post('/add', async (req, res) => {
   // Deconstructing most of req.body to make references later clearer to read.
   const {
     title,
@@ -106,26 +106,24 @@ router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
       const addQuestionQuery =
       `INSERT INTO "question" ("section_id", "question_index", "content")
       VALUES ($1, $2, $3 ) RETURNING "id";`;
-      const addQuestionValues = [sectionId, i, questions[i].question ]
+      const addQuestionValues = [sectionId, i, questions[i] ]
 
       const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
       const questionId = questionResponse.rows[0].id;
 
-      // If the question is multiple choice...
-      // if (req.body.questions[i].questionType === 'multiple_choice') {
-      //   // ...loop through the array of answers, inserting each into the 'multiple_choice' db
-      //   for (let j = 0; j < req.body.questions[i].answers.length; j++) {
-      //     const thisAnswer = req.body.questions[i].answers[j];
-      //     const choiceQuery =
-      //     `INSERT INTO "multiple_choice" ("question_id", "content", "correct_answer")
-      //     VALUES ($1, $2, $3);`;
-      //     const choiceValues = [questionId, thisAnswer.content, thisAnswer.correct_answer ];
+      /* If the question is multiple choice...
+       if (req.body.questions[i].questionType === 'multiple_choice') {
+         // ...loop through the array of answers, inserting each into the 'multiple_choice' db
+         for (let j = 0; j < req.body.questions[i].answers.length; j++) {
+           const thisAnswer = req.body.questions[i].answers[j];
+           const choiceQuery =
+           `INSERT INTO "multiple_choice" ("question_id", "content", "correct_answer")
+           VALUES ($1, $2, $3);`;
+           const choiceValues = [questionId, thisAnswer.content, thisAnswer.correct_answer ];
 
-      //     await connection.query( choiceQuery, choiceValues );
-
-      //   }
-
-      // }
+           await connection.query( choiceQuery, choiceValues );
+         }
+      } */
     }
 
     await connection.query('COMMIT');
@@ -138,6 +136,23 @@ router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
     connection.release()
   }
 
+});
+//GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
+router.get("/", (req, res) => {
+  // router.get("/", rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT * FROM "section"
+  JOIN "resource_type" ON "resource_type"."id" = "section"."type";`;
+
+  pool
+    .query(queryText)
+    .then((result) => {
+      console.log("in /section GET");
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

@@ -112,9 +112,9 @@ class AddNewRealmPage extends Component {
                 </div>
               </FormControl>
 
-              <FormControl className={classes.formContainer}>
-                <div>
-                  <TextField
+              {/* <FormControl className={classes.formContainer}>
+                <div> */}
+                  {/* <TextField
                     select
                     required
                     label="Realm Icon"
@@ -139,8 +139,8 @@ class AddNewRealmPage extends Component {
                     FormHelperTextProps={{
                       classes: { root: classes.helperText },
                     }}
-                  >
-                    <MenuItem value="<AttachMoneyIcon/>">
+                  > */}
+                    {/* <MenuItem value="<AttachMoneyIcon/>">
                       <AttachMoneyIcon />{' '}
                     </MenuItem>
                     <MenuItem value="<FitnessCenterIcon/>">
@@ -164,10 +164,10 @@ class AddNewRealmPage extends Component {
                     </MenuItem>
                     <MenuItem value="<PlaceIcon/>">
                       <PlaceIcon />{' '}
-                    </MenuItem>
-                  </TextField>
+                    </MenuItem> */}
+                  {/* </TextField>
                 </div>
-              </FormControl>
+              </FormControl> */}
 
               <div>
                 <FormControl className={classes.formContainer}>

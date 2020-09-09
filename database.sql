@@ -143,7 +143,7 @@ The mind is the set of cognitive faculties including consciousness, imagination,
  1,
 null,
  'https://www.youtube.com/watch?v=pRFXSjkpKWA',
- null)
+ null);
 
 
 CREATE TABLE "resource_type" (

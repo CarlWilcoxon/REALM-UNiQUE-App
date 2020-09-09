@@ -140,7 +140,7 @@ router.post('/add', async (req, res) => {
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 router.get("/", (req, res) => {
   const queryText = `SELECT "section".*, "resource_type"."type_name" FROM "section"
-JOIN "resource_type" ON "resource_type"."id" = "section"."id";`;
+JOIN "resource_type" ON "section"."type" = "resource_type"."id";`;
 
   pool
     .query(queryText)

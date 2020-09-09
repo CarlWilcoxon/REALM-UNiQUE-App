@@ -28,7 +28,7 @@ function* submitSection(action) {
 
 function* getAllSections() {
   try {
-    const response = yield axios.get("/api/section/");
+    const response = yield axios.get("/api/section/all");
     yield put({ type: "SET_ALL_SECTIONS", payload: response.data });
     // console.log('test console:',response.data);
   } catch (error) {

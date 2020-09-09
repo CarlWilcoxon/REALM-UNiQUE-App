@@ -8,6 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 
 class ChosenSection extends Component {
 
+removechosen = (section) => (event) =>{
+    console.log('addchosen clicked', section)
+    this.props.dispatch({type: 'ADD_SECTION_ALLSECTIONS', payload: section})
+    this.props.dispatch({type: 'REMOVE_CHOSEN', payload: section})
+    }
+
   render() {
     return (
         <TableRow>
@@ -16,7 +22,7 @@ class ChosenSection extends Component {
         </TableCell>
         <TableCell align="left">{this.props.section.type_name}</TableCell>
         <TableCell align="right"> 
-          <Button>Remove Section</Button>
+          <Button onClick= {this.removechosen(this.props.section)}>Remove Section</Button>
         </TableCell>
       </TableRow>
     );

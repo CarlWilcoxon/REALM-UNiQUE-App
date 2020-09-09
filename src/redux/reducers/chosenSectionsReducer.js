@@ -1,11 +1,9 @@
-const allSectionsReducer = (state = [], action) => {
+const chosenSectionsReducer = (state = [], action) => {
     switch (action.type) {
-        case "SET_ALL_SECTIONS":
-            return action.payload;
-        case "ADD_SECTION_ALLSECTIONS":
+        case "ADD_CHOSEN":
             // append the new Section to the state
             return [...state, action.payload];
-        case "REMOVE_SECTION_ALLSECTIONS":
+        case "REMOVE_CHOSEN":
             // Remove the section that is the same as the action.payload
             let newState = []
                 for (let i = 0; i < state.length; i++) {
@@ -19,4 +17,4 @@ const allSectionsReducer = (state = [], action) => {
     }
 };
 
-export default allSectionsReducer;
+export default chosenSectionsReducer;

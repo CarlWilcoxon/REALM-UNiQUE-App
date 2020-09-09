@@ -2,6 +2,14 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
+
+#LoginPageContainer,
+#RegisterPageContainer > div {
+  background-image: url('../../images/scenery-2846778.jpg');
+  background-attachment: fixed;
+  background-size: auto 100%;
+  background-position: center bottom;
+}
 /* html,
 body {
   height: 100%;

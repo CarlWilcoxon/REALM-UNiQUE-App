@@ -9,12 +9,9 @@ import {
 } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-// import AppleIcon from '@material-ui/icons/Apple';
-// import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import EcoIcon from '@material-ui/icons/Eco';
 import PlaceIcon from '@material-ui/icons/Place';
-// import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import SpaIcon from '@material-ui/icons/Spa';

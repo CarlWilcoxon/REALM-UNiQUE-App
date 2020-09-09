@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 // import RegisterPage from '../RegisterPage/RegisterPage';
 import styles from '../../themes/loginRegisterTheme';
+import Fade from 'react-reveal/Fade';
 
 class LoginPage extends Component {
   state = {
@@ -77,10 +78,15 @@ class LoginPage extends Component {
           >
             {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
-              {/* <Fade> */}
-              <img  alt="logo" className={classes.colorLogo} src="images/logo.png" />
-              {/* </Fade> */}
-              <p className={classes.infinitytext}>Aspire to Inspire</p>
+              <Fade>
+                <img
+                  alt="logo"
+                  className={classes.colorLogo}
+                  src="images/logo.png"
+                />
+
+                <p className={classes.infinitytext}>Aspire to Inspire</p>
+              </Fade>
             </div>
           </Grid>
         </Hidden>

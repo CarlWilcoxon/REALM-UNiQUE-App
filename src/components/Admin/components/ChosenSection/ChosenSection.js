@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
+import PropTypes from 'prop-types';
+import { withStyles, Button, TableCell, TableRow } from '@material-ui/core';
+import ImageIcon from '@material-ui/icons/Image';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import DescriptionIcon from '@material-ui/icons/Description';
+import styles from '../../../../themes/adminTheme.js';
 
 
 class ChosenSection extends Component {
@@ -15,13 +17,18 @@ removechosen = (section) => (event) =>{
     }
 
   render() {
+    const { classes } = this.props;
     return (
         <TableRow>
         <TableCell align="left" component="th" scope="row">
           {this.props.section.title}
         </TableCell>
-        <TableCell align="left">{this.props.section.type_name}</TableCell>
-        <TableCell align="right"> 
+        <TableCell className={classes.tableCell} align="left">
+          {this.props.section.type_name === 'image'? <ImageIcon /> : ''}
+          {this.props.section.type_name === 'video'? <YouTubeIcon /> : ''}
+          {this.props.section.type_name === 'text'? <DescriptionIcon /> : ''}
+        </TableCell>
+        <TableCell align="right">
           <Button onClick= {this.removechosen(this.props.section)}>Remove Section</Button>
         </TableCell>
       </TableRow>
@@ -29,10 +36,13 @@ removechosen = (section) => (event) =>{
   }
 }
 
-
 const mapReduxStateToProps = (reduxState) => ({
-    sections: reduxState.allSections,
-  });
+  sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
+});
 
+ChosenSection.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default withRouter(connect(mapReduxStateToProps)(ChosenSection));
+export default withStyles(styles)(connect(mapReduxStateToProps)(ChosenSection));

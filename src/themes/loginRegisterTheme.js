@@ -21,7 +21,11 @@ const styles = (theme) => ({
     'text-align': 'center',
     position: 'relative',
     width: '100%',
-    margin: 'auto',
+    // margin: 'auto',
+    margin: '35% auto 50% auto',
+    // 'background-color': 'transparent',
+    // 'text-align': 'center',
+    // position: 'relative',
   },
   colorLogo: {
     width: '30%',
@@ -37,6 +41,7 @@ const styles = (theme) => ({
     flexGrow: 1,
     height: '765px',
     display: 'flex',
+    // display: 'none',
   },
   leftSide: {
     flexGrow: 1,
@@ -48,7 +53,7 @@ const styles = (theme) => ({
     height: '765px',
   },
   formContainer: {
-    margin: '18% auto 20px auto',
+    margin: '10% auto 20px auto',
     'background-color': 'transparent',
     'text-align': 'center',
     position: 'relative',

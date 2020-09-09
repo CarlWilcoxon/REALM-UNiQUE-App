@@ -109,6 +109,11 @@ class ViewSectionsPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
+  handleClick = (sectionId) => {
+    this.props.history.push(`/preview/${sectionId}`);
+    console.log("Clicked View Section");
+  };
+
     render() {
         const { classes } = this.props;
 
@@ -116,6 +121,7 @@ class ViewSectionsPage extends Component {
           <div>
             <center>
               <h1>View Sections</h1>
+              {/* {JSON.stringify(this.props.sections)} */}
               <div>
                 <Button
                   variant="contained"
@@ -161,7 +167,7 @@ class ViewSectionsPage extends Component {
                   </TableHead>
                   <TableBody>
                     {this.props.sections.map((section) => (
-                      <TableRow key={this.props.sections.id}>
+                      <TableRow key={section.id}>
                         <TableCell align="left" component="th" scope="row">
                           {section.title}
                         </TableCell>
@@ -171,7 +177,7 @@ class ViewSectionsPage extends Component {
                           className="submit-new-section"
                           // type="submit"
                           // name="submit"
-                          // onClick={}
+                          onClick={(event)=> this.handleClick(section.id)}
                           className={classes.button}
                           classes={{ root: classes.button }}
                         >

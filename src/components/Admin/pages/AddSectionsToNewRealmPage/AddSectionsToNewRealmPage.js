@@ -11,6 +11,8 @@ import Paper from "@material-ui/core/Paper";
 import Checkbox from "@material-ui/core/Checkbox";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Button from "@material-ui/core/Button";
+import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
+import ChosenSection from "../../components/ChosenSection/ChosenSection"
 
 
 const styles = (theme) => ({
@@ -120,9 +122,18 @@ class AddSectionsToNewRealmPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
+  state = {
+    title: "",
+    description: "",
+    type: "",
+    image_link: "",
+    video_link: "",
+    text_content: "",
+ };
+
   render() {
     const { classes } = this.props;
-
+    console.log('rendering')
     return (
       <div>
         <center>
@@ -144,6 +155,7 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
+        <h2>Available Sections</h2>
           <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>
@@ -159,15 +171,28 @@ class AddSectionsToNewRealmPage extends Component {
               </TableHead>
               <TableBody>
                 {this.props.sections.map((section) => (
-                  <TableRow key={this.props.sections.id}>
-                    <TableCell align="left" component="th" scope="row">
-                      {section.title}
-                    </TableCell>
-                    <TableCell align="left">{section.type_name}</TableCell>
-                    <TableCell align="right" padding="checkbox">
-                      <Checkbox />
-                    </TableCell>
-                  </TableRow>
+                  <SectionToChoose key={section.id} section={section}/>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <h2>Chosen Sections</h2>
+          <Paper className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left" width="30%">
+                    Section Name
+                  </TableCell>
+                  <TableCell align="left" width="30%">
+                    Resource Type
+                  </TableCell>
+                  <TableCell width="10%"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.chosenSections.map((section) => (
+                  <ChosenSection key={section.id} section={section}/>
                 ))}
               </TableBody>
             </Table>
@@ -206,6 +231,7 @@ class AddSectionsToNewRealmPage extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
   sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
 });
 
 AddSectionsToNewRealmPage.propTypes = {

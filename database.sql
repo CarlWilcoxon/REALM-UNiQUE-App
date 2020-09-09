@@ -13,7 +13,7 @@ CREATE TABLE "demographic" (
   "last_name" VARCHAR(50),
   "email" VARCHAR(80),
   "age" int,
-  "location" VARCHAR(50),
+  "location" VARCHAR(2),
   "gender" VARCHAR(20),
   "ethnicity_id" int,
   "income_level_id" int,

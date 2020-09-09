@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
+import PropTypes from 'prop-types';
+import { withStyles, Button, TableCell, TableRow } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import ImageIcon from '@material-ui/icons/Image';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -38,10 +36,13 @@ addchosen = (section) => (event) =>{
   }
 }
 
-
 const mapReduxStateToProps = (reduxState) => ({
-    sections: reduxState.allSections,
-  });
+  sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
+});
 
+SectionToChoose.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default withRouter(connect(mapReduxStateToProps)(SectionToChoose));
+export default withStyles(styles)(connect(mapReduxStateToProps)(SectionToChoose));

@@ -25,15 +25,6 @@ class AddSectionsToNewRealmPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
-  state = {
-    title: "",
-    description: "",
-    type: "",
-    image_link: "",
-    video_link: "",
-    text_content: "",
- };
-
   render() {
     const { classes } = this.props;
     console.log('rendering')
@@ -88,14 +79,22 @@ class AddSectionsToNewRealmPage extends Component {
             </Table>
           </Paper>
           <h2>Chosen Sections</h2>
-          <Paper className={classes.root}>
+          <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell align="left" width="30%">
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
                     Section Name
                   </TableCell>
-                  <TableCell align="left" width="30%">
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
                     Resource Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>

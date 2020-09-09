@@ -24,9 +24,9 @@ addchosen = (section) => (event) =>{
             {this.props.section.title}
           </TableCell>
           <TableCell className={classes.tableCell} align="left">
-            {this.props.section.type_name === 'Image'? <ImageIcon /> : ''}
-            {this.props.section.type_name === 'Video'? <YouTubeIcon /> : ''}
-            {this.props.section.type_name === 'Text'? <DescriptionIcon /> : ''}
+            {this.props.section.type_name === 'image'? <ImageIcon /> : ''}
+            {this.props.section.type_name === 'video'? <YouTubeIcon /> : ''}
+            {this.props.section.type_name === 'text'? <DescriptionIcon /> : ''}
           </TableCell>
           <TableCell align="right">
             <Button onClick = {this.addchosen(this.props.section)}>Add Section</Button>

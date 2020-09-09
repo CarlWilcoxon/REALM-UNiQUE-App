@@ -272,8 +272,10 @@ class AddNewRealmPage extends Component {
               <div className="new-question">
                 <FormControl className={classes.formContainerQuestion}>
                   <div id="new-question">
-                    {this.state.questionInputs.map((questionInputs) => (
-                      <RealmQuestion />
+                    {this.state.questionInputs.map((questionInputs, index) => (
+                      <RealmQuestion 
+                      key={index}
+                      index={index}/>
                     ))}
                   </div>
                 </FormControl>

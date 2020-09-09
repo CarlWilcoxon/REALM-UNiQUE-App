@@ -1,17 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles, TextField } from '@material-ui/core/';
+import styles from '../../../../themes/adminTheme.js';
 
-// import MenuItem from "@material-ui/core/MenuItem"; 
-
-const styles = (theme) => ({
-    textField: {
-        width: 400,
-        margin: "10px",
-    },
-});
 
 // const questionTypes = [
 //     {
@@ -21,36 +13,16 @@ const styles = (theme) => ({
 // ];
 
 class RealmQuestions extends Component {
-    state = {
-        // questionType: "",
-        question: "",
-        question_index: this.props.index,
-    };
+  state = {
+    // questionType: "",
+    question: '',
+  };
 
 
-
-    handleQuestionChange = (event) => {
-        console.log("old state:", this.state);
-        let newValue = event.target.value;
-        this.setState({
-          ...this.state,
-          question : newValue,
-        })
-  
-        this.props.dispatch({
-          type: 'UPDATE_QUESTIONS',
-          payload: {
-            question: newValue,
-            question_index: this.state.question_index,
-          }})
-      };
-
-    render() {
-        const { classes } = this.props;
-        return (
-          <div className="form">
-            <center>
-              <form>
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
                 {/* QUESTION TYPE (ETC.)
                         <div>
                             <TextField
@@ -74,33 +46,47 @@ class RealmQuestions extends Component {
                                 ))}
                             </TextField>
                         </div> */}
-                {/* SECTION DESCRIPTION */}
-                <div>
-                  <TextField
-                    required
-                    variant="outlined"
-                    label="Question"
-                    value={this.state.question}
-                    onChange={this.handleQuestionChange}
-                    className={classes.textField}
-                    margin="normal"
-                  />
-                </div>
-              </form>
-            </center>
-          </div>
-        );
-    }
+        {/* SECTION DESCRIPTION */}
+
+        <TextField
+          required
+          label="Question"
+          helperText="character limit: 140"
+          inputProps={{ maxLength: 140 }}
+          variant="outlined"
+          className={classes.inputControlQuestion}
+          value={this.state.question}
+          onChange={this.handleQuestionChange}
+          InputLabelProps={{
+            classes: {
+              root: classes.cssLabel,
+              className: classes.floatingLabelFocusStyle,
+            },
+          }}
+          InputProps={{
+            classes: {
+              input: classes.input,
+              root: classes.cssOutlinedInput,
+              notchedOutline: classes.notchedOutline,
+            },
+          }}
+          FormHelperTextProps={{
+            classes: { root: classes.helperText },
+          }}
+        />
+      </div>
+    );
+  }
 }
 
 RealmQuestions.propTypes = {
-    classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapReduxStateToProps = (reduxState) => ({
-    reduxState,
+  reduxState,
 });
 
 export default withStyles(styles)(
-    connect(mapReduxStateToProps)(RealmQuestions)
+  connect(mapReduxStateToProps)(RealmQuestions)
 );

@@ -34,8 +34,8 @@ class EmotionalSec3 extends Component {
               {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
-                Brain & Mind & Carbohydrates{' '}
-                <span className={classes.sectionOrder}> 1 of 10 </span>
+                Brain & Mind & Carbohydrates
+                <span className={classes.sectionOrder}> 3 of 10 </span>
               </h3>
 
               <p className={classes.sectionDescription}>

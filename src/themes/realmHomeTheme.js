@@ -188,15 +188,15 @@ const styles = (theme) => ({
     color: '#fff',
   },
   sectionTitle: {
-    font: '400 16px Poppins, sans-serif',
+    font: '400 14px Poppins, sans-serif',
     color: '#1f3556',
     margin: '-15px 0px 20px 0px',
-    padding: '0px 0px 0px 0px',
+    padding: '0px 15px 0px 15px',
     'text-align': 'center',
   },
   sectionOrder: {
-    font: '500 16px Poppins, sans-serif',
-    padding: '0px 0px 0px 10px',
+    font: '500 14px Poppins, sans-serif',
+    padding: '0px 0px 0px 5px',
   },
   sectionCoverContainer: {
     'text-align': 'center',

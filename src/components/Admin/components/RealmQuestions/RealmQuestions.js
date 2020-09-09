@@ -49,6 +49,14 @@ class RealmQuestions extends Component {
         {/* SECTION DESCRIPTION */}
 
         <TextField
+        className={classes.textField}
+        margin="normal"required
+        variant="outlined"
+        label="Question"
+        value={this.state.question}
+        onChange={this.handleQuestionChange}
+        className={classes.textField}
+        margin="normal"
           required
           label="Question"
           helperText="character limit: 140"

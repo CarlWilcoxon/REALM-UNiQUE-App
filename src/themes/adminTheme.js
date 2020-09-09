@@ -195,20 +195,26 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
-  rectangleButton: {
+  downloadButton: {
     font: '300 40px Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
-    width: '40%',
+    width: '30%',
     padding: '40px 0px 40px 0px',
     margin: '0px 2% 4% 2%',
     'text-transform': 'capitalize',
     '&:hover': {
       backgroundColor: '#457b9d',
     },
+    'text-decoration': 'none',
   },
-  downloadIcon: { 'font-size': '150%' },
+  downloadButtonLink: {
+    color: '#fff',
+    'border-radius': '25px',
+    'text-decoration': 'none',
+  },
+  downloadIcon: { 'font-size': '50px', margin: ' 0px 4px -4px 0px ' },
   welcomeMessage: {
     margin: '5% 2% 4% 2%',
     font: '400 40px Poppins, sans-serif',
@@ -226,10 +232,12 @@ const styles = (theme) => ({
   },
   tableHeader: { font: '500 18px Poppins, sans-serif' },
   tableCell: { font: '400 16px Poppins, sans-serif' },
+  tableCellType: { font: '400 30px Poppins, sans-serif', 'font-size': '50px' },
   checkBoxIcon: {
     color: '#1f3556',
     padding: '0px 12px 0px 0px',
   },
+  noDecoration: { 'text-decoration': 'none' },
 });
 
 export default styles;

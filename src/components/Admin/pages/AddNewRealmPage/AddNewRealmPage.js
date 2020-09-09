@@ -39,7 +39,7 @@ class AddNewRealmPage extends Component {
     event.preventDefault();
     console.log("this.state:", this.state)
     this.props.dispatch({
-        type: "SET_REALM",
+        type: "POST_NEW_REALM",
         payload: {
             ...this.state,
             questions: this.props.reduxState.newQuestions,

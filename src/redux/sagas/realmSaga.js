@@ -11,8 +11,17 @@ function* getAllRealms() {
   }
 }
 
+function* submitNewRealm(action){
+      try{
+        yield axios.post('/api/realm/all', action.payload);
+      }catch (error){
+      console.log('error with post request', error);
+    }
+  }
+
 function* realmSaga() {
   yield takeLatest("FETCH_ALL_REALMS", getAllRealms);
+  yield takeLatest("POST_NEW_REALM", submitNewRealm);
 }
 
 export default realmSaga;

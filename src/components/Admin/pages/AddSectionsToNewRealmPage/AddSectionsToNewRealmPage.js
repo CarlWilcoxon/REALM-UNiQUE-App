@@ -122,6 +122,8 @@ class AddSectionsToNewRealmPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
+  goOrganize =() => this.props.history.push('/organize-realm-sections')
+
   state = {
     title: "",
     description: "",
@@ -219,6 +221,7 @@ class AddSectionsToNewRealmPage extends Component {
               // onClick={this.submitSection}
               className={classes.button}
               classes={{ root: classes.button }}
+              onClick={this.goOrganize}
             >
               Organize Sections
             </Button>

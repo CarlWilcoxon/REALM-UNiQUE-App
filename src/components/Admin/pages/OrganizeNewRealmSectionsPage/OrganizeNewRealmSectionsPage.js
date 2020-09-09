@@ -77,4 +77,9 @@ OrganizeNewRealmSectionsPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OrganizeNewRealmSectionsPage);
+const mapReduxStateToProps = (reduxState) => ({
+  sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
+});
+
+export default withStyles(styles)(connect(mapReduxStateToProps)(OrganizeNewRealmSectionsPage));

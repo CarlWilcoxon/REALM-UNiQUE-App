@@ -137,13 +137,14 @@ CREATE TABLE "section" (
 INSERT INTO "section" ("id", "title", "description", "type", "image_link", "video_link", "text_content")
 VALUES
 ( 1,
-"Brain & Mind & Carbohydrates",
- "The brain is an organ that serves as the center of the nervous system in all vertebrate and most invertebrate animals. It is located in the head, usually close to the sensory organs for senses such as vision. It is the most complex organ in a vertebrate''s body.
-The mind is the set of cognitive faculties including consciousness, imagination, perception, thinking, judgement, language and memory, which is housed in the brain \(sometimes including the central nervous system\). It is usually defined as the faculty of an entity''s thoughts and consciousness.",
+'Brain & Mind & Carbohydrates',
+ 'The brain is an organ that serves as the center of the nervous system in all vertebrate and most invertebrate animals. It is located in the head, usually close to the sensory organs for senses such as vision. It is the most complex organ in a vertebrate''s body.
+The mind is the set of cognitive faculties including consciousness, imagination, perception, thinking, judgement, language and memory, which is housed in the brain \(sometimes including the central nervous system\). It is usually defined as the faculty of an entity''s thoughts and consciousness.',
  1,
 null,
- "https://www.youtube.com/watch?v=pRFXSjkpKWA",
- null)
+ 'https://www.youtube.com/watch?v=pRFXSjkpKWA',
+ null),
+ (2, null, null, 5, null, null, null);
 
 
 CREATE TABLE "resource_type" (
@@ -171,8 +172,25 @@ CREATE TABLE "question" (
   "id" SERIAL PRIMARY KEY,
   "section_id" int,
   "question_index" int,
-  "content" VARCHAR(10000)
+  "content" VARCHAR(150)
 );
+
+INSERT INTO "question" ( "section_id", "question_index", "content" )
+VALUES
+( 1, 0, 'How much do we really know about the mind?' ),
+( 2, 0, 'What do you think about most of the time?' ),
+( 2, 1, 'How many negative thoughts do you think about yourself?' ),
+( 2, 2, 'How many positive thoughts do you think about yourself?' ),
+( 2, 3, 'List things you are afraid of. Can you control these things?' ),
+( 2, 4, 'List some memories. Are they mainly positive or negative?' ),
+( 2, 5, 'How much sleep do you get at night?' ),
+( 2, 6, 'What time do you normally go to bed?' ),
+( 2, 7, 'What time do you normally get out of bed?' ),
+( 2, 8, 'Do you take any medication to sleep?' ),
+( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?' ),
+( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?'),
+( 2, 11, 'Do you eat or drink alcohol when upset of celebrating?' ),
+( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?' );
 
 CREATE TABLE "student_response" (
   "id" SERIAL PRIMARY KEY,

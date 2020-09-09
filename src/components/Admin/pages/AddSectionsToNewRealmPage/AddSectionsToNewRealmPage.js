@@ -133,7 +133,7 @@ class AddSectionsToNewRealmPage extends Component {
 
   render() {
     const { classes } = this.props;
-
+    console.log('rendering')
     return (
       <div>
         <center>
@@ -170,8 +170,8 @@ class AddSectionsToNewRealmPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.sections.map((section, id) => (
-                  <SectionToChoose key={id} section={section}/>
+                {this.props.sections.map((section) => (
+                  <SectionToChoose key={section.id} section={section}/>
                 ))}
               </TableBody>
             </Table>
@@ -191,8 +191,8 @@ class AddSectionsToNewRealmPage extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.props.chosenSections.map((section, id) => (
-                  <ChosenSection key={id} section={section}/>
+                {this.props.chosenSections.map((section) => (
+                  <ChosenSection key={section.id} section={section}/>
                 ))}
               </TableBody>
             </Table>

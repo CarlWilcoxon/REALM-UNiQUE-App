@@ -1,115 +1,20 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from "@material-ui/core/Button";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import {
+  withStyles,
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@material-ui/core';
+import styles from '../../../../themes/adminTheme.js';
+import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
+import ChosenSection from "../../components/ChosenSection/ChosenSection"
 
-
-const styles = (theme) => ({
-  button: {
-    font: " 300  16px  Poppins , sans-serif",
-    color: "white",
-    backgroundColor: "#457b9d",
-    "&:hover": {
-      backgroundColor: "#a8dadc",
-      color: "#457b9d",
-    },
-    "&:focus": {
-      backgroundColor: "a8dadc",
-      color: "#457b9d",
-    },
-    "text-transform": "capitalize",
-    "text-align": "center",
-    "margin-top": "20px",
-    "border-radius": "5px",
-  },
-  root: {
-    width: "40%",
-    marginTop: "5%",
-    marginBottom: "3%",
-    overflowX: "auto",
-  },
-  table: {
-    // minWidth: "50%",
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade("#ffffff", 0.15),
-    "&:hover": {
-      backgroundColor: fade("#ffffff", 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit,
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%",
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: 160,
-      "&:focus": {
-        width: 200,
-      },
-    },
-  },
-});
-
-let id = 0;
-function createData(name, type) {
-  id += 1;
-  return { id, name, type };
-}
-
-//SAMPLE DATA - DELETE AFTER NO LONGER NEEDED
-const rows = [
-  createData("Ted Talk No.5", "Video"),
-  createData("Text No.1", "Text"),
-  createData("Photo No.10", "Photo"),
-  createData("Ted Talk No.2", "Video"),
-  createData("Youtube Video No.12", "Video"),
-];
 
 class AddSectionsToNewRealmPage extends Component {
   componentDidMount = () => {
@@ -122,11 +27,11 @@ class AddSectionsToNewRealmPage extends Component {
 
   render() {
     const { classes } = this.props;
-
+    console.log('rendering')
     return (
       <div>
         <center>
-          <h1>Add Sections to New Realm</h1>
+          <h1 className={classes.header}>Add Sections to New Realm</h1>
           {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
@@ -144,56 +49,80 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
-          <Paper className={classes.root}>
+          <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell align="left" width="30%">
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
                     Section Name
                   </TableCell>
-                  <TableCell align="left" width="30%">
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
                     Resource Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
+                {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
                 {this.props.sections.map((section) => (
-                  <TableRow key={this.props.sections.id}>
-                    <TableCell align="left" component="th" scope="row">
-                      {section.title}
-                    </TableCell>
-                    <TableCell align="left">{section.type_name}</TableCell>
-                    <TableCell align="right" padding="checkbox">
-                      <Checkbox />
-                    </TableCell>
-                  </TableRow>
+                  <SectionToChoose key={section.id} section={section}/>
                 ))}
               </TableBody>
             </Table>
           </Paper>
-          <div>
+          <h2>Chosen Sections</h2>
+          <Paper className={classes.paper}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
+                    Section Name
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    width="30%"
+                    className={classes.tableHeader}
+                  >
+                    Resource Type
+                  </TableCell>
+                  <TableCell width="10%"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.chosenSections.map((section) => (
+                  <ChosenSection key={section.id} section={section}/>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+          <div className={classes.adminButtonContainer}>
             <Button
               variant="contained"
-              // className="submit-new-section"
-              // type="submit"
-              // name="submit"
+              type="submit"
+              name="submit"
               // onClick={this.submitSection}
-              className={classes.button}
-              classes={{ root: classes.button }}
+              className={classes.adminButtonAdd}
             >
               Name Realm
             </Button>
-          </div>
-          <div>
             <Button
               variant="contained"
-              // className="submit-new-section"
-              // type="submit"
-              // name="submit"
+              type="submit"
+              name="submit"
               // onClick={this.submitSection}
-              className={classes.button}
-              classes={{ root: classes.button }}
+              className={classes.adminButtonAdd}
             >
               Organize Sections
             </Button>
@@ -206,10 +135,11 @@ class AddSectionsToNewRealmPage extends Component {
 
 const mapReduxStateToProps = (reduxState) => ({
   sections: reduxState.allSections,
+  chosenSections: reduxState.chosenSections,
 });
 
 AddSectionsToNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapReduxStateToProps)(withStyles(styles)(AddSectionsToNewRealmPage));
+export default withStyles(styles)(connect(mapReduxStateToProps)(AddSectionsToNewRealmPage));

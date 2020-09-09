@@ -17,7 +17,7 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 // });
 
 // Get route for each Section
-router.get('/:section', async (req, res) => {
+router.get('/get-section/:section', async (req, res) => {
   console.log('Getting section for', req.user);
 
   const connection = await pool.connect()
@@ -138,10 +138,13 @@ router.post('/add', async (req, res) => {
 
 });
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
-router.get("/", (req, res) => {
+router.get("/all", (req, res) => {
   // router.get("/", rejectUnauthenticated, (req, res) => {
+
+  // get back all sections besides the form ones.
   const queryText = `SELECT * FROM "section"
-  JOIN "resource_type" ON "resource_type"."id" = "section"."type";`;
+  JOIN "resource_type" ON "resource_type"."id" = "section"."type"
+  WHERE type = 1 OR type = 2 OR type = 3;`;
 
   pool
     .query(queryText)

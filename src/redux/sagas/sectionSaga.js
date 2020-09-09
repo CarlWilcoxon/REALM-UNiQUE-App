@@ -28,7 +28,7 @@ function* submitSection(action) {
 
 function* getAllSections() {
   try {
-    const response = yield axios.get("/api/section/");
+    const response = yield axios.get("/api/section/all");
     yield put({ type: "SET_ALL_SECTIONS", payload: response.data });
     // console.log('test console:',response.data);
   } catch (error) {
@@ -47,7 +47,7 @@ function* getSection(action) {
     // allow the server session to recognize the user
     // If a user is logged in, this will return their information
     // from the server session (req.user)
-    const response = yield axios.get(`/api/section/${action.payload.sectionId}`, config);
+    const response = yield axios.get(`/api/section/get-section/${action.payload.sectionId}`, config);
 
     // now that the session has given us a user object
     // with an id and username set the client-side user object to let

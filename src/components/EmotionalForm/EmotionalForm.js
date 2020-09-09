@@ -20,7 +20,6 @@ class EmotionalForm extends Component {
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
-            // className={classes.leftSideFlex}
             item
             xs={12}
             sm={12}
@@ -357,53 +356,6 @@ class EmotionalForm extends Component {
                 />
               </div>
             </FormControl>
-            {/* <div>
-              What do you think about most of the time? <input></input>
-            </div>
-            <div>
-              How many negative thoughts do you think about yourself?{' '}
-              <input></input>
-            </div>
-            <div>
-              How many positive thoughts do you think about yourself?{' '}
-              <input></input>
-            </div>
-            <div>
-              List things you are afraid of. Can you control these things?{' '}
-              <input></input>
-            </div>
-            <div>
-              List some memories. Are they mainly positive or negative?{' '}
-              <input></input>
-            </div>
-            <div>
-              How much sleep do you get at night? <input></input>
-            </div>
-            <div>
-              What time do you normally go to bed? <input></input>
-            </div>
-            <div>
-              What time do you normally get out of bed? <input></input>
-            </div>
-            <div>
-              Do you take any medication to sleep? <input></input>
-            </div>
-            <div>
-              Do you look at your phone, watch tv, or work on a computer right
-              before bed? <input></input>
-            </div>
-            <div>
-              How do you face, deal with, and/or overcome responsibilities,
-              problems, or difficulties? <input></input>
-            </div>
-            <div>
-              Do you eat or drink alcohol when upset of celebrating?{' '}
-              <input></input>
-            </div>
-            <div>
-              Do you go to the gym when stressed out, or do you get depressed
-              and sleep? <input></input>
-            </div> */}
             <div className={classes.realmButtonContainer}>
               <Button className={classes.realmButton} onClick={this.complete}>
                 Submit

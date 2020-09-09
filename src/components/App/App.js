@@ -14,6 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
+import AdminLandingPage from '../Admin/pages/AdminLandingPage/AdminLandingPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
@@ -61,6 +62,7 @@ class App extends Component {
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
             />
+            <Route exact path="/admin-landing" component={AdminLandingPage} />
             <Route exact path="/edit-section" component={EditSectionPage} />
             <Route exact path="/view-realms" component={ViewRealmsPage} />
             <Route exact path="/view-sections" component={ViewSectionsPage} />

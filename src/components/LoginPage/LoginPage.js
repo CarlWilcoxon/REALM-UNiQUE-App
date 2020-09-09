@@ -11,7 +11,6 @@ import {
 } from '@material-ui/core';
 // import RegisterPage from '../RegisterPage/RegisterPage';
 import styles from '../../themes/loginRegisterTheme';
-import './LoginPage.css';
 
 class LoginPage extends Component {
   state = {

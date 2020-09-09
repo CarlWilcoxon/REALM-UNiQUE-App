@@ -34,19 +34,18 @@ class AddNewRealmPage extends Component {
   };
   // Be wary of constructors, they can over ride info
 
-  //SEND DATA TO SAGA
+  //StoreData as a saga
   submitRealm = (event) => {
     event.preventDefault();
+    console.log("this.state:", this.state)
     this.props.dispatch({
-      type: 'SUBMIT_REALM',
-      payload: {
-        name: this.state.name,
-        photoLink: this.state.photoLink,
-        description: this.state.description,
-        ///questions need to be added to payload
-      },
+        type: "SET_REALM",
+        payload: {
+            ...this.state,
+            questions: this.props.reduxState.newQuestions,
+        },
     });
-  };
+};
 
   //CAPTURE INPUTS IN STATE
 

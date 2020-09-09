@@ -162,7 +162,7 @@ class ViewRealmsPage extends Component {
                       className="submit-new-section"
                       // type="submit"
                       // name="submit"
-                      // onClick={}
+                      // onClick={this.handleViewClick}
                       className={classes.button}
                       classes={{ root: classes.button }}
                     >

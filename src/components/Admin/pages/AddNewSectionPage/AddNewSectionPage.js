@@ -95,7 +95,7 @@ class AddNewSectionPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.title}
-                    onChange={this.handleInputChangeFor('title')}
+                    onChange={this.handleInputChangeFor("title")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -125,7 +125,7 @@ class AddNewSectionPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.type}
-                    onChange={this.handleInputChangeFor('type')}
+                    onChange={this.handleInputChangeFor("type")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -143,7 +143,7 @@ class AddNewSectionPage extends Component {
                       classes: { root: classes.helperText },
                     }}
                   >
-                    {' '}
+                    {" "}
                     {type.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
@@ -165,7 +165,7 @@ class AddNewSectionPage extends Component {
                       variant="outlined"
                       className={classes.inputControlLink}
                       value={this.state.videoLink}
-                      onChange={this.handleInputChangeFor('videoLink')}
+                      onChange={this.handleInputChangeFor("videoLink")}
                       InputLabelProps={{
                         classes: {
                           root: classes.cssLabel,
@@ -183,7 +183,7 @@ class AddNewSectionPage extends Component {
                         classes: { root: classes.helperText },
                       }}
                     />
-                    {this.state.videoLink !== '' ? (
+                    {this.state.videoLink !== "" ? (
                       <VisibilityIcon
                         onClick={this.toggleResourcePreview}
                         className={
@@ -197,27 +197,27 @@ class AddNewSectionPage extends Component {
                     )}
                   </div>
 
-                  {this.state.preview && this.state.videoLink !== '' ? (
+                  {this.state.preview && this.state.videoLink !== "" ? (
                     <FormControl className={classes.formContainerVideo}>
-                      {' '}
+                      {" "}
                       <Fade>
                         <h1 className={classes.previewTitle}>
                           Resource Preview
                         </h1>
                         <div className={classes.sectionVideoContainer}>
                           <iframe
-                            title={'section video'}
+                            title={"section video"}
                             frameborder="0"
                             className={classes.sectionVideo}
                             // src="https://www.youtube.com/embed/pRFXSjkpKWA"
                             src={
                               this.state.videoLink
-                                .replace('watch?v=', 'embed/')
-                                .split('&feature=emb_title')[0]
+                                .replace("watch?v=", "embed/")
+                                .split("&feature=emb_title")[0]
                             }
                             // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
                           ></iframe>
-                        </div>{' '}
+                        </div>{" "}
                       </Fade>
                     </FormControl>
                   ) : (
@@ -238,7 +238,7 @@ class AddNewSectionPage extends Component {
                         rows={18}
                         className={classes.inputControlTextContent}
                         value={this.state.textContent}
-                        onChange={this.handleInputChangeFor('textContent')}
+                        onChange={this.handleInputChangeFor("textContent")}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -270,7 +270,7 @@ class AddNewSectionPage extends Component {
                         variant="outlined"
                         className={classes.inputControlLink}
                         value={this.state.imageLink}
-                        onChange={this.handleInputChangeFor('imageLink')}
+                        onChange={this.handleInputChangeFor("imageLink")}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -288,7 +288,7 @@ class AddNewSectionPage extends Component {
                           classes: { root: classes.helperText },
                         }}
                       />
-                      {this.state.imageLink !== '' ? (
+                      {this.state.imageLink !== "" ? (
                         <VisibilityIcon
                           onClick={this.toggleResourcePreview}
                           className={
@@ -302,7 +302,7 @@ class AddNewSectionPage extends Component {
                       )}
                     </div>
                   </FormControl>
-                  {this.state.preview && this.state.imageLink !== '' ? (
+                  {this.state.preview && this.state.imageLink !== "" ? (
                     <FormControl className={classes.formContainerVideo}>
                       <Fade>
                         <h1 className={classes.previewTitle}>
@@ -336,8 +336,8 @@ class AddNewSectionPage extends Component {
                   multiline
                   rows={9}
                   className={classes.inputControlContentDescription}
-                  value={this.state.textContent}
-                  onChange={this.handleInputChangeFor('textContent')}
+                  value={this.state.description}
+                  onChange={this.handleInputChangeFor("description")}
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -361,9 +361,9 @@ class AddNewSectionPage extends Component {
                 <FormControl className={classes.formContainerQuestion}>
                   {this.state.questionInputs.map((questionInputs, index) => (
                     <SectionQuestion
-                    key={index}
-                    index={index}
-                    handleInputChangeFor={this.handleInputChangeFor}
+                      key={index}
+                      index={index}
+                      handleInputChangeFor={this.handleInputChangeFor}
                     />
                   ))}
                 </FormControl>

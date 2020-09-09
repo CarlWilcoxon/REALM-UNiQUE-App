@@ -12,9 +12,9 @@ import {
   TableRow,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
-import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
-import ChosenSection from "../../components/ChosenSection/ChosenSection"
-
+import SectionToChoose from '../../components/SectionToChoose/SectionToChoose';
+import ChosenSection from '../../components/ChosenSection/ChosenSection';
+import { CSVLink } from 'react-csv';
 
 class AddSectionsToNewRealmPage extends Component {
   componentDidMount = () => {
@@ -22,12 +22,12 @@ class AddSectionsToNewRealmPage extends Component {
   };
 
   getAllSections = () => {
-    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+    this.props.dispatch({ type: 'FETCH_ALL_SECTIONS' });
   };
 
   render() {
     const { classes } = this.props;
-    console.log('rendering')
+    console.log('rendering');
     return (
       <div>
         <center>
@@ -73,7 +73,7 @@ class AddSectionsToNewRealmPage extends Component {
               <TableBody>
                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
                 {this.props.sections.map((section) => (
-                  <SectionToChoose key={section.id} section={section}/>
+                  <SectionToChoose key={section.id} section={section} />
                 ))}
               </TableBody>
             </Table>
@@ -102,7 +102,7 @@ class AddSectionsToNewRealmPage extends Component {
               </TableHead>
               <TableBody>
                 {this.props.chosenSections.map((section) => (
-                  <ChosenSection key={section.id} section={section}/>
+                  <ChosenSection key={section.id} section={section} />
                 ))}
               </TableBody>
             </Table>
@@ -142,4 +142,6 @@ AddSectionsToNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect(mapReduxStateToProps)(AddSectionsToNewRealmPage));
+export default withStyles(styles)(
+  connect(mapReduxStateToProps)(AddSectionsToNewRealmPage)
+);

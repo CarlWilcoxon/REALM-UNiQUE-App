@@ -10,6 +10,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import { CSVLink } from 'react-csv';
 
 class AdminLandingPage extends Component {
   render() {
@@ -37,17 +38,16 @@ class AdminLandingPage extends Component {
                 <Button className={classes.squareButtons}> Projects</Button>
                 <Button className={classes.squareButtons}>Realms</Button>
               </div>
-              <Button
-                variant="contained"
-                // color="primary"
-                // size="large"
-                className={classes.rectangleButton}
-                // className={classes.button}
-                //   startIcon={<GetAppIcon className={classes.downloadIcon} />}
-                //
+              <CSVLink
+                data={'data'}
+                className={classes.downloadButtonLink}
+                target="_blank"
               >
-                Download Public Data
-              </Button>
+                <Button variant="contained" className={classes.downloadButton}>
+                  <GetAppIcon className={classes.downloadIcon} />
+                  <span>Public Data</span>
+                </Button>
+              </CSVLink>
             </h1>
           </Grid>
         </Grid>

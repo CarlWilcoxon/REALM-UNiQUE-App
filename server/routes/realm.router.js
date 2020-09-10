@@ -169,13 +169,5 @@ module.exports = router;
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
 router.post('/addnewrealm', (req, res) => {
   console.log( "in post route:", req.body );
-  const query = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
-  VALUES ($1, $2, $3)`; 
-  const values = [ req.body.name, req.body.description, req.body.photoLink,];
-  pool.query( query, values ).then( ( results )=>{
-      res.sendStatus( 201 );
-  }).catch( ( err )=>{
-      console.log( 'ERROR with INSERT:', err );
-      res.sendStatus( 500 );
-  })
+
 });

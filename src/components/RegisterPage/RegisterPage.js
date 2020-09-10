@@ -35,7 +35,7 @@ class RegisterPage extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-    console.log("this.state:", this.state);
+    console.log('this.state:', this.state);
     if (
       this.state.username &&
       this.state.password &&
@@ -62,11 +62,7 @@ class RegisterPage extends Component {
     const { classes } = this.props;
 
     return (
-      <Grid
-      id="RegisterPageContainer"
-      container
-      spacing={0}
-      >
+      <Grid id="RegisterPageContainer" container spacing={0}>
         {/* <video
           autoPlay
           playsinline
@@ -81,15 +77,15 @@ class RegisterPage extends Component {
           }
           src="https://github.com/brunoreyes/videos/blob/master/goodVideo.mp4?raw=true"
         /> */}
-        {/* <img
+        <img
           alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
-              ? classes.videoContainer
-              : classes.videoContainerMobile
+              ? classes.videoContainerRegister
+              : classes.videoContainerRegisterMobile
           }
           src="/images/scenery-2846778.jpg"
-        /> */}
+        />
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0; fullscreen"
           width={640"
@@ -617,10 +613,7 @@ class RegisterPage extends Component {
               variant="outlined"
               className={classes.formControlRegistrationSelector}
             >
-              <InputLabel
-                className={classes.categorySelector}
-                label="Gender *"
-              >
+              <InputLabel className={classes.categorySelector} label="Gender *">
                 Gender*
               </InputLabel>
               <Select
@@ -653,19 +646,14 @@ class RegisterPage extends Component {
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
                 <MenuItem value="Other">Other</MenuItem>
-                <MenuItem value="Prefer not to say">
-                  Prefer not to say
-                </MenuItem>
+                <MenuItem value="Prefer not to say">Prefer not to say</MenuItem>
               </Select>
             </FormControl>
             <FormControl
               variant="outlined"
               className={classes.formControlRegistration}
             >
-              <InputLabel
-                className={classes.categorySelector}
-                label="Income *"
-              >
+              <InputLabel className={classes.categorySelector} label="Income *">
                 Income*
               </InputLabel>
               <Select
@@ -810,7 +798,6 @@ class RegisterPage extends Component {
               Login
             </Button>
           </form>
-
         </Grid>
       </Grid>
     );

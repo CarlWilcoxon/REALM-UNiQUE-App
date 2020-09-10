@@ -24,4 +24,3 @@ const newQuestions = (state = [], action) => {
 };
 
 export default newQuestions;
-``

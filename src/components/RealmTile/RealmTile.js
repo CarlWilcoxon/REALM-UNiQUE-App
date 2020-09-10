@@ -7,16 +7,7 @@ import {
   GridList,
   GridListTile,
 } from '@material-ui/core';
-// import {
-//   AttachMoneyIcon,
-//   EmojiEmotionsIcon,
-//   FitnessCenterIcon,
-//   EcoIcon,
-//   PlaceIcon,
-//   EmojiPeopleIcon,
-//   EmojiObjectsIcon,
-//   SpaIcon
-// } from '@material-ui/icons';
+
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';

@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 /**
  * GET route template
  */
-  router.get('/', rejectUnauthenticated, (req, res) => {
+  router.get('/get-realm/:realm', rejectUnauthenticated, (req, res) => {
   console.log('Getting realm for', req.user);
   const queryText = `SELECT * FROM "user"
                       JOIN "project" ON "user"."project_id" = "project"."id"

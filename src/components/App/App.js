@@ -36,6 +36,7 @@ import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinishe
 import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
 import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
 import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
+import RealmHome from '../RealmHome/RealmHome';
 import './App.css';
 
 class App extends Component {
@@ -76,6 +77,8 @@ class App extends Component {
             <Route exact path="/add-client" component={AddNewClientPage} />
             <Route exact path="/view-clients" component={ViewClientsPage} />
             <Route exact path="/edit-client" component={EditClientPage} />
+
+            <Route exact path="/realm-home" component={RealmHome} />
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
             <Route exact path="/section/:section" component={Section} />

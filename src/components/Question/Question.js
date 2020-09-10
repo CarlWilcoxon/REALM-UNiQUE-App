@@ -11,7 +11,7 @@ class Question extends Component {
     });
   }
 
-  questionChangeHandler=
+  // questionChangeHandler=
 
 
   // onClickHandler = () => {

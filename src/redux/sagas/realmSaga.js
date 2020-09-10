@@ -11,6 +11,8 @@ function* getAllRealms() {
   }
 }
 
+
+
 function* realmSaga() {
   yield takeLatest("FETCH_ALL_REALMS", getAllRealms);
 }

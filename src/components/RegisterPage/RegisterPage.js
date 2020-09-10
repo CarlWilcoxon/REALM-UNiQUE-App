@@ -36,6 +36,7 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
     console.log("this.state:", this.state);
+    // make sure password and confirm password are the same
     if (
       this.state.username &&
       this.state.password &&
@@ -708,7 +709,7 @@ class RegisterPage extends Component {
             >
               <InputLabel
                 className={classes.categorySelector}
-                label="Education * "
+                label="Education *"
               >
                 Education*
               </InputLabel>
@@ -789,6 +790,7 @@ class RegisterPage extends Component {
               </div>
             </FormControl>
 
+            {/* Submit button */}
             <div className={classes.submitButtonContainer}>
               <Button
                 disableElevation
@@ -800,6 +802,7 @@ class RegisterPage extends Component {
               </Button>
             </div>
 
+            {/* Switch to login mode button */}
             <Button
               component="Link"
               className={classes.register}
@@ -810,7 +813,6 @@ class RegisterPage extends Component {
               Login
             </Button>
           </form>
-
         </Grid>
       </Grid>
     );

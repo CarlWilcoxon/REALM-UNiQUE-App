@@ -281,13 +281,13 @@ class AddNewRealmPage extends Component {
                 </FormControl>
               </div>
               <div className={classes.adminButtonContainer}>
-                <Button
+                {/* <Button
                   variant="contained"
                   onClick={this.appendNewQuestion}
                   className={classes.adminButton}
                 >
                   Add Question
-                </Button>
+                </Button> */}
 
                 <Button
                   variant="contained"

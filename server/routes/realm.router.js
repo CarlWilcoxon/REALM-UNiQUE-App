@@ -42,8 +42,8 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 // });
 
 
-// Route for creating a new Realm
-router.post('/', rejectUnauthenticated, async (req, res) => {
+
+router.post('/', rejectUnauthenticated,  async (req, res) => {
   const realmName = req.body.realmName;
   const coverPhotoLink = req.body.coverPhotoLink;
   const realmDescription = req.body.realmDescription;
@@ -165,3 +165,19 @@ module.exports = router;
 //     connection.release()
 //   }
 // });
+
+//POST ROUTE FOR CREATING A NEW REALM
+router.post('/add', (req, res) => {
+  console.log( "in post route:", req.body );
+  const query = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+  VALUES ($1, $2, $3)`; 
+  const values = [ req.body.name, req.body.description, req.body.photoLink,];
+  pool.query( query, values ).then( ( results )=>{
+      res.sendStatus( 201 );
+  }).catch( ( err )=>{
+      console.log( 'ERROR with INSERT:', err );
+      res.sendStatus( 500 );
+  })
+});
+`INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+    VALUES ($1, $2, $3)` 

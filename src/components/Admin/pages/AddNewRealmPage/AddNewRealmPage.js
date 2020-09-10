@@ -72,10 +72,6 @@ class AddNewRealmPage extends Component {
     });
   };
 
-  handleSelectSectionClick = (sectionId) => {
-    this.props.history.push(`/add-sections-to-realm`);
-  };
-
   render() {
     const { classes } = this.props;
 
@@ -297,7 +293,6 @@ class AddNewRealmPage extends Component {
                   type="submit"
                   name="submit"
                   onClick={this.submitRealm}
-                  //handleSelectSectionClick
                   className={classes.adminButton}
                 >
                   Select Sections

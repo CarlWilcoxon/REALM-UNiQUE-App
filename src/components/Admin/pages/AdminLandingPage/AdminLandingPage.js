@@ -15,8 +15,7 @@ import { CSVLink } from 'react-csv';
 class AdminLandingPage extends Component {
   render() {
     const { classes } = this.props;
-
-    return (
+ return (
       <div>
         {' '}
         <Grid container spacing={0} alignItems="center" justify="center">

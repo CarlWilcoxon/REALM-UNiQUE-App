@@ -45,18 +45,18 @@ class AddNewSectionPage extends Component {
   //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
-    console.log("this.state:", this.state);
+    console.log('this.state:', this.state);
     this.props.dispatch({
-      type: "SUBMIT_SECTION",
+      type: 'SUBMIT_SECTION',
       payload: {
         ...this.state,
         questions: this.props.reduxState.newQuestions,
-      }
+      },
     });
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log("old state:", this.state);
+    console.log('old state:', this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
@@ -68,8 +68,9 @@ class AddNewSectionPage extends Component {
     this.setState({
       questionInputs: [
         ...this.state.questionInputs,
-        this.state.questionInputs.length
-    ]    });
+        this.state.questionInputs.length,
+      ],
+    });
   };
   toggleResourcePreview = () => {
     console.log('You clicked the preview icon');
@@ -92,10 +93,11 @@ class AddNewSectionPage extends Component {
                     required
                     label="Section Name"
                     helperText="character limit: 30"
+                    inputProps={{ maxLength: 30 }}
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.title}
-                    onChange={this.handleInputChangeFor("title")}
+                    onChange={this.handleInputChangeFor('title')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -125,7 +127,7 @@ class AddNewSectionPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.type}
-                    onChange={this.handleInputChangeFor("type")}
+                    onChange={this.handleInputChangeFor('type')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -143,7 +145,7 @@ class AddNewSectionPage extends Component {
                       classes: { root: classes.helperText },
                     }}
                   >
-                    {" "}
+                    {' '}
                     {type.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
@@ -165,7 +167,7 @@ class AddNewSectionPage extends Component {
                       variant="outlined"
                       className={classes.inputControlLink}
                       value={this.state.videoLink}
-                      onChange={this.handleInputChangeFor("videoLink")}
+                      onChange={this.handleInputChangeFor('videoLink')}
                       InputLabelProps={{
                         classes: {
                           root: classes.cssLabel,
@@ -183,7 +185,7 @@ class AddNewSectionPage extends Component {
                         classes: { root: classes.helperText },
                       }}
                     />
-                    {this.state.videoLink !== "" ? (
+                    {this.state.videoLink !== '' ? (
                       <VisibilityIcon
                         onClick={this.toggleResourcePreview}
                         className={
@@ -197,27 +199,27 @@ class AddNewSectionPage extends Component {
                     )}
                   </div>
 
-                  {this.state.preview && this.state.videoLink !== "" ? (
+                  {this.state.preview && this.state.videoLink !== '' ? (
                     <FormControl className={classes.formContainerVideo}>
-                      {" "}
+                      {' '}
                       <Fade>
                         <h1 className={classes.previewTitle}>
                           Resource Preview
                         </h1>
                         <div className={classes.sectionVideoContainer}>
                           <iframe
-                            title={"section video"}
+                            title={'section video'}
                             frameborder="0"
                             className={classes.sectionVideo}
                             // src="https://www.youtube.com/embed/pRFXSjkpKWA"
                             src={
                               this.state.videoLink
-                                .replace("watch?v=", "embed/")
-                                .split("&feature=emb_title")[0]
+                                .replace('watch?v=', 'embed/')
+                                .split('&feature=emb_title')[0]
                             }
                             // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
                           ></iframe>
-                        </div>{" "}
+                        </div>{' '}
                       </Fade>
                     </FormControl>
                   ) : (
@@ -238,7 +240,7 @@ class AddNewSectionPage extends Component {
                         rows={18}
                         className={classes.inputControlTextContent}
                         value={this.state.textContent}
-                        onChange={this.handleInputChangeFor("textContent")}
+                        onChange={this.handleInputChangeFor('textContent')}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -270,7 +272,7 @@ class AddNewSectionPage extends Component {
                         variant="outlined"
                         className={classes.inputControlLink}
                         value={this.state.imageLink}
-                        onChange={this.handleInputChangeFor("imageLink")}
+                        onChange={this.handleInputChangeFor('imageLink')}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -288,7 +290,7 @@ class AddNewSectionPage extends Component {
                           classes: { root: classes.helperText },
                         }}
                       />
-                      {this.state.imageLink !== "" ? (
+                      {this.state.imageLink !== '' ? (
                         <VisibilityIcon
                           onClick={this.toggleResourcePreview}
                           className={
@@ -302,7 +304,7 @@ class AddNewSectionPage extends Component {
                       )}
                     </div>
                   </FormControl>
-                  {this.state.preview && this.state.imageLink !== "" ? (
+                  {this.state.preview && this.state.imageLink !== '' ? (
                     <FormControl className={classes.formContainerVideo}>
                       <Fade>
                         <h1 className={classes.previewTitle}>
@@ -337,7 +339,7 @@ class AddNewSectionPage extends Component {
                   rows={9}
                   className={classes.inputControlContentDescription}
                   value={this.state.description}
-                  onChange={this.handleInputChangeFor("description")}
+                  onChange={this.handleInputChangeFor('description')}
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -409,49 +411,46 @@ export default withStyles(styles)(
   connect(mapReduxStateToProps)(AddNewSectionPage)
 );
 
+// {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
+// <div>
+//   <TextField
+//     select
+//     required
+//     label="Resource Type"
+//     variant="outlined"
+//     className={classes.textField}
+//     value={this.state.type}
+//     onChange={this.handleInputChangeFor("type")}
+//     SelectProps={{
+//       MenuProps: {
+//         className: classes.menu,
+//       },
+//     }}
+//     margin="normal"
+//   >
+//     {type.map((option) => (
+//       <MenuItem key={option.value} value={option.value}>
+//         {option.label}
+//       </MenuItem>
+//     ))}
+//   </TextField>
+// </div>
+// {/* DYNAMIC INFORMATION SECTION */}
+// {/* 1=video, 2=text, 3=image */}
+// {this.state.type === 1 ? (
+//   <div>
+//     <TextField
+//       required
+//       label="Video Link"
+//       variant="outlined"
+//       type="text"
+//       value={this.state.videoLink}
+//       onChange={this.handleInputChangeFor("videoLink")}
+//       className={classes.textField}
+//       margin="normal"
 
-
-              // {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
-              // <div>
-              //   <TextField
-              //     select
-              //     required
-              //     label="Resource Type"
-              //     variant="outlined"
-              //     className={classes.textField}
-              //     value={this.state.type}
-              //     onChange={this.handleInputChangeFor("type")}
-              //     SelectProps={{
-              //       MenuProps: {
-              //         className: classes.menu,
-              //       },
-              //     }}
-              //     margin="normal"
-              //   >
-              //     {type.map((option) => (
-              //       <MenuItem key={option.value} value={option.value}>
-              //         {option.label}
-              //       </MenuItem>
-              //     ))}
-              //   </TextField>
-              // </div>
-              // {/* DYNAMIC INFORMATION SECTION */}
-              // {/* 1=video, 2=text, 3=image */}
-              // {this.state.type === 1 ? (
-              //   <div>
-              //     <TextField
-              //       required
-              //       label="Video Link"
-              //       variant="outlined"
-              //       type="text"
-              //       value={this.state.videoLink}
-              //       onChange={this.handleInputChangeFor("videoLink")}
-              //       className={classes.textField}
-              //       margin="normal"
-
-
-              //       variant="outlined"
-              //       value={this.state.description}
-              //       onChange={this.handleInputChangeFor("description")}
-              //       className={classes.textField}
-              //       margin="normal"
+//       variant="outlined"
+//       value={this.state.description}
+//       onChange={this.handleInputChangeFor("description")}
+//       className={classes.textField}
+//       margin="normal"

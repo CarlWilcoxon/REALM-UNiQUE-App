@@ -1,141 +1,154 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import styles from '../../../../themes/adminTheme.js';
+import {
+  withStyles,
+  FormControl,
+  Grid,
+  TextField,
+  Button,
+  MenuItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import ImageIcon from '@material-ui/icons/Image';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import DescriptionIcon from '@material-ui/icons/Description';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+// import Checkbox from "@material-ui/core/Checkbox";
 // import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";
 // import InputBase from "@material-ui/core/InputBase";
 // import SearchIcon from "@material-ui/icons/Search";
 
-const styles = (theme) => ({
-  button: {
-    font: " 300  16px  Poppins , sans-serif",
-    color: "white",
-    backgroundColor: "#457b9d",
-    "&:hover": {
-      backgroundColor: "#a8dadc",
-      color: "#457b9d",
-    },
-    "&:focus": {
-      backgroundColor: "a8dadc",
-      color: "#457b9d",
-    },
-    "text-transform": "capitalize",
-    "text-align": "center",
-    "margin-top": "10px",
-    "border-radius": "5px",
-  },
-  root: {
-    width: "60%",
-    marginTop: "5%",
-    marginBottom: "3%",
-    overflowX: "auto",
-  },
-  table: {
-    // minWidth: "50%",
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade("#ffffff", 0.15),
-    "&:hover": {
-      backgroundColor: fade("#ffffff", 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing.unit,
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    width: theme.spacing.unit * 9,
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-    width: "100%",
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: 160,
-      "&:focus": {
-        width: 200,
-      },
-    },
-  },
-});
+// const styles = (theme) => ({
+//   button: {
+//     font: ' 300  16px  Poppins , sans-serif',
+//     color: 'white',
+//     backgroundColor: '#457b9d',
+//     '&:hover': {
+//       backgroundColor: '#a8dadc',
+//       color: '#457b9d',
+//     },
+//     '&:focus': {
+//       backgroundColor: 'a8dadc',
+//       color: '#457b9d',
+//     },
+//     'text-transform': 'capitalize',
+//     'text-align': 'center',
+//     'margin-top': '10px',
+//     'border-radius': '5px',
+//   },
+//   root: {
+//     width: '60%',
+//     marginTop: '5%',
+//     marginBottom: '3%',
+//     overflowX: 'auto',
+//   },
+//   table: {
+//     // minWidth: "50%",
+//   },
+//   grow: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginLeft: -12,
+//     marginRight: 20,
+//   },
+//   title: {
+//     display: 'none',
+//     [theme.breakpoints.up('sm')]: {
+//       display: 'block',
+//     },
+//   },
+//   search: {
+//     position: 'relative',
+//     borderRadius: theme.shape.borderRadius,
+//     backgroundColor: fade('#ffffff', 0.15),
+//     '&:hover': {
+//       backgroundColor: fade('#ffffff', 0.25),
+//     },
+//     marginLeft: 0,
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//       marginLeft: theme.spacing.unit,
+//       width: 'auto',
+//     },
+//   },
+//   searchIcon: {
+//     width: theme.spacing.unit * 9,
+//     height: '100%',
+//     position: 'absolute',
+//     pointerEvents: 'none',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   inputRoot: {
+//     color: 'inherit',
+//     width: '100%',
+//   },
+//   inputInput: {
+//     paddingTop: theme.spacing.unit,
+//     paddingRight: theme.spacing.unit,
+//     paddingBottom: theme.spacing.unit,
+//     paddingLeft: theme.spacing.unit * 10,
+//     transition: theme.transitions.create('width'),
+//     width: '100%',
+//     [theme.breakpoints.up('sm')]: {
+//       width: 160,
+//       '&:focus': {
+//         width: 200,
+//       },
+//     },
+//   },
+// });
 
 class ViewSectionsPage extends Component {
-
   componentDidMount = () => {
     this.getAllSections();
   };
 
   getAllSections = () => {
-    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+    this.props.dispatch({ type: 'FETCH_ALL_SECTIONS' });
   };
 
   handleClick = (sectionId) => {
     this.props.history.push(`/preview/${sectionId}`);
-    console.log("Clicked View Section");
+    console.log('Clicked View Section');
   };
 
-    render() {
-        const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
 
-        return (
+    return (
+      <div>
+        <center>
+          <h1 className={classes.headerView}>Sections</h1>
+          {/* {JSON.stringify(this.props.sections)} */}
           <div>
-            <center>
-              <h1>View Sections</h1>
-              {/* {JSON.stringify(this.props.sections)} */}
-              <div>
-                <Button
-                  variant="contained"
-                  className="submit-new-section"
-                  // type="submit"
-                  // name="submit"
-                  // onClick={this.submitSection}
-                  className={classes.button}
-                  classes={{ root: classes.button }}
-                >
-                  + Add New Section
-                </Button>
-              </div>
-              {/* <AppBar position="static">
+            <Button
+              variant="contained"
+              className="submit-new-section"
+              // type="submit"
+              // name="submit"
+              // onClick={this.submitSection}
+              className={classes.adminButtonView}
+              classes={{ root: classes.button }}
+            >
+              <AddIcon className={classes.addSectionViewIcon} /> New Section
+            </Button>
+          </div>
+          {/* <AppBar position="static">
                         <Toolbar>
                             <div className={classes.grow} />
                             <div className={classes.search}>
@@ -152,54 +165,88 @@ class ViewSectionsPage extends Component {
                             </div>
                         </Toolbar>
                     </AppBar> */}
-              <Paper className={classes.root}>
-                <Table className={classes.table}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell align="left" width="40%%">
-                        Section Name
-                      </TableCell>
-                      <TableCell align="left" width="20%">
-                        Resource Type
-                      </TableCell>
-                      <TableCell width="15%"></TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {this.props.sections.map((section) => (
-                      <TableRow key={section.id}>
-                        <TableCell align="left" component="th" scope="row">
-                          {section.title}
-                        </TableCell>
-                        <TableCell align="left">{section.type_name}</TableCell>
-                        <Button
-                          variant="contained"
-                          className="submit-new-section"
-                          // type="submit"
-                          // name="submit"
-                          onClick={(event)=> this.handleClick(section.id)}
-                          className={classes.button}
-                          classes={{ root: classes.button }}
-                        >
-                          View Section
-                        </Button>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Paper>
-            </center>
-          </div>
-        );
-    }
+          <Paper className={classes.paperView}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    width="40%%"
+                    className={classes.tableHeader}
+                  >
+                    Name
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    width="20%"
+                    className={classes.tableHeader}
+                  >
+                    Type
+                  </TableCell>
+                  <TableCell width="15%"></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.props.sections.map((section) => (
+                  <TableRow key={section.id}>
+                    <TableCell
+                      className={classes.tableCell}
+                      align="left"
+                      component="th"
+                      scope="row"
+                    >
+                      {section.title}
+                    </TableCell>
+                    <TableCell align="left">
+                      {section.type_name === 'image' ? (
+                        <ImageIcon className={classes.addSectionResourceIcon} />
+                      ) : (
+                        ''
+                      )}
+                      {section.type_name === 'video' ? (
+                        <YouTubeIcon
+                          className={classes.addSectionResourceIcon}
+                        />
+                      ) : (
+                        ''
+                      )}
+                      {section.type_name === 'text' ? (
+                        <DescriptionIcon
+                          className={classes.addSectionResourceIcon}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </TableCell>{' '}
+                    <IconButton
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      onClick={(event) => this.handleClick(section.id)}
+                      aria-label="delete"
+                      className={classes.viewSectionIcon}
+                    >
+                      <VisibilityIcon fontSize="large" />
+                    </IconButton>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
+        </center>
+      </div>
+    );
+  }
 }
 
 ViewSectionsPage.propTypes = {
-    classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 const mapReduxStateToProps = (reduxState) => ({
-  sections: reduxState.allSections
+  sections: reduxState.allSections,
 });
 
-export default connect(mapReduxStateToProps)(withStyles(styles)(ViewSectionsPage));
+export default connect(mapReduxStateToProps)(
+  withStyles(styles)(ViewSectionsPage)
+);

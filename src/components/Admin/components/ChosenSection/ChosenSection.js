@@ -25,22 +25,30 @@ class ChosenSection extends Component {
     const { classes } = this.props;
     return (
       <TableRow>
-        <TableCell align="left" component="th" scope="row">
+        <TableCell
+          align="left"
+          component="th"
+          scope="row"
+          className={classes.tableCell}
+        >
           {this.props.section.title}
         </TableCell>
-
         <TableCell className={classes.tableCellType} align="left">
-          {this.props.section.type_name === 'image' ? <ImageIcon /> : ''}
-          {this.props.section.type_name === 'video' ? <YouTubeIcon /> : ''}
-          {this.props.section.type_name === 'text' ? (
-            <DescriptionIcon className={classes.downloadIcon} />
+          {this.props.section.type_name === 'image' ? (
+            <ImageIcon className={classes.addSectionResourceIcon} />
           ) : (
             ''
           )}
-{/* //         <TableCell className={classes.tableCell} align="left">
-//           {this.props.section.type_name === 'image'? <ImageIcon /> : ''}
-//           {this.props.section.type_name === 'video'? <YouTubeIcon /> : ''}
-//           {this.props.section.type_name === 'text'? <DescriptionIcon /> : ''} */}
+          {this.props.section.type_name === 'video' ? (
+            <YouTubeIcon className={classes.addSectionResourceIcon} />
+          ) : (
+            ''
+          )}
+          {this.props.section.type_name === 'text' ? (
+            <DescriptionIcon className={classes.addSectionResourceIcon} />
+          ) : (
+            ''
+          )}
         </TableCell>
         <TableCell align="right">
           <IconButton
@@ -51,7 +59,10 @@ class ChosenSection extends Component {
             aria-label="delete"
             className={classes.margin}
           >
-            <RemoveIcon fontSize="large" />
+            <RemoveIcon
+              fontSize="large"
+              className={classes.removeSectionResourceIcon}
+            />
           </IconButton>
         </TableCell>
       </TableRow>

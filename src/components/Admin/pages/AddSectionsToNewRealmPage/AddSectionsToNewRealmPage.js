@@ -49,6 +49,7 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
+          <h1 className={classes.headerLess}>All Sections</h1>
           <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
@@ -58,14 +59,14 @@ class AddSectionsToNewRealmPage extends Component {
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Section Name
+                    Name
                   </TableCell>
                   <TableCell
                     align="left"
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Resource Type
+                    Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>
                 </TableRow>
@@ -78,7 +79,7 @@ class AddSectionsToNewRealmPage extends Component {
               </TableBody>
             </Table>
           </Paper>
-          <h2>Chosen Sections</h2>
+          <h1 className={classes.headerLess}>Chosen Sections</h1>
           <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
@@ -88,14 +89,14 @@ class AddSectionsToNewRealmPage extends Component {
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Section Name
+                    Name
                   </TableCell>
                   <TableCell
                     align="left"
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Resource Type
+                    Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>
                 </TableRow>

@@ -179,5 +179,3 @@ router.post('/add', (req, res) => {
       res.sendStatus( 500 );
   })
 });
-`INSERT INTO "realm" ("realm_name", "description", "cover_photo")
-    VALUES ($1, $2, $3)` 

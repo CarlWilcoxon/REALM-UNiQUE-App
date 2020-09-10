@@ -19,13 +19,7 @@ class EmotionalForm extends Component {
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-          >
+          <Grid item xs={12} sm={12} md={6} lg={6}>
             <h3 className={classes.realmTitle}>Emotional Realm Form</h3>
             <FormControl className={classes.formContainer}>
               <div className={classes.QandAContainer}>
@@ -341,8 +335,8 @@ class EmotionalForm extends Component {
                   // label="What do you think about most of the time?"
                   // helperText="Required"
                   variant="outlined"
-                  // multiline
-                  // rows={2}
+                  multiline
+                  rows={2}
                   className={classes.inputControl}
                   // value={this.state.password}
                   // onChange={this.handleInputChangeFor('password')}

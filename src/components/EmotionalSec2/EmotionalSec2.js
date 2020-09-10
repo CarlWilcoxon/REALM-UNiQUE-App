@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import { withStyles, Grid, Button, FormControl, Box } from '@material-ui/core';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import Rating from '@material-ui/lab/Rating';
+import {
+  withStyles,
+  Grid,
+  Button,
+  FormControl,
+  TextField,
+} from '@material-ui/core';
 
 class EmotionalSec2 extends Component {
   saveAndContinue = () => this.props.history.push('/EmotionalSec3');
@@ -15,34 +15,6 @@ class EmotionalSec2 extends Component {
   render() {
     const { classes } = this.props;
 
-    const customIcons: {
-      [index: string]: { icon: React.ReactElement, label: string },
-    } = {
-      1: {
-        icon: <SentimentVeryDissatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Very Dissatisfied',
-      },
-      2: {
-        icon: <SentimentDissatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Dissatisfied',
-      },
-      3: {
-        icon: <SentimentSatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Neutral',
-      },
-      4: {
-        icon: <SentimentSatisfiedAltIcon className={classes.ratingIcon} />,
-        label: 'Satisfied',
-      },
-      5: {
-        icon: <SentimentVerySatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Very Satisfied',
-      },
-    };
-    function IconContainer(props: IconContainerProps) {
-      const { value, ...other } = props;
-      return <span {...other}>{customIcons[value].icon}</span>;
-    }
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
@@ -90,16 +62,27 @@ class EmotionalSec2 extends Component {
             <FormControl className={classes.formContainerSection}>
               <div className={classes.QandAContainerSection}>
                 <div className={classes.sectionQuestion}>
-                  How did you feel about this content?
+                  How much do we really know about the mind?
                 </div>
-                <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Rating
-                    name="customized-icons"
-                    // defaultValue={2}
-                    getLabelText={(value: number) => customIcons[value].label}
-                    IconContainerComponent={IconContainer}
-                  />
-                </Box>
+
+                <TextField
+                  id="outlined-helperText"
+                  // label="What do you think about most of the time?"
+                  // helperText="Required"
+                  variant="outlined"
+                  multiline
+                  rows={2}
+                  className={classes.inputControlSection}
+                  // value={this.state.password}
+                  // onChange={this.handleInputChangeFor('password')}
+                  InputProps={{
+                    classes: {
+                      input: classes.input,
+                      root: classes.cssOutlinedInput,
+                      notchedOutline: classes.notchedOutline,
+                    },
+                  }}
+                />
               </div>
               <div className={classes.realmButtonContainer}>
                 <Button

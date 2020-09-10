@@ -23,6 +23,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import DescriptionIcon from '@material-ui/icons/Description';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // import Checkbox from "@material-ui/core/Checkbox";
 // import AppBar from "@material-ui/core/AppBar";
@@ -129,7 +130,13 @@ class ViewSectionsPage extends Component {
   handleNewSectionClick = () => {
     this.props.history.push(`/add-section`);
   };
-
+  handleDeleteSectionClick = (sectionId) => {
+    console.log('delete was clicked!', sectionId);
+    this.props.dispatch({
+      type: 'DELETE_SECTION',
+      payload: sectionId,
+    });
+  };
   render() {
     const { classes } = this.props;
 
@@ -183,6 +190,11 @@ class ViewSectionsPage extends Component {
                   >
                     Type
                   </TableCell>
+                  <TableCell
+                    align="left"
+                    width="20%"
+                    className={classes.tableHeader}
+                  ></TableCell>
                   <TableCell width="15%"></TableCell>
                 </TableRow>
               </TableHead>
@@ -217,16 +229,34 @@ class ViewSectionsPage extends Component {
                       ) : (
                         ""
                       )}
-                    </TableCell>{" "}
-                    <IconButton
-                      variant="contained"
-                      size="large"
-                      onClick={(event) => this.handleClick(section.id)}
-                      aria-label="delete"
-                      className={classes.viewSectionIcon}
-                    >
-                      <VisibilityIcon fontSize="large" />
-                    </IconButton>
+
+                    </TableCell>{' '}
+                    <TableCell>
+                      <IconButton
+                        variant="contained"
+                        size="large"
+                        onClick={() => this.handleClick(section.id)}
+                        // onClick={(event) => this.handleClick(section.id)}
+                        aria-label="delete"
+                        className={classes.viewSectionIcon}
+                      >
+                        <VisibilityIcon fontSize="large" />
+                      </IconButton>
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
+                        variant="contained"
+                        size="large"
+                        // onClick={this.handleDeleteClick}
+                        aria-label="delete"
+                        className={classes.viewSectionIcon}
+                        onClick={(event) =>
+                          this.handleDeleteSectionClick(section.id)
+                        }
+                      >
+                        <DeleteIcon fontSize="large" />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

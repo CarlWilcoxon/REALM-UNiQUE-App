@@ -296,19 +296,19 @@ const styles = (theme) => ({
     color: '#1f3556',
   },
   paper: {
-    width: '20%',
+    width: '25%',
     marginTop: '5%',
     marginBottom: '3%',
     overflowX: 'auto',
   },
   paperView: {
-    width: '30%',
+    width: '40%',
     marginTop: '5%',
     marginBottom: '3%',
     overflowX: 'auto',
   },
   table: {
-    minWidth: '25%',
+    minWidth: '35%',
   },
   tableHeader: { font: '500 18px Poppins, sans-serif' },
   tableCell: { font: '400 16px Poppins, sans-serif' },

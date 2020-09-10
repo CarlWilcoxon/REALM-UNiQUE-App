@@ -131,7 +131,7 @@ class ViewRealmsPage extends Component {
               // type="submit"
               // name="submit"
               // onClick={this.submitSection}
-              className={classes.adminButtonView}
+              className={classes.adminButtonPreview}
               classes={{ root: classes.button }}
               onClick={this.handleNewRealmClick}
             >

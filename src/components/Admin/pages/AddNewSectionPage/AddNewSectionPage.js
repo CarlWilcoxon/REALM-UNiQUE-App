@@ -315,7 +315,7 @@ class AddNewSectionPage extends Component {
                             <img
                               className={classes.sectionImage}
                               src={this.state.imageLink}
-                              alt="your image"
+                              alt="resource preview"
                             />
                           </div>
                         </div>

@@ -42,7 +42,7 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 // });
 
 
-
+//OLD DON'T USE
 router.post('/', rejectUnauthenticated,  async (req, res) => {
   const realmName = req.body.realmName;
   const coverPhotoLink = req.body.coverPhotoLink;

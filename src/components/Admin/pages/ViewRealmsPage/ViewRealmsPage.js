@@ -110,7 +110,11 @@ class ViewRealmsPage extends Component {
   };
 
   getAllRealms = () => {
-    this.props.dispatch({ type: 'FETCH_ALL_REALMS' });
+    this.props.dispatch({ type: "FETCH_ALL_REALMS" });
+  };
+
+  handleNewRealmClick = () => {
+    this.props.history.push(`/add-realm`);
   };
 
   render() {
@@ -129,6 +133,7 @@ class ViewRealmsPage extends Component {
               // onClick={this.submitSection}
               className={classes.adminButtonView}
               classes={{ root: classes.button }}
+              onClick={this.handleNewRealmClick}
             >
               <AddIcon className={classes.addSectionViewIcon} /> New Realm
             </Button>

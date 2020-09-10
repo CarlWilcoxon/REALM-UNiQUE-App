@@ -25,6 +25,10 @@ class AddSectionsToNewRealmPage extends Component {
     this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
+  submitRealmWithSections = () => {
+     console.log('submitrealmwithsections clicked')
+  };
+
   render() {
     const { classes } = this.props;
     console.log('rendering')
@@ -32,6 +36,7 @@ class AddSectionsToNewRealmPage extends Component {
       <div>
         <center>
           <h1 className={classes.header}>Add Sections to New Realm</h1>
+          <h3>Select sections in the order you wish for them to appear</h3>
           {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
@@ -78,7 +83,8 @@ class AddSectionsToNewRealmPage extends Component {
               </TableBody>
             </Table>
           </Paper>
-          <h2>Chosen Sections</h2>
+          <h2 className={classes.header}>Chosen Sections</h2>
+          <h3>Sections will be saved in the order they appear below</h3>
           <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
@@ -123,8 +129,9 @@ class AddSectionsToNewRealmPage extends Component {
               name="submit"
               // onClick={this.submitSection}
               className={classes.adminButtonAdd}
+              onClick= {this.submitRealmWithSections}
             >
-              Organize Sections
+              Save Realm with Sections
             </Button>
           </div>
         </center>

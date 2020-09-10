@@ -9,18 +9,18 @@ import {
   Grid,
   TextField,
   Button,
-  MenuItem,
+  // MenuItem,
 } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 // import HelpIcon from '@material-ui/icons/Help';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-import EcoIcon from '@material-ui/icons/Eco';
-import PlaceIcon from '@material-ui/icons/Place';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import SpaIcon from '@material-ui/icons/Spa';
+// import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+// import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+// import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+// import EcoIcon from '@material-ui/icons/Eco';
+// import PlaceIcon from '@material-ui/icons/Place';
+// import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+// import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+// import SpaIcon from '@material-ui/icons/Spa';
 import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
@@ -34,17 +34,15 @@ class AddNewRealmPage extends Component {
   };
   // Be wary of constructors, they can over ride info
 
-  //StoreData as a saga
-  submitRealm = (event) => {
-    event.preventDefault();
-    console.log("this.state:", this.state)
+  //Store new realm in a reducer
+  storeRealm = (event) => {
     this.props.dispatch({
-        type: "POST_NEW_REALM",
-        payload: {
-            ...this.state,
-            questions: this.props.reduxState.newQuestions,
-        },
-    });
+      type: "SET_REALM",
+      payload: {
+          ...this.state,
+          questions: this.props.reduxState.newQuestions,
+      },
+  });
 };
 
   //CAPTURE INPUTS IN STATE
@@ -281,19 +279,19 @@ class AddNewRealmPage extends Component {
                 </FormControl>
               </div>
               <div className={classes.adminButtonContainer}>
-                {/* <Button
+                <Button
                   variant="contained"
                   onClick={this.appendNewQuestion}
                   className={classes.adminButton}
                 >
                   Add Question
-                </Button> */}
+                </Button>
 
                 <Button
                   variant="contained"
                   type="submit"
                   name="submit"
-                  onClick={this.submitRealm}
+                  onClick={this.storeRealm}
                   className={classes.adminButton}
                 >
                   Select Sections

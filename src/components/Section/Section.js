@@ -30,6 +30,22 @@ class Section extends Component {
     this.props.history.push('/Realm/Home')
   };
 
+  //   let nextSection = ``;
+  //   if (this.props.match.params.section === this.props.state.section.maxIndex) {
+  //     nextSection = `/feedback/${this.props.match.params.realm}`
+  //   } else if (this.props.match.params.section < this.props.state.section.maxIndex ) {
+  //     nextSection = `/section/${this.props.match.params.section + 1}`
+  //   } else {
+  //     nextSection = '/EmotionalHome'
+  //   }
+  //   this.props.history.push(nextSection);
+  // };
+  // saveAndReturn = () => {
+
+  //   // this.props.dispatch({type : 'SAVE_SECTION'})
+  //   this.props.history.push('/EmotionalHome')
+  // };
+
   render() {
     const { classes, section } = this.props;
     return (

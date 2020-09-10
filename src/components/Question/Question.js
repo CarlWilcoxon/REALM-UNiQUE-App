@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, Grid, TextField, Typography } from '@material-ui/core';
+import { withStyles, TextField, Typography } from '@material-ui/core';
 import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
-
   componentWillMount() {
-    console.log(this.props.question)
-    this.setState ({
+    console.log(this.props.question);
+    this.setState({
       answer: '',
-    })
+    });
   }
-
 
   // onClickHandler = () => {
   //     ({ type: '',
@@ -25,40 +23,38 @@ class Question extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log("state:", this.state);
-    console.log("this.props", this.props);
+    console.log('state:', this.state);
+    console.log('this.props', this.props);
   };
 
   render() {
     // Deconstructing more props
-    const {
-      classes,
-      question,
-     } = this.props;
+    const { classes, question } = this.props;
     return (
       <>
-        <Typography>{ question.content}</Typography>
+        <Typography>{question.content}</Typography>
 
         <TextField
-        label="Answer"
-        type="text"
-        variant="outlined"
-        multiline
-        rows={2}
-        className={classes.inputControlSection}
-        value={this.state.answer}
-        onChange={this.handleInputChangeFor("answer")}
-        InputProps={{
-          classes: {
-            input: classes.input,
-            root: classes.cssOutlinedInput,
-            notchedOutline: classes.notchedOutline,
-          }}} />
+          label="Answer"
+          type="text"
+          variant="outlined"
+          multiline
+          rows={2}
+          className={classes.inputControlSection}
+          value={this.state.answer}
+          onChange={this.handleInputChangeFor('answer')}
+          InputProps={{
+            classes: {
+              input: classes.input,
+              root: classes.cssOutlinedInput,
+              notchedOutline: classes.notchedOutline,
+            },
+          }}
+        />
       </>
     );
   }
 }
-
 
 const mapStateToProps = (state) => ({
   user: state.user,

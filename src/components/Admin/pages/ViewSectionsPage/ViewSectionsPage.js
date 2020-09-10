@@ -139,11 +139,8 @@ class ViewSectionsPage extends Component {
             <Button
               variant="contained"
               className="submit-new-section"
-              // type="submit"
-              // name="submit"
-              // onClick={this.submitSection}
-              className={classes.adminButtonView}
-              classes={{ root: classes.button }}
+           
+              className={classes.adminButtonPreview}
             >
               <AddIcon className={classes.addSectionViewIcon} /> New Section
             </Button>
@@ -220,7 +217,6 @@ class ViewSectionsPage extends Component {
                     </TableCell>{' '}
                     <IconButton
                       variant="contained"
-                      color="primary"
                       size="large"
                       onClick={(event) => this.handleClick(section.id)}
                       aria-label="delete"

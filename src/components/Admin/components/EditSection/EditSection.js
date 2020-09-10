@@ -13,7 +13,7 @@ import SectionQuestion from '../../components/SectionQuestions/SectionQuestions'
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
-import SaveIcon from '@material-ui/icons/Save';
+// import SaveIcon from '@material-ui/icons/Save';
 // const styles = (theme) => ({
 //   root: {
 //     background: 'blue',
@@ -114,7 +114,7 @@ class EditSection extends Component {
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             {/* <center> */}
             <h1 className={classes.header}>Edit Section</h1>
             <div className="form">
@@ -132,7 +132,7 @@ class EditSection extends Component {
                         inputProps={{ maxLength: 30 }}
                         variant="outlined"
                         onChange={this.handleInputChangeFor('title')}
-                        className={classes.textField}
+                        className={classes.inputControl}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -163,7 +163,7 @@ class EditSection extends Component {
                         label="Resource Type"
                         helperText=""
                         variant="outlined"
-                        className={classes.inputControl}
+                        className={classes.inputControlIconSelector}
                         defaultValue="3"
                         // value={this.state.type}
                         onChange={this.handleInputChangeFor('type')}
@@ -197,182 +197,191 @@ class EditSection extends Component {
                 {/* DYNAMIC INFORMATION SECTION */}
                 {/* 1=video, 2=text, 3=image */}
                 {/* type needs to be retrieved from the database */}
-                {this.state.type === 1 ? (
-                  <FormControl className={classes.formContainer}>
+                <Fade>
+                  {this.state.type === 1 ? (
+                    <Fade>
+                      <FormControl className={classes.formContainer}>
+                        <div>
+                          <TextField
+                            required
+                            label="Video Link"
+                            type="text"
+                            helperText=""
+                            variant="outlined"
+                            className={classes.inputControlLink}
+                            // value={this.state.videoLink}
+                            defaultValue={this.state.textContent}
+                            onChange={this.handleInputChangeFor('videoLink')}
+                            InputLabelProps={{
+                              classes: {
+                                root: classes.cssLabel,
+                                className: classes.floatingLabelFocusStyle,
+                              },
+                            }}
+                            InputProps={{
+                              classes: {
+                                input: classes.input,
+                                root: classes.cssOutlinedInput,
+                                notchedOutline: classes.notchedOutline,
+                              },
+                            }}
+                            FormHelperTextProps={{
+                              classes: { root: classes.helperText },
+                            }}
+                          />
+                          {this.state.videoLink !== '' ? (
+                            <VisibilityIcon
+                              onClick={this.toggleResourcePreview}
+                              className={
+                                this.state.preview
+                                  ? classes.clickedPreview
+                                  : classes.preview
+                              }
+                            />
+                          ) : (
+                            <VisibilityIcon className={classes.grayPreview} />
+                          )}
+                        </div>
+
+                        {this.state.preview && this.state.videoLink !== '' ? (
+                          <FormControl className={classes.formContainerVideo}>
+                            {' '}
+                            <Fade>
+                              <h1 className={classes.previewTitle}>
+                                Resource Preview
+                              </h1>
+                              <div className={classes.sectionVideoContainer}>
+                                <iframe
+                                  title={'section video'}
+                                  frameborder="0"
+                                  className={classes.sectionVideo}
+                                  // src="https://www.youtube.com/embed/pRFXSjkpKWA"
+                                  src={
+                                    this.state.videoLink
+                                      .replace('watch?v=', 'embed/')
+                                      .split('&feature=emb_title')[0]
+                                  }
+                                  // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
+                                ></iframe>
+                              </div>{' '}
+                            </Fade>
+                          </FormControl>
+                        ) : (
+                          <></>
+                        )}
+                        {/* <div>{JSON.stringify()} </div> */}
+                      </FormControl>
+                    </Fade>
+                  ) : this.state.type === 2 ? (
                     <div>
-                      <TextField
-                        required
-                        label="Video Link"
-                        type="text"
-                        helperText=""
-                        variant="outlined"
-                        className={classes.inputControlLink}
-                        // value={this.state.videoLink}
-                        defaultValue={this.state.textContent}
-                        onChange={this.handleInputChangeFor('videoLink')}
-                        InputLabelProps={{
-                          classes: {
-                            root: classes.cssLabel,
-                            className: classes.floatingLabelFocusStyle,
-                          },
-                        }}
-                        InputProps={{
-                          classes: {
-                            input: classes.input,
-                            root: classes.cssOutlinedInput,
-                            notchedOutline: classes.notchedOutline,
-                          },
-                        }}
-                        FormHelperTextProps={{
-                          classes: { root: classes.helperText },
-                        }}
-                      />
-                      {this.state.videoLink !== '' ? (
-                        <VisibilityIcon
-                          onClick={this.toggleResourcePreview}
-                          className={
-                            this.state.preview
-                              ? classes.clickedPreview
-                              : classes.preview
-                          }
-                        />
+                      <Fade>
+                        <FormControl className={classes.formContainer}>
+                          <div>
+                            <TextField
+                              required
+                              label="Text Content"
+                              helperText=""
+                              variant="outlined"
+                              multiline
+                              rows={18}
+                              className={classes.inputControlTextContent}
+                              defaultValue={this.state.textContent}
+                              //   value={this.state.textContent}
+                              onChange={this.handleInputChangeFor(
+                                'textContent'
+                              )}
+                              InputLabelProps={{
+                                classes: {
+                                  root: classes.cssLabel,
+                                  className: classes.floatingLabelFocusStyle,
+                                },
+                              }}
+                              InputProps={{
+                                classes: {
+                                  input: classes.input,
+                                  root: classes.cssOutlinedInput,
+                                  notchedOutline: classes.notchedOutline,
+                                },
+                              }}
+                              FormHelperTextProps={{
+                                classes: { root: classes.helperText },
+                              }}
+                            />
+                          </div>
+                        </FormControl>
+                      </Fade>
+                    </div>
+                  ) : this.state.type === 3 ? (
+                    <div>
+                      <Fade>
+                        <FormControl className={classes.formContainer}>
+                          <div>
+                            <TextField
+                              required
+                              label="Image Link"
+                              helperText=""
+                              variant="outlined"
+                              className={classes.inputControlLink}
+                              defaultValue={this.state.imageLink}
+                              // value={this.state.imageLink}
+                              onChange={this.handleInputChangeFor('imageLink')}
+                              InputLabelProps={{
+                                classes: {
+                                  root: classes.cssLabel,
+                                  className: classes.floatingLabelFocusStyle,
+                                },
+                              }}
+                              InputProps={{
+                                classes: {
+                                  input: classes.input,
+                                  root: classes.cssOutlinedInput,
+                                  notchedOutline: classes.notchedOutline,
+                                },
+                              }}
+                              FormHelperTextProps={{
+                                classes: { root: classes.helperText },
+                              }}
+                            />
+                            {this.state.imageLink !== '' ? (
+                              <VisibilityIcon
+                                onClick={this.toggleResourcePreview}
+                                className={
+                                  this.state.preview
+                                    ? classes.clickedPreview
+                                    : classes.preview
+                                }
+                              />
+                            ) : (
+                              <VisibilityIcon className={classes.grayPreview} />
+                            )}
+                          </div>
+                        </FormControl>
+                      </Fade>
+                      {this.state.preview && this.state.imageLink !== '' ? (
+                        <FormControl className={classes.formContainerVideo}>
+                          <Fade>
+                            <h1 className={classes.previewTitle}>
+                              Resource Preview
+                            </h1>
+                            <div className={classes.sectionImageContainer}>
+                              <div>
+                                <img
+                                  className={classes.sectionImage}
+                                  src={this.state.imageLink}
+                                  alt="resource preview"
+                                />
+                              </div>
+                            </div>
+                          </Fade>
+                        </FormControl>
                       ) : (
-                        <VisibilityIcon className={classes.grayPreview} />
+                        <></>
                       )}
                     </div>
-
-                    {this.state.preview && this.state.videoLink !== '' ? (
-                      <FormControl className={classes.formContainerVideo}>
-                        {' '}
-                        <Fade>
-                          <h1 className={classes.previewTitle}>
-                            Resource Preview
-                          </h1>
-                          <div className={classes.sectionVideoContainer}>
-                            <iframe
-                              title={'section video'}
-                              frameborder="0"
-                              className={classes.sectionVideo}
-                              // src="https://www.youtube.com/embed/pRFXSjkpKWA"
-                              src={
-                                this.state.videoLink
-                                  .replace('watch?v=', 'embed/')
-                                  .split('&feature=emb_title')[0]
-                              }
-                              // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
-                            ></iframe>
-                          </div>{' '}
-                        </Fade>
-                      </FormControl>
-                    ) : (
-                      <></>
-                    )}
-                    {/* <div>{JSON.stringify()} </div> */}
-                  </FormControl>
-                ) : this.state.type === 2 ? (
-                  <div>
-                    <FormControl className={classes.formContainer}>
-                      <div>
-                        <TextField
-                          required
-                          label="Text Content"
-                          helperText=""
-                          variant="outlined"
-                          multiline
-                          rows={18}
-                          className={classes.inputControlTextContent}
-                          defaultValue={this.state.textContent}
-                          //   value={this.state.textContent}
-                          onChange={this.handleInputChangeFor('textContent')}
-                          InputLabelProps={{
-                            classes: {
-                              root: classes.cssLabel,
-                              className: classes.floatingLabelFocusStyle,
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              input: classes.input,
-                              root: classes.cssOutlinedInput,
-                              notchedOutline: classes.notchedOutline,
-                            },
-                          }}
-                          FormHelperTextProps={{
-                            classes: { root: classes.helperText },
-                          }}
-                        />
-                      </div>
-                    </FormControl>
-                  </div>
-                ) : this.state.type === 3 ? (
-                  <div>
-                    <FormControl className={classes.formContainer}>
-                      <div>
-                        <TextField
-                          required
-                          label="Image Link"
-                          helperText=""
-                          variant="outlined"
-                          className={classes.inputControlLink}
-                          defaultValue={this.state.imageLink}
-                          // value={this.state.imageLink}
-                          onChange={this.handleInputChangeFor('imageLink')}
-                          InputLabelProps={{
-                            classes: {
-                              root: classes.cssLabel,
-                              className: classes.floatingLabelFocusStyle,
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              input: classes.input,
-                              root: classes.cssOutlinedInput,
-                              notchedOutline: classes.notchedOutline,
-                            },
-                          }}
-                          FormHelperTextProps={{
-                            classes: { root: classes.helperText },
-                          }}
-                        />
-                        {this.state.imageLink !== '' ? (
-                          <VisibilityIcon
-                            onClick={this.toggleResourcePreview}
-                            className={
-                              this.state.preview
-                                ? classes.clickedPreview
-                                : classes.preview
-                            }
-                          />
-                        ) : (
-                          <VisibilityIcon className={classes.grayPreview} />
-                        )}
-                      </div>
-                    </FormControl>
-                    {this.state.preview && this.state.imageLink !== '' ? (
-                      <FormControl className={classes.formContainerVideo}>
-                        <Fade>
-                          <h1 className={classes.previewTitle}>
-                            Resource Preview
-                          </h1>
-                          <div className={classes.sectionImageContainer}>
-                            <div>
-                              <img
-                                className={classes.sectionImage}
-                                src={this.state.imageLink}
-                                alt="your image"
-                              />
-                            </div>
-                          </div>
-                        </Fade>
-                      </FormControl>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                ) : (
-                  <></>
-                )}
-
+                  ) : (
+                    <></>
+                  )}
+                </Fade>
                 {/* SECTION DESCRIPTION */}
                 <div>
                   <FormControl className={classes.formContainer}>
@@ -407,11 +416,7 @@ class EditSection extends Component {
                   </FormControl>
                 </div>
                 {/* ORGINAL QUESTIONS MAP <--------- NEEDS TO BE FINISHED*/}
-                <div className="new-question">
-                  {this.state.questionInputs.map((questionInputs, index) => (
-                    <SectionQuestion key={index} />
-                  ))}
-                </div>
+
                 {/* ADD NEW QUESTION BUTTON */}
 
                 <div className="new-question">
@@ -429,7 +434,7 @@ class EditSection extends Component {
                   <Button
                     variant="contained"
                     onClick={this.appendNewQuestion}
-                    className={classes.adminButton}
+                    className={classes.adminButtonEdit}
                   >
                     Add Question
                   </Button>
@@ -439,23 +444,9 @@ class EditSection extends Component {
                     type="submit"
                     name="submit"
                     onClick={this.submitSection}
-                    className={classes.adminButton}
+                    className={classes.adminButtonEdit}
                   >
                     Save Section
-                  </Button>
-                  <Button
-                    variant="contained"
-                    className="submit-new-section"
-                    // type="submit"
-                    // name="submit"
-                    // onClick={this.submitSection}
-                    className={classes.adminButtonPreviewAgain}
-                    onClick={this.toggleEdit}
-                  >
-                    <VisibilityIcon
-                      className={classes.previewSectionPreviewIcon}
-                    />
-                    Section
                   </Button>
                 </div>
               </form>

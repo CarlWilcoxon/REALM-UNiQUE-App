@@ -26,7 +26,13 @@ class AddSectionsToNewRealmPage extends Component {
   };
 
   submitRealmWithSections = () => {
-     
+     this.props.dispatch({
+       type: "POST_NEW_REALM", 
+       payload: {
+       chosenSections: this.props.chosenSections,
+       realm: this.props.realm
+       }
+     })
   };
 
   goBack =() => this.props.history.push('/add-realm')
@@ -146,6 +152,7 @@ class AddSectionsToNewRealmPage extends Component {
 const mapReduxStateToProps = (reduxState) => ({
   sections: reduxState.allSections,
   chosenSections: reduxState.chosenSections,
+  realm: reduxState.realm
 });
 
 AddSectionsToNewRealmPage.propTypes = {

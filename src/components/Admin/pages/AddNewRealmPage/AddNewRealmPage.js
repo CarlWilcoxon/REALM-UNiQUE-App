@@ -46,7 +46,9 @@ class AddNewRealmPage extends Component {
   this.goNext();
 };
 
+//Navigate to next page
 goNext =() => this.props.history.push('/add-sections-to-realm')
+
   //CAPTURE INPUTS IN STATE
 
   handleInputChangeFor = (propertyName) => (event) => {

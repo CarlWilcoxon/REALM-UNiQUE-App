@@ -43,8 +43,10 @@ class AddNewRealmPage extends Component {
           questions: this.props.reduxState.newQuestions,
       },
   });
+  this.goNext();
 };
 
+goNext =() => this.props.history.push('/add-sections-to-realm')
   //CAPTURE INPUTS IN STATE
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -294,7 +296,7 @@ class AddNewRealmPage extends Component {
                   onClick={this.storeRealm}
                   className={classes.adminButton}
                 >
-                  Select Sections
+                  Select Sections for Realm
                 </Button>
               </div>
             </form>

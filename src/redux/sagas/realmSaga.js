@@ -13,7 +13,7 @@ function* getAllRealms() {
 
 function* submitNewRealm(action){
       try{
-        yield axios.post('/api/realm/add', action.payload);
+        yield axios.post('/api/realm/addnewrealm', action.payload);
       }catch (error){
       console.log('error with post request', error);
     }

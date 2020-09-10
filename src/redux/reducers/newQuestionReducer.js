@@ -8,8 +8,15 @@ const newQuestions = (state = [], action) => {
           state.push('');
         }
       }
-      // Replace whatever element is at that index with the new value
-      state.splice(action.payload.question_index, 1, action.payload.question);
+      let newState = [];
+      for (let i; i < state.length; i++ ) {
+        // Replace whatever element is at that index with the new value
+        if ( i === action.payload.question_index ) {
+          newState[i] = action.payload.question;
+        } else {
+          newState[i] = state[i];
+        }
+      }
       return state;
     default:
       return state;
@@ -17,3 +24,4 @@ const newQuestions = (state = [], action) => {
 };
 
 export default newQuestions;
+``

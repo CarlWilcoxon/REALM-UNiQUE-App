@@ -10,6 +10,19 @@ import {
 } from '@material-ui/core';
 
 class RealmForm extends Component {
+
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.match.params.section,
+      },
+    });
+  }
+
+
+
   goBack = () => this.props.history.push('/EmotionalFormIntro');
   complete = () => this.props.history.push('/EmotionalFormFinished');
 

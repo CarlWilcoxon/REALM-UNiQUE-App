@@ -23,12 +23,11 @@ class Section extends Component {
   }
 
   saveAndContinue = () => {
-    if (this.props.match.params.section === this.props.state.section)
     this.props.history.push('/EmotionalSec2')
   };
   saveAndReturn = () => {
     // this.props.dispatch({type : 'SAVE_SECTION'})
-    this.props.history.push('/EmotionalHome')
+    this.props.history.push('/Realm/Home')
   };
 
   render() {

@@ -12,6 +12,8 @@ class Question extends Component {
     })
   }
 
+  questionChangeHandler=
+
 
   // onClickHandler = () => {
   //     ({ type: '',

@@ -120,12 +120,15 @@ class ViewSectionsPage extends Component {
   };
 
   getAllSections = () => {
-    this.props.dispatch({ type: 'FETCH_ALL_SECTIONS' });
+    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
   };
 
   handleClick = (sectionId) => {
     this.props.history.push(`/preview/${sectionId}`);
-    console.log('Clicked View Section');
+  };
+
+  handleNewSectionClick = () => {
+    this.props.history.push(`/add-section`);
   };
   handleDeleteSectionClick = (sectionId) => {
     console.log('delete was clicked!', sectionId);
@@ -147,6 +150,7 @@ class ViewSectionsPage extends Component {
               variant="contained"
               className="submit-new-section"
               className={classes.adminButtonPreview}
+              onClick={this.handleNewSectionClick}
             >
               <AddIcon className={classes.addSectionViewIcon} /> New Section
             </Button>
@@ -206,31 +210,33 @@ class ViewSectionsPage extends Component {
                       {section.title}
                     </TableCell>
                     <TableCell align="left">
-                      {section.type_name === 'image' ? (
+                      {section.type_name === "image" ? (
                         <ImageIcon className={classes.addSectionResourceIcon} />
                       ) : (
-                        ''
+                        ""
                       )}
-                      {section.type_name === 'video' ? (
+                      {section.type_name === "video" ? (
                         <YouTubeIcon
                           className={classes.addSectionResourceIcon}
                         />
                       ) : (
-                        ''
+                        ""
                       )}
-                      {section.type_name === 'text' ? (
+                      {section.type_name === "text" ? (
                         <DescriptionIcon
                           className={classes.addSectionResourceIcon}
                         />
                       ) : (
-                        ''
+                        ""
                       )}
+
                     </TableCell>{' '}
                     <TableCell>
                       <IconButton
                         variant="contained"
                         size="large"
-                        onClick={(event) => this.handleClick(section.id)}
+                        onClick={() => this.handleClick(section.id)}
+                        // onClick={(event) => this.handleClick(section.id)}
                         aria-label="delete"
                         className={classes.viewSectionIcon}
                       >

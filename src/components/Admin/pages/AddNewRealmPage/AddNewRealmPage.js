@@ -25,12 +25,12 @@ import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
   state = {
-    name: '',
-    photoLink: '',
-    description: '',
+    name: "",
+    photoLink: "",
+    description: "",
     preview: false,
     questionInputs: [],
-    icon: '',
+    icon: "",
   };
   // Be wary of constructors, they can over ride info
 
@@ -38,7 +38,7 @@ class AddNewRealmPage extends Component {
   submitRealm = (event) => {
     event.preventDefault();
     this.props.dispatch({
-      type: 'SUBMIT_REALM',
+      type: "SUBMIT_REALM",
       payload: {
         name: this.state.name,
         photoLink: this.state.photoLink,
@@ -55,18 +55,18 @@ class AddNewRealmPage extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    console.log("state:", this.state);
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
+    console.log("You clicked add new questions");
     this.setState({
       questionInputs: [...this.state.questionInputs, <RealmQuestion />],
     });
   };
 
   toggleCoverPreview = () => {
-    console.log('You clicked the preview icon');
+    console.log("You clicked the preview icon");
     this.setState({
       preview: !this.state.preview,
     });
@@ -92,7 +92,7 @@ class AddNewRealmPage extends Component {
                     inputProps={{ maxLength: 15 }}
                     className={classes.inputControl}
                     value={this.state.name}
-                    onChange={this.handleInputChangeFor('name')}
+                    onChange={this.handleInputChangeFor("name")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -123,7 +123,7 @@ class AddNewRealmPage extends Component {
                     variant="outlined"
                     className={classes.inputControlIconSelector}
                     value={this.state.icon}
-                    onChange={this.handleInputChangeFor('icon')}
+                    onChange={this.handleInputChangeFor("icon")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -142,29 +142,29 @@ class AddNewRealmPage extends Component {
                     }}
                   >
                     <MenuItem value="<AttachMoneyIcon/>">
-                      <AttachMoneyIcon />{' '}
+                      <AttachMoneyIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<FitnessCenterIcon/>">
-                      <FitnessCenterIcon />{' '}
+                      <FitnessCenterIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<EmojiEmotionsIcon/>">
-                      <EmojiEmotionsIcon />{' '}
+                      <EmojiEmotionsIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<EcoIcon/>">
-                      {' '}
+                      {" "}
                       <EcoIcon />
                     </MenuItem>
                     <MenuItem value="<EmojiPeopleIcon/>">
-                      <EmojiPeopleIcon />{' '}
+                      <EmojiPeopleIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<EmojiObjectsIcon/>">
-                      <EmojiObjectsIcon />{' '}
+                      <EmojiObjectsIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<SpaIcon/>">
-                      <SpaIcon />{' '}
+                      <SpaIcon />{" "}
                     </MenuItem>
                     <MenuItem value="<PlaceIcon/>">
-                      <PlaceIcon />{' '}
+                      <PlaceIcon />{" "}
                     </MenuItem>
                   </TextField>
                 </div>
@@ -180,7 +180,7 @@ class AddNewRealmPage extends Component {
                       variant="outlined"
                       className={classes.inputControlLink}
                       value={this.state.photoLink}
-                      onChange={this.handleInputChangeFor('photoLink')}
+                      onChange={this.handleInputChangeFor("photoLink")}
                       InputLabelProps={{
                         classes: {
                           root: classes.cssLabel,
@@ -198,7 +198,7 @@ class AddNewRealmPage extends Component {
                         classes: { root: classes.helperText },
                       }}
                     />
-                    {this.state.photoLink !== '' ? (
+                    {this.state.photoLink !== "" ? (
                       <VisibilityIcon
                         onClick={this.toggleCoverPreview}
                         className={
@@ -213,7 +213,7 @@ class AddNewRealmPage extends Component {
                   </div>
                 </FormControl>
 
-                {this.state.preview && this.state.photoLink !== '' ? (
+                {this.state.preview && this.state.photoLink !== "" ? (
                   <FormControl className={classes.formContainerVideo}>
                     <Fade>
                       <h1 className={classes.previewTitle}>
@@ -246,7 +246,7 @@ class AddNewRealmPage extends Component {
                     rows={9}
                     className={classes.inputControlContentDescription}
                     value={this.state.description}
-                    onChange={this.handleInputChangeFor('description')}
+                    onChange={this.handleInputChangeFor("description")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,

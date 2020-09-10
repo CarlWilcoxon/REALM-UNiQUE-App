@@ -190,14 +190,27 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
-  adminButtonPreviewAgain: {
-    font: '300 14px Poppins, sans-serif',
+  adminButtonEdit: {
+    font: '300 12px Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
-    width: '25%',
-    padding: '10px 0px 10px 0px',
+    width: '70%',
+    padding: '10px 40px 10px 40px',
     margin: '0px 2% 4% 2%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
+  adminButtonPreviewAgain: {
+    font: '300 12px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '70%',
+    padding: '10px 0px 10px 0px',
+    margin: '-1% 2% 4% 2%',
     'text-transform': 'capitalize',
     '&:hover': {
       backgroundColor: '#457b9d',
@@ -327,11 +340,11 @@ const styles = (theme) => ({
   previewSectionPreviewIcon: {
     // color: '#1f3556',
     'font-size': '18px',
-    marginTop: '0%',
-    marginRight: '3%',
+    // marginTop: '0%',
+    marginRight: '1%',
   },
   viewSectionIcon: {
-    // color: '#1f3556',
+    color: '#1f3556',
     'font-size': '26px',
     marginTop: '9%',
     // marginRight: '.5%',

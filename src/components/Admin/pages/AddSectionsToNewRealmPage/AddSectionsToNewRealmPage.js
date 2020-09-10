@@ -14,7 +14,6 @@ import {
 import styles from '../../../../themes/adminTheme.js';
 import SectionToChoose from '../../components/SectionToChoose/SectionToChoose';
 import ChosenSection from '../../components/ChosenSection/ChosenSection';
-import { CSVLink } from 'react-csv';
 
 class AddSectionsToNewRealmPage extends Component {
   componentDidMount = () => {

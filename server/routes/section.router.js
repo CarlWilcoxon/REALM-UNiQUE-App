@@ -1,7 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../modules/authentication-middleware');
+const {
+  rejectUnauthenticated,
+  rejectUnauthenticatedAdmin,
+} = require('../modules/authentication-middleware');
 
 // router.get('/', rejectUnauthenticated, (req, res) => {
 //   console.log('Getting section for', req.user);
@@ -20,49 +23,45 @@ const { rejectUnauthenticated, rejectUnauthenticatedAdmin } = require('../module
 router.get('/get-section/:section', async (req, res) => {
   console.log('Getting section for', req.user);
 
-  const connection = await pool.connect()
+  const connection = await pool.connect();
 
   try {
     await connection.query('BEGIN');
 
-      const queryText =
-      `SELECT * FROM "section"
-      WHERE "section"."id"= $1;`
-    const queryValue = [req.params.section]
-    let result = await connection.query(queryText, queryValue)
+    const queryText = `SELECT * FROM "section"
+      WHERE "section"."id"= $1;`;
+    const queryValue = [req.params.section];
+    let result = await connection.query(queryText, queryValue);
 
     // get the questions for that section
-    const addQuestionQuery =
-    `SELECT * FROM "question"
+    const addQuestionQuery = `SELECT * FROM "question"
     WHERE "section_id" = $1
     ORDER BY "question_index";`;
-    const addQuestionValues = [ req.params.section ]
+    const addQuestionValues = [req.params.section];
 
-    const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
+    const questionResponse = await connection.query(
+      addQuestionQuery,
+      addQuestionValues
+    );
     // append the questions to the result
     result.rows[0].questions = questionResponse.rows;
     console.log(questionResponse.rows);
 
     // send the section and question data back
     await connection.query('COMMIT');
-    console.log("success!", result.rows[0])
-    res.send(result.rows[0])
-} catch ( error ) {
+    console.log('success!', result.rows[0]);
+    res.send(result.rows[0]);
+  } catch (error) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);
     res.sendStatus(500);
   } finally {
-    connection.release()
+    connection.release();
   }
-
-
 });
-
 
 // Get route to get each form question page.
-router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
-
-});
+router.get('/form/:id', rejectUnauthenticated, async (req, res) => {});
 
 /**
  * POST route template
@@ -70,7 +69,6 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {
 // router.post('/', rejectUnauthenticated, (req, res) => {
 
 // });
-
 
 // Route for creating a new Section
 // router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
@@ -83,32 +81,41 @@ router.post('/add', async (req, res) => {
     questions,
     imageLink = null,
     videoLink = null,
-    textContent = null
+    textContent = null,
   } = req.body;
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
   console.log('req.body:', req.body);
   console.log('title:', title);
   console.log('type:', type);
 
-  const connection = await pool.connect()
+  const connection = await pool.connect();
   try {
     await connection.query('BEGIN');
     const addSectionQuery = `INSERT INTO "section" ( "title", "type", "description", "image_link", "video_link", "text_content" )
     VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"`;
     // Save the result so we can get the returned value
-    const result = await connection.query( addSectionQuery, [title, type, description, imageLink, videoLink, textContent]);
+    const result = await connection.query(addSectionQuery, [
+      title,
+      type,
+      description,
+      imageLink,
+      videoLink,
+      textContent,
+    ]);
     // Get the id from the result - will have 1 row with the id
     const sectionId = result.rows[0].id;
 
     // Loop through the questions
-    for ( let i = 0; i < questions.length; i++ ) {
+    for (let i = 0; i < questions.length; i++) {
       // Insert question into question db
-      const addQuestionQuery =
-      `INSERT INTO "question" ("section_id", "question_index", "content")
+      const addQuestionQuery = `INSERT INTO "question" ("section_id", "question_index", "content")
       VALUES ($1, $2, $3 ) RETURNING "id";`;
-      const addQuestionValues = [sectionId, i, questions[i] ]
+      const addQuestionValues = [sectionId, i, questions[i]];
 
-      const questionResponse = await connection.query( addQuestionQuery, addQuestionValues );
+      const questionResponse = await connection.query(
+        addQuestionQuery,
+        addQuestionValues
+      );
       const questionId = questionResponse.rows[0].id;
 
       /* If the question is multiple choice...
@@ -128,14 +135,13 @@ router.post('/add', async (req, res) => {
 
     await connection.query('COMMIT');
     res.sendStatus(201);
-  } catch ( error ) {
+  } catch (error) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);
     res.sendStatus(500);
   } finally {
-    connection.release()
+    connection.release();
   }
-
 });
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 
@@ -147,16 +153,15 @@ router.post('/add', async (req, res) => {
 //   JOIN "resource_type" ON "resource_type"."id" = "section"."type"
 //   WHERE type = 1 OR type = 2 OR type = 3;`;
 
-router.get("/all", (req, res) => {
+router.get('/all', (req, res) => {
   const queryText = `SELECT "section".*, "resource_type"."type_name" FROM "section"
   JOIN "resource_type" ON "section"."type" = "resource_type"."id"
   WHERE type = 1 OR type = 2 OR type = 3;;`;
 
-
   pool
     .query(queryText)
     .then((result) => {
-      console.log("in /section GET");
+      console.log('in /section GET');
       res.send(result.rows);
     })
     .catch((error) => {
@@ -165,8 +170,41 @@ router.get("/all", (req, res) => {
     });
 });
 
-module.exports = router;
+//WORK ON THIS
+// This route *should* DELETE an task for the logged in user
+router.delete('/:id', (req, res) => {
+  // router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  // const queryValues = [req.user.id, req.params.id];
+  const queryValues = [
+    // req.user.id
+    req.params.id,
+  ];
+  pool
+    //   .query(
+    //     `DELETE FROM "section"
+    //     WHERE $1 = section.user_id
+    //      AND section.id = $2`,
+    //     queryValues
+    // )
+    .query(
+      `DELETE FROM "section" 
+    WHERE section.id = $1`,
+      queryValues
+    )
+    .then((results) => res.sendStatus(200))
+    .catch((err) => {
+      console.log('error deleting item: ', err);
+      console.log(
+        'req.user.id and req.params.id',
+        // req.user.id,
+        req.params.id
+      );
 
+      res.sendStatus(500);
+    });
+});
+
+module.exports = router;
 
 // Example transaction used to make the rest of the router
 // -------------------------------------------------------

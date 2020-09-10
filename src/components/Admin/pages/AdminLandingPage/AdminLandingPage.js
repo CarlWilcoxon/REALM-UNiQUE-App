@@ -13,11 +13,20 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import { CSVLink } from 'react-csv';
 
 class AdminLandingPage extends Component {
+  
+  handleSectionsClick = () => {
+    this.props.history.push(`/view-sections`);
+  };
+
+  handleRealmsClick = () => {
+    this.props.history.push(`/view-realms`);
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-        {' '}
+        {" "}
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
             // className={classes.leftSideFlex}
@@ -27,18 +36,29 @@ class AdminLandingPage extends Component {
             md={12}
             lg={12}
           >
-            {' '}
+            {" "}
             <h1 className={classes.welcomeMessage} id="welcome">
               Welcome First Name!
               <span className={classes.userName}>
                 {/* {this.props.user.username} */}
-              </span>{' '}
+              </span>{" "}
               <div>
-                <Button className={classes.squareButtons}> Projects</Button>
-                <Button className={classes.squareButtons}>Realms</Button>
+                <Button
+                  onClick={this.handleSectionsClick}
+                  className={classes.squareButtons}
+                >
+                  {" "}
+                  Sections
+                </Button>
+                <Button
+                  onClick={this.handleRealmsClick}
+                  className={classes.squareButtons}
+                >
+                  Realms
+                </Button>
               </div>
               <CSVLink
-                data={'data'}
+                data={"data"}
                 className={classes.downloadButtonLink}
                 target="_blank"
               >

@@ -1,22 +1,39 @@
 const styles = (theme) => ({
   allContainer: {},
-  // videoContainer: {
-  //   position: 'absolute',
-  //   // height: '765px',
-  //   height: '100%',
-  //   width: '100%',
-  //   overflow: 'hidden',
-  //   'object-fit': 'cover',
-  //   // margin: '-50px 0px -30px 0px',
-  // },
+  videoContainer: {
+    position: 'absolute',
+    // height: '765px',
+    height: '100%',
+    width: '100%',
+    overflow: 'hidden',
+    'object-fit': 'cover',
+    // margin: '-50px 0px -30px 0px',
+  },
 
-  // videoContainerMobile: {
-  //   position: 'absolute',
-  //   height: '135%',
-  //   width: '100%',
-  //   overflow: 'hidden',
-  //   'object-fit': 'cover',
-  // },
+  videoContainerMobile: {
+    position: 'absolute',
+    height: '135%',
+    width: '100%',
+    overflow: 'hidden',
+    'object-fit': 'cover',
+  },
+  videoContainerRegister: {
+    position: 'absolute',
+    // height: '765px',
+    height: '150%',
+    width: '100%',
+    overflow: 'hidden',
+    'object-fit': 'cover',
+    // margin: '-50px 0px -30px 0px',
+  },
+
+  videoContainerRegisterMobile: {
+    position: 'absolute',
+    height: '150%',
+    width: '100%',
+    overflow: 'hidden',
+    'object-fit': 'cover',
+  },
   infinityControl: {
     'text-align': 'center',
     position: 'relative',
@@ -99,7 +116,7 @@ const styles = (theme) => ({
     width: '93%',
   },
   formControlRegistrationFullWidthMobile: {
-    margin: '0px 0px -5px 0px',
+    margin: '0px 0px 0px 0px',
     width: '93%',
   },
   formControlRegistration: { margin: '0px 5px -5px 5px', width: '45%' },
@@ -179,6 +196,7 @@ const styles = (theme) => ({
   },
   register: {
     'text-align': 'center',
+    'text-transform': 'capitalize',
     font: '500 15px Poppins, sans-serif',
     color: '#fff',
     width: '100%',

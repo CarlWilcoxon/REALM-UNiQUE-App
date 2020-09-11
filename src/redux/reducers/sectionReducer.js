@@ -8,5 +8,5 @@ const section = (state = {}, action) => {
 };
 
 // user will be on the redux state at:
-// state.user
+// state.section
 export default section;

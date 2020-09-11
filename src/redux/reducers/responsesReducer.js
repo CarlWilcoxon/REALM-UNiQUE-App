@@ -1,6 +1,6 @@
-const newQuestions = (state = [], action) => {
+const responses = (state = [], action) => {
   switch (action.type) {
-    case "UPDATE_ANSWERS":
+    case "UPDATE_RESPONSES":
       // If this is a new question
       if ( state[action.payload.question_index] === undefined ) {
         // Add elements to the state array until there is one for the new question
@@ -23,4 +23,4 @@ const newQuestions = (state = [], action) => {
   }
 };
 
-export default newQuestions;
+export default responses;

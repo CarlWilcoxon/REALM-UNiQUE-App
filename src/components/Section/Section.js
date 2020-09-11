@@ -20,14 +20,38 @@ class Section extends Component {
         sectionId: this.props.match.params.section,
       },
     });
+    this.props.dispatch({
+      type: 'FETCH_REALM',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    })
   }
 
-  saveAndContinue = () => {
-    this.props.history.push('/EmotionalSec2')
+  saveAndContinue = (event) => {
+
+    let blob;
+
+    this.props.history.push(
+      `/section/${
+        this.props.match.params.realm
+      }/${
+        ( ( this.props.realm !== undefined )
+         ?
+        this.props.realm.section[0].section_id : '' )}`)
   };
+
+  goBack = () => this.props.history.push('/home');
+
+
   saveAndReturn = () => {
-    // this.props.dispatch({type : 'SAVE_SECTION'})
-    this.props.history.push('/Realm/Home')
+    this.props.dispatch({
+      type : 'SAVE_SECTION',
+      payload: {
+        // this.state;
+      }
+    })
+    this.props.history.push(`/realm-home/${this.props.match.params.realm}`)
   };
 
   //   let nextSection = ``;

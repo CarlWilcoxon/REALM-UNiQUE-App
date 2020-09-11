@@ -21,17 +21,42 @@ class RealmHome extends Component {
         realmId: this.props.match.params.realm,
       },
     })
+    this.props.dispatch({
+      type: 'FETCH_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+        userId: this.props.user.id
+      },
+    })
   }
 
-  saveAndContinue = (event) => {
-    // Go to this realm's form?
+  goContinue = (event) => {
+
+    console.log( this.props.state )
+    // Use the user's progress to determine where to send them.
+    if (this.props.progress.index !== undefined ) {
+
+      this.props.history.push(
+        `/section/${
+          this.props.match.params.realm
+        }/${
+          ( ( this.props.realm !== undefined && this.props.progress !== undefined )
+           ?
+          this.props.realm.section[this.props.progress.index].section_id : '' )}`
+      )
+
+    } else {
+
+    // Go to this realm's form
+    // /section/:realm/:section
     this.props.history.push(
-      `/realm/${
+      `/realm-form-intro/${
         this.props.match.params.realm
-      }/section/${
+      }/${
         ( ( this.props.realm !== undefined )
          ?
-        this.props.realm.section[0].section_id : '' )}`)
+        this.props.realm.section[0].section_id : '' )}`
+    )}
   };
 
   goBack = () => this.props.history.push('/home');
@@ -77,7 +102,7 @@ class RealmHome extends Component {
             <Grid item className={classes.realmCoverContainer}>
                 <img
                 className={classes.realmCover}
-                src="images/emotionalRealmCover.jpg"
+                src={realm.cover_photo}
                 alt={realm.realm_name + " realm logo"}
               />
             </Grid>
@@ -85,9 +110,9 @@ class RealmHome extends Component {
 
           {realm.description !== undefined ? (
             <Grid item>
-              <p className={classes.realmDescription}>
+              <Typography className={classes.realmDescription}>
                 {realm.description}
-              </p>
+              </Typography>
             </Grid>
           ) : 'loading' }
 
@@ -97,7 +122,7 @@ class RealmHome extends Component {
             { realm !== undefined ?
             <Button
               className={classes.realmButton}
-              onClick={this.saveAndContinue}
+              onClick={this.goContinue}
             >
               Continue
             </Button> : '' }
@@ -117,6 +142,9 @@ class RealmHome extends Component {
 
 const mapStateToProps = (state) => ({
   realm: state.realm,
+  user: state.user,
+  progress: state.progress,
+  state,
 });
 
 // this allows us to use <App /> in index.js

@@ -31,7 +31,7 @@ import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
 // import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
 import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
 import Section from '../Section/Section';
-import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro';
+import RealmFormIntro from '../RealmFormIntro/RealmFormIntro';
 import EmotionalForm from '../EmotionalForm/EmotionalForm';
 import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished';
 import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
@@ -91,15 +91,13 @@ class App extends Component {
             <Route exact path="/realm-home/:realm" component={RealmHome} />
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
-            <Route exact path="realm/:realm/section/:section" component={Section} />
+            <Route exact path="/section/:realm/:section" component={Section} />
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute exact path="/home" component={HomeMobile} />
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the info page instead. */}
 
             <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute
@@ -109,8 +107,8 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/EmotionalFormIntro"
-              component={EmotionalFormIntro}
+              path="/realm-form-intro/:realm/:section"
+              component={RealmFormIntro}
             />
             <ProtectedRoute
               exact

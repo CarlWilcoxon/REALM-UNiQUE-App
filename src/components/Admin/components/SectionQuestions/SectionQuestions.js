@@ -26,7 +26,26 @@ import styles from '../../../../themes/adminTheme.js';
 class SectionQuestions extends Component {
   state = {
     // questionType: "",
-    question: '',
+    question: "",
+    question_index: this.props.index,
+};
+
+
+
+handleQuestionChange = (event) => {
+    console.log("old state:", this.state);
+    let newValue = event.target.value;
+    this.setState({
+      ...this.state,
+      question : newValue,
+    })
+
+    this.props.dispatch({
+      type: 'UPDATE_QUESTIONS',
+      payload: {
+        question: newValue,
+        question_index: this.state.question_index,
+      }})
   };
 
   render() {
@@ -67,7 +86,7 @@ class SectionQuestions extends Component {
             className={classes.inputControlQuestion}
             value={this.state.question}
             onChange={this.handleQuestionChange}
-            InputLabelProps={{
+              InputLabelProps={{
               classes: {
                 root: classes.cssLabel,
                 className: classes.floatingLabelFocusStyle,

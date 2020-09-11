@@ -124,7 +124,7 @@ class ViewSectionsPage extends Component {
   };
 
   handleClick = (sectionId) => {
-    this.props.history.push(`/preview/${sectionId}`);
+    this.props.history.push(`preview/section/${sectionId}`);
   };
 
   handleNewSectionClick = () => {

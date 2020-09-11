@@ -12,6 +12,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const realmRouter = require('./routes/realm.router');
 const sectionRouter = require('./routes/section.router');
+const answerRouter = require('./routes/answer.router');
+const progressRouter = require('./routes/progress.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,6 +30,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/realm', realmRouter);
 app.use('/api/section', sectionRouter);
+app.use('/api/answer', answerRouter);
+app.use('/api/progress', progressRouter);
 
 // Serve static files
 app.use(express.static('build'));

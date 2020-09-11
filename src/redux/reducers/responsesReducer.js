@@ -1,6 +1,6 @@
-const newQuestions = (state = [], action) => {
+const responses = (state = [], action) => {
   switch (action.type) {
-    case "UPDATE_QUESTIONS":
+    case "UPDATE_RESPONSES":
       let newState = [];
 
       // If this is a new question
@@ -9,6 +9,7 @@ const newQuestions = (state = [], action) => {
         while (state.length < action.payload.question_index) {
           state = [ ...state, ''];
         }
+        newState = state;
       }
       for (let i; i < state.length; i++ ) {
         // Replace whatever element is at that index with the new value
@@ -24,4 +25,4 @@ const newQuestions = (state = [], action) => {
   }
 };
 
-export default newQuestions;
+export default responses;

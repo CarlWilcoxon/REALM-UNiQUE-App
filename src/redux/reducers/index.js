@@ -8,6 +8,8 @@ import allRealms from './allRealmsReducer';
 import newQuestions from './newQuestionReducer';
 import realm from './realmReducer'
 import chosenSections from './chosenSectionsReducer';
+import progress from './progressReducer';
+import responses from './responsesReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   newQuestions, //will contain info for new questions before they are POSTed
   realm, //holds realm before POSTed
   chosenSections, //holds chosen sections for a given realm before they are POSTed
+  progress, //holds the users progress in their current realm
+  responses, // holds users saved responses
 });
 
 export default rootReducer;

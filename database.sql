@@ -184,7 +184,7 @@ CREATE TABLE "student_progress" (
   "user_id" int,
   "realm_id" int,
   "index" int,
-  "started" boolean
+  "started" boolean DEFAULT FALSE
 );
 
 CREATE TABLE "question" (
@@ -214,11 +214,12 @@ VALUES
 CREATE TABLE "student_response" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
+  "realm_id" int,
   "section_id" int,
   "question_id" int,
-  "feedback_score" int,
+  -- "feedback_score" int,
   "response" VARCHAR(5000),
-  "date_submitted" date
+  "date_submitted" date DEFAULT NOW(0)
 );
 
 -- ALTER TABLE "user" ADD FOREIGN KEY ("id") REFERENCES "demographic" ("user_id");

@@ -167,7 +167,42 @@ module.exports = router;
 // });
 
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/addnewrealm', (req, res) => {
+router.post('/addnewrealm',  async (req, res) => {
   console.log( "in post route:", req.body );
+  
+  const realm = req.body.realm
+  const chosenSections = req.body.chosenSections
+  const connection = await pool.connect();
+
+  try {
+    await connection.query('BEGIN');
+    const addRealmQuery = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+    VALUES ($1, $2, $3) RETURNING "id"`;
+    // Save the result so we can get the returned value
+    const result = await connection.query( addRealmQuery, [realm.name, realm.description, realm.photoLink]);
+    // Get the id from the result - will have 1 row with the id
+    const realmId = result.rows[0].id;
+    console.log (realmId)
+
+
+    // //ALRIGHT NOW HERE'S WHERE THE FUN HAPPENS
+
+    // //CHOSENSECTIONS is an array of objects.  
+    // //The only characteristics you care about are their index number in the array and the id. (starts at 0 so n+1)
+
+    // const orderSectionQuery = `INSERT INTO "section_order" ("realm_course_id", "index", "section_id") VALUES ($1, $2, $3)`;
+    // // await connection.query (orderSectionQuery), [realmID, chosenSections]
+  
+    await connection.query('COMMIT');
+    res.sendStatus(200)
+  } catch (err) {
+      console.log('error on transfer', err)
+      await connection.query('ROLLBACK')
+      res.sendStatus(500);
+  } finally {
+    connection.release()
+  }
 
 });
+
+

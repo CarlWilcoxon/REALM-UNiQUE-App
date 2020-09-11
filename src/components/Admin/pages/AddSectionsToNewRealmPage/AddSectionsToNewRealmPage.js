@@ -32,12 +32,16 @@ class AddSectionsToNewRealmPage extends Component {
        realm: this.props.realm
        }
      })
+     this.forwardviewRealm()
   };
 
   backtoAddRealm = () => {
     this.props.history.push('/add-realm')
   }
 
+  forwardviewRealm = () => {
+    this.props.history.push('/view-realms')
+  }
 
   render() {
     const { classes } = this.props;

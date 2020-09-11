@@ -365,7 +365,7 @@ class AddNewSectionPage extends Component {
                     <SectionQuestion
                       key={index}
                       index={index}
-                      handleInputChangeFor={this.handleInputChangeFor}
+                      handleChange={this.handleInputChangeFor}
                     />
                   ))}
                 </FormControl>

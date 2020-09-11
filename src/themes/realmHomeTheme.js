@@ -116,20 +116,36 @@ const styles = (theme) => ({
   //     },
   //   },
   // },
-
+  inputControlTextArea: {
+    margin: '0px 0px 0px 0px',
+    padding: '0px 0px 0px 0px',
+    width: '60%',
+    font: '300 10px Poppins, sans-serif',
+    color: '#fff',
+  },
   notchedOutline: {
     borderWidth: '2px',
     borderColor: '#1f3556 !important',
+    color: '#1f3556 !important',
   },
   // helperText: {
   //   color: '#1f3556',
   // },
   cssOutlinedInput: {
     // padding: 0
+    color: '#1f3556',
+    borderColor: `#1f3556 !important`,
+    // backgroundColor: '#a8dadc',
+    '&$cssSelected $notchedOutline': {
+      backgroundColor: '#a8dadc',
+      borderColor: `#1f3556 !important`,
+    },
   },
   input: {
     color: '#1f3556',
-    padding: '5px 5px 5px 5px',
+    borderColor: `#1f3556 !important`,
+    // backgroundColor: '#a8dadc',
+    padding: '10px 5px 10px 5px',
   },
   formDescriptionContainer: {
     width: '85%',

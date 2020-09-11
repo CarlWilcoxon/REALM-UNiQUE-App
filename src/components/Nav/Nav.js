@@ -53,12 +53,12 @@ const Nav = (props) => (
           <Link className="nav-link" to="/view-sections">
             Sections
           </Link>
-          <CSVLink data={'data'} className="nav-link-csv" target="_blank">
-            {/* <CSVLink data={'data'} className="nav-link" target="_blank"> */}
+          {/* <CSVLink data={'data'} className="nav-link-csv" target="_blank"> */}
+          <CSVLink data={'data'} className="nav-link" target="_blank">
             {/* <Button variant="contained" className={this.props.downloadButton}> */}
-            <GetAppIcon></GetAppIcon>
-            <br className="download"></br>
-            Public Data
+            {/* <GetAppIcon></GetAppIcon> */}
+            {/* <br className="download"></br> */}
+            Download Data
           </CSVLink>
           <LogOutButton className="nav-link" />
         </>

@@ -8,6 +8,7 @@ import {
   // Paper,
   FormControl,
   TextField,
+  ThemeProvider,
 } from '@material-ui/core';
 
 class EmotionalForm extends Component {
@@ -334,10 +335,12 @@ class EmotionalForm extends Component {
                   id="outlined-helperText"
                   // label="What do you think about most of the time?"
                   // helperText="Required"
-                  variant="outlined"
-                  multiline
+                  // variant="outlined"
+                  // variant="filled"
+                  // multiline
                   rows={2}
-                  className={classes.inputControl}
+                  // color="#1f3556"
+                  className={classes.inputControlTextArea}
                   // value={this.state.password}
                   // onChange={this.handleInputChangeFor('password')}
                   InputProps={{
@@ -345,6 +348,9 @@ class EmotionalForm extends Component {
                       input: classes.input,
                       root: classes.cssOutlinedInput,
                       notchedOutline: classes.notchedOutline,
+                    },
+                    style: {
+                      color: 'red',
                     },
                   }}
                 />

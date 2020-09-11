@@ -15,7 +15,26 @@ import styles from '../../../../themes/adminTheme.js';
 class RealmQuestions extends Component {
   state = {
     // questionType: "",
-    question: '',
+    question: "",
+    question_index: this.props.index,
+};
+
+
+
+handleQuestionChange = (event) => {
+    console.log("old state:", this.state);
+    let newValue = event.target.value;
+    this.setState({
+      ...this.state,
+      question : newValue,
+    })
+
+    this.props.dispatch({
+      type: 'UPDATE_QUESTIONS',
+      payload: {
+        question: newValue,
+        question_index: this.state.question_index,
+      }})
   };
 
 
@@ -49,6 +68,14 @@ class RealmQuestions extends Component {
         {/* SECTION DESCRIPTION */}
 
         <TextField
+        className={classes.textField}
+        margin="normal"required
+        variant="outlined"
+        label="Question"
+        value={this.state.question}
+        onChange={this.handleQuestionChange}
+        className={classes.textField}
+        margin="normal"
           required
           label="Question"
           helperText="character limit: 140"

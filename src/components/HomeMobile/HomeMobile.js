@@ -3,30 +3,10 @@ import { connect } from 'react-redux';
 import {
   withStyles,
   Grid,
-  Paper,
   GridList,
   GridListTile,
 } from '@material-ui/core';
-/*
-  import {
-    AttachMoneyIcon,
-    EmojiEmotionsIcon,
-    FitnessCenterIcon,
-    EcoIcon,
-    PlaceIcon,
-    EmojiPeopleIcon,
-    EmojiObjectsIcon,
-    SpaIcon
-  } from '@material-ui/icons';
- */
-// import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-// import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-// import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-// import EcoIcon from '@material-ui/icons/Eco';
-// import PlaceIcon from '@material-ui/icons/Place';
-// import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-// import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-// import SpaIcon from '@material-ui/icons/Spa';
+
 import styles from '../../themes/homeTheme';
 import RealmTile from '../RealmTile/RealmTile';
 
@@ -38,17 +18,17 @@ class HomeMobile extends Component {
     this.props.dispatch( { type: "FETCH_ALL_REALMS" } );
   }
 
+  goRealm = (realmId) => this.props.history.push(`/realm-home/${realmId}`);
 
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     const { classes } = this.props;
     return (
       <div>
-        { this.props.realms[1] !== undefined ?
+        { this.props.realms[ 0 ] !== undefined ?
         <>
           <Grid container spacing={0} direction="column" alignItems="center" justify="center">
             <Grid
-              // className={classes.leftSideFlex}
               item
               xs={12}
               sm={12}
@@ -68,13 +48,18 @@ class HomeMobile extends Component {
               <Grid className={classes.GridListRoot}>
                 <GridList cols={2} cellHeight={90} className={classes.gridList}>
 
-                  {this.props.realms.map( (realm, index) =>
-                    <GridListTile
-                      component={RealmTile}
-                      key={index}
-                      realm={realm}
-                      iconIndex={index}
-                    />)}
+                {this.props.realms.map( (realm, index) =>
+                <GridListTile
+                    // component={Button}
+                    onClick={()=>this.goRealm(realm.id)}
+                    className={classes.gridListTile}
+                  >
+                      <RealmTile
+                        key={index}
+                        realm={realm}
+                        iconIndex={index}
+                      />
+                  </GridListTile>)}
 
                 </GridList>
               </Grid>  {/* End of Table of Realms */}

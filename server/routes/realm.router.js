@@ -185,13 +185,13 @@ router.post('/addnewrealm',  async (req, res) => {
     console.log (realmId)
 
 
-    // //ALRIGHT NOW HERE'S WHERE THE FUN HAPPENS
-
-    // //CHOSENSECTIONS is an array of objects.  
-    // //The only characteristics you care about are their index number in the array and the id. (starts at 0 so n+1)
-
-    // const orderSectionQuery = `INSERT INTO "section_order" ("realm_course_id", "index", "section_id") VALUES ($1, $2, $3)`;
-    // // await connection.query (orderSectionQuery), [realmID, chosenSections]
+    // Loop through the chosen sections
+    for ( let i = 0; i < chosenSections.length; i++ ) {
+          // Insert an entry into section_order to order the sections
+          const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+          VALUES ($1, $2, $3);`;
+          await connection.query ( orderSectionQuery, [realmId, i, chosenSections[i].id ])
+    };
   
     await connection.query('COMMIT');
     res.sendStatus(200)

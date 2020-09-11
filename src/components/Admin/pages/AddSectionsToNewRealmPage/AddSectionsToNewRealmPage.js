@@ -35,6 +35,9 @@ class AddSectionsToNewRealmPage extends Component {
      })
   };
 
+  backtoAddRealm = () => {
+    this.props.history.push('/add-realm')
+  }
   
 
   render() {
@@ -128,6 +131,7 @@ class AddSectionsToNewRealmPage extends Component {
               name="submit"
               // onClick={this.submitSection}
               className={classes.adminButtonAdd}
+              onClick= {this.backtoAddRealm}
             >
               Back to Name Realm
             </Button>

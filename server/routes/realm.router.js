@@ -240,7 +240,12 @@ router.post('/addnewrealm',  async (req, res) => {
     console.log (realmId)
 
 
-  
+  // LOOP THROUGH CHOSEN SECTIONS INTO SECTION ORDER TABLE
+  for ( let i = 0; i < chosenSections.length; i++ ) {
+    const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+    VALUES ($1, $2, $3);`;
+    await connection.query (orderSectionQuery, [realmId, i, chosenSections[i].id ])
+};
   
     await connection.query('COMMIT');
     res.sendStatus(200)

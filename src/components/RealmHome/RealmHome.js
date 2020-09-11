@@ -58,9 +58,7 @@ class RealmHome extends Component {
         this.props.realm.section[0].section_id : '' )}`
     )}
   };
-
   goBack = () => this.props.history.push('/home');
-
 
   render() {
 
@@ -145,6 +143,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
   progress: state.progress,
   state,
+  realm: state.realm,
 });
 
 // this allows us to use <App /> in index.js

@@ -1,54 +1,54 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import Button from "@material-ui/core/Button";
-import SectionQuestion from "../../components/SectionQuestions/SectionQuestions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+import SectionQuestion from '../../components/SectionQuestions/SectionQuestions';
 
 const styles = (theme) => ({
   root: {
-    background: "blue",
+    background: 'blue',
     // borderRadius: 3,
     // border: 0,
-    color: "white",
+    color: 'white',
     height: 48,
-    padding: "0 30px",
-    fontWeight: "bold",
-    margin: "10px",
-    justify: "center",
+    padding: '0 30px',
+    fontWeight: 'bold',
+    margin: '10px',
+    justify: 'center',
   },
   textField: {
     width: 400,
-    margin: "10px",
+    margin: '10px',
   },
 });
 
 const type = [
   {
     value: 2,
-    label: "Text",
+    label: 'Text',
   },
   {
     value: 1,
-    label: "Video",
+    label: 'Video',
   },
   {
     value: 3,
-    label: "Image",
+    label: 'Image',
   },
 ];
 
 class EditSectionPage extends Component {
   state = {
-    title: "",
-    type: "",
-    description: "",
+    title: '',
+    type: '',
+    description: '',
     questions: [],
-    imageLink: "",
-    videoLink: "",
-    textContent: "",
+    imageLink: '',
+    videoLink: '',
+    textContent: '',
     questionInputs: [],
   };
 
@@ -56,7 +56,7 @@ class EditSectionPage extends Component {
   submitSection = (event) => {
     event.preventDefault();
     this.props.dispatch({
-      type: "SUBMIT_SECTION",
+      type: 'SUBMIT_SECTION',
       // payload: {
       //   title: this.state.title,
       //   type: this.state.type,
@@ -73,11 +73,11 @@ class EditSectionPage extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log("state:", this.state);
+    console.log('state:', this.state);
   };
 
   appendNewQuestion = () => {
-    console.log("You clicked add new questions");
+    console.log('You clicked add new questions');
     this.setState({
       questionInputs: [...this.state.questionInputs, <SectionQuestion />],
     });
@@ -103,7 +103,7 @@ class EditSectionPage extends Component {
                   type="text"
                   defaultValue="EXAMPLE SECTION TITLE"
                   // value={this.state.title}
-                  onChange={this.handleInputChangeFor("title")}
+                  onChange={this.handleInputChangeFor('title')}
                   className={classes.textField}
                   margin="normal"
                 />
@@ -117,7 +117,7 @@ class EditSectionPage extends Component {
                   className={classes.textField}
                   defaultValue="3" //A type was selected as an example here
                   // value={this.state.type}
-                  onChange={this.handleInputChangeFor("type")}
+                  onChange={this.handleInputChangeFor('type')}
                   SelectProps={{
                     MenuProps: {
                       className: classes.menu,
@@ -143,7 +143,7 @@ class EditSectionPage extends Component {
                     type="text"
                     // value={this.state.videoLink}
                     defaultValue="EXAMPLE VIDEO LINK"
-                    onChange={this.handleInputChangeFor("videoLink")}
+                    onChange={this.handleInputChangeFor('videoLink')}
                     className={classes.textField}
                     margin="normal"
                   />
@@ -156,7 +156,7 @@ class EditSectionPage extends Component {
                     type="text"
                     // value={this.state.textContent}
                     defaultValue="EXAMPLE TEXT CONTENT"
-                    onChange={this.handleInputChangeFor("textContent")}
+                    onChange={this.handleInputChangeFor('textContent')}
                     className={classes.textField}
                     margin="normal"
                   />
@@ -169,7 +169,7 @@ class EditSectionPage extends Component {
                     type="text"
                     // value={this.state.imageLink}
                     defaultValue="EXAMPLE IMAGE LINK"
-                    onChange={this.handleInputChangeFor("imageLink")}
+                    onChange={this.handleInputChangeFor('imageLink')}
                     className={classes.textField}
                     margin="normal"
                   />
@@ -184,7 +184,7 @@ class EditSectionPage extends Component {
                   label="Resource Description"
                   // value={this.state.description}
                   defaultValue="EXAMPLE DESCRIPTION"
-                  onChange={this.handleInputChangeFor("description")}
+                  onChange={this.handleInputChangeFor('description')}
                   className={classes.textField}
                   margin="normal"
                 />

@@ -45,18 +45,18 @@ class AddNewSectionPage extends Component {
   //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
-    console.log("this.state:", this.state);
+    console.log('this.state:', this.state);
     this.props.dispatch({
-      type: "SUBMIT_SECTION",
+      type: 'SUBMIT_SECTION',
       payload: {
         ...this.state,
         questions: this.props.reduxState.newQuestions,
-      }
+      },
     });
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log("old state:", this.state);
+    console.log('old state:', this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
@@ -68,8 +68,9 @@ class AddNewSectionPage extends Component {
     this.setState({
       questionInputs: [
         ...this.state.questionInputs,
-        this.state.questionInputs.length
-    ]    });
+        this.state.questionInputs.length,
+      ],
+    });
   };
   toggleResourcePreview = () => {
     console.log('You clicked the preview icon');
@@ -92,6 +93,7 @@ class AddNewSectionPage extends Component {
                     required
                     label="Section Name"
                     helperText="character limit: 30"
+                    inputProps={{ maxLength: 30 }}
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.title}
@@ -313,7 +315,7 @@ class AddNewSectionPage extends Component {
                             <img
                               className={classes.sectionImage}
                               src={this.state.imageLink}
-                              alt="your image"
+                              alt="resource preview"
                             />
                           </div>
                         </div>
@@ -336,8 +338,8 @@ class AddNewSectionPage extends Component {
                   multiline
                   rows={9}
                   className={classes.inputControlContentDescription}
-                  value={this.state.textContent}
-                  onChange={this.handleInputChangeFor('textContent')}
+                  value={this.state.description}
+                  onChange={this.handleInputChangeFor('description')}
                   InputLabelProps={{
                     classes: {
                       root: classes.cssLabel,
@@ -361,9 +363,9 @@ class AddNewSectionPage extends Component {
                 <FormControl className={classes.formContainerQuestion}>
                   {this.state.questionInputs.map((questionInputs, index) => (
                     <SectionQuestion
-                    key={index}
-                    index={index}
-                    handleInputChangeFor={this.handleInputChangeFor}
+                      key={index}
+                      index={index}
+                      handleInputChangeFor={this.handleInputChangeFor}
                     />
                   ))}
                 </FormControl>
@@ -409,49 +411,46 @@ export default withStyles(styles)(
   connect(mapReduxStateToProps)(AddNewSectionPage)
 );
 
+// {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
+// <div>
+//   <TextField
+//     select
+//     required
+//     label="Resource Type"
+//     variant="outlined"
+//     className={classes.textField}
+//     value={this.state.type}
+//     onChange={this.handleInputChangeFor("type")}
+//     SelectProps={{
+//       MenuProps: {
+//         className: classes.menu,
+//       },
+//     }}
+//     margin="normal"
+//   >
+//     {type.map((option) => (
+//       <MenuItem key={option.value} value={option.value}>
+//         {option.label}
+//       </MenuItem>
+//     ))}
+//   </TextField>
+// </div>
+// {/* DYNAMIC INFORMATION SECTION */}
+// {/* 1=video, 2=text, 3=image */}
+// {this.state.type === 1 ? (
+//   <div>
+//     <TextField
+//       required
+//       label="Video Link"
+//       variant="outlined"
+//       type="text"
+//       value={this.state.videoLink}
+//       onChange={this.handleInputChangeFor("videoLink")}
+//       className={classes.textField}
+//       margin="normal"
 
-
-              // {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
-              // <div>
-              //   <TextField
-              //     select
-              //     required
-              //     label="Resource Type"
-              //     variant="outlined"
-              //     className={classes.textField}
-              //     value={this.state.type}
-              //     onChange={this.handleInputChangeFor("type")}
-              //     SelectProps={{
-              //       MenuProps: {
-              //         className: classes.menu,
-              //       },
-              //     }}
-              //     margin="normal"
-              //   >
-              //     {type.map((option) => (
-              //       <MenuItem key={option.value} value={option.value}>
-              //         {option.label}
-              //       </MenuItem>
-              //     ))}
-              //   </TextField>
-              // </div>
-              // {/* DYNAMIC INFORMATION SECTION */}
-              // {/* 1=video, 2=text, 3=image */}
-              // {this.state.type === 1 ? (
-              //   <div>
-              //     <TextField
-              //       required
-              //       label="Video Link"
-              //       variant="outlined"
-              //       type="text"
-              //       value={this.state.videoLink}
-              //       onChange={this.handleInputChangeFor("videoLink")}
-              //       className={classes.textField}
-              //       margin="normal"
-
-
-              //       variant="outlined"
-              //       value={this.state.description}
-              //       onChange={this.handleInputChangeFor("description")}
-              //       className={classes.textField}
-              //       margin="normal"
+//       variant="outlined"
+//       value={this.state.description}
+//       onChange={this.handleInputChangeFor("description")}
+//       className={classes.textField}
+//       margin="normal"

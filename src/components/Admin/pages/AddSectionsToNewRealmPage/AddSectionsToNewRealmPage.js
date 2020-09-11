@@ -12,9 +12,8 @@ import {
   TableRow,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
-import SectionToChoose from "../../components/SectionToChoose/SectionToChoose"
-import ChosenSection from "../../components/ChosenSection/ChosenSection"
-
+import SectionToChoose from '../../components/SectionToChoose/SectionToChoose';
+import ChosenSection from '../../components/ChosenSection/ChosenSection';
 
 class AddSectionsToNewRealmPage extends Component {
   componentDidMount = () => {
@@ -22,30 +21,35 @@ class AddSectionsToNewRealmPage extends Component {
   };
 
   getAllSections = () => {
-    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+    this.props.dispatch({ type: 'FETCH_ALL_SECTIONS' });
   };
 
   submitRealmWithSections = () => {
      this.props.dispatch({
-       type: "POST_NEW_REALM", 
+       type: "POST_NEW_REALM",
        payload: {
        chosenSections: this.props.chosenSections,
        realm: this.props.realm
        }
      })
+     this.forwardviewRealm()
   };
 
   backtoAddRealm = () => {
     this.props.history.push('/add-realm')
   }
-  
+
+  forwardviewRealm = () => {
+    this.props.history.push('/view-realms')
+  }
 
   render() {
     const { classes } = this.props;
-    console.log('rendering')
+    console.log('rendering');
     return (
       <div>
         <center>
+          {/* maybe classes.headerLess */}
           <h1 className={classes.header}>Add Sections to New Realm</h1>
           <h3>Select sections in the order you wish for them to appear</h3>
           {/* <AppBar position="static">
@@ -65,6 +69,7 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
+          <h1 className={classes.headerLess}>All Sections</h1>
           <Paper className={classes.paper}>
             <Table className={classes.table}>
               <TableHead>
@@ -74,14 +79,14 @@ class AddSectionsToNewRealmPage extends Component {
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Section Name
+                    Name
                   </TableCell>
                   <TableCell
                     align="left"
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Resource Type
+                    Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>
                 </TableRow>
@@ -89,7 +94,7 @@ class AddSectionsToNewRealmPage extends Component {
               <TableBody>
                 {/* CURRENTLY MAPPING ROWS FROM ABOVE */}
                 {this.props.sections.map((section) => (
-                  <SectionToChoose key={section.id} section={section}/>
+                  <SectionToChoose key={section.id} section={section} />
                 ))}
               </TableBody>
             </Table>
@@ -105,21 +110,21 @@ class AddSectionsToNewRealmPage extends Component {
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Section Name
+                    Name
                   </TableCell>
                   <TableCell
                     align="left"
                     width="30%"
                     className={classes.tableHeader}
                   >
-                    Resource Type
+                    Type
                   </TableCell>
                   <TableCell width="10%"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {this.props.chosenSections.map((section) => (
-                  <ChosenSection key={section.id} section={section}/>
+                  <ChosenSection key={section.id} section={section} />
                 ))}
               </TableBody>
             </Table>
@@ -162,4 +167,6 @@ AddSectionsToNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect(mapReduxStateToProps)(AddSectionsToNewRealmPage));
+export default withStyles(styles)(
+  connect(mapReduxStateToProps)(AddSectionsToNewRealmPage)
+);

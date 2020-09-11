@@ -45,20 +45,16 @@ class LoginPage extends Component {
     const { classes } = this.props;
 
     return (
-      <Grid
-      id="LoginPageContainer"
-      container
-      spacing={0}
-      >
-        {/* <img
-        alt="a calming ocean view with a rainbow"
+      <Grid id="LoginPageContainer" container spacing={0}>
+        <img
+          alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
           src="/images/scenery-2846778.jpg"
-        /> */}
+        />
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
           className={classes.videoContainer}
@@ -70,12 +66,7 @@ class LoginPage extends Component {
         {/* The one at the top only shows up bc I have video speed controller on */}
 
         <Hidden smDown>
-          <Grid
-            className={classes.leftSideFlex}
-            item
-            md={6}
-            lg={6}
-          >
+          <Grid className={classes.leftSideFlex} item md={6} lg={6}>
             {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               <Fade>

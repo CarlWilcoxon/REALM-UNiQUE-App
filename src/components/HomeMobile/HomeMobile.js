@@ -140,7 +140,7 @@ class HomeMobile extends Component {
               </GridList>
             </div>
           </Grid>
-          <LogOutButton/>
+          {/* <LogOutButton/> */}
         </Grid>
       </div>
     );

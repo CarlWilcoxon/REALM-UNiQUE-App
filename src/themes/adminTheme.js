@@ -6,6 +6,20 @@ const styles = (theme) => ({
     font: '400 30px Poppins, sans-serif',
     color: '#1f3556',
   },
+  headerView: {
+    'text-align': 'center',
+    width: '100%',
+    margin: '2% auto 2% auto',
+    font: '400 30px Poppins, sans-serif',
+    color: '#1f3556',
+  },
+  headerLess: {
+    'text-align': 'center',
+    width: '100%',
+    margin: '1% auto -4% auto',
+    font: '400 25px Poppins, sans-serif',
+    color: '#1f3556',
+  },
   formControl: {
     margin: '0px 0px 15px 0px',
     width: '70%',
@@ -125,6 +139,13 @@ const styles = (theme) => ({
     font: '500 10px Poppins, sans-serif',
     color: '#1f3556',
   },
+  previewDescription: {
+    font: '300 12px Poppins, sans-serif',
+    color: '#1f3556',
+    padding: '0px 10% 0px 10%',
+    margin: '-1% 0px 0px 0px',
+    'text-align': 'left',
+  },
 
   helperText: {
     color: '#1f3556',
@@ -157,24 +178,77 @@ const styles = (theme) => ({
     'text-align': 'center',
   },
   adminButton: {
-    font: '300 14px Poppins, sans-serif',
+    font: '300 12px Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
     width: '50%',
-    padding: '10px 0px 10px 0px',
+    padding: '10px 40px 10px 40px',
     margin: '0px 2% 4% 2%',
     'text-transform': 'capitalize',
     '&:hover': {
       backgroundColor: '#457b9d',
     },
   },
+  adminButtonEdit: {
+    font: '300 12px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '70%',
+    padding: '10px 40px 10px 40px',
+    margin: '0px 2% 4% 2%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
+  adminButtonPreviewAgain: {
+    font: '300 12px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '70%',
+    padding: '10px 0px 10px 0px',
+    margin: '-1% 2% 4% 2%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
+
   adminButtonAdd: {
     font: '300 16px Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
     width: '30%',
+    padding: '10px 0px 10px 0px',
+    margin: '0px 15% 3% 15%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
+  adminButtonView: {
+    font: '300 18px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '10%',
+    padding: '10px 0px 10px 0px',
+    margin: '0px 15% 3% 15%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
+  adminButtonPreview: {
+    font: '300 18px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '20%',
     padding: '10px 0px 10px 0px',
     margin: '0px 15% 3% 15%',
     'text-transform': 'capitalize',
@@ -195,20 +269,26 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
-  rectangleButton: {
+  downloadButton: {
     font: '300 40px Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
-    width: '40%',
+    width: '30%',
     padding: '40px 0px 40px 0px',
     margin: '0px 2% 4% 2%',
     'text-transform': 'capitalize',
     '&:hover': {
       backgroundColor: '#457b9d',
     },
+    'text-decoration': 'none',
   },
-  downloadIcon: { 'font-size': '150%' },
+  downloadButtonLink: {
+    color: '#fff',
+    'border-radius': '25px',
+    'text-decoration': 'none',
+  },
+  downloadIcon: { 'font-size': '50px', margin: ' 0px 4px -4px 0px ' },
   welcomeMessage: {
     margin: '5% 2% 4% 2%',
     font: '400 40px Poppins, sans-serif',
@@ -216,20 +296,60 @@ const styles = (theme) => ({
     color: '#1f3556',
   },
   paper: {
+    width: '25%',
+    marginTop: '5%',
+    marginBottom: '3%',
+    overflowX: 'auto',
+  },
+  paperView: {
     width: '40%',
     marginTop: '5%',
     marginBottom: '3%',
     overflowX: 'auto',
   },
   table: {
-    minWidth: '50%',
+    minWidth: '35%',
   },
   tableHeader: { font: '500 18px Poppins, sans-serif' },
   tableCell: { font: '400 16px Poppins, sans-serif' },
+  tableCellType: { font: '400 30px Poppins, sans-serif', 'font-size': '50px' },
   checkBoxIcon: {
     color: '#1f3556',
     padding: '0px 12px 0px 0px',
   },
+  addSectionResourceIcon: {
+    color: '#1f3556',
+    'font-size': '50px',
+  },
+  removeSectionResourceIcon: {
+    color: '#1f3556',
+    'font-size': '35px',
+  },
+  addSectionViewIcon: {
+    // color: '#1f3556',
+    'font-size': '26px',
+    marginTop: '-.5%',
+    marginRight: '.5%',
+  },
+  editSectionPreviewIcon: {
+    // color: '#1f3556',
+    'font-size': '20px',
+    marginTop: '-.5%',
+    marginRight: '2%',
+  },
+  previewSectionPreviewIcon: {
+    // color: '#1f3556',
+    'font-size': '18px',
+    // marginTop: '0%',
+    marginRight: '1%',
+  },
+  viewSectionIcon: {
+    color: '#1f3556',
+    'font-size': '26px',
+    marginTop: '9%',
+    // marginRight: '.5%',
+  },
+  noDecoration: { 'text-decoration': 'none' },
 });
 
 export default styles;

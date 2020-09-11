@@ -12,6 +12,7 @@ import Nav from '../Nav/Nav';
 // import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import AdminRoute from '../AdminRoute/AdminRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import AdminLandingPage from '../Admin/pages/AdminLandingPage/AdminLandingPage';
@@ -20,6 +21,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
+import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSectionPage';
+import PreviewRealmPage from '../Admin/pages/PreviewRealmPage/PreviewRealmPage';
 import EditSectionPage from '../Admin/pages/EditSectionPage/EditSectionPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
@@ -27,7 +30,6 @@ import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
 import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
-import OrganizeSections from "../Admin/pages/OrganizeNewRealmSectionsPage/OrganizeNewRealmSectionsPage";
 import Section from '../Section/Section';
 import EmotionalFormIntro from '../EmotionalFormIntro/EmotionalFormIntro';
 import EmotionalForm from '../EmotionalForm/EmotionalForm';
@@ -51,32 +53,69 @@ class App extends Component {
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
+            {/* <Redirect
+              exact
+              from="home"
+              to={
+                this.props.user.id && this.props.user.admin
+                  ? '/admin-landing'
+                  : '/home'
+              }
+            /> */}
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
             {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
-            <Route exact path="/add-section" component={AddNewSectionPage} />
-            <Route exact path="/add-realm" component={AddNewRealmPage} />
-            <Route
+            <AdminRoute
+              exact
+              path="/add-section"
+              component={AddNewSectionPage}
+            />
+            <AdminRoute exact path="/add-realm" component={AddNewRealmPage} />
+            <AdminRoute
               exact
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
             />
-            <Route exact path="/admin-landing" component={AdminLandingPage} />
-            <Route
+
+            <AdminRoute
               exact
-              path="/organize-realm-sections"
-              component={OrganizeSections}
+              path="/admin-landing"
+              component={AdminLandingPage}
             />
-            <Route exact path="/edit-section" component={EditSectionPage} />
-            <Route exact path="/view-realms" component={ViewRealmsPage} />
-            <Route exact path="/view-sections" component={ViewSectionsPage} />
-            <Route exact path="/add-client" component={AddNewClientPage} />
-            <Route exact path="/view-clients" component={ViewClientsPage} />
-            <Route exact path="/edit-client" component={EditClientPage} />
+
+            <AdminRoute
+              exact
+              path="/preview/:id"
+              component={PreviewSectionPage}
+            />
+            <AdminRoute
+              exact
+              path="/preview/realm/:id"
+              component={PreviewRealmPage}
+            />
+            <AdminRoute
+              exact
+              path="/edit-section"
+              component={EditSectionPage}
+            />
+            <AdminRoute exact path="/view-realms" component={ViewRealmsPage} />
+            <AdminRoute
+              exact
+              path="/view-sections"
+              component={ViewSectionsPage}
+            />
+            <AdminRoute exact path="/add-client" component={AddNewClientPage} />
+            <AdminRoute
+              exact
+              path="/view-clients"
+              component={ViewClientsPage}
+            />
+            <AdminRoute exact path="/edit-client" component={EditClientPage} />
+
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
-            <Route exact path="/section/:section" component={Section} />
+            <AdminRoute exact path="/section/:section" component={Section} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -84,6 +123,7 @@ class App extends Component {
             <ProtectedRoute exact path="/home" component={HomeMobile} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
+
             <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute
               exact

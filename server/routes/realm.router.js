@@ -14,48 +14,35 @@ router.get('/get-realm/:realm', async (req, res) => {
   try {
     await connection.query('BEGIN');
 
-    const queryText = `SELECT * FROM "realm"
-      WHERE "realm"."id"= $1;`;
-    const queryValue = [req.params.realm];
+    const queryText =
+    `SELECT * FROM "realm"
+    WHERE "realm"."id"= $1;`;
+    const queryValue = [ req.params.realm ];
     let result = await connection.query(queryText, queryValue);
 
-    // get the questions for that section
-    // const addQuestionQuery = `SELECT * FROM "question"
-    // WHERE "section_id" = $1
-    // ORDER BY "question_index";`;
-    // const addQuestionValues = [req.params.section];
+    // Get the sections for that realm
+    const orderSectionQuery =
+    `SELECT * FROM "section_order"
+    WHERE "realm_id" = $1
+    ORDER BY "index" ASC;`;
+    let section = await connection.query (orderSectionQuery, [ req.params.realm ]);
 
-    // const questionResponse = await connection.query(
-    //   addQuestionQuery,
-    //   addQuestionValues
-    // );
-    // // append the questions to the result
-    // result.rows[0].questions = questionResponse.rows;
-    // console.log(questionResponse.rows);
+    // Append the sections onto the result
+    result.rows[0].section = section.rows;
 
-    // send the section and question data back
     await connection.query('COMMIT');
     console.log('success!', result.rows[0]);
     res.send(result.rows[0]);
+
   } catch (error) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);
     res.sendStatus(500);
+
   } finally {
     connection.release();
   }
 });
-
-// Get route to get each form question page.
-router.get('/form/:id', rejectUnauthenticated, async (req, res) => {});
-
-/**
- * POST route template
- */
-// router.post('/', rejectUnauthenticated, (req, res) => {
-
-// });
-
 
 
 //OLD DON'T USE

@@ -178,19 +178,18 @@ router.post('/addnewrealm',  async (req, res) => {
     await connection.query('BEGIN');
     const addRealmQuery = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
     VALUES ($1, $2, $3) RETURNING "id"`;
-    // Save the result so we can get the returned value
+    // SAVE RESULT TO USE REALM ID
     const result = await connection.query( addRealmQuery, [realm.name, realm.description, realm.photoLink]);
-    // Get the id from the result - will have 1 row with the id
     const realmId = result.rows[0].id;
     console.log (realmId)
 
 
-    // Loop through the chosen sections
+  // LOOP THROUGH CHOSEN SECTIONS
     for ( let i = 0; i < chosenSections.length; i++ ) {
           // Insert an entry into section_order to order the sections
           const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
           VALUES ($1, $2, $3);`;
-          await connection.query ( orderSectionQuery, [realmId, i, chosenSections[i].id ])
+          await connection.query (orderSectionQuery, [realmId, i, chosenSections[i].id ])
     };
   
     await connection.query('COMMIT');

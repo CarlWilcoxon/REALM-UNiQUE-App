@@ -13,23 +13,8 @@ function* getAllRealms() {
 
 function* getRealm(action) {
   try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    };
 
-    // the config includes credentials which
-    // allow the server session to recognize the user
-    // If a user is logged in, this will return their information
-    // from the server session (req.user)
-    const response = yield axios.get(
-      `/api/realm/get-realm/${action.payload.realmId}`,
-      config
-    );
-
-    // now that the session has given us a user object
-    // with an id and username set the client-side user object to let
-    // the client-side code know the user is logged in
+    const response = yield axios.get(`/api/realm/get-realm/${action.payload.realmId}`);
 
     yield put({ type: 'SET_REALM', payload: response.data });
   } catch (error) {
@@ -39,7 +24,7 @@ function* getRealm(action) {
 
 function* submitNewRealm(action){
       try{
-        yield axios.post('/api/realm/addnewrealm', action.payload);
+        yield axios.post('/api/realm/add-new-realm', action.payload);
       }catch (error){
       console.log('error with post request', error);
     }

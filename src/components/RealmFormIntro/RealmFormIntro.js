@@ -3,9 +3,51 @@ import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
 import { withStyles, Grid, Button } from '@material-ui/core';
 
-class EmotionalFormIntro extends Component {
-  goBack = () => this.props.history.push('/EmotionalHome');
-  start = () => this.props.history.push('/EmotionalForm');
+class RealmFormIntro extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.match.params.section,
+      },
+    });
+    this.props.dispatch({
+      type: 'FETCH_REALM',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    });
+
+  }
+
+
+  saveAndContinue = (event) => {
+    // Go to this realm's form
+    // /section/:realm/:section
+    this.props.history.push(
+      `/section/${
+        this.props.match.params.realm
+      }/${
+        ( ( this.props.realm !== undefined )
+         ?
+        this.props.realm.section[0].section_id : '' )}`)
+  };
+
+  goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
+  start = () => {
+    this.props.dispatch({
+      type: 'CREATE_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    });
+
+    this.props.history.push(
+      `/realm-form/${this.props.match.params.realm
+      }/${this.props.match.params.section}`)};
+
   render() {
     const { classes } = this.props;
     return (
@@ -56,4 +98,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withStyles(styles)(connect(mapStateToProps)(EmotionalFormIntro));
+export default withStyles(styles)(connect(mapStateToProps)(RealmFormIntro));

@@ -82,9 +82,14 @@ VALUES
 CREATE TABLE "section_order" (
   "id" SERIAL PRIMARY KEY,
   "realm_id" int,
-  "index" int,
+  "index" int DEFAULT 0,
   "section_id" int
 );
+
+INSERT INTO "section_order" ( "realm_id", "index", "section_id" )
+VALUES
+( 1, 1, 1 ),
+( 1, 0, 2);
 
 CREATE TABLE "client_list" (
   "id" SERIAL PRIMARY KEY,
@@ -110,24 +115,38 @@ VALUES (1, 'PUBLIC', 1);
 
 CREATE TABLE "realm" (
   "id" SERIAL PRIMARY KEY,
-  "realm_name" VARCHAR(50),
-  "project_id" int,
+  "realm_name" VARCHAR(16),
+  "project_id" int DEFAULT 1,
   -- "internal_name" VARCHAR(50)
-  "description" VARCHAR(100),
+  "description" VARCHAR(1000),
   "cover_photo" VARCHAR(100)
 );
 
-CREATE TABLE "multiple_choice" (
-  "id" SERIAL PRIMARY KEY,
-  "question_id" int,
-  "content" VARCHAR(50),
-  "correct_answer" boolean
-);
+INSERT INTO "realm" ( "id", "realm_name", "description", "cover_photo" )
+VALUES
+( 1, 'Emotional', 'Emotional health is an important part of overall health. People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. They are able to cope with life’s challenges. They can keep problems in perspective and bounce back from setbacks. They feel good about themselves and have good relationships.
+
+Being emotionally healthy does not mean you are happy all the time. It means you are aware of your emotions. You can deal with them, whether they are positive or negative. Emotionally healthy people still feel stress, anger, and sadness. But they know how to manage their negative feelings. They can tell when a problem is more than they can handle on their own. They also know when to seek help from their doctor.', 'images/emotionalRealmCover.jpg' ),
+( 2, 'Nutritional', 'Nutritional description', '/coverPhoto' ),
+( 3, 'Physical', 'Physical description', '/coverPhoto' ),
+( 4, 'Spiritual', 'Spiritual description', '/coverPhoto' ),
+( 5, 'Financial', 'Financial description', '/coverPhoto' ),
+( 6, 'Environmental', 'Environmental description', '/coverPhoto' ),
+( 7, 'Social', 'Social description', '/coverPhoto' ),
+( 8, 'Intellectual', 'Intellectual description', '/coverPhoto' );
+
+-- WRITTEN FOR FUTURE USE
+-- CREATE TABLE "multiple_choice" (
+--   "id" SERIAL PRIMARY KEY,
+--   "question_id" int,
+--   "content" VARCHAR(50),
+--   "correct_answer" boolean
+-- );
 
 CREATE TABLE "section" (
   "id" SERIAL PRIMARY KEY,
   "title" VARCHAR(30),
-  "description" VARCHAR(1000),
+  "description" VARCHAR(10000),
   "type" int,
   "image_link" VARCHAR(100),
   "video_link" VARCHAR(100),
@@ -143,7 +162,8 @@ The mind is the set of cognitive faculties including consciousness, imagination,
  1,
 null,
  'https://www.youtube.com/watch?v=pRFXSjkpKWA',
- null);
+ null),
+ (2, null, null, 5, null, null, null);
 
 
 CREATE TABLE "resource_type" (
@@ -163,25 +183,43 @@ CREATE TABLE "student_progress" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
   "realm_id" int,
-  "index" int,
-  "started" boolean
+  "section_id" int,
+  "started" boolean DEFAULT FALSE
 );
 
 CREATE TABLE "question" (
   "id" SERIAL PRIMARY KEY,
   "section_id" int,
   "question_index" int,
-  "content" VARCHAR(10000)
+  "content" VARCHAR(150)
 );
+
+INSERT INTO "question" ( "section_id", "question_index", "content" )
+VALUES
+( 1, 0, 'How much do we really know about the mind?' ),
+( 2, 0, 'What do you think about most of the time?' ),
+( 2, 1, 'How many negative thoughts do you think about yourself?' ),
+( 2, 2, 'How many positive thoughts do you think about yourself?' ),
+( 2, 3, 'List things you are afraid of. Can you control these things?' ),
+( 2, 4, 'List some memories. Are they mainly positive or negative?' ),
+( 2, 5, 'How much sleep do you get at night?' ),
+( 2, 6, 'What time do you normally go to bed?' ),
+( 2, 7, 'What time do you normally get out of bed?' ),
+( 2, 8, 'Do you take any medication to sleep?' ),
+( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?' ),
+( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?'),
+( 2, 11, 'Do you eat or drink alcohol when upset of celebrating?' ),
+( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?' );
 
 CREATE TABLE "student_response" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
+  "realm_id" int,
   "section_id" int,
   "question_id" int,
-  "feedback_score" int,
+  -- "feedback_score" int,
   "response" VARCHAR(5000),
-  "date_submitted" date
+  "date_submitted" date DEFAULT now()
 );
 
 -- ALTER TABLE "user" ADD FOREIGN KEY ("id") REFERENCES "demographic" ("user_id");

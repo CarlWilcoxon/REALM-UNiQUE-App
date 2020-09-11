@@ -28,18 +28,39 @@ const CategorySelectorProps = {
 };
 
 class RegisterPage extends Component {
+
   state = {
     username: '',
     password: '',
-  };
+    confirm_password: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    state: '',
+    age: '',
+    ethnicity: '',
+    gender: '',
+    income: '',
+    education_level: '',
+}
 
   registerUser = (event) => {
     event.preventDefault();
-    console.log('this.state:', this.state);
+    console.log("this.state:", this.state);
+    // make sure password and confirm password are the same
     if (
       this.state.username &&
       this.state.password &&
-      this.state.password === this.state.confirm_password
+      this.state.password === this.state.confirm_password &&
+      this.state.first_name !== '' &&
+      this.state.last_name !== '' &&
+      this.state.email.includes('@') &&
+      this.state.state !== '' &&
+      this.state.age !== '' &&
+      this.state.ethnicity !== '' &&
+      this.state.gender !== '' &&
+      this.state.income !== '' &&
+      this.state.education_level !== ''
     ) {
       this.props.dispatch({
         type: 'REGISTER',
@@ -140,7 +161,7 @@ class RegisterPage extends Component {
                 : classes.formContainerMobile
             }
             onSubmit={this.login}
-            autocomplete="off"
+            autoComplete="off"
           >
             <h1 className={classes.signUpControl}>Sign Up</h1>
             <h2 className={classes.requiredControl}>Required = *</h2>
@@ -158,7 +179,7 @@ class RegisterPage extends Component {
                   // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.username}
+                  value={this.state.username || ''}
                   onChange={this.handleInputChangeFor('username')}
                   InputLabelProps={{
                     classes: {
@@ -185,10 +206,10 @@ class RegisterPage extends Component {
                   // id="outlined-helperText"
                   label="Password*"
                   type="password"
-                  // helperText="Required"
+                  autoComplete="current-password"
                   variant="outlined"
                   className={classes.inputControl}
-                  value={this.state.password}
+                  value={this.state.password || ''}
                   onChange={this.handleInputChangeFor('password')}
                   InputLabelProps={{
                     classes: {
@@ -217,7 +238,7 @@ class RegisterPage extends Component {
                   variant="outlined"
                   type="password"
                   className={classes.inputControl}
-                  value={this.state.confirm_password}
+                  value={this.state.confirm_password || ''}
                   onChange={this.handleInputChangeFor('confirm_password')}
                   InputLabelProps={{
                     classes: {
@@ -244,6 +265,7 @@ class RegisterPage extends Component {
                   // id="outlined-helperText"
                   label="First Name*"
                   // helperText="Required"
+                  required={true}
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.first_name || ''}
@@ -696,12 +718,13 @@ class RegisterPage extends Component {
             >
               <InputLabel
                 className={classes.categorySelector}
-                label="Education * "
+                label="Education *"
               >
                 Education*
               </InputLabel>
               <Select
                 label="Education *"
+                required={true}
                 MenuProps={CategorySelectorProps}
                 value={this.state.education_level || ''}
                 onChange={this.handleInputChangeFor('education_level')}
@@ -750,9 +773,7 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Registration Code"
-                  // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.reg_code || ''}
@@ -777,17 +798,18 @@ class RegisterPage extends Component {
               </div>
             </FormControl>
 
+            {/* Submit button */}
             <div className={classes.submitButtonContainer}>
               <Button
                 disableElevation
                 className={classes.submitButtonRegister}
-                name="submit"
                 onClick={this.registerUser}
               >
                 Submit
               </Button>
             </div>
 
+            {/* Switch to login mode button */}
             <Button
               component="Link"
               className={classes.register}

@@ -32,8 +32,9 @@ import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
 import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddSectionsToNewRealmPage';
 import Section from '../Section/Section';
 import RealmFormIntro from '../RealmFormIntro/RealmFormIntro';
+import RealmForm from '../RealmForm/RealmForm';
 import EmotionalForm from '../EmotionalForm/EmotionalForm';
-import EmotionalFormFinished from '../EmotionalFormFinished/EmotionalFormFinished';
+import RealmFormFinished from '../RealmFormFinished/RealmFormFinished';
 import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
 import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
 import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
@@ -88,10 +89,10 @@ class App extends Component {
                 <AdminRoute exact path="/view-clients" component={ViewClientsPage} />
                 <AdminRoute exact path="/edit-client" component={EditClientPage} /> */}
 
-            <Route exact path="/realm-home/:realm" component={RealmHome} />
+            <ProtectedRoute exact path="/realm-home/:realm" component={RealmHome} />
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
-            <Route exact path="/section/:realm/:section" component={Section} />
+            <ProtectedRoute exact path="/section/:realm/:section" component={Section} />
 
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
@@ -112,13 +113,18 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/realm-form/:realm/:section"
+              component={RealmForm}
+            />
+            <ProtectedRoute
+              exact
               path="/EmotionalForm"
               component={EmotionalForm}
             />
             <ProtectedRoute
               exact
-              path="/EmotionalFormFinished"
-              component={EmotionalFormFinished}
+              path="/realm-form-finished/:realm/:section"
+              component={RealmFormFinished}
             />
             <ProtectedRoute
               exact

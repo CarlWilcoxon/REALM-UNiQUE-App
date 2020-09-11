@@ -25,7 +25,6 @@ class RealmHome extends Component {
       type: 'FETCH_PROGRESS',
       payload: {
         realmId: this.props.match.params.realm,
-        userId: this.props.user.id
       },
     })
   }
@@ -34,7 +33,7 @@ class RealmHome extends Component {
 
     console.log( this.props.state )
     // Use the user's progress to determine where to send them.
-    if (this.props.progress.index !== undefined ) {
+    if (this.props.progress.realm_id !== undefined ) {
 
       this.props.history.push(
         `/section/${
@@ -58,7 +57,9 @@ class RealmHome extends Component {
         this.props.realm.section[0].section_id : '' )}`
     )}
   };
+
   goBack = () => this.props.history.push('/home');
+
 
   render() {
 
@@ -75,7 +76,6 @@ class RealmHome extends Component {
       justify="center"
       >
         <Grid
-          // className={classes.leftSideFlex}
           container
           item
           direction="column"
@@ -132,6 +132,7 @@ class RealmHome extends Component {
               Go Back
             </Button>
           </Grid>
+
         </Grid>
       </Grid>
     );
@@ -143,7 +144,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
   progress: state.progress,
   state,
-  realm: state.realm,
 });
 
 // this allows us to use <App /> in index.js

@@ -4,31 +4,6 @@ import { withStyles, TextField, Typography } from '@material-ui/core';
 import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
-  componentWillMount() {
-    console.log(this.props.question);
-    this.setState({
-      answer: '',
-    });
-  }
-
-  // questionChangeHandler=
-
-
-  // onClickHandler = () => {
-  //     ({ type: '',
-  //   payload: {
-  //     index: this.props.question_index,
-  //     answer: this.state.answer,
-  //     question: this.props.content } });  }
-
-  handleInputChangeFor = (propertyName) => (event) => {
-    this.setState({
-      ...this.state,
-      [propertyName]: event.target.value,
-    });
-    console.log('state:', this.state);
-    console.log('this.props', this.props);
-  };
 
   render() {
     // Deconstructing more props
@@ -44,8 +19,8 @@ class Question extends Component {
           multiline
           rows={2}
           className={classes.inputControlSection}
-          value={this.state.answer}
-          onChange={this.handleInputChangeFor('answer')}
+          value={this.props.local[`answer${question.id}`]}
+          onChange={this.props.changeHandler(`answer${question.id}`)}
           InputProps={{
             classes: {
               input: classes.input,

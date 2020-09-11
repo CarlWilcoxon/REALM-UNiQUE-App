@@ -13,6 +13,16 @@ import {
 } from '@material-ui/core';
 
 class Section extends Component {
+
+  state = {};
+
+  handleInputChangeFor = (propertyName) => (event) => {
+    this.setState({
+      ...this.state,
+      [propertyName]: event.target.value,
+    });
+  };
+
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_SECTION',
@@ -26,11 +36,16 @@ class Section extends Component {
         realmId: this.props.match.params.realm,
       },
     })
+    this.props.dispatch({
+      type: 'FETCH_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    })
+
   }
 
   saveAndContinue = (event) => {
-
-    let blob;
 
     this.props.history.push(
       `/section/${
@@ -145,7 +160,14 @@ class Section extends Component {
               justify="space-evenly"
               >
                 {section.questions.map( (q, i) =>
-                <Grid item component={Question} question={q} key={i} />)}
+                <Grid
+                item
+                component={Question}
+                question={q}
+                local={this.state}
+                changeHandler={this.handleInputChangeFor}
+                key={i}
+                />)}
               </Grid>
               ) : (
               'loading'

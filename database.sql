@@ -118,7 +118,7 @@ CREATE TABLE "realm" (
   "realm_name" VARCHAR(16),
   "project_id" int DEFAULT 1,
   -- "internal_name" VARCHAR(50)
-  "description" VARCHAR(100),
+  "description" VARCHAR(1000),
   "cover_photo" VARCHAR(100)
 );
 
@@ -183,7 +183,7 @@ CREATE TABLE "student_progress" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int,
   "realm_id" int,
-  "index" int,
+  "section_id" int,
   "started" boolean DEFAULT FALSE
 );
 
@@ -219,7 +219,7 @@ CREATE TABLE "student_response" (
   "question_id" int,
   -- "feedback_score" int,
   "response" VARCHAR(5000),
-  "date_submitted" date DEFAULT NOW(0)
+  "date_submitted" date DEFAULT now()
 );
 
 -- ALTER TABLE "user" ADD FOREIGN KEY ("id") REFERENCES "demographic" ("user_id");

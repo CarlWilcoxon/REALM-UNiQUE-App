@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
 import { withStyles, Grid, Button } from '@material-ui/core';
 
-class RealmFormIntro extends Component {
+class EmotionalFormFinished extends Component {
 
   componentDidMount() {
     this.props.dispatch({
@@ -17,36 +17,34 @@ class RealmFormIntro extends Component {
       payload: {
         realmId: this.props.match.params.realm,
       },
-    });
+    })
+    this.props.dispatch({
+      type: 'FETCH_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    })
 
   }
 
 
-  saveAndContinue = (event) => {
-    // Go to this realm's form
-    // /section/:realm/:section
-    this.props.history.push(
-      `/section/${
-        this.props.match.params.realm
-      }/${
-        ( ( this.props.realm !== undefined )
-         ?
-        this.props.realm.section[0].section_id : '' )}`)
-  };
 
-  goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
-  start = () => {
-    this.props.dispatch({
-      type: 'CREATE_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-        sectionId: this.props.match.params.section,
-      },
-    });
-
+  // goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
+  goBack = () => this.props.history.push(`/home`);
+  continue = () => {
+    // this.props.dispatch({
+    //   type: 'UPDATE_PROGRESS',
+    //   payload: {
+    //     realmId: this.props.match.params.realm,
+    //     sectionId: this.props.match.params.section,
+    //   },
+    // })
+    if (this.props.state.progress.index !== undefined ){
     this.props.history.push(
-      `/realm-form/${this.props.match.params.realm
-      }/${this.props.match.params.section}`)};
+    `/section/${this.props.match.params.realm}/${
+      this.props.state.realm.section[(this.props.state.progress.index+1)].section_id
+    }`)};
+  }
 
   render() {
     const { classes } = this.props;
@@ -57,7 +55,7 @@ class RealmFormIntro extends Component {
           spacing={0}
           alignItems="center"
           justify="center"
-          direction="column"
+          // direction="column"
         >
           <Grid
             // className={classes.leftSideFlex}
@@ -67,26 +65,24 @@ class RealmFormIntro extends Component {
             md={6}
             lg={6}
           >
-            <h3 className={classes.realmTitle}>Realm Form Introduction</h3>
-            <div className={classes.formDescriptionContainer}>
+            <h3 className={classes.realmTitle}>Thank You!</h3>
+            <div className={classes.formDescriptionContainerThankYou}>
               <p className={classes.formDescription}>
-                Please fill out these preliminary questions regarding emotional
-                wellness before beginning the realm course.
-              </p>
-              <p className={classes.estimatedTimeOfCompletion}>
-                Estimated time to complete:{' '}
-                <span className={classes.boldTOC}>5-8 minutes</span>
+                We appreciate your participation in filling out our realm form.
+                Your answers have been saved. Click continue to start the realm
+                course.
               </p>
             </div>
           </Grid>{' '}
           <div className={classes.bottomNav}>
-            <Button className={classes.realmButton} onClick={this.start}>
-              Start Form
+            <Button className={classes.realmButton} onClick={this.continue}>
+              Start Realm Course
             </Button>{' '}
             <Button className={classes.realmButton} onClick={this.goBack}>
-              Back
+              Back to Realms
             </Button>
           </div>
+          {/*end container */}
         </Grid>
       </div>
     );
@@ -98,4 +94,6 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withStyles(styles)(connect(mapStateToProps)(RealmFormIntro));
+export default withStyles(styles)(
+  connect(mapStateToProps)(EmotionalFormFinished)
+);

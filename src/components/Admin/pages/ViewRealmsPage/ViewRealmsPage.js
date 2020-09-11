@@ -110,7 +110,11 @@ class ViewRealmsPage extends Component {
   };
 
   getAllRealms = () => {
-    this.props.dispatch({ type: "FETCH_ALL_REALMS" });
+    this.props.dispatch({ type: 'FETCH_ALL_REALMS' });
+  };
+
+  handleClick = (realmId) => {
+    this.props.history.push(`/preview/realm/${realmId}`);
   };
 
   handleNewRealmClick = () => {
@@ -188,9 +192,9 @@ class ViewRealmsPage extends Component {
                       variant="contained"
                       color="primary"
                       size="large"
-                      // onClick={(event) => this.handleClick(section.id)}
                       aria-label="delete"
                       className={classes.viewSectionIcon}
+                      onClick={() => this.handleClick(realm.id)}
                     >
                       <VisibilityIcon fontSize="large" />
                     </IconButton>

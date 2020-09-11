@@ -7,7 +7,7 @@ function* getProgress(action) {
   try {
 
     const response = yield axios.get('/api/progress/get-save',  action.payload );
-    yield put({ type: 'SET_PROGRESS', payload: response });
+    yield put({ type: 'SET_PROGRESS', payload: response.data });
 
   } catch (error) {
     console.log('User get request failed', error );

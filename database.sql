@@ -126,7 +126,7 @@ INSERT INTO "realm" ( "id", "realm_name", "description", "cover_photo" )
 VALUES
 ( 1, 'Emotional', 'Emotional health is an important part of overall health. People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. They are able to cope with life’s challenges. They can keep problems in perspective and bounce back from setbacks. They feel good about themselves and have good relationships.
 
-Being emotionally healthy does not mean you are happy all the time. It means you are aware of your emotions. You can deal with them, whether they are positive or negative. Emotionally healthy people still feel stress, anger, and sadness. But they know how to manage their negative feelings. They can tell when a problem is more than they can handle on their own. They also know when to seek help from their doctor.', '/coverPhoto' ),
+Being emotionally healthy does not mean you are happy all the time. It means you are aware of your emotions. You can deal with them, whether they are positive or negative. Emotionally healthy people still feel stress, anger, and sadness. But they know how to manage their negative feelings. They can tell when a problem is more than they can handle on their own. They also know when to seek help from their doctor.', 'images/emotionalRealmCover.jpg' ),
 ( 2, 'Nutritional', 'Nutritional description', '/coverPhoto' ),
 ( 3, 'Physical', 'Physical description', '/coverPhoto' ),
 ( 4, 'Spiritual', 'Spiritual description', '/coverPhoto' ),

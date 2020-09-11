@@ -2,16 +2,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-
+import { CSVLink } from 'react-csv';
 import './Nav.css';
-
+import styles from '../../themes/adminTheme';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import {
+  withStyles,
+  // FormControl,
+  // Grid,
+  // TextField,
+  Button,
+  // MenuItem,
+} from '@material-ui/core';
+// const { classes }
 const Nav = (props) => (
+  // const { classes } = props;
+
   <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">
-        <img alt="logo" className="logo" src="/images/logo.png"></img>
-      </h2>
-    </Link>
+    {props.user.admin ? (
+      <Link to="/home">
+        <h2 className="nav-title-admin">
+          <img alt="logo" className="logo" src="/images/logo.png"></img>
+        </h2>
+      </Link>
+    ) : (
+      <Link to="/home">
+        <h2 className="nav-title">
+          <img alt="logo" className="logo" src="/images/logo.png"></img>
+        </h2>
+      </Link>
+    )}
     <div className="nav-right">
       {/* <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
@@ -33,6 +53,13 @@ const Nav = (props) => (
           <Link className="nav-link" to="/view-sections">
             Sections
           </Link>
+          <CSVLink data={'data'} className="nav-link-csv" target="_blank">
+            {/* <CSVLink data={'data'} className="nav-link" target="_blank"> */}
+            {/* <Button variant="contained" className={this.props.downloadButton}> */}
+            <GetAppIcon></GetAppIcon>
+            <br className="download"></br>
+            Public Data
+          </CSVLink>
           <LogOutButton className="nav-link" />
         </>
       ) : (
@@ -60,4 +87,5 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+// export default connect(mapStateToProps)(Nav);
+export default withStyles(styles)(connect(mapStateToProps)(Nav));

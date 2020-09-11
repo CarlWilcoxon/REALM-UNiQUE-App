@@ -82,9 +82,14 @@ VALUES
 CREATE TABLE "section_order" (
   "id" SERIAL PRIMARY KEY,
   "realm_id" int,
-  "index" int,
+  "index" int DEFAULT 0,
   "section_id" int
 );
+
+INSERT INTO "section_order" ( "realm_id", "index", "section_id" )
+VALUES
+( 1, 1, 1 ),
+( 1, 0, 2);
 
 CREATE TABLE "client_list" (
   "id" SERIAL PRIMARY KEY,
@@ -110,24 +115,38 @@ VALUES (1, 'PUBLIC', 1);
 
 CREATE TABLE "realm" (
   "id" SERIAL PRIMARY KEY,
-  "realm_name" VARCHAR(50),
-  "project_id" int,
+  "realm_name" VARCHAR(16),
+  "project_id" int DEFAULT 1,
   -- "internal_name" VARCHAR(50)
   "description" VARCHAR(100),
   "cover_photo" VARCHAR(100)
 );
 
-CREATE TABLE "multiple_choice" (
-  "id" SERIAL PRIMARY KEY,
-  "question_id" int,
-  "content" VARCHAR(50),
-  "correct_answer" boolean
-);
+INSERT INTO "realm" ( "id", "realm_name", "description", "cover_photo" )
+VALUES
+( 1, 'Emotional', 'Emotional health is an important part of overall health. People who are emotionally healthy are in control of their thoughts, feelings, and behaviors. They are able to cope with life’s challenges. They can keep problems in perspective and bounce back from setbacks. They feel good about themselves and have good relationships.
+
+Being emotionally healthy does not mean you are happy all the time. It means you are aware of your emotions. You can deal with them, whether they are positive or negative. Emotionally healthy people still feel stress, anger, and sadness. But they know how to manage their negative feelings. They can tell when a problem is more than they can handle on their own. They also know when to seek help from their doctor.', '/coverPhoto' ),
+( 2, 'Nutritional', 'Nutritional description', '/coverPhoto' ),
+( 3, 'Physical', 'Physical description', '/coverPhoto' ),
+( 4, 'Spiritual', 'Spiritual description', '/coverPhoto' ),
+( 5, 'Financial', 'Financial description', '/coverPhoto' ),
+( 6, 'Environmental', 'Environmental description', '/coverPhoto' ),
+( 7, 'Social', 'Social description', '/coverPhoto' ),
+( 8, 'Intellectual', 'Intellectual description', '/coverPhoto' );
+
+-- WRITTEN FOR FUTURE USE
+-- CREATE TABLE "multiple_choice" (
+--   "id" SERIAL PRIMARY KEY,
+--   "question_id" int,
+--   "content" VARCHAR(50),
+--   "correct_answer" boolean
+-- );
 
 CREATE TABLE "section" (
   "id" SERIAL PRIMARY KEY,
   "title" VARCHAR(30),
-  "description" VARCHAR(1000),
+  "description" VARCHAR(10000),
   "type" int,
   "image_link" VARCHAR(100),
   "video_link" VARCHAR(100),

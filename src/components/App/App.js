@@ -75,7 +75,7 @@ class App extends Component {
             <Route exact path="/realm-home" component={RealmHome} />
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
-            <Route exact path="/section/:section" component={Section} />
+            <Route exact path="realm/:realm/section/:section" component={Section} />
             {/* <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
 
             {/* For protected routes, the view could show one of several things on the same route.

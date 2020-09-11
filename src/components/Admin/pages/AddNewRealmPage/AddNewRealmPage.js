@@ -9,18 +9,18 @@ import {
   Grid,
   TextField,
   Button,
-  MenuItem,
+  // MenuItem,
 } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 // import HelpIcon from '@material-ui/icons/Help';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-import EcoIcon from '@material-ui/icons/Eco';
-import PlaceIcon from '@material-ui/icons/Place';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import SpaIcon from '@material-ui/icons/Spa';
+// import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+// import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+// import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+// import EcoIcon from '@material-ui/icons/Eco';
+// import PlaceIcon from '@material-ui/icons/Place';
+// import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+// import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+// import SpaIcon from '@material-ui/icons/Spa';
 import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
@@ -34,19 +34,20 @@ class AddNewRealmPage extends Component {
   };
   // Be wary of constructors, they can over ride info
 
-  //SEND DATA TO SAGA
-  submitRealm = (event) => {
-    event.preventDefault();
+  //Store new realm in a reducer
+  storeRealm = (event) => {
     this.props.dispatch({
-      type: "SUBMIT_REALM",
+      type: "SET_REALM",
       payload: {
-        name: this.state.name,
-        photoLink: this.state.photoLink,
-        description: this.state.description,
-        ///questions need to be added to payload
+          ...this.state,
+          questions: this.props.reduxState.newQuestions,
       },
-    });
-  };
+  });
+  this.goNext();
+};
+
+//Navigate to next page
+goNext =() => this.props.history.push('/add-sections-to-realm')
 
   //CAPTURE INPUTS IN STATE
 
@@ -113,9 +114,9 @@ class AddNewRealmPage extends Component {
                 </div>
               </FormControl>
 
-              <FormControl className={classes.formContainer}>
-                <div>
-                  <TextField
+              {/* <FormControl className={classes.formContainer}>
+                <div> */}
+                  {/* <TextField
                     select
                     required
                     label="Realm Icon"
@@ -168,7 +169,7 @@ class AddNewRealmPage extends Component {
                     </MenuItem>
                   </TextField>
                 </div>
-              </FormControl>
+              </FormControl> */}
 
               <div>
                 <FormControl className={classes.formContainer}>
@@ -273,8 +274,10 @@ class AddNewRealmPage extends Component {
               <div className="new-question">
                 <FormControl className={classes.formContainerQuestion}>
                   <div id="new-question">
-                    {this.state.questionInputs.map((questionInputs) => (
-                      <RealmQuestion />
+                    {this.state.questionInputs.map((questionInputs, index) => (
+                      <RealmQuestion
+                      key={index}
+                      index={index}/>
                     ))}
                   </div>
                 </FormControl>
@@ -292,10 +295,10 @@ class AddNewRealmPage extends Component {
                   variant="contained"
                   type="submit"
                   name="submit"
-                  onClick={this.submitRealm}
+                  onClick={this.storeRealm}
                   className={classes.adminButton}
                 >
-                  Select Sections
+                  Select Sections for Realm
                 </Button>
               </div>
             </form>

@@ -82,8 +82,11 @@ router.get('/form/:id', rejectUnauthenticated, async (req, res) => {});
 
 // });
 
-// Route for creating a new Realm
-router.post('/', rejectUnauthenticated, async (req, res) => {
+
+
+//OLD DON'T USE
+router.post('/', rejectUnauthenticated,  async (req, res) => {
+
   const realmName = req.body.realmName;
   const coverPhotoLink = req.body.coverPhotoLink;
   const realmDescription = req.body.realmDescription;
@@ -206,3 +209,43 @@ module.exports = router;
 //     connection.release()
 //   }
 // });
+
+
+//POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
+router.post('/addnewrealm',  async (req, res) => {
+  console.log( "in post route:", req.body );
+  
+  const realm = req.body.realm
+  const chosenSections = req.body.chosenSections
+  const connection = await pool.connect();
+
+  try {
+    await connection.query('BEGIN');
+    const addRealmQuery = `INSERT INTO "realm" ("realm_name", "description", "cover_photo")
+    VALUES ($1, $2, $3) RETURNING "id"`;
+    // SAVE RESULT TO USE REALM ID
+    const result = await connection.query( addRealmQuery, [realm.name, realm.description, realm.photoLink]);
+    const realmId = result.rows[0].id;
+    console.log (realmId)
+
+
+  // LOOP THROUGH CHOSEN SECTIONS INTO SECTION ORDER TABLE
+    for ( let i = 0; i < chosenSections.length; i++ ) {
+          const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+          VALUES ($1, $2, $3);`;
+          await connection.query (orderSectionQuery, [realmId, i, chosenSections[i].id ])
+    };
+  
+    await connection.query('COMMIT');
+    res.sendStatus(200)
+  } catch (err) {
+      console.log('error on transfer', err)
+      await connection.query('ROLLBACK')
+      res.sendStatus(500);
+  } finally {
+    connection.release()
+  }
+
+});
+
+

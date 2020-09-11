@@ -77,6 +77,7 @@ class App extends Component {
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
             />
+
             <AdminRoute
               exact
               path="/admin-landing"
@@ -111,6 +112,7 @@ class App extends Component {
               component={ViewClientsPage}
             />
             <AdminRoute exact path="/edit-client" component={EditClientPage} />
+
             {/* eventually the paths to sections will be like this
              <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
             <AdminRoute exact path="/section/:section" component={Section} />

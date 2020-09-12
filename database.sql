@@ -158,7 +158,7 @@ VALUES
 ( 1,
 'Brain & Mind & Carbohydrates',
  'The brain is an organ that serves as the center of the nervous system in all vertebrate and most invertebrate animals. It is located in the head, usually close to the sensory organs for senses such as vision. It is the most complex organ in a vertebrate''s body.
-The mind is the set of cognitive faculties including consciousness, imagination, perception, thinking, judgement, language and memory, which is housed in the brain \(sometimes including the central nervous system\). It is usually defined as the faculty of an entity''s thoughts and consciousness.',
+The mind is the set of cognitive faculties including consciousness, imagination, perception, thinking, judgement, language and memory, which is housed in the brain (sometimes including the central nervous system). It is usually defined as the faculty of an entity''s thoughts and consciousness.',
  1,
 null,
  'https://www.youtube.com/watch?v=pRFXSjkpKWA',

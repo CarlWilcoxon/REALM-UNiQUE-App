@@ -16,6 +16,7 @@ class Section extends Component {
   state = {};
 
   handleInputChangeFor = (propertyName) => (event) => {
+    console.log('old state:', this.state)
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
@@ -45,16 +46,16 @@ class Section extends Component {
   }
 
   saveAndContinue = () => {
-    let section_order = this.props.state.realm.section
+
+    const section_order = this.props.realm.section
     let next_section = 'realm-feedback'
 
     // loop through the section order array
     for (let i=0; i < section_order.length; i++) {
       // if there is still a section after this one
-      if (section_order[i].section_id === this.match.params.section &&
-      i+1 < section_order.lenth ) {
+      if (section_order[i].section_id == this.props.match.params.section &&
+      (i+1 < section_order.length) ) {
         next_section = section_order[i+1].section_id;
-        break;
       }
     }
 
@@ -73,27 +74,11 @@ class Section extends Component {
     this.props.dispatch({
       type: 'SAVE_SECTION',
       payload: {
-        // this.state;
+        state: this.state,
       },
     });
     this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   };
-
-  //   let nextSection = ``;
-  //   if (this.props.match.params.section === this.props.state.section.maxIndex) {
-  //     nextSection = `/feedback/${this.props.match.params.realm}`
-  //   } else if (this.props.match.params.section < this.props.state.section.maxIndex ) {
-  //     nextSection = `/section/${this.props.match.params.section + 1}`
-  //   } else {
-  //     nextSection = '/EmotionalHome'
-  //   }
-  //   this.props.history.push(nextSection);
-  // };
-  // saveAndReturn = () => {
-
-  //   // this.props.dispatch({type : 'SAVE_SECTION'})
-  //   this.props.history.push('/EmotionalHome')
-  // };
 
   render() {
     const { classes, section } = this.props;
@@ -199,6 +184,7 @@ class Section extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
   section: state.section,
+  realm: state.realm,
 });
 
 // this allows us to use <App /> in index.js

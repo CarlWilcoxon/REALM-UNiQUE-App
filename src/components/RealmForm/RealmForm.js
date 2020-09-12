@@ -61,6 +61,7 @@ class RealmForm extends Component {
   };
 
   complete = () => {
+
     this.props.history.push(
       `/realm-form-finished/${
         this.props.match.params.realm}/${

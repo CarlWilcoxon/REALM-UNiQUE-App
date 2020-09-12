@@ -38,6 +38,7 @@ import RealmFormFinished from '../RealmFormFinished/RealmFormFinished';
 import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
 import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
 import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
+import RealmFeedback from '../RealmFeedback/RealmFeedback';
 import RealmHome from '../RealmHome/RealmHome';
 import './App.css';
 
@@ -125,6 +126,12 @@ class App extends Component {
             <ProtectedRoute exact path="/home" component={HomeMobile} />
 
             <ProtectedRoute exact path="/info" component={InfoPage} />
+            <ProtectedRoute
+              exact
+              path="/realm-feedback/:realm"
+              component={RealmFeedback}
+            />
+
             <ProtectedRoute
               exact
               path="/EmotionalHome"

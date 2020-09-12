@@ -39,8 +39,8 @@ class RealmForm extends Component {
     //   type: 'UPDATE_PROGRESS',
     //   payload: {
     //     realmId: this.props.match.params.realm,
-    //     userId: this.props.user.id
-    //   },
+    // sectionId: this.props.match.params.section,
+      // },
     // })
 
   }

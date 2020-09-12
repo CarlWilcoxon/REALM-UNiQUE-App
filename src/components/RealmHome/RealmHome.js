@@ -32,21 +32,32 @@ class RealmHome extends Component {
   goContinue = (event) => {
 
     console.log( this.props.state )
-    // Use the user's progress to determine where to send them.
+    // Use the user's progress to determine where to send them
+    // If the user has progress saved use it
     if (this.props.progress.realm_id !== undefined ) {
 
+      // If the user's hasn't started the realm yet, go to the form page
+      if( !this.props.progress.started )
       this.props.history.push(
+        `/realm-form/${
+          this.props.match.params.realm
+        }/${
+          this.props.progress.section_id}`
+      )
+
+      // Otherwise go to the last page the user was on.
+      else {
+        this.props.history.push(
         `/section/${
           this.props.match.params.realm
         }/${
-          ( ( this.props.realm !== undefined && this.props.progress !== undefined )
-           ?
-          this.props.realm.section[this.props.progress.index].section_id : '' )}`
-      )
+          ( this.props.progress.section_id )}`
+        )
+
+      }
 
     } else {
-
-    // Go to this realm's form
+    // Otherwise go to this realm's form
     // /section/:realm/:section
     this.props.history.push(
       `/realm-form-intro/${
@@ -114,6 +125,9 @@ class RealmHome extends Component {
             </Grid>
           ) : 'loading' }
 
+            {this.props.state.progress !== undefined ? (
+            JSON.stringify(this.props.state)
+            ) : 'loading' }
 
           <Grid className={classes.realmButtonContainer}>
 

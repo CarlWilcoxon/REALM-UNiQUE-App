@@ -36,24 +36,38 @@ class Section extends Component {
       },
     });
     this.props.dispatch({
-      type: 'FETCH_PROGRESS',
+      type: 'UPDATE_PROGRESS',
       payload: {
         realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
       },
     });
   }
 
-  saveAndContinue = (event) => {
-    this.props.history.push(
-      `/section/${this.props.match.params.realm}/${
-        this.props.realm !== undefined
-          ? this.props.realm.section[0].section_id
-          : ''
-      }`
-    );
+  saveAndContinue = () => {
+    let section_order = this.props.state.realm.section
+    let next_section = 'realm-feedback'
+
+    // loop through the section order array
+    for (let i=0; i < section_order.length; i++) {
+      // if there is still a section after this one
+      if (section_order[i].section_id === this.match.params.section &&
+      i+1 < section_order.lenth ) {
+        next_section = section_order[i+1].section_id;
+        break;
+      }
+    }
+
+    if (next_section === 'realm-feedback') {
+      this.props.history.push(
+        `/realm-feedback/${this.props.match.params.realm}`)
+    } else {
+      this.props.history.push(
+        `/section/${this.props.match.params.realm}/${next_section}`
+      );
+    }
   };
 
-  goBack = () => this.props.history.push('/home');
 
   saveAndReturn = () => {
     this.props.dispatch({

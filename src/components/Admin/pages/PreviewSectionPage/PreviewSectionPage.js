@@ -70,7 +70,7 @@ class PreviewSectionPage extends Component {
                     // type="submit"
                     // name="submit"
                     // onClick={this.submitSection}
-                    className={classes.adminButtonPreviewAgain}
+                    className={classes.adminButtonAddMarginLess}
                     onClick={this.toggleEdit}
                   >
                     <VisibilityIcon

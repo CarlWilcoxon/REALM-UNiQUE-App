@@ -5,6 +5,7 @@ import {
   Button,
   Grid,
   GridListTile,
+  Paper,
 } from '@material-ui/core';
 
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -17,40 +18,57 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import SpaIcon from '@material-ui/icons/Spa';
 import styles from '../../themes/homeTheme';
 
-
 class RealmTile extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     const { classes } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.buttonContainer}>
         <Grid item className={classes.button}>
-          { this.props.iconIndex === 0 ?
-            <EmojiEmotionsIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 1 ?
-            <EcoIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 2 ?
-            <FitnessCenterIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 3 ?
-            <SpaIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 4 ?
-            <AttachMoneyIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 5 ?
-            <PlaceIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 6 ?
-            <EmojiPeopleIcon className={classes.icon}/>
-            : '' }
-          { this.props.iconIndex === 7 ?
-            <EmojiObjectsIcon className={classes.icon}/>
-            : '' }
+          {this.props.iconIndex === 0 ? (
+            <EmojiEmotionsIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 1 ? (
+            <EcoIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 2 ? (
+            <FitnessCenterIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 3 ? (
+            <SpaIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 4 ? (
+            <AttachMoneyIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 5 ? (
+            <PlaceIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 6 ? (
+            <EmojiPeopleIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
+          {this.props.iconIndex === 7 ? (
+            <EmojiObjectsIcon className={classes.icon} />
+          ) : (
+            ''
+          )}
 
-          <Grid item className={classes.realmName}>{this.props.realm.realm_name}</Grid>
+          <Grid item className={classes.realmName}>
+            {this.props.realm.realm_name}
+          </Grid>
         </Grid>
       </Grid>
     );

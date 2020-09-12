@@ -185,20 +185,20 @@ const styles = (theme) => ({
 
   formContainer: { 'text-align': 'center', width: '100%' },
   formContainerSection: { 'text-align': 'center', width: '100%' },
-  QandAContainer: { 'text-align': 'center', margin: '10px 0px 20px 0px' },
+  QandAContainer: { 'text-align': 'center', margin: '0px 0px 0px 0px' },
   QandAContainerSection: { margin: '-30px 0px 20px 0px' },
   formQuestion: {
     font: '300 14px Poppins, sans-serif',
     color: '#1f3556',
     padding: '0px 10% 0px 10%',
-    margin: '10% 0px 10px 0px',
+    margin: '10% 0px 0px 0px',
     // width: '90%',
     'text-align': 'center',
     // borderBottom: '#1f3556 solid 1px',
   },
   inputControl: {
     margin: '0px 0px 0px 0px',
-    padding: 'px 0px 0px 0px',
+    padding: '0px 0px 0px 0px',
     width: '60%',
     font: '300 10px Poppins, sans-serif',
     color: '#fff',
@@ -244,7 +244,7 @@ const styles = (theme) => ({
 
   inputControlSection: {
     margin: '0px 0px 0px 0px',
-    padding: 'px 0px 0px 0px',
+    padding: '0px 0px 0px 0px',
     width: '70%',
     font: '300 10px Poppins, sans-serif',
     color: '#fff',

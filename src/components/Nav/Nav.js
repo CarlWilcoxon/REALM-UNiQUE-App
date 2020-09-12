@@ -6,6 +6,7 @@ import { CSVLink } from 'react-csv';
 import './Nav.css';
 import styles from '../../themes/adminTheme';
 import GetAppIcon from '@material-ui/icons/GetApp';
+
 import {
   withStyles,
   // FormControl,
@@ -53,13 +54,17 @@ const Nav = (props) => (
           <Link className="nav-link" to="/view-sections">
             Sections
           </Link>
+          <Link className="nav-link" to="/data">
+            Statistics
+          </Link>
           {/* <CSVLink data={'data'} className="nav-link-csv" target="_blank"> */}
-          <CSVLink data={'data'} className="nav-link" target="_blank">
+          {/* <CSVLink data={'data'} className="nav-link" target="_blank">
             {/* <Button variant="contained" className={this.props.downloadButton}> */}
-            {/* <GetAppIcon></GetAppIcon> */}
-            {/* <br className="download"></br> */}
-            Download Data
-          </CSVLink>
+          {/* <GetAppIcon></GetAppIcon> */}
+          {/* <br className="download"></br> */}
+          {/* Data
+          </CSVLink> */}
+          {/* <SimpleMenu /> */}
           <LogOutButton className="nav-link" />
         </>
       ) : (

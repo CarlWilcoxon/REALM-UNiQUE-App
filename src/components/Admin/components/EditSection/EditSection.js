@@ -164,7 +164,7 @@ class EditSection extends Component {
                         helperText=""
                         variant="outlined"
                         className={classes.inputControlIconSelector}
-                        defaultValue="3"
+                        defaultValue={section.type}
                         // value={this.state.type}
                         onChange={this.handleInputChangeFor("type")}
                         InputLabelProps={{
@@ -198,7 +198,7 @@ class EditSection extends Component {
                 {/* 1=video, 2=text, 3=image */}
                 {/* type needs to be retrieved from the database */}
                 <Fade>
-                  {this.state.type === 1 ? (
+                  {section.type === 1 ? (
                     <Fade>
                       <FormControl className={classes.formContainer}>
                         <div>
@@ -210,7 +210,7 @@ class EditSection extends Component {
                             variant="outlined"
                             className={classes.inputControlLink}
                             // value={this.state.videoLink}
-                            defaultValue={this.state.textContent}
+                            defaultValue={section.video_link}
                             onChange={this.handleInputChangeFor("videoLink")}
                             InputLabelProps={{
                               classes: {
@@ -272,7 +272,7 @@ class EditSection extends Component {
                         {/* <div>{JSON.stringify()} </div> */}
                       </FormControl>
                     </Fade>
-                  ) : this.state.type === 2 ? (
+                  ) : section.type === 2 ? (
                     <div>
                       <Fade>
                         <FormControl className={classes.formContainer}>
@@ -285,7 +285,7 @@ class EditSection extends Component {
                               multiline
                               rows={18}
                               className={classes.inputControlTextContent}
-                              defaultValue={this.state.textContent}
+                              defaultValue={section.text_content}
                               //   value={this.state.textContent}
                               onChange={this.handleInputChangeFor(
                                 "textContent"
@@ -311,7 +311,7 @@ class EditSection extends Component {
                         </FormControl>
                       </Fade>
                     </div>
-                  ) : this.state.type === 3 ? (
+                  ) : section.type === 3 ? (
                     <div>
                       <Fade>
                         <FormControl className={classes.formContainer}>
@@ -322,7 +322,7 @@ class EditSection extends Component {
                               helperText=""
                               variant="outlined"
                               className={classes.inputControlLink}
-                              defaultValue={this.state.imageLink}
+                              defaultValue={section.image_link}
                               // value={this.state.imageLink}
                               onChange={this.handleInputChangeFor("imageLink")}
                               InputLabelProps={{

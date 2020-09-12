@@ -53,6 +53,7 @@ class AddNewSectionPage extends Component {
         questions: this.props.reduxState.newQuestions,
       },
     });
+    this.props.history.push('/view-sections');
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -386,7 +387,6 @@ class AddNewSectionPage extends Component {
                   name="submit"
                   onClick={this.submitSection}
                   className={classes.adminButton}
-                  classes={{ root: classes.root }}
                 >
                   Save Section
                 </Button>

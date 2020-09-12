@@ -226,6 +226,9 @@ const styles = (theme) => ({
   // this is for the input and not the selector
   input: {
     color: 'white',
+    '&:focus': {
+      backgroundColor: 'transparent',
+    },
   },
   icon: {
     fill: 'white',

@@ -14,7 +14,23 @@ class EmotionalSec2 extends Component {
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
-
+    const CssTextField = withStyles({
+      root: {
+        color: '#1f3556',
+        '& label.Mui-focused': {
+          color: '#1f3556',
+        },
+        '& label.Mui': { color: '#1f3556' },
+        '& .MuiInput-underline:after': {
+          borderBottom: '#1f3556 solid 2px',
+          color: '#1f3556',
+        },
+        '& .MuiInput-underline:before': {
+          borderBottom: '#1f3556 solid 1px',
+          color: '#1f3556',
+        },
+      },
+    })(TextField);
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
@@ -30,7 +46,7 @@ class EmotionalSec2 extends Component {
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
                 Brain & Mind & Carbohydrates{' '}
-                <span className={classes.sectionOrder}> 2 of 10 </span>
+                <span className={classes.sectionOrder}> 3 of 4 </span>
               </h3>
               <div className={classes.sectionCoverContainer}>
                 {/* <Paper square={false} className={classes.realmCoverPaper}> */}
@@ -65,7 +81,7 @@ class EmotionalSec2 extends Component {
                   How much do we really know about the mind?
                 </div>
 
-                <TextField
+                {/* <TextField
                   id="outlined-helperText"
                   // label="What do you think about most of the time?"
                   // helperText="Required"
@@ -82,7 +98,8 @@ class EmotionalSec2 extends Component {
                       notchedOutline: classes.notchedOutline,
                     },
                   }}
-                />
+                /> */}
+                <CssTextField className={classes.inputControl} multiline />
               </div>
               <div className={classes.realmButtonContainer}>
                 <Button

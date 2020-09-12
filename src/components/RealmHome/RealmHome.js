@@ -125,9 +125,9 @@ class RealmHome extends Component {
             </Grid>
           ) : 'loading' }
 
-            {this.props.state.progress !== undefined ? (
+            {/* {this.props.state.progress !== undefined ? (
             JSON.stringify(this.props.state)
-            ) : 'loading' }
+            ) : 'loading' } */}
 
           <Grid className={classes.realmButtonContainer}>
 

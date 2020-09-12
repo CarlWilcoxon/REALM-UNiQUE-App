@@ -17,7 +17,7 @@ router.get('/get-save/:realm', (req, res) => {
   pool
     .query(queryText, queryValues)
     .then((result) => {
-      console.log('in /get-save GET', result.rows[0]);
+      // console.log('in /get-save GET', result.rows[0]);
       res.send(result.rows[0]);
     })
     .catch((error) => {
@@ -42,7 +42,7 @@ router.post('/create-save', (req, res) => {
   pool
     .query(queryText, queryValues)
     .then(() => {
-      console.log('in /create-save POST');
+      // console.log('in /create-save POST');
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -67,7 +67,7 @@ router.put('/update-save', (req, res) => {
   pool
     .query(queryText, queryValues)
     .then(() => {
-      console.log('in /update-save PUT');
+      // console.log('in /update-save PUT');
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -93,7 +93,7 @@ router.put('/update-form', (req, res) => {
   pool
     .query(queryText, queryValues)
     .then(() => {
-      console.log('in /update-save PUT');
+      // console.log('in /update-form PUT');
       res.sendStatus(201);
     })
     .catch((error) => {

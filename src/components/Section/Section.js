@@ -46,9 +46,17 @@ class Section extends Component {
   }
 
   saveAndContinue = () => {
+    this.props.dispatch({
+      type: 'SUBMIT_RESPONSE',
+      payload: {
+        state: this.state,
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    });
 
-    const section_order = this.props.realm.section
-    let next_section = 'realm-feedback'
+    const section_order = this.props.realm.section;
+    let next_section = -1;
 
     // loop through the section order array
     for (let i=0; i < section_order.length; i++) {
@@ -59,7 +67,7 @@ class Section extends Component {
       }
     }
 
-    if (next_section === 'realm-feedback') {
+    if (next_section === -1 ) {
       this.props.history.push(
         `/realm-feedback/${this.props.match.params.realm}`)
     } else {
@@ -75,6 +83,8 @@ class Section extends Component {
       type: 'SAVE_SECTION',
       payload: {
         state: this.state,
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
       },
     });
     this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
@@ -136,10 +146,10 @@ class Section extends Component {
           ) : (
             'loading'
           )}
-          {/*
+
             {section !== undefined
-              ? JSON.stringify(section)
-              : 'loading'} */}
+              ? JSON.stringify(this.state)
+              : 'loading'}
           {section.questions !== undefined ? (
             <Grid
               container

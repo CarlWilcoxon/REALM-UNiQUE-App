@@ -49,18 +49,26 @@ class RealmForm extends Component {
 
   goBack = () => {
 
-    this.props.dispatch({
-      type: 'SAVE_PROGRESS',
-      payload: {
-        ...this.state,
-        sectionId: this.props.match.params.section,
-      },
-    });
+    // this.props.dispatch({
+    //   type: 'SAVE_PROGRESS',
+    //   payload: {
+    //     ...this.state,
+    //     sectionId: this.props.match.params.section,
+    //   },
+    // });
 
     this.props.history.push(`/realm-home/${this.props.match.params.realm}`)
   };
 
   complete = () => {
+    this.props.dispatch({
+      type: 'SUBMIT_RESPONSE',
+      payload: {
+        state: this.state,
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    });
 
     this.props.history.push(
       `/realm-form-finished/${
@@ -79,7 +87,6 @@ class RealmForm extends Component {
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
-            // className={classes.leftSideFlex}
             item
             xs={12}
             sm={12}

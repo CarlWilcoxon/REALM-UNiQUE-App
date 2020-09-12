@@ -21,7 +21,7 @@ const {
 
 // Get route for each Section
 router.get('/get-section/:section', async (req, res) => {
-  console.log('Getting section for', req.user);
+  // console.log('Getting section for', req.user);
 
   const connection = await pool.connect();
 
@@ -45,11 +45,11 @@ router.get('/get-section/:section', async (req, res) => {
     );
     // append the questions to the result
     result.rows[0].questions = questionResponse.rows;
-    console.log(questionResponse.rows);
+    // console.log(questionResponse.rows);
 
     // send the section and question data back
     await connection.query('COMMIT');
-    console.log('success!', result.rows[0]);
+    // console.log('success!', result.rows[0]);
     res.send(result.rows[0]);
   } catch (error) {
     await connection.query('ROLLBACK');
@@ -84,9 +84,9 @@ router.post('/add', async (req, res) => {
     textContent = null,
   } = req.body;
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
-  console.log('req.body:', req.body);
-  console.log('title:', title);
-  console.log('type:', type);
+  // console.log('req.body:', req.body);
+  // console.log('title:', title);
+  // console.log('type:', type);
 
   const connection = await pool.connect();
   try {

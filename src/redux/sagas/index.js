@@ -4,6 +4,8 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import sectionSaga from './sectionSaga';
 import realmSaga from './realmSaga';
+import responseSaga from './responseSaga';
+import progressSaga from './progressSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -15,9 +17,11 @@ import realmSaga from './realmSaga';
 export default function* rootSaga() {
   yield all([
     loginSaga(),
-    registrationSaga(),
-    userSaga(),
-    sectionSaga(),
+    progressSaga(),
     realmSaga(),
+    registrationSaga(),
+    responseSaga(),
+    sectionSaga(),
+    userSaga(),
   ]);
 }

@@ -13,6 +13,15 @@ import {
 } from '@material-ui/core';
 
 class Section extends Component {
+  state = {};
+
+  handleInputChangeFor = (propertyName) => (event) => {
+    this.setState({
+      ...this.state,
+      [propertyName]: event.target.value,
+    });
+  };
+
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_SECTION',
@@ -20,113 +29,155 @@ class Section extends Component {
         sectionId: this.props.match.params.section,
       },
     });
+    this.props.dispatch({
+      type: 'FETCH_REALM',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    });
+    this.props.dispatch({
+      type: 'FETCH_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    });
   }
 
-  saveAndContinue = () => {
-    if (this.props.match.params.section === this.props.state.section)
-    this.props.history.push('/EmotionalSec2')
+  saveAndContinue = (event) => {
+    this.props.history.push(
+      `/section/${this.props.match.params.realm}/${
+        this.props.realm !== undefined
+          ? this.props.realm.section[0].section_id
+          : ''
+      }`
+    );
   };
+
+  goBack = () => this.props.history.push('/home');
+
   saveAndReturn = () => {
-    // this.props.dispatch({type : 'SAVE_SECTION'})
-    this.props.history.push('/EmotionalHome')
+    this.props.dispatch({
+      type: 'SAVE_SECTION',
+      payload: {
+        // this.state;
+      },
+    });
+    this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   };
+
+  //   let nextSection = ``;
+  //   if (this.props.match.params.section === this.props.state.section.maxIndex) {
+  //     nextSection = `/feedback/${this.props.match.params.realm}`
+  //   } else if (this.props.match.params.section < this.props.state.section.maxIndex ) {
+  //     nextSection = `/section/${this.props.match.params.section + 1}`
+  //   } else {
+  //     nextSection = '/EmotionalHome'
+  //   }
+  //   this.props.history.push(nextSection);
+  // };
+  // saveAndReturn = () => {
+
+  //   // this.props.dispatch({type : 'SAVE_SECTION'})
+  //   this.props.history.push('/EmotionalHome')
+  // };
 
   render() {
     const { classes, section } = this.props;
     return (
-        <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid
-            // className={classes.leftSideFlex}
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-          >
-            {/* <h1>THIS IS SECTION {this.props.match.params.section}</h1> */}
-            {section.title !== undefined ? (
-              <h3 className={classes.sectionTitle}>
-                {section.title}
-              </h3>
-            ) : (
-              'loading'
-            )}
-
-            <Grid>
-              {section.video_link !== undefined && section.type === 1 ? (
-                <Grid className={classes.sectionVideoContainer}>
-                  <iframe
-                    title={section.title + ' video'}
-                    frameborder="0"
-                    className={classes.sectionVideo}
-                    src={section.video_link.replace("/watch?v=","/embed/")}
-                  />
-                </Grid>
-              ) : (
-                ''
-              )}
-            </Grid>
-
-            {section.image_link !== undefined && section.type === 2 ? (
-              <Typography className={classes.sectionDescription}>
-                {section.text_content}
-              </Typography>
-            ) : (
-              ''
-            )}
-
-
-            {section.image_link !== undefined && section.type === 3 ? (
-              <Grid className={classes.sectionCoverContainer}>
-                <img
-                  className={classes.realmCover}
-                  src={section.image_link}
-                  alt={section.title + ' image'}
-                  />
+      <Grid container spacing={0} alignItems="center" justify="center">
+        <Grid
+          // className={classes.leftSideFlex}
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+        >
+          {/* <h1>THIS IS SECTION {this.props.match.params.section}</h1> */}
+          {section.title !== undefined ? (
+            <h3 className={classes.sectionTitle}>{section.title}</h3>
+          ) : (
+            'loading'
+          )}
+          <Grid>
+            {section.video_link !== undefined && section.type === 1 ? (
+              <Grid className={classes.sectionVideoContainer}>
+                <iframe
+                  title={section.title + ' video'}
+                  frameborder="0"
+                  className={classes.sectionVideo}
+                  src={section.video_link.replace('/watch?v=', '/embed/')}
+                />
               </Grid>
             ) : (
               ''
             )}
+          </Grid>
+          {section.text_content !== undefined && section.type === 2 ? (
+            <Typography className={classes.sectionDescription}>
+              {section.text_content}
+            </Typography>
+          ) : (
+            ''
+          )}
+          {section.image_link !== undefined && section.type === 3 ? (
+            <Grid className={classes.sectionCoverContainer}>
+              <img
+                className={classes.realmCover}
+                src={section.image_link}
+                alt={section.title + ' image'}
+              />
+            </Grid>
+          ) : (
+            ''
+          )}
 
-            {section.description !== undefined ? (
-              <p>{section.description}</p>
-            ) : (
-              'loading'
-            )}
-{/*
+          {section.description !== undefined ? (
+            <p className={classes.sectionDescription}>{section.description}</p>
+          ) : (
+            'loading'
+          )}
+          {/*
             {section !== undefined
               ? JSON.stringify(section)
               : 'loading'} */}
-
-            {section.questions !== undefined ? (
-              <Grid
+          {section.questions !== undefined ? (
+            <Grid
               container
               direction="column"
               alignItems="center"
               justify="space-evenly"
-              >
-                {section.questions.map( (q, i) =>
-                <Grid item component={Question} question={q} key={i} />)}
-              </Grid>
-              ) : (
-              'loading'
-            )}
-            <Grid className={classes.realmButtonContainer}>
-              <Button
-                className={classes.realmButton}
-                onClick={this.saveAndContinue}
-              >
-                Save & Continue
-              </Button>
-              <Button
-                className={classes.realmButton}
-                onClick={this.saveAndReturn}
-              >
-                Save & Exit
-              </Button>
+            >
+              {section.questions.map((q, i) => (
+                <Grid
+                  item
+                  component={Question}
+                  question={q}
+                  local={this.state}
+                  changeHandler={this.handleInputChangeFor}
+                  key={i}
+                />
+              ))}
             </Grid>
+          ) : (
+            'loading'
+          )}
+          <Grid className={classes.realmButtonContainer}>
+            <Button
+              className={classes.realmButton}
+              onClick={this.saveAndContinue}
+            >
+              Save & Continue
+            </Button>
+            <Button
+              className={classes.realmButton}
+              onClick={this.saveAndReturn}
+            >
+              Save & Exit
+            </Button>
           </Grid>
         </Grid>
+      </Grid>
     );
   }
 }

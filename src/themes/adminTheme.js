@@ -20,6 +20,8 @@ const styles = (theme) => ({
     font: '400 25px Poppins, sans-serif',
     color: '#1f3556',
   },
+  paddingR: { padding: '0px 10px 0px 0px' },
+  paddingLR: { padding: '0px 10px 0px 10px' },
   formControl: {
     margin: '0px 0px 15px 0px',
     width: '70%',
@@ -283,12 +285,34 @@ const styles = (theme) => ({
     },
     'text-decoration': 'none',
   },
+  downloadButtonExtended: {
+    font: '300 20px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '25%',
+    padding: '40px 10px 40px 10px',
+    margin: '0px 2% 4% 2%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+    'text-decoration': 'none',
+  },
   downloadButtonLink: {
     color: '#fff',
     'border-radius': '25px',
     'text-decoration': 'none',
   },
-  downloadIcon: { 'font-size': '50px', margin: ' 0px 4px -4px 0px ' },
+  statisticsHeader: {
+    'text-align': 'center',
+    width: '100%',
+    margin: '5% auto 5% auto',
+
+    font: '400 30px Poppins, sans-serif',
+    color: '#1f3556',
+  },
+  downloadIcon: { 'font-size': '25px', margin: ' 0px 4px -4px 0px ' },
   welcomeMessage: {
     margin: '5% 2% 4% 2%',
     font: '400 40px Poppins, sans-serif',
@@ -296,7 +320,7 @@ const styles = (theme) => ({
     color: '#1f3556',
   },
   paper: {
-    width: '25%',
+    width: '27%',
     marginTop: '5%',
     marginBottom: '3%',
     overflowX: 'auto',

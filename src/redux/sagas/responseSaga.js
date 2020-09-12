@@ -12,6 +12,17 @@ function* submitResponse(action) {
   }
 }
 
+// worker Saga: will be fired on "SUBMIT_RESPONSE" actions
+function* submitFeedback(action) {
+  try {
+
+    yield axios.post('/api/answer/feedback/add',  action.payload );
+
+  } catch (error) {
+    console.log('User get request failed', error);
+  }
+}
+
 // worker Saga: will be fired on "UPDATE_RESPONSE" actions
 function* updateResponse(action) {
   try {
@@ -27,6 +38,7 @@ function* updateResponse(action) {
 function* responseSaga() {
   yield takeLatest('SUBMIT_RESPONSE', submitResponse);
   yield takeLatest('UPDATE_RESPONSE', updateResponse);
+  yield takeLatest('SUBMIT_FEEDBACK', submitFeedback)
 }
 
 export default responseSaga;

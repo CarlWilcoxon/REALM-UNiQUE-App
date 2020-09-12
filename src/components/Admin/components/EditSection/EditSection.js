@@ -363,7 +363,7 @@ class EditSection extends Component {
                             <h1 className={classes.previewTitle}>
                               Resource Preview
                             </h1>
-                            <div className={classes.sectionImageContainer}>
+                            <div className={classes.sectionCoverContainer}>
                               <div>
                                 <img
                                   className={classes.sectionImage}
@@ -434,7 +434,7 @@ class EditSection extends Component {
                   <Button
                     variant="contained"
                     onClick={this.appendNewQuestion}
-                    className={classes.adminButtonEdit}
+                    className={classes.adminButtonAdd}
                   >
                     Add Question
                   </Button>
@@ -444,7 +444,7 @@ class EditSection extends Component {
                     type="submit"
                     name="submit"
                     onClick={this.submitSection}
-                    className={classes.adminButtonEdit}
+                    className={classes.adminButtonAdd}
                   >
                     Save Section
                   </Button>

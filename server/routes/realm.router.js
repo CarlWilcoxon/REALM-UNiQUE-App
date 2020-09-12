@@ -14,19 +14,17 @@ router.get('/get-realm/:realm', async (req, res) => {
   try {
     await connection.query('BEGIN');
 
-    const queryText =
-    `SELECT * FROM "realm"
+    const queryText = `SELECT * FROM "realm"
     WHERE "realm"."id"= $1
     ORDER BY "realm"."id" ASC;`;
-    const queryValue = [ req.params.realm ];
+    const queryValue = [req.params.realm];
     let result = await connection.query(queryText, queryValue);
 
     // Get the sections for that realm
-    const orderSectionQuery =
-    `SELECT * FROM "section_order"
+    const orderSectionQuery = `SELECT * FROM "section_order"
     WHERE "realm_id" = $1
     ORDER BY "index" ASC;`;
-    let section = await connection.query (orderSectionQuery, [ req.params.realm ]);
+    let section = await connection.query(orderSectionQuery, [req.params.realm]);
 
     // Append the sections onto the result
     result.rows[0].section = section.rows;
@@ -34,17 +32,14 @@ router.get('/get-realm/:realm', async (req, res) => {
     await connection.query('COMMIT');
     console.log('success!', result.rows[0]);
     res.send(result.rows[0]);
-
   } catch (error) {
     await connection.query('ROLLBACK');
     console.log(`Transaction Error - Rolling back new account`, error);
     res.sendStatus(500);
-
   } finally {
     connection.release();
   }
 });
-
 
 //OLD DON'T USE
 // router.post('/', rejectUnauthenticated,  async (req, res) => {
@@ -128,8 +123,7 @@ router.get('/get-realm/:realm', async (req, res) => {
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE
 router.get('/all', (req, res) => {
   // router.get("/all", rejectUnauthenticated, (req, res) => {
-  const queryText =
-  `SELECT * FROM "realm"
+  const queryText = `SELECT * FROM "realm"
   ORDER BY "realm"."id" ASC;`;
 
   pool
@@ -144,13 +138,12 @@ router.get('/all', (req, res) => {
     });
 });
 
-
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/add-new-realm',  async (req, res) => {
-  console.log( "in post route:", req.body );
+router.post('/add-new-realm', async (req, res) => {
+  console.log('in post route:', req.body);
 
-  const realm = req.body.realm
-  const chosenSections = req.body.chosenSections
+  const realm = req.body.realm;
+  const chosenSections = req.body.chosenSections;
   const connection = await pool.connect();
 
   try {
@@ -170,8 +163,12 @@ router.post('/add-new-realm',  async (req, res) => {
     for (let i = 0; i < chosenSections.length; i++) {
       const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
           VALUES ($1, $2, $3);`;
-          await connection.query (orderSectionQuery, [realmId, i, chosenSections[i].id ])
-    };
+      await connection.query(orderSectionQuery, [
+        realmId,
+        i,
+        chosenSections[i].id,
+      ]);
+    }
 
     await connection.query('COMMIT');
     res.sendStatus(200);
@@ -185,4 +182,3 @@ router.post('/add-new-realm',  async (req, res) => {
 });
 
 module.exports = router;
-

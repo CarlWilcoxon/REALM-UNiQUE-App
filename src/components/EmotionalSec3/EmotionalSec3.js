@@ -6,7 +6,7 @@ import {
   Grid,
   Button,
   FormControl,
-  // TextField,
+  TextField,
   // RadioGroup,
   // FormControlLabel,
   // Radio,
@@ -50,7 +50,23 @@ class EmotionalSec3 extends Component {
         label: 'Very Satisfied',
       },
     };
-
+    const CssTextField = withStyles({
+      root: {
+        color: '#1f3556',
+        '& label.Mui-focused': {
+          color: '#1f3556',
+        },
+        '& label.Mui': { color: '#1f3556' },
+        '& .MuiInput-underline:after': {
+          borderBottom: '#1f3556 solid 2px',
+          color: '#1f3556',
+        },
+        '& .MuiInput-underline:before': {
+          borderBottom: '#1f3556 solid 1px',
+          color: '#1f3556',
+        },
+      },
+    })(TextField);
     function IconContainer(props: IconContainerProps) {
       const { value, ...other } = props;
       return <span {...other}>{customIcons[value].icon}</span>;
@@ -58,20 +74,13 @@ class EmotionalSec3 extends Component {
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid
-          
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-          >
+          <Grid item xs={12} sm={12} md={6} lg={6}>
             <div>
               {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
               <h3 className={classes.sectionTitle}>
                 Feedback
-                <span className={classes.sectionOrder}> 3 of 10 </span>
+                <span className={classes.sectionOrder}> </span>
               </h3>
 
               {/* <p className={classes.sectionDescription}>
@@ -96,6 +105,7 @@ class EmotionalSec3 extends Component {
                     IconContainerComponent={IconContainer}
                   />
                 </Box>
+                <CssTextField className={classes.inputControl} multiline />
               </div>
 
               <div className={classes.realmButtonContainer}>

@@ -13,7 +13,6 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import { CSVLink } from 'react-csv';
 
 class AdminLandingPage extends Component {
-  
   handleSectionsClick = () => {
     this.props.history.push(`/view-sections`);
   };
@@ -26,7 +25,7 @@ class AdminLandingPage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        {" "}
+        {' '}
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
             // className={classes.leftSideFlex}
@@ -36,38 +35,51 @@ class AdminLandingPage extends Component {
             md={12}
             lg={12}
           >
-            {" "}
-            <h1 className={classes.welcomeMessage} id="welcome">
-              Welcome First Name!
-              <span className={classes.userName}>
-                {/* {this.props.user.username} */}
-              </span>{" "}
-              <div>
-                <Button
-                  onClick={this.handleSectionsClick}
-                  className={classes.squareButtons}
-                >
-                  {" "}
-                  Sections
-                </Button>
-                <Button
-                  onClick={this.handleRealmsClick}
-                  className={classes.squareButtons}
-                >
-                  Realms
-                </Button>
-              </div>
+            {' '}
+            <h1 className={classes.statisticsHeader} id="welcome">
+              Statistics
+            </h1>
+            <div>
               <CSVLink
-                data={"data"}
+                data={'data'}
                 className={classes.downloadButtonLink}
                 target="_blank"
               >
-                <Button variant="contained" className={classes.downloadButton}>
+                <Button
+                  variant="contained"
+                  className={classes.downloadButtonExtended}
+                >
                   <GetAppIcon className={classes.downloadIcon} />
-                  <span>Public Data</span>
+                  <span className={classes.paddingLR}>Demographics</span>
                 </Button>
               </CSVLink>
-            </h1>
+              <CSVLink
+                data={'data'}
+                className={classes.downloadButtonLink}
+                target="_blank"
+              >
+                <Button
+                  variant="contained"
+                  className={classes.downloadButtonExtended}
+                >
+                  <GetAppIcon className={classes.downloadIcon} />
+                  <span className={classes.paddingR}>Feedback</span>
+                </Button>
+              </CSVLink>
+              <CSVLink
+                data={'data'}
+                className={classes.downloadButtonLink}
+                target="_blank"
+              >
+                <Button
+                  variant="contained"
+                  className={classes.downloadButtonExtended}
+                >
+                  <GetAppIcon className={classes.downloadIcon} />
+                  <span>Q & A</span>
+                </Button>
+              </CSVLink>
+            </div>
           </Grid>
         </Grid>
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 import PreviewRealm from '../../components/PreviewRealm/PreviewRealm';
 // import EditRealm from '../../components/EditRealm/EditRealm';
 import styles from '../../../../themes/adminTheme.js';
@@ -47,18 +47,19 @@ class PreviewRealmPage extends Component {
               {this.state.edit ? (
                 <div>
                   <PreviewRealm />
-                  <Button
-                    variant="contained"
-                    className="submit-new-section"
-                    // type="submit"
-                    // name="submit"
-                    // onClick={this.submitSection}
-                    className={classes.adminButtonPreview}
-                    onClick={this.toggleEdit}
+                  <Link
+                    to="/view-realms"
+                    className={classes.downloadButtonLink}
                   >
-                    <EditIcon className={classes.editSectionPreviewIcon} />
-                    Realm
-                  </Button>
+                    <Button
+                      variant="contained"
+                      className={classes.adminButtonAdd}
+                      // onClick={this.toggleEdit}
+                    >
+                      {/* <EditIcon className={classes.editSectionPreviewIcon} /> */}
+                      Back to Realms
+                    </Button>
+                  </Link>
                 </div>
               ) : (
                 <div>

@@ -28,13 +28,10 @@ class PreviewRealmPage extends Component {
             {' '}
             (Name)
             <div className={classes.headerLess}>{realm.realm_name}</div>{' '}
-            <br></br>
-            <br></br>{' '}
           </p>
         ) : (
           'loading'
         )}
-        (Content)<br></br>
         <br></br>
         {realm.description !== undefined ? (
           <p className={classes.sectionDescription}>
@@ -46,6 +43,9 @@ class PreviewRealmPage extends Component {
         ) : (
           'null'
         )}
+        (Sections)<br></br>
+        (Section id)
+        <div className={classes.headerLess}>{realm.section_id}</div> <br></br>
       </div>
     );
   }

@@ -28,7 +28,6 @@ const CategorySelectorProps = {
 };
 
 class RegisterPage extends Component {
-
   state = {
     username: '',
     password: '',
@@ -42,11 +41,11 @@ class RegisterPage extends Component {
     gender: '',
     income: '',
     education_level: '',
-}
+  };
 
   registerUser = (event) => {
     event.preventDefault();
-    console.log("this.state:", this.state);
+    console.log('this.state:', this.state);
     // make sure password and confirm password are the same
     if (
       this.state.username &&
@@ -109,8 +108,8 @@ class RegisterPage extends Component {
         />
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0; fullscreen"
-          width={640"
-          height={360"
+          width="640"
+          height="360"
           allowfullscreen
           className={classes.videoContainer}
           frameborder="0"

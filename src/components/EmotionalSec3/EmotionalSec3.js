@@ -7,49 +7,50 @@ import {
   Button,
   FormControl,
   TextField,
-  // RadioGroup,
-  // FormControlLabel,
-  // Radio,
-  Box,
+  // Box,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
   // Paper,
 } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
+// import Rating from '@material-ui/lab/Rating';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-// import clsx from 'clsx';
+import clsx from 'clsx';
 class EmotionalSec3 extends Component {
   // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
   // EmotionalSec4 doesn't exist
   saveAndReturn = () => this.props.history.push('/EmotionalHome');
   render() {
     const { classes } = this.props;
-    const customIcons: {
-      [index: string]: { icon: React.ReactElement, label: string },
-    } = {
-      1: {
-        icon: <SentimentVeryDissatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Very Dissatisfied',
-      },
-      2: {
-        icon: <SentimentDissatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Dissatisfied',
-      },
-      3: {
-        icon: <SentimentSatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Neutral',
-      },
-      4: {
-        icon: <SentimentSatisfiedAltIcon className={classes.ratingIcon} />,
-        label: 'Satisfied',
-      },
-      5: {
-        icon: <SentimentVerySatisfiedIcon className={classes.ratingIcon} />,
-        label: 'Very Satisfied',
-      },
-    };
+    // const customIcons: {
+    //   [index: string]: { icon: React.ReactElement, label: string },
+    // } = {
+    //   1: {
+    //     icon: ,
+    //     label: 'Very Dissatisfied',
+    //   },
+    //   2: {
+    //     icon: <SentimentDissatisfiedIcon className={classes.ratingIcon} />,
+    //     label: 'Dissatisfied',
+    //   },
+    //   3: {
+    //     icon: <SentimentSatisfiedIcon className={classes.ratingIcon} />,
+    //     label: 'Neutral',
+    //   },
+    //   4: {
+    //     icon: <SentimentSatisfiedAltIcon className={classes.ratingIcon} />,
+    //     label: 'Satisfied',
+    //   },
+    //   5: {
+    //     icon: <SentimentVerySatisfiedIcon className={classes.ratingIcon} />,
+    //     label: 'Very Satisfied',
+    //   },
+    // };
+
     const CssTextField = withStyles({
       root: {
         color: '#1f3556',
@@ -67,10 +68,10 @@ class EmotionalSec3 extends Component {
         },
       },
     })(TextField);
-    function IconContainer(props: IconContainerProps) {
-      const { value, ...other } = props;
-      return <span {...other}>{customIcons[value].icon}</span>;
-    }
+    // function IconContainer(props: IconContainerProps) {
+    //   const { value, ...other } = props;
+    //   return <span {...other}>{customIcons[value].icon}</span>;
+    // }
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
@@ -95,17 +96,141 @@ class EmotionalSec3 extends Component {
             >
               <div className={classes.QandAContainerSection}>
                 <div className={classes.sectionQuestion}>
-                  How did you feel about this content?
+                  How did you feel about the course?
                 </div>
-                <Box component="fieldset" mb={3} borderColor="transparent">
+                {/* <Box component="fieldset" mb={3} borderColor="transparent">
                   <Rating
                     name="customized-icons"
                     // defaultValue={2}
                     getLabelText={(value: number) => customIcons[value].label}
                     IconContainerComponent={IconContainer}
                   />
-                </Box>
-                <CssTextField className={classes.inputControl} multiline />
+                </Box> */}
+                <RadioGroup
+                  aria-label="answer"
+                  name="answer"
+                  // value={1}
+                  // onChange={handleChange}
+                  row
+                  className={classes.sectionRadio}
+                >
+                  <FormControlLabel
+                    labelPlacement="top"
+                    value={1}
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        <SentimentVeryDissatisfiedIcon
+                          className={classes.ratingIcon}
+                        />
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    value="2"
+                    labelPlacement="top"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        <SentimentDissatisfiedIcon
+                          className={classes.ratingIcon}
+                        />
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    labelPlacement="top"
+                    value="3"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        <SentimentSatisfiedIcon
+                          className={classes.ratingIcon}
+                        />
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    labelPlacement="top"
+                    value="4"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        <SentimentSatisfiedAltIcon
+                          className={classes.ratingIcon}
+                        />
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                  <FormControlLabel
+                    labelPlacement="top"
+                    value="5"
+                    control={
+                      <Radio
+                        checkedIcon={
+                          <span
+                            className={clsx(classes.icon, classes.checkedIcon)}
+                          />
+                        }
+                        icon={<span className={classes.icon} />}
+                      />
+                    }
+                    label={
+                      <span className={classes.sectionRadioButtonLabel}>
+                        <SentimentVerySatisfiedIcon
+                          className={classes.ratingIcon}
+                        />
+                      </span>
+                    }
+                    className={classes.sectionRadioButtonLabel}
+                  />
+                </RadioGroup>
+
+                <CssTextField
+                  className={classes.inputControl}
+                  label="Feedback"
+                  multiline
+                />
               </div>
 
               <div className={classes.realmButtonContainer}>
@@ -138,74 +263,4 @@ const mapStateToProps = (state) => ({
 export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec3));
 
 {
-  /* <div className={classes.QandAContainerSection}>
-                <div className={classes.sectionQuestion}>
-                  Is the brain the mind?
-                </div>
-                <RadioGroup
-                  aria-label="answer"
-                  name="answer"
-                  // value={1}
-                  // onChange={handleChange}
-                  className={classes.sectionRadio}
-                >
-                  <FormControlLabel
-                    value="yes"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
-                          />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        Yes
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    value="no"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
-                          />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        No
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    value="I don't know"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
-                          />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        Not Sures
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                </RadioGroup>
-              </div> */
 }

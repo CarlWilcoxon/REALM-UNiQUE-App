@@ -232,6 +232,19 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
+  adminButtonAddMarginLess: {
+    font: '300 16px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '25px',
+    width: '30%',
+    padding: '10px 0px 10px 0px',
+    margin: '-10px 15% 3% 15%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
   adminButtonView: {
     font: '300 18px Poppins, sans-serif',
     backgroundColor: '#1f3556',
@@ -304,6 +317,7 @@ const styles = (theme) => ({
     'border-radius': '25px',
     'text-decoration': 'none',
   },
+
   statisticsHeader: {
     'text-align': 'center',
     width: '100%',

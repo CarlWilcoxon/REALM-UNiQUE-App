@@ -57,7 +57,7 @@ class LoginPage extends Component {
         />
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
-          className={classes.videoContainer}
+          className={classes.videoContainerMobile}
           frameborder="0"
           webkitallowfullscreen
           mozallowfullscreen

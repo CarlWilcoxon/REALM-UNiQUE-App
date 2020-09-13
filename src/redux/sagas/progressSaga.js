@@ -6,7 +6,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* getProgress(action) {
   try {
 
-    const response = yield axios.get('/api/progress/get-save',  action.payload );
+    const response = yield axios.get(`/api/progress/get-save/${action.payload.realmId}`);
     yield put({ type: 'SET_PROGRESS', payload: response.data });
 
   } catch (error) {
@@ -30,6 +30,19 @@ function* updateProgress(action) {
   try {
 
     yield axios.put('/api/progress/update-save',  action.payload);
+    yield put({ type: 'FETCH_PROGRESS', payload: action.payload });
+
+  } catch (error) {
+    console.log('User get request failed', error);
+  }
+}
+
+// worker Saga: will be fired on "UPDATE_PROGRESS" actions
+function* updateFormProgress(action) {
+  try {
+
+    yield axios.put('/api/progress/update-form',  action.payload);
+    yield put({ type: 'FETCH_PROGRESS', payload: action.payload });
 
   } catch (error) {
     console.log('User get request failed', error);
@@ -42,6 +55,7 @@ function* progressSaga() {
   yield takeLatest('CREATE_PROGRESS', createProgress);
   yield takeLatest('FETCH_PROGRESS', getProgress);
   yield takeLatest('UPDATE_PROGRESS', updateProgress);
+  yield takeLatest('FORM_FINISHED', updateFormProgress);
 }
 
 export default progressSaga;

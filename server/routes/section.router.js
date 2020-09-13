@@ -21,7 +21,7 @@ const {
 
 // Get route for each Section
 router.get('/get-section/:section', async (req, res) => {
-  console.log('Getting section for', req.user);
+  // console.log('Getting section for', req.user);
 
   const connection = await pool.connect();
 
@@ -45,11 +45,11 @@ router.get('/get-section/:section', async (req, res) => {
     );
     // append the questions to the result
     result.rows[0].questions = questionResponse.rows;
-    console.log(questionResponse.rows);
+    // console.log(questionResponse.rows);
 
     // send the section and question data back
     await connection.query('COMMIT');
-    console.log('success!', result.rows[0]);
+    // console.log('success!', result.rows[0]);
     res.send(result.rows[0]);
   } catch (error) {
     await connection.query('ROLLBACK');
@@ -84,9 +84,9 @@ router.post('/add', async (req, res) => {
     textContent = null,
   } = req.body;
   // COMMENT ME OUT ONCE THIS ROUTE WORKS
-  console.log('req.body:', req.body);
-  console.log('title:', title);
-  console.log('type:', type);
+  // console.log('req.body:', req.body);
+  // console.log('title:', title);
+  // console.log('type:', type);
 
   const connection = await pool.connect();
   try {
@@ -105,18 +105,39 @@ router.post('/add', async (req, res) => {
     // Get the id from the result - will have 1 row with the id
     const sectionId = result.rows[0].id;
 
-    // Loop through the questions
-    for (let i = 0; i < questions.length; i++) {
-      // Insert question into question db
-      const addQuestionQuery = `INSERT INTO "question" ("section_id", "question_index", "content")
-      VALUES ($1, $2, $3 ) RETURNING "id";`;
-      const addQuestionValues = [sectionId, i, questions[i]];
+    const questionPairs = Object.entries(questions);
+    console.log("questionPairs", questionPairs)
 
-      const questionResponse = await connection.query(
-        addQuestionQuery,
-        addQuestionValues
-      );
-      const questionId = questionResponse.rows[0].id;
+    for (question of questionPairs) {
+
+      let questionId = parseInt(question[0].substring(8));
+      console.log("questionID", questionId);
+
+      const questionQuery =
+      `INSERT INTO "question" ("section_id", "question_index", "content")
+      VALUES ($1, $2, $3 );`;
+      const questionValues = [
+        sectionId,
+        questionId,
+        question[1]
+      ]
+      await connection.query(questionQuery, questionValues)
+    }
+
+
+    // // Loop through the questions
+    // for (let i = 0; i < questions.length; i++) {
+    //   // Insert question into question db
+    //   const addQuestionQuery =
+    //   `INSERT INTO "question" ("section_id", "question_index", "content")
+    //   VALUES ($1, $2, $3 ) RETURNING "id";`;
+    //   const addQuestionValues = [sectionId, i, questions[i]];
+
+    //   const questionResponse = await connection.query(
+    //     addQuestionQuery,
+    //     addQuestionValues
+    //   );
+    //   const questionId = questionResponse.rows[0].id;
 
       /* If the question is multiple choice...
        if (req.body.questions[i].questionType === 'multiple_choice') {
@@ -131,7 +152,7 @@ router.post('/add', async (req, res) => {
            await connection.query( choiceQuery, choiceValues );
          }
       } */
-    }
+    // }
 
     await connection.query('COMMIT');
     res.sendStatus(201);
@@ -143,6 +164,54 @@ router.post('/add', async (req, res) => {
     connection.release();
   }
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// router.post('/add', async (req, res) => {
+
+//   const {
+//     realmId,
+//     sectionId,
+//   } = req.body
+//   const connection = await pool.connect();
+
+//   try {
+//     await connection.query('BEGIN');
+//     console.log('req.body', req.body)
+
+//     // Outputs key value pairs of req.body.state in [[key1, value1], [key2, value2]...] format
+//     const answerPairs = Object.entries(req.body.questions);
+//     console.log("answerPairs", answerPairs)
+
+//     for (answer of answerPairs) {
+
+//       let questionId = parseInt(answer[0].substring(6));
+//       console.log("questionID", questionId);
+
+//       const answerQuery =
+//       `INSERT INTO "student_response" ( "user_id", "realm_id", "section_id", "question_id", "response" )
+//       VALUES ($1, $2, $3, $4, $5 );`
+//       const answerValues = [
+//         req.user.id,
+//         realmId,
+//         sectionId,
+//         questionId,
+//         answer[1]
+//       ]
+//       await connection.query(answerQuery, answerValues)
+//     }
+
+//     await connection.query('COMMIT');
+//     res.sendStatus(200);
+//   } catch (err) {
+//     console.log('error on transfer', err);
+//     await connection.query('ROLLBACK');
+//     res.sendStatus(500);
+//   } finally {
+//     connection.release();
+//   }
+// })
+////////////////////////////////////////////////////////////////////////////////////////
+
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 
 // router.get("/all", (req, res) => {

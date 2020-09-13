@@ -151,7 +151,7 @@ CREATE TABLE "section" (
   "description" VARCHAR(10000),
   "type" int,
   "image_link" VARCHAR(100),
-  "video_link" VARCHAR(100),
+  "video_link" VARCHAR(1000),
   "text_content" VARCHAR(10000)
 );
 
@@ -168,13 +168,13 @@ null,
  (2, null, null, 5, null, null, null),
  (3, 'Sleep', 
  'Sleep is a naturally recurring state of mind and body. It is characterized by an altered state of consciousness, less sensory activity, reduced muscle activity and nearly all voluntary muscles during rapid eye movement (REM) are paralyzed.  Certain areas of the brain that hold memories light up (amygdala and hippocampus) during sleep.', 
- 1, null, https://www.ted.com/talks/matt_walker_sleep_is_your_superpower?language=en, 
+ 1, null, 'https://www.ted.com/talks/matt_walker_sleep_is_your_superpower?language=en', 
  null),
 (4, 'Self-Awareness', 
 'Self Awareness is conscious knowledge of your own character, feelings, motives, and desires. Self-awareness is "an awareness of your own personality or individuality". It is not to be confused with consciousness. While consciousness is being aware of your environment and body and lifestyle, self-awareness is the recognition of that awareness.',
 1, 
 null,
-'https://www.ted.com/talks/robert_waldinger_what_makes_a_good_life_lessons_from_the_longest_study_on_happiness', null)
+'https://www.ted.com/talks/robert_waldinger_what_makes_a_good_life_lessons_from_the_longest_study_on_happiness', null);
 
 
 CREATE TABLE "resource_type" (

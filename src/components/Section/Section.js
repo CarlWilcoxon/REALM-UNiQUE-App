@@ -108,6 +108,11 @@ class Section extends Component {
           ) : (
             'loading'
           )}
+{/* <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%">
+  <iframe src="https://embed.ted.com/talks/neal_katyal_how_to_win_an_argument_at_the_us_supreme_court_or_anywhere" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe>
+</div></div>
+"https://www.ted.com/talks/neal_katyal_how_to_win_an_argument_at_the_us_supreme_court_or_anywhere" */}
+
           <Grid>
             {section.video_link !== undefined && section.type === 1 ? (
               <Grid className={classes.sectionVideoContainer}>
@@ -115,7 +120,15 @@ class Section extends Component {
                   title={section.title + ' video'}
                   frameborder="0"
                   className={classes.sectionVideo}
-                  src={section.video_link.replace('/watch?v=', '/embed/')}
+                  src={ section.video_link.includes('youtube') ?
+                    section.video_link.replace('/watch?v=', '/embed/')
+                  :
+                    section.video_link.includes('ted.com/') ?
+
+                    section.video_link.replace('//www.ted.com/', '//embed.ted.com/')
+                  :
+                    'invalid video source: only youtube and ted.com are supported'
+                }
                 />
               </Grid>
             ) : (

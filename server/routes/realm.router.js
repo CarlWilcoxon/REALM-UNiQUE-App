@@ -41,6 +41,9 @@ router.get('/get-realm/:realm', async (req, res) => {
   }
 });
 
+router.delete('/remove/:realm', async (req, res) => {
+
+})
 
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE
 router.get('/all', (req, res) => {

@@ -16,6 +16,14 @@ class PreviewRealmPage extends Component {
       },
     });
   }
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_REALM_SECTIONS',
+      payload: {
+        realmId: this.props.match.params.id,
+      },
+    });
+  }
 
   render() {
     const { classes, realm } = this.props;

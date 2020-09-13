@@ -13,15 +13,6 @@ import AddIcon from '@material-ui/icons/Add';
 // });
 
 class PreviewRealmPage extends Component {
-  // componentDidMount() {
-  //     this.props.dispatch({
-  //         type: 'FETCH_SECTION',
-  //         payload: {
-  //             sectionId: this.props.match.params.id,
-  //         },
-  //     });
-  // }
-
   state = {
     edit: true,
   };

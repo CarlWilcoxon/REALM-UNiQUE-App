@@ -41,6 +41,41 @@ router.get('/get-realm/:realm', async (req, res) => {
   }
 });
 
+router.get('/get-realm-sections/:realm', async (req, res) => {
+  // console.log('Getting realm for', req.user);
+
+  const connection = await pool.connect();
+
+  try {
+    await connection.query('BEGIN');
+
+    const queryText = `SELECT * FROM "realm"
+    WHERE "realm"."id"= $1
+    ORDER BY "realm"."id" ASC;`;
+    const queryValue = [req.params.realm];
+    let result = await connection.query(queryText, queryValue);
+
+    // Get the sections for that realm
+    const orderSectionQuery = `SELECT * FROM "section_order"
+    WHERE "realm_id" = $1
+    ORDER BY "index" ASC;`;
+    let section = await connection.query(orderSectionQuery, [req.params.realm]);
+
+    // Append the sections onto the result
+    result.rows[0].section = section.rows;
+
+    await connection.query('COMMIT');
+    // console.log('success!', result.rows[0]);
+    res.send(result.rows[0]);
+  } catch (error) {
+    await connection.query('ROLLBACK');
+    console.log(`Transaction Error - Rolling back new account`, error);
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+});
+
 
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE
 router.get('/all', (req, res) => {

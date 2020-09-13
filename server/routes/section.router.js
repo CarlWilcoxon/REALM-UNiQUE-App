@@ -273,4 +273,44 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put("/", rejectUnauthenticated, (req, res) => {
+  const title = req.body.title;
+  const type = req.body.type;
+  const description = req.body.description;
+  const imageLink = req.body.imageLink;
+  const videoLink = req.body.videoLink;
+  const textContent = req.body.textContent;
+  const id = req.body.sectionId;
+
+  console.log("req.body is", req.body);
+  const queryText = `UPDATE "section" 
+    SET 
+    "title"=$1,  
+    "type"=$2,
+    "description"=$3,
+    "image_link"=$4,
+    "video_link"=$5,
+    "text_content"=$6
+    WHERE "id"=$7;`;
+  pool
+    .query(queryText, [
+      title, 
+      type, 
+      description, 
+      imageLink, 
+      videoLink, 
+      textContent, 
+      id
+    ])
+    .then((result) => {
+      console.log("in /api/section PUT");
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`PUT error:`, error);
+      res.sendStatus(500);
+    });
+});
+
+
 module.exports = router;

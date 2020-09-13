@@ -74,8 +74,8 @@ handleQuestionChange = (event) => {
           inputProps={{ maxLength: 140 }}
           variant="outlined"
           className={classes.inputControlQuestion}
-          value={this.state.question}
-          onChange={this.handleQuestionChange}
+          value={this.props.local[`q${this.props.index}`]}
+          onChange={this.props.changeHandler(`q${this.props.index}`)}
           InputLabelProps={{
             classes: {
               root: classes.cssLabel,

@@ -41,7 +41,7 @@ class AddNewRealmPage extends Component {
     this.setState({
       name: "Financial",
       photoLink: "https://assets.entrepreneur.com/content/3x2/2000/1596647278-GettyImages-168491057.jpg?width=700&crop=2:1",
-      description: "Understanding how financial wellness is interconnected with our other relams of wellness is the first step to gain a better relationship with money. In this realm we will learn how to create a responsible relationship with money, that both your current and future self will appreciate!",
+      description: "Understanding how financial wellness is interconnected with our other realms of wellness is the first step to gain a better relationship with money. In this realm we will learn how to create a responsible relationship with money, that both your current and future self will appreciate!",
     });
   };
   //Store new realm in a reducer

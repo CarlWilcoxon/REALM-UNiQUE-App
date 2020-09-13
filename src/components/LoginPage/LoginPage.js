@@ -50,8 +50,8 @@ class LoginPage extends Component {
 
   populateUserInputs = () => {
     this.setState({
-      username: "",
-      password: "",
+      username: "bruno",
+      password: "brunocatdog",
     });
   };
 
@@ -92,7 +92,7 @@ class LoginPage extends Component {
 
                 <p
                   className={classes.infinitytext}
-                  onClick={this.populateUserInputs}
+                  onClick={this.populateAdminInputs}
                 >
                   Aspire to Inspire
                 </p>
@@ -122,7 +122,7 @@ class LoginPage extends Component {
             >
               <h2
                 className={classes.brandNameControl}
-                onClick={this.populateAdminInputs}
+                onClick={this.populateUserInputs}
               >
                 UNiQUE
               </h2>

@@ -270,7 +270,7 @@ const styles = (theme) => ({
   sectionRadio: {
     font: '400 120% Poppins, sans-serif',
     color: '#1f3556',
-    margin: '10px 20% 10px 20%',
+    margin: '10px 25% 5% 25%',
     'text-align': 'center',
   },
   sectionRadioIcon: { color: 'blue' },

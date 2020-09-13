@@ -45,6 +45,29 @@ class Section extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.match.params.section,
+      },
+    });
+    this.props.dispatch({
+      type: 'FETCH_REALM',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    });
+    this.props.dispatch({
+      type: 'UPDATE_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    });
+  }
+  // this.forceUpdate();
+
   saveAndContinue = () => {
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
@@ -108,10 +131,6 @@ class Section extends Component {
           ) : (
             'loading'
           )}
-{/* <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%">
-  <iframe src="https://embed.ted.com/talks/neal_katyal_how_to_win_an_argument_at_the_us_supreme_court_or_anywhere" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen></iframe>
-</div></div>
-"https://www.ted.com/talks/neal_katyal_how_to_win_an_argument_at_the_us_supreme_court_or_anywhere" */}
 
           <Grid>
             {section.video_link !== undefined && section.type === 1 ? (

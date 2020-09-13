@@ -15,6 +15,7 @@ import {
   Button,
   // MenuItem,
 } from '@material-ui/core';
+import SimpleMenu from '../DownloadData/DownloadData';
 // const { classes }
 const Nav = (props) => (
   // const { classes } = props;
@@ -54,8 +55,18 @@ const Nav = (props) => (
           <Link className="nav-link" to="/view-sections">
             Sections
           </Link>
-          <Link className="nav-link" to="/data">
+          {/* <Link className="nav-link" to="/view-sections">
+            Curriculum
+          </Link>
+          <Link className="nav-link" to="/view-sections">
+            Demographics
+          </Link>
+          <Link className="nav-link" to="/view-sections">
+            Feedback
+          </Link> */}
+          <Link className="nav-link" to="/statistics">
             Statistics
+            {/* <SimpleMenu /> */}
           </Link>
           {/* <CSVLink data={'data'} className="nav-link-csv" target="_blank"> */}
           {/* <CSVLink data={'data'} className="nav-link" target="_blank">

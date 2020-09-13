@@ -6,6 +6,7 @@ import sectionSaga from './sectionSaga';
 import realmSaga from './realmSaga';
 import responseSaga from './responseSaga';
 import progressSaga from './progressSaga';
+import statisticSaga from './statisticSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     responseSaga(),
     sectionSaga(),
     userSaga(),
+    statisticSaga(),
   ]);
 }

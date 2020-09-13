@@ -35,7 +35,7 @@ router.post('/feedback/add', async (req, res) => {
 
   const {
     realmId,
-    sectionId,
+    feedback,
   } = req.body
   const connection = await pool.connect();
 
@@ -53,14 +53,13 @@ router.post('/feedback/add', async (req, res) => {
       console.log("questionID", questionId);
 
       const answerQuery =
-      `INSERT INTO "student_response" ( "user_id", "realm_id", "section_id", "question_id", "response" )
+      `INSERT INTO "student_response" ( "user_id", "realm_id", "response", "feedback_score" )
       VALUES ($1, $2, $3, $4, $5 );`
       const answerValues = [
         req.user.id,
         realmId,
-        sectionId,
-        questionId,
-        answer[1]
+        answer[1],
+        feedback,
       ]
       await connection.query(answerQuery, answerValues)
     }
@@ -122,8 +121,6 @@ router.post('/add', async (req, res) => {
   } finally {
     connection.release();
   }
-
-
 })
 
 

@@ -76,6 +76,15 @@ function* editQuestions(action) {
   }
 }
 
+function* removeQuestion(action){
+  try{
+    yield axios.delete(`/api/section/remove-question/${action.payload.questionId}`);
+    yield put({ type: 'FETCH_SECTION' , payload: action.payload });
+  }catch (error){
+  console.log('error with post request', error);
+  }
+}
+
 
 
 function* changeSectionSaga(action) {
@@ -94,6 +103,8 @@ function* sectionSaga() {
   yield takeLatest('CHANGE_SECTION',changeSectionSaga);
   yield takeLatest('ADD_SINGLE_QUESTION',appendQuestion);
   yield takeLatest('UPDATE_QUESTIONS',editQuestions);
+  yield takeLatest("DELETE_QUESTION", removeQuestion);
+
 }
 
 export default sectionSaga;

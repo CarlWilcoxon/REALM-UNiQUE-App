@@ -7,11 +7,12 @@ import {
   Grid,
   TextField,
   Button,
-  MenuItem,
+  IconButton,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 // import SaveIcon from '@material-ui/icons/Save';
 // const styles = (theme) => ({
 //   root: {
@@ -96,6 +97,15 @@ class EditSection extends Component {
       },
     });
     console.log("state:", this.state);
+  };
+
+  handleDeleteClick = (questionId) => {
+    this.props.dispatch({
+      type: 'DELETE_QUESTION',
+      payload: {
+        questionId,
+        sectionId: this.state.sectionId,
+       }});
   };
 
   appendNewQuestion = () => {
@@ -272,13 +282,11 @@ class EditSection extends Component {
                                   title={"section video"}
                                   frameborder="0"
                                   className={classes.sectionVideo}
-                                  // src="https://www.youtube.com/embed/pRFXSjkpKWA"
                                   src={
                                     this.state.videoLink
                                       .replace("watch?v=", "embed/")
                                       .split("&feature=emb_title")[0]
                                   }
-                                  // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
                                 ></iframe>
                               </div>{" "}
                             </Fade>
@@ -437,6 +445,7 @@ class EditSection extends Component {
                 <div>
                   {section.questions !== undefined
                     ? section.questions.map((q) => (
+                      <Grid container>
                         <FormControl className={classes.formContainer}>
                           <TextField
                             required
@@ -462,7 +471,19 @@ class EditSection extends Component {
                               classes: { root: classes.helperText },
                             }}
                           />
-                        </FormControl>
+                        <IconButton
+                          variant="contained"
+                          color="primary"
+                          size="large"
+                          aria-label="delete"
+                          className={classes.viewSectionIcon}
+                          style={{color:"red"}}
+                          onClick={() => this.handleDeleteClick(q.id)}
+                        >
+                          <DeleteForeverIcon fontSize="large" />
+                        </IconButton>
+                      </FormControl>
+                      </Grid>
                       ))
                     : ""}
                 </div>

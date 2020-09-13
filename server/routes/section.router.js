@@ -62,6 +62,18 @@ router.post('/add-one-question', (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
+// DELETE ONE QUESTION FROM DATABASE
+router.delete('/remove-question/:qId', (req, res) => {
+  console.log('Deleting question ID', req.params.qId );
+  const queryText =
+  `DELETE FROM "question"
+  WHERE "id" = $1;`;
+  const queryValues =[ req.params.qId ]
+  pool.query(queryText, queryValues)
+    .then((result) => res.sendStatus(200))
+    .catch(() => res.sendStatus(500));
+});
+
 
 // UPDATE THE QUESTIONS IN THE DATABASE
 router.put('/edit-questions', async (req, res) => {

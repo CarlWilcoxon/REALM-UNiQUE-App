@@ -36,7 +36,7 @@ function* removeRealm(action){
     yield put({ type: 'FETCH_ALL_REALMS' });
   }catch (error){
   console.log('error with post request', error);
-}
+  }
 }
 
 function* realmSaga() {

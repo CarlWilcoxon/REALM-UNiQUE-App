@@ -45,15 +45,6 @@ class EditSection extends Component {
     preview: false,
   };
 
-  componentDidUpdate() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: this.props.section.id
-      }
-    })
-
-  }
 
   //Packaging new section details and sending to saga to send to database
   changeSection = (event) => {

@@ -184,7 +184,8 @@ CREATE TABLE "student_progress" (
   "user_id" int,
   "realm_id" int,
   "section_id" int,
-  "started" boolean DEFAULT FALSE
+  "started" boolean DEFAULT FALSE,
+  "completed" boolean DEFAULT FALSE
 );
 
 CREATE TABLE "question" (

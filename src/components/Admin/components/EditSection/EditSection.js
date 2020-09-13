@@ -9,7 +9,6 @@ import {
   Button,
   MenuItem,
 } from '@material-ui/core';
-import SectionQuestion from '../../components/SectionQuestions/SectionQuestions';
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
@@ -48,17 +47,6 @@ const type = [
 ];
 
 class EditSection extends Component {
-  // state = {
-  //   title: "",
-  //   type: "",
-  //   description: "",
-  //   questions: [],
-  //   imageLink: "",
-  //   videoLink: "",
-  //   textContent: "",
-  //   questionInputs: [],
-  //   preview: false,
-  // };
 
   state = {
     sectionId: this.props.section.id,
@@ -67,15 +55,22 @@ class EditSection extends Component {
     description: this.props.section.description,
     imageLink: this.props.section.image_link,
     videoLink: this.props.section.video_link,
-    // questions: {},
+    questions: this.props.section.questions,
     textContent: this.props.section.text_content,
-    // qmap: [],
     preview: false,
   };
 
   //Packaging new section details and sending to saga to send to database
   changeSection = (event) => {
     event.preventDefault();
+
+    this.props.dispatch({
+      type: 'UPDATE_QUESTIONS',
+      payload: {
+        changedQuestions: ( this.state.changedQuestions === undefined ? null : this.state.changedQuestions ),
+      }
+    })
+
     this.props.dispatch({
       type: "CHANGE_SECTION",
       payload: {
@@ -92,11 +87,33 @@ class EditSection extends Component {
     console.log("state:", this.state);
   };
 
-  appendNewQuestion = () => {
-    console.log("You clicked add new questions");
+  handleQuestionChangeFor = (propertyName) => (event) => {
     this.setState({
-      questionInputs: [...this.state.questionInputs, <SectionQuestion />],
+      ...this.state,
+      changedQuestions:{
+        ...this.state.changedQuestions,
+        [propertyName]: event.target.value,
+      },
     });
+    console.log("state:", this.state);
+  };
+
+  appendNewQuestion = () => {
+
+    this.props.dispatch({
+      type: 'UPDATE_QUESTIONS',
+      payload: {
+        sectionId: this.state.sectionId,
+        changedQuestions: ( this.state.changedQuestions === undefined? null : this.state.changedQuestions ),
+      }
+    })
+    this.props.dispatch({
+      type: 'ADD_SINGLE_QUESTION',
+      payload: {
+        sectionId: this.state.sectionId,
+        qIndex: this.state.questions.length,
+      }})
+    console.log("You clicked add new questions");
   };
   toggleResourcePreview = () => {
     console.log("You clicked the preview icon");
@@ -427,7 +444,7 @@ class EditSection extends Component {
                             helperText=""
                             variant="outlined"
                             defaultValue={q.content}
-                            // onChange={this.handleInputChangeFor("description")}
+                            onChange={this.handleQuestionChangeFor(`q${q.id}`)}
                             InputLabelProps={{
                               classes: {
                                 root: classes.cssLabel,
@@ -447,9 +464,8 @@ class EditSection extends Component {
                           />
                         </FormControl>
                       ))
-                    : "null"}
+                    : ""}
                 </div>
-                {/* ADD NEW QUESTION BUTTON */}
                 {/* <div className="new-question">
                   <FormControl className={classes.formContainerQuestion}>
                     {this.state.questionInputs.map((questionInputs, index) => (
@@ -461,14 +477,16 @@ class EditSection extends Component {
                     ))}
                   </FormControl>
                 </div> */}
+
+                {/* ADD NEW QUESTION BUTTON */}
                 <div className={classes.adminButtonContainer}>
-                  {/* <Button
+                  <Button
                     variant="contained"
                     onClick={this.appendNewQuestion}
                     className={classes.adminButtonAdd}
                   >
                     Add Question
-                  </Button> */}
+                  </Button>
 
                   <Button
                     variant="contained"

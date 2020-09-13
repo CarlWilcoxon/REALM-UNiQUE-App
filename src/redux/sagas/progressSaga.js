@@ -38,6 +38,17 @@ function* updateProgress(action) {
 }
 
 // worker Saga: will be fired on "UPDATE_PROGRESS" actions
+function* completeProgress(action) {
+  try {
+
+    yield axios.put('/api/progress/update-save/completed',  action.payload);
+
+  } catch (error) {
+    console.log('User get request failed', error);
+  }
+}
+
+// worker Saga: will be fired on "UPDATE_PROGRESS" actions
 function* updateFormProgress(action) {
   try {
 
@@ -56,6 +67,7 @@ function* progressSaga() {
   yield takeLatest('FETCH_PROGRESS', getProgress);
   yield takeLatest('UPDATE_PROGRESS', updateProgress);
   yield takeLatest('FORM_FINISHED', updateFormProgress);
+  yield takeLatest('PROGRESS_COMPLETE', completeProgress);
 }
 
 export default progressSaga;

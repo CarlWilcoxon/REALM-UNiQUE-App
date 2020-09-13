@@ -56,12 +56,14 @@ class EmotionalSec3 extends Component {
 
   handleRadioChange = (event) => {
     this.setState({
+      ...this.state,
       feedbackScore: event.target.value,
     })
   }
 
   handleFeedbackChange = (event) => {
     this.setState({
+      ...this.state,
       feedback: event.target.value,
     })
   }
@@ -126,6 +128,7 @@ class EmotionalSec3 extends Component {
                     IconContainerComponent={IconContainer}
                   />
                 </Box> */}
+                <div className={classes.radioContainer}>
                 <RadioGroup
                   aria-label="Feedback"
                   name="Feedback"
@@ -270,6 +273,7 @@ class EmotionalSec3 extends Component {
                   Save & Exit
                 </Button> */}
               </div>
+            </div>
             </FormControl>
           </Grid>
         </Grid>

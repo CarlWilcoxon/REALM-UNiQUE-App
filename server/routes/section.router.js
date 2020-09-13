@@ -6,19 +6,6 @@ const {
   rejectUnauthenticatedAdmin,
 } = require('../modules/authentication-middleware');
 
-// router.get('/', rejectUnauthenticated, (req, res) => {
-//   console.log('Getting section for', req.user);
-//   const queryText = `SELECT * FROM "user"
-//                       JOIN "project" ON "user"."project_id" = "project"."id"
-//                       JOIN "realm" ON "project"."id" = "realm"."project_id"
-//                       JOIN "student_progress" ON "user"."id" = "student_progress"."user_id"
-//                       WHERE user_id= $1
-//                       ORDER BY "internal_name" ASC`;
-//   pool.query(queryText, [req.user.id])
-//     .then((result) => res.send(result.rows))
-//     .catch(() => res.sendStatus(500));
-// });
-
 // Get route for each Section
 router.get('/get-section/:section', async (req, res) => {
   // console.log('Getting section for', req.user);
@@ -60,15 +47,61 @@ router.get('/get-section/:section', async (req, res) => {
   }
 });
 
-// Get route to get each form question page.
-router.get('/form/:id', rejectUnauthenticated, async (req, res) => {});
+// ADD ONE QUESTION TO THE DATABASE
+router.post('/add-one-question', (req, res) => {
+  console.log('Getting section for', req.user);
+  const queryText =
+  `INSERT INTO "question" ("section_id", "question_index")
+  VALUES ( $1, $2 );`;
+  const queryValues =[
+    req.body.sectionId,
+    req.body.qIndex
+  ]
+  pool.query(queryText, queryValues)
+    .then((result) => res.send(result.rows))
+    .catch(() => res.sendStatus(500));
+});
 
-/**
- * POST route template
- */
-// router.post('/', rejectUnauthenticated, (req, res) => {
 
-// });
+// UPDATE THE QUESTIONS IN THE DATABASE
+router.put('/edit-questions', async (req, res) => {
+  const connection = await pool.connect();
+
+  try {
+    await connection.query('BEGIN');
+    console.log('req.body', req.body)
+
+    // Outputs key value pairs of req.body.state in [[key1, value1], [key2, value2]...] format
+    const questionPairs = Object.entries(req.body.changedQuestions);
+    console.log("questionPairs", questionPairs)
+
+    for (question of questionPairs) {
+
+      let qId = parseInt(question[0].substring(1));
+      console.log("questionID", qId);
+
+      const questionQuery =
+      `UPDATE "question"
+      SET "content" = $1
+      WHERE "question"."id" = $2`
+      const questionValues = [
+        question[1],
+        qId,
+      ]
+      await connection.query(questionQuery, questionValues)
+    }
+
+    await connection.query('COMMIT');
+    res.sendStatus(200);
+  } catch (err) {
+    console.log('error on transfer', err);
+    await connection.query('ROLLBACK');
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+})
+
 
 // Route for creating a new Section
 // router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
@@ -124,7 +157,7 @@ router.post('/add', async (req, res) => {
       await connection.query(questionQuery, questionValues)
     }
 
-
+    {
     // // Loop through the questions
     // for (let i = 0; i < questions.length; i++) {
     //   // Insert question into question db
@@ -153,6 +186,7 @@ router.post('/add', async (req, res) => {
          }
       } */
     // }
+    }
 
     await connection.query('COMMIT');
     res.sendStatus(201);
@@ -164,53 +198,6 @@ router.post('/add', async (req, res) => {
     connection.release();
   }
 });
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// router.post('/add', async (req, res) => {
-
-//   const {
-//     realmId,
-//     sectionId,
-//   } = req.body
-//   const connection = await pool.connect();
-
-//   try {
-//     await connection.query('BEGIN');
-//     console.log('req.body', req.body)
-
-//     // Outputs key value pairs of req.body.state in [[key1, value1], [key2, value2]...] format
-//     const answerPairs = Object.entries(req.body.questions);
-//     console.log("answerPairs", answerPairs)
-
-//     for (answer of answerPairs) {
-
-//       let questionId = parseInt(answer[0].substring(6));
-//       console.log("questionID", questionId);
-
-//       const answerQuery =
-//       `INSERT INTO "student_response" ( "user_id", "realm_id", "section_id", "question_id", "response" )
-//       VALUES ($1, $2, $3, $4, $5 );`
-//       const answerValues = [
-//         req.user.id,
-//         realmId,
-//         sectionId,
-//         questionId,
-//         answer[1]
-//       ]
-//       await connection.query(answerQuery, answerValues)
-//     }
-
-//     await connection.query('COMMIT');
-//     res.sendStatus(200);
-//   } catch (err) {
-//     console.log('error on transfer', err);
-//     await connection.query('ROLLBACK');
-//     res.sendStatus(500);
-//   } finally {
-//     connection.release();
-//   }
-// })
-////////////////////////////////////////////////////////////////////////////////////////
 
 //GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
 
@@ -273,19 +260,20 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.put("/", rejectUnauthenticated, (req, res) => {
-  const title = req.body.title;
-  const type = req.body.type;
-  const description = req.body.description;
-  const imageLink = req.body.imageLink;
-  const videoLink = req.body.videoLink;
-  const textContent = req.body.textContent;
+router.put("/update", rejectUnauthenticated, (req, res) => {
+  const {
+    title,
+    type,
+    description,
+    imageLink,
+    videoLink,
+    textContent } = req.body;
   const id = req.body.sectionId;
 
   console.log("req.body is", req.body);
-  const queryText = `UPDATE "section" 
-    SET 
-    "title"=$1,  
+  const queryText = `UPDATE "section"
+    SET
+    "title"=$1,
     "type"=$2,
     "description"=$3,
     "image_link"=$4,
@@ -294,12 +282,12 @@ router.put("/", rejectUnauthenticated, (req, res) => {
     WHERE "id"=$7;`;
   pool
     .query(queryText, [
-      title, 
-      type, 
-      description, 
-      imageLink, 
-      videoLink, 
-      textContent, 
+      title,
+      type,
+      description,
+      imageLink,
+      videoLink,
+      textContent,
       id
     ])
     .then((result) => {

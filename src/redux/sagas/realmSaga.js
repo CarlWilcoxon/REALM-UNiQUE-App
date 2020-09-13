@@ -23,19 +23,28 @@ function* getRealm(action) {
 }
 
 function* submitNewRealm(action){
-      try{
-        yield axios.post('/api/realm/add-new-realm', action.payload);
-      }catch (error){
-      console.log('error with post request', error);
-    }
-  }
+  try{
+    yield axios.post('/api/realm/add-new-realm', action.payload);
+  }catch (error){
+  console.log('error with post request', error);
+}
+}
+
+function* removeRealm(action){
+  try{
+    yield axios.delete(`/api/realm/remove/${action.payload}`);
+    yield put({ type: 'FETCH_ALL_REALMS' });
+  }catch (error){
+  console.log('error with post request', error);
+}
+}
 
 function* realmSaga() {
 
   yield takeLatest('FETCH_REALM', getRealm);
   yield takeLatest("FETCH_ALL_REALMS", getAllRealms);
   yield takeLatest("POST_NEW_REALM", submitNewRealm);
-
+  yield takeLatest("DELETE_REALM", removeRealm);
 }
 
 export default realmSaga;

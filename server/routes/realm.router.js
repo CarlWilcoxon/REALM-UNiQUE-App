@@ -72,9 +72,10 @@ router.delete('/remove/:realm', async (req, res) => {
 
 
     await connection.query('COMMIT');
+    console.log('DELETE successful');
     res.sendStatus(200);
   } catch (err) {
-    console.log('error on transfer', err);
+    console.log('error on DELETE', err);
     await connection.query('ROLLBACK');
     res.sendStatus(500);
   } finally {

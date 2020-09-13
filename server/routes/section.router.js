@@ -63,14 +63,14 @@ router.post('/add-one-question', (req, res) => {
 });
 
 // DELETE ONE QUESTION FROM DATABASE
-router.delete('/remove-question/:qId', (req, res) => {
-  console.log('Deleting question ID', req.params.qId );
+router.delete('/remove-question/:id', (req, res) => {
+  console.log('Deleting question ID', req.params.id );
   const queryText =
   `DELETE FROM "question"
   WHERE "id" = $1;`;
-  const queryValues =[ req.params.qId ]
+  const queryValues =[ req.params.id ]
   pool.query(queryText, queryValues)
-    .then((result) => res.sendStatus(200))
+    .then(() => res.sendStatus(200))
     .catch(() => res.sendStatus(500));
 });
 

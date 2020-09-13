@@ -9,8 +9,6 @@ import { withStyles, Grid, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/Add';
-// const styles = (theme) => ({
-// });
 
 class PreviewSectionPage extends Component {
   // componentDidMount() {

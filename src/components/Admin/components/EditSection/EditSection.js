@@ -4,33 +4,17 @@ import PropTypes from 'prop-types';
 import {
   withStyles,
   FormControl,
+  IconButton,
   Grid,
   TextField,
   Button,
-  IconButton,
+  OutlinedInput,
+  InputAdornment
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import CancelIcon from '@material-ui/icons/Cancel';
 import Fade from 'react-reveal/Fade';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-// import SaveIcon from '@material-ui/icons/Save';
-// const styles = (theme) => ({
-//   root: {
-//     background: 'blue',
-//     // borderRadius: 3,
-//     // border: 0,
-//     color: 'white',
-//     height: 48,
-//     padding: '0 30px',
-//     fontWeight: 'bold',
-//     margin: '10px',
-//     justify: 'center',
-//   },
-//   textField: {
-//     width: 400,
-//     margin: '10px',
-//   },
-// });
 
 const type = [
   {
@@ -61,6 +45,16 @@ class EditSection extends Component {
     preview: false,
   };
 
+  componentDidUpdate() {
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.section.id
+      }
+    })
+
+  }
+
   //Packaging new section details and sending to saga to send to database
   changeSection = (event) => {
     event.preventDefault();
@@ -87,6 +81,16 @@ class EditSection extends Component {
     });
     console.log("state:", this.state);
   };
+
+  handleDeleteClick = () => {
+    this.props.dispatch({
+      type: 'UPDATE_QUESTIONS',
+      payload: {
+        sectionId: this.state.sectionId,
+        changedQuestions: ( this.state.changedQuestions === undefined? null : this.state.changedQuestions ),
+      }
+    })
+  }
 
   handleQuestionChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -442,51 +446,43 @@ class EditSection extends Component {
                 </div>
                 <br />
                 {/*  <------ space hardcoded for now */}
-                <div>
                   {section.questions !== undefined
-                    ? section.questions.map((q) => (
-                      <Grid container>
-                        <FormControl className={classes.formContainer}>
-                          <TextField
-                            required
-                            label="Resource Question"
-                            helperText=""
-                            variant="outlined"
-                            defaultValue={q.content}
-                            onChange={this.handleQuestionChangeFor(`q${q.id}`)}
-                            InputLabelProps={{
-                              classes: {
-                                root: classes.cssLabel,
-                                className: classes.floatingLabelFocusStyle,
-                              },
-                            }}
-                            InputProps={{
-                              classes: {
-                                input: classes.input,
-                                root: classes.cssOutlinedInput,
-                                notchedOutline: classes.notchedOutline,
-                              },
-                            }}
-                            FormHelperTextProps={{
-                              classes: { root: classes.helperText },
-                            }}
-                          />
-                        <IconButton
-                          variant="contained"
-                          color="primary"
-                          size="large"
-                          aria-label="delete"
-                          className={classes.viewSectionIcon}
-                          style={{color:"red"}}
-                          onClick={() => this.handleDeleteClick(q.id)}
-                        >
-                          <DeleteForeverIcon fontSize="large" />
-                        </IconButton>
+                    ? section.questions.map((q, i) => (
+                      <FormControl key={i} className={classes.formContainer}>
+                      <OutlinedInput
+                        defaultValue={q.content}
+                        label="Resource Question"
+                        onChange={this.handleQuestionChangeFor(`q${q.id}`)}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="delete"
+                              onClick={() => this.handleDeleteClick(q.id)}
+                              edge="end"
+                            >
+                              <CancelIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        InputLabelProps={{
+                          classes: {
+                            root: classes.cssLabel,
+                            className: classes.floatingLabelFocusStyle,
+                          },
+                        }}
+                        InputProps={{
+                          classes: {
+                            input: classes.input,
+                            root: classes.cssOutlinedInput,
+                            notchedOutline: classes.notchedOutline,
+                          },
+                        }}
+                        FormHelperTextProps={{
+                          classes: { root: classes.helperText },
+                        }}
+                      />
                       </FormControl>
-                      </Grid>
-                      ))
-                    : ""}
-                </div>
+                      )) : "" }
                 {/* <div className="new-question">
                   <FormControl className={classes.formContainerQuestion}>
                     {this.state.questionInputs.map((questionInputs, index) => (
@@ -521,7 +517,6 @@ class EditSection extends Component {
                 </div>
               </form>
             </div>
-            {/* </center> */}
           </Grid>
         </Grid>
       </div>

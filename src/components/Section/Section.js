@@ -147,9 +147,10 @@ class Section extends Component {
             'loading'
           )}
 
-            {section !== undefined
+            {/* {section !== undefined
               ? JSON.stringify(this.state)
-              : 'loading'}
+              : 'loading'} */}
+
           {section.questions !== undefined ? (
             <Grid
               container

@@ -15,8 +15,8 @@ import Fade from 'react-reveal/Fade';
 
 class LoginPage extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   login = (event) => {
@@ -24,20 +24,34 @@ class LoginPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
+    });
+  };
+
+  populateAdminInputs = () => {
+    this.setState({
+      username: "mase",
+      password: "mase",
+    });
+  };
+
+  populateUserInputs = () => {
+    this.setState({
+      username: "",
+      password: "",
     });
   };
 
@@ -76,7 +90,12 @@ class LoginPage extends Component {
                   src="images/logo.png"
                 />
 
-                <p className={classes.infinitytext}>Aspire to Inspire</p>
+                <p
+                  className={classes.infinitytext}
+                  onClick={this.populateUserInputs}
+                >
+                  Aspire to Inspire
+                </p>
               </Fade>
             </div>
           </Grid>
@@ -101,7 +120,12 @@ class LoginPage extends Component {
               onSubmit={this.login}
               autoComplete="off"
             >
-              <h2 className={classes.brandNameControl}>UNiQUE</h2>
+              <h2
+                className={classes.brandNameControl}
+                onClick={this.populateAdminInputs}
+              >
+                UNiQUE
+              </h2>
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
@@ -111,7 +135,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.username}
-                    onChange={this.handleInputChangeFor('username')}
+                    onChange={this.handleInputChangeFor("username")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -141,7 +165,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.password}
-                    onChange={this.handleInputChangeFor('password')}
+                    onChange={this.handleInputChangeFor("password")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -177,7 +201,7 @@ class LoginPage extends Component {
               <Button
                 className={classes.register}
                 onClick={() => {
-                  this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
+                  this.props.dispatch({ type: "SET_TO_REGISTER_MODE" });
                 }}
               >
                 Sign Up

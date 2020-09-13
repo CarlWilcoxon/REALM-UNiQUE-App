@@ -270,9 +270,13 @@ const styles = (theme) => ({
   sectionRadio: {
     font: '400 120% Poppins, sans-serif',
     color: '#1f3556',
-    margin: '10px 25% 5% 25%',
+    width: '60%',
     'text-align': 'center',
+    margin: '7% 21% 5% 21%',
+
+    // margin: 'auto',
   },
+  radioContainer: { position: 'relative', margin: 'auto' },
   sectionRadioIcon: { color: 'blue' },
   icon: {
     borderRadius: '50%',
@@ -310,7 +314,14 @@ const styles = (theme) => ({
       backgroundColor: '#106ba3',
     },
   },
-  sectionRadioButtonLabel: { font: '400 90% Poppins, sans-serif' },
+  ratingIcon: {
+    'font-size': '150%',
+    margin: '0px -40px 0px -40px',
+  },
+  sectionRadioButtonLabel: {
+    font: '400 90% Poppins, sans-serif',
+    margin: '0px 0px 0px 0px',
+  },
   // rotate: {
   //   transform: 'rotate(180deg)' /*
   // },
@@ -322,7 +333,6 @@ const styles = (theme) => ({
 
     'text-align': 'center',
   },
-  ratingIcon: { 'font-size': '150%' },
 });
 
 export default styles;

@@ -217,7 +217,7 @@ CREATE TABLE "student_response" (
   "realm_id" int,
   "section_id" int,
   "question_id" int,
-  -- "feedback_score" int,
+  "feedback_score" int,
   "response" VARCHAR(5000),
   "date_submitted" date DEFAULT now()
 );

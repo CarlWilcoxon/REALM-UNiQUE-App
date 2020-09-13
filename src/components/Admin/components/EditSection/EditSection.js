@@ -152,7 +152,7 @@ class EditSection extends Component {
                     </div>
                   </FormControl>
                 </div>
-                {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
+                {/* SECTION TYPE (VIDEO, TEXT, ETC.)
                 <div>
                   
                   <FormControl className={classes.formContainer}>
@@ -193,7 +193,7 @@ class EditSection extends Component {
                       </TextField>
                     </div>
                   </FormControl>
-                </div>
+                </div> */}
                 {/* DYNAMIC INFORMATION SECTION */}
                 {/* 1=video, 2=text, 3=image */}
                 {/* type needs to be retrieved from the database */}

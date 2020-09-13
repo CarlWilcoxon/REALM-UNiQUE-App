@@ -78,7 +78,13 @@ class EmotionalSec3 extends Component {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <div>
               {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
-              <h3 className={classes.realmTitle}>Emotional Wellness Realm</h3>
+              { this.props.state.realm.realm_name !== undefined ? (
+            <Grid item>
+              <h3 className={classes.realmTitle} >
+                Realm of {this.props.state.realm.realm_name} Wellness
+              </h3>
+            </Grid>
+          ) : '' }
               <h3 className={classes.sectionTitle}>
                 Feedback
                 <span className={classes.sectionOrder}> </span>

@@ -154,7 +154,7 @@ class EditSection extends Component {
                 </div>
                 {/* SECTION TYPE (VIDEO, TEXT, ETC.)
                 <div>
-                  
+
                   <FormControl className={classes.formContainer}>
                     <div>
                       <TextField

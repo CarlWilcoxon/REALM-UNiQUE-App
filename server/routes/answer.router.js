@@ -31,51 +31,36 @@ router.get('/get', (req, res) => {
 // TODO write post routes for student responses and feedback
 
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/feedback/add', async (req, res) => {
+router.post('/feedback/add', (req, res) => {
 
   const {
     realmId,
     feedback,
+    feedbackScore
   } = req.body
-  const connection = await pool.connect();
 
-  try {
-    await connection.query('BEGIN');
-    console.log('req.body', req.body)
+  const feedbackQuery =
+  `INSERT INTO "student_response" ( "user_id", "realm_id", "response", "feedback_score" )
+  VALUES ( $1, $2, $3, $4 );`
+  const feedbackValues = [
+    req.user.id,
+    realmId,
+    feedback,
+    feedbackScore,
+  ]
 
-    // Outputs key value pairs of req.body.state in [[key1, value1], [key2, value2]...] format
-    const answerPairs = Object.entries(req.body.state);
-    console.log("answerPairs", answerPairs)
-
-    for (answer of answerPairs) {
-
-      let questionId = parseInt(answer[0].substring(6));
-      console.log("questionID", questionId);
-
-      const answerQuery =
-      `INSERT INTO "student_response" ( "user_id", "realm_id", "response", "feedback_score" )
-      VALUES ($1, $2, $3, $4, $5 );`
-      const answerValues = [
-        req.user.id,
-        realmId,
-        answer[1],
-        feedback,
-      ]
-      await connection.query(answerQuery, answerValues)
-    }
-
-    await connection.query('COMMIT');
-    res.sendStatus(200);
-  } catch (err) {
-    console.log('error on transfer', err);
-    await connection.query('ROLLBACK');
-    res.sendStatus(500);
-  } finally {
-    connection.release();
-  }
-
-
+  pool
+    .query(feedbackQuery, feedbackValues)
+    .then(() => {
+      console.log('in /feedback/add post');
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
 })
+
 
 
 router.post('/add', async (req, res) => {

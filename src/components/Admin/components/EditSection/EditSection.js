@@ -48,59 +48,58 @@ const type = [
 ];
 
 class EditSection extends Component {
+  // state = {
+  //   title: "",
+  //   type: "",
+  //   description: "",
+  //   questions: [],
+  //   imageLink: "",
+  //   videoLink: "",
+  //   textContent: "",
+  //   questionInputs: [],
+  //   preview: false,
+  // };
+
   state = {
-    title: '',
-    type: '',
-    description: '',
-    questions: [],
-    imageLink: '',
-    videoLink: '',
-    textContent: '',
-    questionInputs: [],
+    sectionId: this.props.section.id,
+    title: this.props.section.title,
+    type: this.props.section.type,
+    description: this.props.section.description,
+    imageLink: this.props.section.image_link,
+    videoLink: this.props.section.video_link,
+    // questions: {},
+    textContent: this.props.section.text_content,
+    // qmap: [],
     preview: false,
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: this.props.match.params.id, //hard-coded, needs to be changed this.props.match.params.section
-      },
-    });
-  }
-
   //Packaging new section details and sending to saga to send to database
-  submitSection = (event) => {
+  changeSection = (event) => {
     event.preventDefault();
     this.props.dispatch({
-      type: 'SUBMIT_SECTION',
-      // payload: {
-      //   title: this.state.title,
-      //   type: this.state.type,
-      //   description: this.state.description,
-      //   ///questions need to be added to payload
-      // },
-
-      payload: this.state,
+      type: "CHANGE_SECTION",
+      payload: {
+        ...this.state,
+      },
     });
-  }; // end submitSection
+  }; // end changeSection
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    console.log("state:", this.state);
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
+    console.log("You clicked add new questions");
     this.setState({
       questionInputs: [...this.state.questionInputs, <SectionQuestion />],
     });
   };
   toggleResourcePreview = () => {
-    console.log('You clicked the preview icon');
+    console.log("You clicked the preview icon");
     this.setState({
       preview: !this.state.preview,
     });
@@ -131,7 +130,7 @@ class EditSection extends Component {
                         defaultValue={section.title}
                         inputProps={{ maxLength: 30 }}
                         variant="outlined"
-                        onChange={this.handleInputChangeFor('title')}
+                        onChange={this.handleInputChangeFor("title")}
                         className={classes.inputControl}
                         InputLabelProps={{
                           classes: {
@@ -153,8 +152,9 @@ class EditSection extends Component {
                     </div>
                   </FormControl>
                 </div>
-                {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
+                {/* SECTION TYPE (VIDEO, TEXT, ETC.)
                 <div>
+
                   <FormControl className={classes.formContainer}>
                     <div>
                       <TextField
@@ -164,9 +164,9 @@ class EditSection extends Component {
                         helperText=""
                         variant="outlined"
                         className={classes.inputControlIconSelector}
-                        defaultValue="3"
+                        defaultValue={section.type}
                         // value={this.state.type}
-                        onChange={this.handleInputChangeFor('type')}
+                        onChange={this.handleInputChangeFor("type")}
                         InputLabelProps={{
                           classes: {
                             root: classes.cssLabel,
@@ -184,7 +184,7 @@ class EditSection extends Component {
                           classes: { root: classes.helperText },
                         }}
                       >
-                        {' '}
+                        {" "}
                         {type.map((option) => (
                           <MenuItem key={option.value} value={option.value}>
                             {option.label}
@@ -193,12 +193,12 @@ class EditSection extends Component {
                       </TextField>
                     </div>
                   </FormControl>
-                </div>
+                </div> */}
                 {/* DYNAMIC INFORMATION SECTION */}
                 {/* 1=video, 2=text, 3=image */}
                 {/* type needs to be retrieved from the database */}
                 <Fade>
-                  {this.state.type === 1 ? (
+                  {section.type === 1 ? (
                     <Fade>
                       <FormControl className={classes.formContainer}>
                         <div>
@@ -210,8 +210,8 @@ class EditSection extends Component {
                             variant="outlined"
                             className={classes.inputControlLink}
                             // value={this.state.videoLink}
-                            defaultValue={this.state.textContent}
-                            onChange={this.handleInputChangeFor('videoLink')}
+                            defaultValue={section.video_link}
+                            onChange={this.handleInputChangeFor("videoLink")}
                             InputLabelProps={{
                               classes: {
                                 root: classes.cssLabel,
@@ -229,7 +229,7 @@ class EditSection extends Component {
                               classes: { root: classes.helperText },
                             }}
                           />
-                          {this.state.videoLink !== '' ? (
+                          {this.state.videoLink !== "" ? (
                             <VisibilityIcon
                               onClick={this.toggleResourcePreview}
                               className={
@@ -243,27 +243,27 @@ class EditSection extends Component {
                           )}
                         </div>
 
-                        {this.state.preview && this.state.videoLink !== '' ? (
+                        {this.state.preview && this.state.videoLink !== "" ? (
                           <FormControl className={classes.formContainerVideo}>
-                            {' '}
+                            {" "}
                             <Fade>
                               <h1 className={classes.previewTitle}>
                                 Resource Preview
                               </h1>
                               <div className={classes.sectionVideoContainer}>
                                 <iframe
-                                  title={'section video'}
+                                  title={"section video"}
                                   frameborder="0"
                                   className={classes.sectionVideo}
                                   // src="https://www.youtube.com/embed/pRFXSjkpKWA"
                                   src={
                                     this.state.videoLink
-                                      .replace('watch?v=', 'embed/')
-                                      .split('&feature=emb_title')[0]
+                                      .replace("watch?v=", "embed/")
+                                      .split("&feature=emb_title")[0]
                                   }
                                   // https://www.youtube.com/watch?v=pRFXSjkpKWA&feature=emb_title
                                 ></iframe>
-                              </div>{' '}
+                              </div>{" "}
                             </Fade>
                           </FormControl>
                         ) : (
@@ -272,7 +272,7 @@ class EditSection extends Component {
                         {/* <div>{JSON.stringify()} </div> */}
                       </FormControl>
                     </Fade>
-                  ) : this.state.type === 2 ? (
+                  ) : section.type === 2 ? (
                     <div>
                       <Fade>
                         <FormControl className={classes.formContainer}>
@@ -285,10 +285,10 @@ class EditSection extends Component {
                               multiline
                               rows={18}
                               className={classes.inputControlTextContent}
-                              defaultValue={this.state.textContent}
+                              defaultValue={section.text_content}
                               //   value={this.state.textContent}
                               onChange={this.handleInputChangeFor(
-                                'textContent'
+                                "textContent"
                               )}
                               InputLabelProps={{
                                 classes: {
@@ -311,7 +311,7 @@ class EditSection extends Component {
                         </FormControl>
                       </Fade>
                     </div>
-                  ) : this.state.type === 3 ? (
+                  ) : section.type === 3 ? (
                     <div>
                       <Fade>
                         <FormControl className={classes.formContainer}>
@@ -322,9 +322,9 @@ class EditSection extends Component {
                               helperText=""
                               variant="outlined"
                               className={classes.inputControlLink}
-                              defaultValue={this.state.imageLink}
+                              defaultValue={section.image_link}
                               // value={this.state.imageLink}
-                              onChange={this.handleInputChangeFor('imageLink')}
+                              onChange={this.handleInputChangeFor("imageLink")}
                               InputLabelProps={{
                                 classes: {
                                   root: classes.cssLabel,
@@ -342,7 +342,7 @@ class EditSection extends Component {
                                 classes: { root: classes.helperText },
                               }}
                             />
-                            {this.state.imageLink !== '' ? (
+                            {this.state.imageLink !== "" ? (
                               <VisibilityIcon
                                 onClick={this.toggleResourcePreview}
                                 className={
@@ -357,7 +357,7 @@ class EditSection extends Component {
                           </div>
                         </FormControl>
                       </Fade>
-                      {this.state.preview && this.state.imageLink !== '' ? (
+                      {this.state.preview && this.state.imageLink !== "" ? (
                         <FormControl className={classes.formContainerVideo}>
                           <Fade>
                             <h1 className={classes.previewTitle}>
@@ -395,7 +395,7 @@ class EditSection extends Component {
                       className={classes.inputControlContentDescription}
                       // value={this.state.description}
                       defaultValue={section.description}
-                      onChange={this.handleInputChangeFor('description')}
+                      onChange={this.handleInputChangeFor("description")}
                       InputLabelProps={{
                         classes: {
                           root: classes.cssLabel,
@@ -415,34 +415,42 @@ class EditSection extends Component {
                     />
                   </FormControl>
                 </div>
-                {/* ORGINAL QUESTIONS MAP <--------- NEEDS TO BE FINISHED*/}
-{/*
-                {section.questions !== undefined ? (
-                  <Grid
-                    container
-                    direction="column"
-                    alignItems="center"
-                    justify="space-evenly"
-                  >
-                    {section.questions.map((q, i) => (
-                      <Grid
-                        item
-                        component={Question}
-                        question={q}
-                        local={this.state}
-                        changeHandler={this.handleInputChangeFor}
-                        key={i}
-                      />
-                    ))}
-                  </Grid>
-                ) : (
-                  'loading' */}
-                )}
-
-
+                <br />
+                {/*  <------ space hardcoded for now */}
+                <div>
+                  {section.questions !== undefined
+                    ? section.questions.map((q) => (
+                        <FormControl className={classes.formContainer}>
+                          <TextField
+                            required
+                            label="Resource Question"
+                            helperText=""
+                            variant="outlined"
+                            defaultValue={q.content}
+                            // onChange={this.handleInputChangeFor("description")}
+                            InputLabelProps={{
+                              classes: {
+                                root: classes.cssLabel,
+                                className: classes.floatingLabelFocusStyle,
+                              },
+                            }}
+                            InputProps={{
+                              classes: {
+                                input: classes.input,
+                                root: classes.cssOutlinedInput,
+                                notchedOutline: classes.notchedOutline,
+                              },
+                            }}
+                            FormHelperTextProps={{
+                              classes: { root: classes.helperText },
+                            }}
+                          />
+                        </FormControl>
+                      ))
+                    : "null"}
+                </div>
                 {/* ADD NEW QUESTION BUTTON */}
-
-                <div className="new-question">
+                {/* <div className="new-question">
                   <FormControl className={classes.formContainerQuestion}>
                     {this.state.questionInputs.map((questionInputs, index) => (
                       <SectionQuestion
@@ -452,21 +460,21 @@ class EditSection extends Component {
                       />
                     ))}
                   </FormControl>
-                </div>
+                </div> */}
                 <div className={classes.adminButtonContainer}>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     onClick={this.appendNewQuestion}
                     className={classes.adminButtonAdd}
                   >
                     Add Question
-                  </Button>
+                  </Button> */}
 
                   <Button
                     variant="contained"
                     type="submit"
                     name="submit"
-                    onClick={this.submitSection}
+                    onClick={this.changeSection}
                     className={classes.adminButtonAdd}
                   >
                     Save Section

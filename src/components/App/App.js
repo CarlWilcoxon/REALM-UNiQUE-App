@@ -23,7 +23,6 @@ import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSectionPage';
 import PreviewRealmPage from '../Admin/pages/PreviewRealmPage/PreviewRealmPage';
-import EditSectionPage from '../Admin/pages/EditSectionPage/EditSectionPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
 // import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
@@ -90,11 +89,6 @@ class App extends Component {
               exact
               path="/preview/section/:id"
               component={PreviewSectionPage}
-            />
-            <AdminRoute
-              exact
-              path="/edit-section/:id"
-              component={EditSectionPage}
             />
             <AdminRoute exact path="/view-realms" component={ViewRealmsPage} />
             <AdminRoute

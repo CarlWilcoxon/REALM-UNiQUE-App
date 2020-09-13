@@ -89,7 +89,9 @@ CREATE TABLE "section_order" (
 INSERT INTO "section_order" ( "realm_id", "index", "section_id" )
 VALUES
 ( 1, 1, 1 ),
-( 1, 0, 2);
+( 1, 0, 2),
+(1, 2, 3),
+(1, 3, 4);
 
 CREATE TABLE "client_list" (
   "id" SERIAL PRIMARY KEY,
@@ -163,7 +165,16 @@ The mind is the set of cognitive faculties including consciousness, imagination,
 null,
  'https://www.youtube.com/watch?v=pRFXSjkpKWA',
  null),
- (2, null, null, 5, null, null, null);
+ (2, null, null, 5, null, null, null),
+ (3, 'Sleep', 
+ 'Sleep is a naturally recurring state of mind and body. It is characterized by an altered state of consciousness, less sensory activity, reduced muscle activity and nearly all voluntary muscles during rapid eye movement (REM) are paralyzed.  Certain areas of the brain that hold memories light up (amygdala and hippocampus) during sleep.', 
+ 1, null, https://www.ted.com/talks/matt_walker_sleep_is_your_superpower?language=en, 
+ null),
+(4, 'Self-Awareness', 
+'Self Awareness is conscious knowledge of your own character, feelings, motives, and desires. Self-awareness is "an awareness of your own personality or individuality". It is not to be confused with consciousness. While consciousness is being aware of your environment and body and lifestyle, self-awareness is the recognition of that awareness.',
+1, 
+null,
+'https://www.ted.com/talks/robert_waldinger_what_makes_a_good_life_lessons_from_the_longest_study_on_happiness', null)
 
 
 CREATE TABLE "resource_type" (
@@ -210,7 +221,11 @@ VALUES
 ( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?' ),
 ( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?'),
 ( 2, 11, 'Do you eat or drink alcohol when upset of celebrating?' ),
-( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?' );
+( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?' ),
+( 4, 0, 'What do you feel you think about most of the time?'),
+(4, 1, 'How many negative thoughts can you think about yourself?'),
+(4, 2, 'How many positive thoughts can you think about yourself?'),
+(4, 3, 'List things you are afraid of.');
 
 CREATE TABLE "student_response" (
   "id" SERIAL PRIMARY KEY,

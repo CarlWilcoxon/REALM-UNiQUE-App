@@ -64,7 +64,7 @@ class EditSection extends Component {
     this.props.dispatch({
       type: 'FETCH_SECTION',
       payload: {
-        sectionId: 5, //this.props.match.params.section, //hard-coded, needs to be changed this.props.match.params.section
+        sectionId: this.props.match.params.id, //hard-coded, needs to be changed this.props.match.params.section
       },
     });
   }
@@ -416,6 +416,29 @@ class EditSection extends Component {
                   </FormControl>
                 </div>
                 {/* ORGINAL QUESTIONS MAP <--------- NEEDS TO BE FINISHED*/}
+{/*
+                {section.questions !== undefined ? (
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="space-evenly"
+                  >
+                    {section.questions.map((q, i) => (
+                      <Grid
+                        item
+                        component={Question}
+                        question={q}
+                        local={this.state}
+                        changeHandler={this.handleInputChangeFor}
+                        key={i}
+                      />
+                    ))}
+                  </Grid>
+                ) : (
+                  'loading' */}
+                )}
+
 
                 {/* ADD NEW QUESTION BUTTON */}
 

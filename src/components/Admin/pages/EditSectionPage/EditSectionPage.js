@@ -79,7 +79,7 @@ class EditSectionPage extends Component {
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
     this.setState({
-      questionInputs: [...this.state.questionInputs, <SectionQuestion />],
+      questionInputs: [...this.state.questionInputs, ''],
     });
   };
 

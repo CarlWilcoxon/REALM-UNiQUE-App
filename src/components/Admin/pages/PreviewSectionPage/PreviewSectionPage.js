@@ -32,9 +32,6 @@ class PreviewSectionPage extends Component {
     });
   };
 
-  // submitHandler = () => {
-
-  // }
 
   render() {
     const { classes } = this.props;

@@ -93,7 +93,7 @@ class App extends Component {
             />
             <AdminRoute
               exact
-              path="/edit-section"
+              path="/edit-section/:id"
               component={EditSectionPage}
             />
             <AdminRoute exact path="/view-realms" component={ViewRealmsPage} />

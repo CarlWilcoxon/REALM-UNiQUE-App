@@ -77,6 +77,30 @@ router.put('/update-save', (req, res) => {
 });
 
 // UPDATING STUDENT PROGRESS ENTRY
+router.put('/update-save/completed', (req, res) => {
+  const queryText =
+  `UPDATE "student_progress"
+  SET "completed" = TRUE, "section_id" = NULL, "started" = FALSE
+  WHERE "user_id" = $1 AND "realm_id" = $2;`;
+
+  const queryValues = [
+    req.user.id,
+    req.body.realmId
+  ]
+
+  pool
+    .query(queryText, queryValues)
+    .then(() => {
+      // console.log('in /update-save PUT');
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
+});
+
+// UPDATING STUDENT PROGRESS ENTRY
 router.put('/update-form', (req, res) => {
   const queryText =
   `UPDATE "student_progress"

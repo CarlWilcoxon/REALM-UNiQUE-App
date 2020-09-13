@@ -17,6 +17,7 @@ function* submitFeedback(action) {
   try {
 
     yield axios.post('/api/answer/feedback/add',  action.payload );
+    yield put({ type: 'PROGRESS_COMPLETE', payload: action.payload });
 
   } catch (error) {
     console.log('User get request failed', error);

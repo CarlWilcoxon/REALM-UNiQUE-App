@@ -34,11 +34,11 @@ class AddNewSectionPage extends Component {
     title: '',
     type: '',
     description: '',
-    questions: [],
     imageLink: '',
     videoLink: '',
+    questions: {},
     textContent: '',
-    questionInputs: [],
+    qmap: [],
     preview: false,
   };
 
@@ -50,7 +50,6 @@ class AddNewSectionPage extends Component {
       type: 'SUBMIT_SECTION',
       payload: {
         ...this.state,
-        questions: this.props.reduxState.newQuestions,
       },
     });
     this.props.history.push('/view-sections');
@@ -64,12 +63,24 @@ class AddNewSectionPage extends Component {
     });
   };
 
+  handleQuestionChange = (propertyName) => (event) => {
+    console.log('old state:', this.state);
+    this.setState({
+      ...this.state,
+      questions: {
+        ...this.state.questions,
+        [propertyName]: event.target.value
+      },
+    });
+  };
+
+
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
     this.setState({
-      questionInputs: [
-        ...this.state.questionInputs,
-        this.state.questionInputs.length,
+      qmap: [
+        ...this.state.qmap,
+        this.state.qmap.length,
       ],
     });
   };
@@ -362,11 +373,12 @@ class AddNewSectionPage extends Component {
 
               <div className="new-question">
                 <FormControl className={classes.formContainerQuestion}>
-                  {this.state.questionInputs.map((questionInputs, index) => (
+                  {this.state.qmap.map((qmap, index) => (
                     <SectionQuestion
                       key={index}
                       index={index}
-                      handleChange={this.handleInputChangeFor}
+                      local={this.state.questions}
+                      changeHandler={this.handleQuestionChange}
                     />
                   ))}
                 </FormControl>

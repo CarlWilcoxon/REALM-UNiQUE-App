@@ -23,23 +23,23 @@ class Question extends Component {
   render() {
     // Deconstructing more props
     const { classes, question } = this.props;
-    const CssTextField = withStyles({
-      root: {
-        color: '#1f3556',
-        '& label.Mui-focused': {
-          color: '#1f3556',
-        },
-        '& label.Mui': { color: '#1f3556' },
-        '& .MuiInput-underline:after': {
-          borderBottom: '#1f3556 solid 2px',
-          color: '#1f3556',
-        },
-        '& .MuiInput-underline:before': {
-          borderBottom: '#1f3556 solid 1px',
-          color: '#1f3556',
-        },
-      },
-    })(TextField);
+    // const CssTextField = withStyles({
+    //   root: {
+    //     color: '#1f3556',
+    //     '& label.Mui-focused': {
+    //       color: '#1f3556',
+    //     },
+    //     '& label.Mui': { color: '#1f3556' },
+    //     '& .MuiInput-underline:after': {
+    //       borderBottom: '#1f3556 solid 2px',
+    //       color: '#1f3556',
+    //     },
+    //     '& .MuiInput-underline:before': {
+    //       borderBottom: '#1f3556 solid 1px',
+    //       color: '#1f3556',
+    //     },
+    //   },
+    // })(TextField);
     return (
       <>
         <FormControl className={classes.formContainer}>
@@ -60,7 +60,7 @@ class Question extends Component {
                 },
               }}
             /> */}
-            <CssTextField
+            <TextField
               className={classes.inputControl}
               value={this.props.local[`answer${question.id}`]}
               onChange={this.props.changeHandler(`answer${question.id}`)}

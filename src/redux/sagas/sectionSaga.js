@@ -73,11 +73,20 @@ function* deleteSection(action) {
   }
 }
 
+function* changeSectionSaga(action) {
+  try {
+    yield axios.put("/api/section", action.payload);
+  } catch (err) {
+    console.log("error", err);
+  }
+}
+
 function* sectionSaga() {
   yield takeLatest('SUBMIT_SECTION', submitSection);
   yield takeLatest('FETCH_ALL_SECTIONS', getAllSections);
   yield takeLatest('DELETE_SECTION', deleteSection);
   yield takeLatest('FETCH_SECTION', getSection);
+  yield takeLatest('CHANGE_SECTION',changeSectionSaga);
 }
 
 export default sectionSaga;

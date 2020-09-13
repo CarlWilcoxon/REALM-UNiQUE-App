@@ -48,59 +48,58 @@ const type = [
 ];
 
 class EditSection extends Component {
+  // state = {
+  //   title: "",
+  //   type: "",
+  //   description: "",
+  //   questions: [],
+  //   imageLink: "",
+  //   videoLink: "",
+  //   textContent: "",
+  //   questionInputs: [],
+  //   preview: false,
+  // };
+
   state = {
-    title: '',
-    type: '',
-    description: '',
-    questions: [],
-    imageLink: '',
-    videoLink: '',
-    textContent: '',
-    questionInputs: [],
+    sectionId: this.props.section.id,
+    title: this.props.section.title,
+    type: this.props.section.type,
+    description: this.props.section.description,
+    imageLink: this.props.section.image_link,
+    videoLink: this.props.section.video_link,
+    // questions: {},
+    textContent: this.props.section.text_content,
+    // qmap: [],
     preview: false,
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: 5, //this.props.match.params.section, //hard-coded, needs to be changed this.props.match.params.section
-      },
-    });
-  }
-
   //Packaging new section details and sending to saga to send to database
-  submitSection = (event) => {
+  changeSection = (event) => {
     event.preventDefault();
     this.props.dispatch({
-      type: 'SUBMIT_SECTION',
-      // payload: {
-      //   title: this.state.title,
-      //   type: this.state.type,
-      //   description: this.state.description,
-      //   ///questions need to be added to payload
-      // },
-
-      payload: this.state,
+      type: "CHANGE_SECTION",
+      payload: {
+        ...this.state,
+      },
     });
-  }; // end submitSection
+  }; // end changeSection
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    console.log("state:", this.state);
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
+    console.log("You clicked add new questions");
     this.setState({
       questionInputs: [...this.state.questionInputs, <SectionQuestion />],
     });
   };
   toggleResourcePreview = () => {
-    console.log('You clicked the preview icon');
+    console.log("You clicked the preview icon");
     this.setState({
       preview: !this.state.preview,
     });
@@ -155,6 +154,7 @@ class EditSection extends Component {
                 </div>
                 {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
                 <div>
+                  
                   <FormControl className={classes.formContainer}>
                     <div>
                       <TextField
@@ -450,7 +450,7 @@ class EditSection extends Component {
                     : "null"}
                 </div>
                 {/* ADD NEW QUESTION BUTTON */}
-                <div className="new-question">
+                {/* <div className="new-question">
                   <FormControl className={classes.formContainerQuestion}>
                     {this.state.questionInputs.map((questionInputs, index) => (
                       <SectionQuestion
@@ -460,21 +460,21 @@ class EditSection extends Component {
                       />
                     ))}
                   </FormControl>
-                </div>
+                </div> */}
                 <div className={classes.adminButtonContainer}>
-                  <Button
+                  {/* <Button
                     variant="contained"
                     onClick={this.appendNewQuestion}
                     className={classes.adminButtonAdd}
                   >
                     Add Question
-                  </Button>
+                  </Button> */}
 
                   <Button
                     variant="contained"
                     type="submit"
                     name="submit"
-                    onClick={this.submitSection}
+                    onClick={this.changeSection}
                     className={classes.adminButtonAdd}
                   >
                     Save Section

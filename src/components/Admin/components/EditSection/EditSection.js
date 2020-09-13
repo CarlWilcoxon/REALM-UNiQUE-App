@@ -73,15 +73,6 @@ class EditSection extends Component {
     console.log("state:", this.state);
   };
 
-  handleDeleteClick = () => {
-    this.props.dispatch({
-      type: 'UPDATE_QUESTIONS',
-      payload: {
-        sectionId: this.state.sectionId,
-        changedQuestions: ( this.state.changedQuestions === undefined? null : this.state.changedQuestions ),
-      }
-    })
-  }
 
   handleQuestionChangeFor = (propertyName) => (event) => {
     this.setState({
@@ -112,14 +103,29 @@ class EditSection extends Component {
         changedQuestions: ( this.state.changedQuestions === undefined? null : this.state.changedQuestions ),
       }
     })
+
     this.props.dispatch({
       type: 'ADD_SINGLE_QUESTION',
       payload: {
         sectionId: this.state.sectionId,
         qIndex: this.state.questions.length,
       }})
+
     console.log("You clicked add new questions");
+
+    this.setState({
+      sectionId: this.props.section.id,
+      title: this.props.section.title,
+      type: this.props.section.type,
+      description: this.props.section.description,
+      imageLink: this.props.section.image_link,
+      videoLink: this.props.section.video_link,
+      questions: this.props.section.questions,
+      textContent: this.props.section.text_content,
+      preview: false,
+    })
   };
+
   toggleResourcePreview = () => {
     console.log("You clicked the preview icon");
     this.setState({

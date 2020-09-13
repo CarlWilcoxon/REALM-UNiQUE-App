@@ -24,30 +24,39 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
-  state = (this.props.state.realm.name === undefined ? {
-    name: "",
-    photoLink: "",
-    description: "",
-    preview: false,
-    questionInputs: [],
-    icon: "",
-  } :
-  this.props.state.realm);
+  state =
+    this.props.state.realm.name === undefined
+      ? {
+          name: "",
+          photoLink: "", //https://assets.entrepreneur.com/content/3x2/2000/1596647278-GettyImages-168491057.jpg?width=700&crop=2:1
+          description: "",
+          preview: false,
+          questionInputs: [],
+          icon: "",
+        }
+      : this.props.state.realm;
   // Be wary of constructors, they can over ride info
 
+  populateNewRealmInputs = () => {
+    this.setState({
+      name: "Financial",
+      photoLink: "https://assets.entrepreneur.com/content/3x2/2000/1596647278-GettyImages-168491057.jpg?width=700&crop=2:1",
+      description: "Understanding how financial wellness is interconnected with our other relams of wellness is the first step to gain a better relationship with money. In this realm we will learn how to create a responsible relationship with money, that both your current and future self will appreciate!",
+    });
+  };
   //Store new realm in a reducer
   storeRealm = (event) => {
     this.props.dispatch({
       type: "SET_REALM",
       payload: {
-          ...this.state,
+        ...this.state,
       },
-  });
-  this.goNext();
-};
+    });
+    this.goNext();
+  };
 
-//Navigate to next page
-goNext =() => this.props.history.push('/add-sections-to-realm')
+  //Navigate to next page
+  goNext = () => this.props.history.push("/add-sections-to-realm");
 
   //CAPTURE INPUTS IN STATE
 
@@ -74,8 +83,9 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
     console.log("You clicked add new questions");
     this.setState({
       ...this.state,
-      questions: (this.state.questions === undefined ? {} : {...this.state.questions}),
-      questionInputs: [...this.state.questionInputs, 'bob'],
+      questions:
+        this.state.questions === undefined ? {} : { ...this.state.questions },
+      questionInputs: [...this.state.questionInputs, "bob"],
     });
   };
 
@@ -94,7 +104,12 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <form>
-              <h1 className={classes.header}>New Realm</h1>
+              <h1
+                className={classes.header}
+                onClick={this.populateNewRealmInputs}
+              >
+                New Realm
+              </h1>
 
               <FormControl className={classes.formContainer}>
                 <div>
@@ -129,7 +144,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
 
               {/* <FormControl className={classes.formContainer}>
                 <div> */}
-                  {/* <TextField
+              {/* <TextField
                     select
                     required
                     label="Realm Icon"
@@ -288,15 +303,15 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                 <FormControl className={classes.formContainerQuestion}>
                   <div id="new-question">
                     {this.state.questionInputs.map((q, i) => (
-                <Grid
-                item
-                component={RealmQuestion}
-                index={i}
-                local={this.state.questions}
-                changeHandler={this.handleQuestionChangeFor}
-                key={i}
-              />
-                  ))}
+                      <Grid
+                        item
+                        component={RealmQuestion}
+                        index={i}
+                        local={this.state.questions}
+                        changeHandler={this.handleQuestionChangeFor}
+                        key={i}
+                      />
+                    ))}
                   </div>
                 </FormControl>
               </div>

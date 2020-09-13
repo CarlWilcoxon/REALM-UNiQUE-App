@@ -126,6 +126,7 @@ class EmotionalSec3 extends Component {
                     IconContainerComponent={IconContainer}
                   />
                 </Box> */}
+                <div className={classes.radioContainer}>
                 <RadioGroup
                   aria-label="Feedback"
                   name="Feedback"
@@ -270,6 +271,7 @@ class EmotionalSec3 extends Component {
                   Save & Exit
                 </Button> */}
               </div>
+            </div>
             </FormControl>
           </Grid>
         </Grid>

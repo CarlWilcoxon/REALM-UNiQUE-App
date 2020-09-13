@@ -41,8 +41,47 @@ router.get('/get-realm/:realm', async (req, res) => {
   }
 });
 
+  // delete realm by ID from "realm"  "section_order" "student_progress"
 router.delete('/remove/:realm', async (req, res) => {
 
+  const realmId = req.params.realm;
+  console.log( "Deleteing RealmID:", realmId);
+
+  const connection = await pool.connect();
+
+  try {
+    await connection.query('BEGIN');
+    const removeRealmQuery =
+    `DELETE FROM "realm"
+    WHERE "realm"."id" = $1`;
+
+    await connection.query(removeRealmQuery, [realmId] );
+
+    const removeSectionOrderQuery =
+    `DELETE FROM "section_order"
+    WHERE "realm_id" = $1`;
+
+    await connection.query(removeSectionOrderQuery, [realmId] );
+
+    const removeProgressQuery =
+    `DELETE FROM "student_progress"
+    WHERE "realm_id" = $1`;
+
+    await connection.query(removeProgressQuery, [realmId] );
+
+
+
+    await connection.query('COMMIT');
+    res.sendStatus(200);
+  } catch (err) {
+    console.log('error on transfer', err);
+    await connection.query('ROLLBACK');
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+
+  // delete from "realm"  "section_order" "student_progress"
 })
 
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE

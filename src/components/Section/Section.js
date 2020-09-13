@@ -45,6 +45,29 @@ class Section extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.props.dispatch({
+      type: 'FETCH_SECTION',
+      payload: {
+        sectionId: this.props.match.params.section,
+      },
+    });
+    this.props.dispatch({
+      type: 'FETCH_REALM',
+      payload: {
+        realmId: this.props.match.params.realm,
+      },
+    });
+    this.props.dispatch({
+      type: 'UPDATE_PROGRESS',
+      payload: {
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    });
+  }
+  // this.forceUpdate();
+
   saveAndContinue = () => {
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
@@ -108,6 +131,7 @@ class Section extends Component {
           ) : (
             'loading'
           )}
+
           <Grid>
             {section.video_link !== undefined && section.type === 1 ? (
               <Grid className={classes.sectionVideoContainer}>
@@ -115,7 +139,15 @@ class Section extends Component {
                   title={section.title + ' video'}
                   frameborder="0"
                   className={classes.sectionVideo}
-                  src={section.video_link.replace('/watch?v=', '/embed/')}
+                  src={ section.video_link.includes('youtube') ?
+                    section.video_link.replace('/watch?v=', '/embed/')
+                  :
+                    section.video_link.includes('ted.com/') ?
+
+                    section.video_link.replace('//www.ted.com/', '//embed.ted.com/')
+                  :
+                    'invalid video source: only youtube and ted.com are supported'
+                }
                 />
               </Grid>
             ) : (

@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   withStyles,
-  Button,
   Grid,
-  GridListTile,
-  Paper,
 } from '@material-ui/core';
 
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
@@ -25,46 +22,30 @@ class RealmTile extends Component {
     return (
       <Grid container className={classes.buttonContainer}>
         <Grid item className={classes.button}>
-          {this.props.iconIndex === 0 ? (
+          {this.props.iconIndex % 8 === 0 ? (
             <EmojiEmotionsIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 1 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 1 ? (
             <EcoIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 2 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 2 ? (
             <FitnessCenterIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 3 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 3 ? (
             <SpaIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 4 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 4 ? (
             <AttachMoneyIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 5 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 5 ? (
             <PlaceIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 6 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 6 ? (
             <EmojiPeopleIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
-          {this.props.iconIndex === 7 ? (
+          ) : ( '' )}
+          {this.props.iconIndex % 8 === 7 ? (
             <EmojiObjectsIcon className={classes.icon} />
-          ) : (
-            ''
-          )}
+          ) : ( '' )}
 
           <Grid item className={classes.realmName}>
             {this.props.realm.realm_name}

@@ -19,90 +19,9 @@ import {
 import styles from '../../../../themes/adminTheme.js';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import AddIcon from '@material-ui/icons/Add';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-// const styles = (theme) => ({
-//   button: {
-//     font: ' 300  16px  Poppins , sans-serif',
-//     color: 'white',
-//     backgroundColor: '#457b9d',
-//     '&:hover': {
-//       backgroundColor: '#a8dadc',
-//       color: '#457b9d',
-//     },
-//     '&:focus': {
-//       backgroundColor: 'a8dadc',
-//       color: '#457b9d',
-//     },
-//     'text-transform': 'capitalize',
-//     'text-align': 'center',
-//     'margin-top': '10px',
-//     'border-radius': '5px',
-//   },
-//   root: {
-//     width: '40%',
-//     marginTop: '5%',
-//     marginBottom: '3%',
-//     overflowX: 'auto',
-//   },
-//   table: {
-//     // minWidth: "50%",
-//   },
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20,
-//   },
-//   title: {
-//     display: 'none',
-//     [theme.breakpoints.up('sm')]: {
-//       display: 'block',
-//     },
-//   },
-//   search: {
-//     position: 'relative',
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: fade('#ffffff', 0.15),
-//     '&:hover': {
-//       backgroundColor: fade('#ffffff', 0.25),
-//     },
-//     marginLeft: 0,
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       marginLeft: theme.spacing.unit,
-//       width: 'auto',
-//     },
-//   },
-//   searchIcon: {
-//     width: theme.spacing.unit * 9,
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   inputRoot: {
-//     color: 'inherit',
-//     width: '100%',
-//   },
-//   inputInput: {
-//     paddingTop: theme.spacing.unit,
-//     paddingRight: theme.spacing.unit,
-//     paddingBottom: theme.spacing.unit,
-//     paddingLeft: theme.spacing.unit * 10,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       width: 160,
-//       '&:focus': {
-//         width: 200,
-//       },
-//     },
-//   },
-// });
 
 class ViewRealmsPage extends Component {
   componentDidMount = () => {
@@ -116,6 +35,11 @@ class ViewRealmsPage extends Component {
   handleClick = (realmId) => {
     this.props.history.push(`/preview/realm/${realmId}`);
   };
+
+  handleDeleteClick = (realmId) => {
+    this.props.dispatch({ type: 'DELETE_REALM' , payload: realmId });
+  };
+
 
   handleNewRealmClick = () => {
     this.props.history.push(`/add-realm`);
@@ -175,6 +99,11 @@ class ViewRealmsPage extends Component {
                     align="right"
                     className={classes.tableHeader}
                   ></TableCell>
+                  <TableCell
+                    width="10%"
+                    align="right"
+                    className={classes.tableHeader}
+                  ></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -182,22 +111,36 @@ class ViewRealmsPage extends Component {
                   <TableRow key={this.props.realms.id}>
                     <TableCell
                       align="left"
-                      component="th"
-                      scope="row"
+                      // scope="row"
                       className={classes.tableCell}
                     >
                       {realm.realm_name}
                     </TableCell>
-                    <IconButton
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      aria-label="delete"
-                      className={classes.viewSectionIcon}
-                      onClick={() => this.handleClick(realm.id)}
-                    >
-                      <VisibilityIcon fontSize="large" />
-                    </IconButton>
+                    <TableCell>
+                      <IconButton
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        aria-label="preview"
+                        className={classes.viewSectionIcon}
+                        onClick={() => this.handleClick(realm.id)}
+                      >
+                        <VisibilityIcon fontSize="large" />
+                      </IconButton>
+                    </TableCell>
+                    <TableCell>
+                      <IconButton
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        aria-label="delete"
+                        className={classes.viewSectionIcon}
+                        style={{color:"red"}}
+                        onClick={() => this.handleDeleteClick(realm.id)}
+                      >
+                        <DeleteForeverIcon fontSize="large" />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

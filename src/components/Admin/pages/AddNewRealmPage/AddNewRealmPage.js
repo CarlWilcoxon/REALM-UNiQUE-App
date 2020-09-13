@@ -24,14 +24,15 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
-  state = {
+  state = (this.props.state.realm.name === undefined ? {
     name: "",
     photoLink: "",
     description: "",
     preview: false,
     questionInputs: [],
     icon: "",
-  };
+  } :
+  this.props.state.realm);
   // Be wary of constructors, they can over ride info
 
   //Store new realm in a reducer
@@ -40,7 +41,6 @@ class AddNewRealmPage extends Component {
       type: "SET_REALM",
       payload: {
           ...this.state,
-          questions: this.props.reduxState.newQuestions,
       },
   });
   this.goNext();
@@ -59,10 +59,23 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
     console.log("state:", this.state);
   };
 
+  handleQuestionChangeFor = (propertyName) => (event) => {
+    this.setState({
+      ...this.state,
+      questions: {
+        ...this.state.questions,
+        [propertyName]: event.target.value,
+      },
+    });
+    console.log("state:", this.state);
+  };
+
   appendNewQuestion = () => {
     console.log("You clicked add new questions");
     this.setState({
-      questionInputs: [...this.state.questionInputs, <RealmQuestion />],
+      ...this.state,
+      questions: (this.state.questions === undefined ? {} : {...this.state.questions}),
+      questionInputs: [...this.state.questionInputs, 'bob'],
     });
   };
 
@@ -274,11 +287,16 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
               <div className="new-question">
                 <FormControl className={classes.formContainerQuestion}>
                   <div id="new-question">
-                    {this.state.questionInputs.map((questionInputs, index) => (
-                      <RealmQuestion
-                      key={index}
-                      index={index}/>
-                    ))}
+                    {this.state.questionInputs.map((q, i) => (
+                <Grid
+                item
+                component={RealmQuestion}
+                index={i}
+                local={this.state.questions}
+                changeHandler={this.handleQuestionChangeFor}
+                key={i}
+              />
+                  ))}
                   </div>
                 </FormControl>
               </div>
@@ -313,10 +331,10 @@ AddNewRealmPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const mapReduxStateToProps = (reduxState) => ({
-  reduxState,
+const mapStateToProps = (state) => ({
+  state,
 });
 
 export default withStyles(styles)(
-  connect(mapReduxStateToProps)(AddNewRealmPage)
+  connect(mapStateToProps)(AddNewRealmPage)
 );

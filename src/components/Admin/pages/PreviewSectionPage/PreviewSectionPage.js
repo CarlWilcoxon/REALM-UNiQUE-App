@@ -23,7 +23,7 @@ class PreviewSectionPage extends Component {
   // }
 
   state = {
-    edit: true,
+    edit: false,
   };
 
   toggleEdit = () => {
@@ -41,7 +41,7 @@ class PreviewSectionPage extends Component {
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <center>
               {/* <h1 className={classes.header}>(section name)</h1> */}
-              {this.state.edit ? (
+              {!this.state.edit ? (
                 <div>
                   <PreviewSection />
                   <Button

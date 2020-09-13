@@ -192,6 +192,19 @@ const styles = (theme) => ({
       backgroundColor: '#457b9d',
     },
   },
+  adminButtonDialog: {
+    font: '300 16px Poppins, sans-serif',
+    backgroundColor: '#1f3556',
+    color: '#fff',
+    'border-radius': '7px',
+    // width: '10%',
+    padding: '10px 20px 10px 20px',
+    margin: '0px 0px 0% 0%',
+    'text-transform': 'capitalize',
+    '&:hover': {
+      backgroundColor: '#457b9d',
+    },
+  },
   adminButtonEdit: {
     font: '300 12px Poppins, sans-serif',
     backgroundColor: '#1f3556',
@@ -298,14 +311,16 @@ const styles = (theme) => ({
     },
     'text-decoration': 'none',
   },
+  dialogContent: { margin: '5px 0px -5px 0px' },
   downloadButtonExtended: {
-    font: '300 20px Poppins, sans-serif',
+    font: '300 200% Poppins, sans-serif',
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '25px',
     width: '25%',
     padding: '40px 10px 40px 10px',
-    margin: '0px 2% 4% 2%',
+    margin: '0px 4% 4% 4%',
+    // margin: 'auto',
     'text-transform': 'capitalize',
     '&:hover': {
       backgroundColor: '#457b9d',
@@ -314,19 +329,19 @@ const styles = (theme) => ({
   },
   downloadButtonLink: {
     color: '#fff',
-    'border-radius': '25px',
+    // 'border-radius': '25px',
     'text-decoration': 'none',
   },
 
   statisticsHeader: {
     'text-align': 'center',
     width: '100%',
-    margin: '5% auto 5% auto',
+    margin: '5% auto 10% auto',
 
-    font: '400 30px Poppins, sans-serif',
+    font: '400 40px Poppins, sans-serif',
     color: '#1f3556',
   },
-  downloadIcon: { 'font-size': '25px', margin: ' 0px 4px -4px 0px ' },
+  downloadIcon: { 'font-size': '30px', margin: ' 0px 4px -4px 0px ' },
   welcomeMessage: {
     margin: '5% 2% 4% 2%',
     font: '400 40px Poppins, sans-serif',
@@ -388,6 +403,24 @@ const styles = (theme) => ({
     // marginRight: '.5%',
   },
   noDecoration: { 'text-decoration': 'none' },
+  root: {
+    height: 180,
+  },
+  container: {
+    display: 'flex',
+  },
+  paper: {
+    margin: theme.spacing.unit,
+  },
+  svg: {
+    width: 100,
+    height: 100,
+  },
+  polygon: {
+    fill: theme.palette.common.white,
+    stroke: theme.palette.divider,
+    strokeWidth: 1,
+  },
 });
 
 export default styles;

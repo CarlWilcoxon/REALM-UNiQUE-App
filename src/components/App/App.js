@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AdminRoute from '../AdminRoute/AdminRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import Data from '../Admin/pages/Data/Data';
+import StatisticsPage from '../Admin/pages/StatisticsPage/StatisticsPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
 import EmotionalHome from '../EmotionalHome/EmotionalHome';
@@ -79,7 +79,7 @@ class App extends Component {
               path="/add-sections-to-realm"
               component={AddSectionsToNewRealm}
             />
-            <AdminRoute exact path="/data" component={Data} />
+            <AdminRoute exact path="/statistics" component={StatisticsPage} />
             <AdminRoute
               exact
               path="/preview/realm/:id"

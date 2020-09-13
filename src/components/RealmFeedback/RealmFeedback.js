@@ -56,12 +56,14 @@ class EmotionalSec3 extends Component {
 
   handleRadioChange = (event) => {
     this.setState({
+      ...this.state,
       feedbackScore: event.target.value,
     })
   }
 
   handleFeedbackChange = (event) => {
     this.setState({
+      ...this.state,
       feedback: event.target.value,
     })
   }

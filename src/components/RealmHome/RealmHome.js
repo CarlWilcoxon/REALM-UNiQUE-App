@@ -30,7 +30,7 @@ class RealmHome extends Component {
       // If the user's hasn't started the realm yet, go to the form page
       if (!this.props.progress.started)
         this.props.history.push(
-          `/realm-form/${this.props.match.params.realm}/${this.props.progress.section_id}`
+          `/realm-form/${this.props.match.params.realm}/${this.props.realm.section[0].section_id}`
         );
       // Otherwise go to the last page the user was on.
       else {

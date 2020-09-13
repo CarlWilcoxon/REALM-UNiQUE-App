@@ -80,7 +80,7 @@ router.put('/update-save', (req, res) => {
 router.put('/update-save/completed', (req, res) => {
   const queryText =
   `UPDATE "student_progress"
-  SET ("completed" = TRUE, "section_id" = NULL, "started" = FALSE)
+  SET "completed" = TRUE, "section_id" = NULL, "started" = FALSE
   WHERE "user_id" = $1 AND "realm_id" = $2;`;
 
   const queryValues = [

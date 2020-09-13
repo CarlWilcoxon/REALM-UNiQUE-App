@@ -112,129 +112,145 @@ class EmotionalSec3 extends Component {
                     IconContainerComponent={IconContainer}
                   />
                 </Box> */}
-                <RadioGroup
-                  aria-label="answer"
-                  name="answer"
-                  // value={1}
-                  // onChange={handleChange}
-                  row
-                  className={classes.sectionRadio}
-                >
-                  <FormControlLabel
-                    labelPlacement="top"
-                    value="1"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
-                          />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        <SentimentVeryDissatisfiedIcon
-                          className={classes.ratingIcon}
+                <div className={classes.radioContainer}>
+                  <RadioGroup
+                    aria-label="answer"
+                    name="answer"
+                    // value={1}
+                    // onChange={handleChange}
+                    row
+                    className={classes.sectionRadio}
+                  >
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value={1}
+                      control={
+                        <Radio
+                          checkedIcon={
+                            <span
+                              className={clsx(
+                                classes.icon,
+                                classes.checkedIcon
+                              )}
+                            />
+                          }
+                          icon={<span className={classes.icon} />}
                         />
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    value="2"
-                    labelPlacement="top"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
+                      }
+                      label={
+                        <span className={classes.sectionRadioButtonLabel}>
+                          <SentimentVeryDissatisfiedIcon
+                            className={classes.ratingIcon}
                           />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        <SentimentDissatisfiedIcon
-                          className={classes.ratingIcon}
+                        </span>
+                      }
+                      className={classes.sectionRadioButtonLabel}
+                    />
+                    <FormControlLabel
+                      value="2"
+                      labelPlacement="top"
+                      control={
+                        <Radio
+                          checkedIcon={
+                            <span
+                              className={clsx(
+                                classes.icon,
+                                classes.checkedIcon
+                              )}
+                            />
+                          }
+                          icon={<span className={classes.icon} />}
                         />
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    labelPlacement="top"
-                    value="3"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
+                      }
+                      label={
+                        <span className={classes.sectionRadioButtonLabel}>
+                          <SentimentDissatisfiedIcon
+                            className={classes.ratingIcon}
                           />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        <SentimentSatisfiedIcon
-                          className={classes.ratingIcon}
+                        </span>
+                      }
+                      className={classes.sectionRadioButtonLabel}
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="3"
+                      control={
+                        <Radio
+                          checkedIcon={
+                            <span
+                              className={clsx(
+                                classes.icon,
+                                classes.checkedIcon
+                              )}
+                            />
+                          }
+                          icon={<span className={classes.icon} />}
                         />
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    labelPlacement="top"
-                    value="4"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
+                      }
+                      label={
+                        <span className={classes.sectionRadioButtonLabel}>
+                          <SentimentSatisfiedIcon
+                            className={classes.ratingIcon}
                           />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        <SentimentSatisfiedAltIcon
-                          className={classes.ratingIcon}
+                        </span>
+                      }
+                      className={classes.sectionRadioButtonLabel}
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="4"
+                      control={
+                        <Radio
+                          checkedIcon={
+                            <span
+                              className={clsx(
+                                classes.icon,
+                                classes.checkedIcon
+                              )}
+                            />
+                          }
+                          icon={<span className={classes.icon} />}
                         />
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                  <FormControlLabel
-                    labelPlacement="top"
-                    value="5"
-                    control={
-                      <Radio
-                        checkedIcon={
-                          <span
-                            className={clsx(classes.icon, classes.checkedIcon)}
+                      }
+                      label={
+                        <span className={classes.sectionRadioButtonLabel}>
+                          <SentimentSatisfiedAltIcon
+                            className={classes.ratingIcon}
                           />
-                        }
-                        icon={<span className={classes.icon} />}
-                      />
-                    }
-                    label={
-                      <span className={classes.sectionRadioButtonLabel}>
-                        <SentimentVerySatisfiedIcon
-                          className={classes.ratingIcon}
+                        </span>
+                      }
+                      className={classes.sectionRadioButtonLabel}
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="5"
+                      control={
+                        <Radio
+                          checkedIcon={
+                            <span
+                              className={clsx(
+                                classes.icon,
+                                classes.checkedIcon
+                              )}
+                            />
+                          }
+                          icon={<span className={classes.icon} />}
                         />
-                      </span>
-                    }
-                    className={classes.sectionRadioButtonLabel}
-                  />
-                </RadioGroup>
-
+                      }
+                      label={
+                        <span className={classes.sectionRadioButtonLabel}>
+                          <SentimentVerySatisfiedIcon
+                            className={classes.ratingIcon}
+                          />
+                        </span>
+                      }
+                      className={classes.sectionRadioButtonLabel}
+                    />
+                  </RadioGroup>
+                </div>
                 <CssTextField
                   className={classes.inputControl}
-                  label="Feedback"
+                  label="Comments"
                   multiline
                 />
               </div>

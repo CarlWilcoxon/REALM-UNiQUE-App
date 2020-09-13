@@ -64,19 +64,24 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
     await connection.query('COMMIT');
     // console.log('success!', result.rows[0]);
     res.send(result.rows[0]);
-  } catch (error) {
+  } catch (err) {
+    console.log('error on DELETE', err);
     await connection.query('ROLLBACK');
-    console.log(`Transaction Error - Rolling back new account`, error);
-  // delete realm by ID from "realm"  "section_order" "student_progress"
-    
-  });
+    res.sendStatus(500);
+  } finally {
+    connection.release();
+  }
+
+});
 
 router.delete('/remove/:realm', async (req, res) => {
 
   const realmId = req.params.realm;
   console.log( "Deleteing RealmID:", realmId);
 
- 
+  try {
+    await connection.query('BEGIN');
+
     const removeRealmQuery =
     `DELETE FROM "realm"
     WHERE "realm"."id" = $1`;

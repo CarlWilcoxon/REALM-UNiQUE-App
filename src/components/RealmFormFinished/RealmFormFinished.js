@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
 import { withStyles, Grid, Button } from '@material-ui/core';
 
-class EmotionalFormFinished extends Component {
+class RealmFormFinished extends Component {
 
   componentDidMount() {
     this.props.dispatch({
@@ -18,13 +18,6 @@ class EmotionalFormFinished extends Component {
         realmId: this.props.match.params.realm,
       },
     })
-    this.props.dispatch({
-      type: 'FETCH_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-      },
-    })
-
   }
 
 
@@ -32,19 +25,34 @@ class EmotionalFormFinished extends Component {
   // goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   goBack = () => this.props.history.push(`/home`);
   continue = () => {
-    // this.props.dispatch({
-    //   type: 'UPDATE_PROGRESS',
-    //   payload: {
-    //     realmId: this.props.match.params.realm,
-    //     sectionId: this.props.match.params.section,
-    //   },
-    // })
-    if (this.props.state.progress.index !== undefined ){
-    this.props.history.push(
-    `/section/${this.props.match.params.realm}/${
-      this.props.state.realm.section[(this.props.state.progress.index+1)].section_id
-    }`)};
-  }
+    this.props.dispatch({
+      type: 'FORM_FINISHED',
+      payload: {
+        realmId: this.props.match.params.realm,
+        sectionId: this.props.match.params.section,
+      },
+    })
+
+    const section_order = this.props.state.realm.section;
+    let next_section = -1;
+
+    // loop through the section order array
+    for (let i=0; i < section_order.length; i++) {
+      // if there is still a section after this one
+      if (section_order[i].section_id == this.props.match.params.section &&
+      (i + 1 < section_order.length) ) {
+        next_section = section_order[i+1].section_id;
+      }
+    }
+
+    if (next_section === -1) {
+      this.props.history.push(
+        `/realm-feedback/${this.props.match.params.realm}`);
+    } else {
+      this.props.history.push(
+        `/section/${this.props.match.params.realm}/${next_section}`);
+    }
+  };
 
   render() {
     const { classes } = this.props;
@@ -95,5 +103,5 @@ const mapStateToProps = (state) => ({
 
 // this allows us to use <App /> in index.js
 export default withStyles(styles)(
-  connect(mapStateToProps)(EmotionalFormFinished)
+  connect(mapStateToProps)(RealmFormFinished)
 );

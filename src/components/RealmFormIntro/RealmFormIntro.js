@@ -36,13 +36,16 @@ class RealmFormIntro extends Component {
 
   goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   start = () => {
-    this.props.dispatch({
-      type: 'CREATE_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-        sectionId: this.props.match.params.section,
-      },
-    });
+    // if they have no saved progress, create a place to save it.
+    if ( this.props.state.progress.butts === undefined ) {
+      this.props.dispatch({
+        type: 'CREATE_PROGRESS',
+        payload: {
+          realmId: this.props.match.params.realm,
+          sectionId: this.props.match.params.section,
+        },
+      });
+    }
 
     this.props.history.push(
       `/realm-form/${this.props.match.params.realm

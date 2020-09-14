@@ -44,7 +44,7 @@ class Question extends Component {
       <>
         <FormControl className={classes.formContainer}>
           <div className={classes.QandAContainer}>
-            <div className={classes.formQuestion}>{question.content}</div>
+            <div className={classes.formQuestion} onClick={this.props.changeHandler(`answer${question.id}`, question.answer)}>{question.content}</div>
             {/* <TextField
               variant="outlined"
               multiline
@@ -62,8 +62,8 @@ class Question extends Component {
             /> */}
             <TextField
               className={classes.inputControl}
-              // value={this.props.local[`answer${question.id}`]}
-              defaultValue={question.answer}
+              value={this.props.local[`answer${question.id}`]}
+              // defaultValue={question.answer}
               onChange={this.props.changeHandler(`answer${question.id}`)}
               multiline
             />

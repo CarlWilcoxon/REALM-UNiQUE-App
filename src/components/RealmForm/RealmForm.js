@@ -14,13 +14,13 @@ class RealmForm extends Component {
 
   state = {};
 
-  handleInputChangeFor = (propertyName) => (event) => {
+  handleInputChangeFor = (propertyName, extraValue) => (event) => {
+    console.log('old state:', this.state);
     this.setState({
       ...this.state,
-      [propertyName]: event.target.value,
+      [propertyName]: extraValue,
     });
   };
-
 
   componentDidMount() {
     this.props.dispatch({

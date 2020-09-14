@@ -70,7 +70,7 @@ const styles = (theme) => ({
     height: '765px',
   },
   formContainer: {
-    margin: '10% auto 20px auto',
+    margin: '-10% auto 20px auto',
     'background-color': 'transparent',
     'text-align': 'center',
     position: 'relative',

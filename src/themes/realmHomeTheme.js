@@ -267,6 +267,15 @@ const styles = (theme) => ({
     'text-align': 'center',
     // borderBottom: '#1f3556 solid 1px',
   },
+  sectionQuestionRealmFeedback: {
+    font: '400 90% Poppins, sans-serif',
+    color: '#1f3556',
+    padding: '0px 10% 0px 10%',
+    margin: '10% 0px 10px 0px',
+    // width: '90%',
+    'text-align': 'center',
+    // borderBottom: '#1f3556 solid 1px',
+  },
   sectionRadio: {
     font: '400 120% Poppins, sans-serif',
     color: '#1f3556',

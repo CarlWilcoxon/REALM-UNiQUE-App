@@ -45,7 +45,14 @@ class Section extends Component {
     });
   }
 
+  scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   componentDidUpdate() {
+    // window.onbeforeunload = () => {
+
+    // window.scrollTo(0, 0);
+    // this.scrollToTop();
     this.props.dispatch({
       type: 'FETCH_SECTION',
       payload: {
@@ -69,6 +76,11 @@ class Section extends Component {
   // this.forceUpdate();
 
   saveAndContinue = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
       payload: {

@@ -15,11 +15,11 @@ import {
 class Section extends Component {
   state = {};
 
-  handleInputChangeFor = (propertyName) => (event) => {
+  handleInputChangeFor = (propertyName, extraValue) => (event) => {
     console.log('old state:', this.state);
     this.setState({
       ...this.state,
-      [propertyName]: event.target.value,
+      [propertyName]: extraValue,
     });
   };
 
@@ -45,7 +45,8 @@ class Section extends Component {
     });
   }
 
-  componentDidUpdate() {
+componentDidUpdate(prevProps) {
+  if (this.props.match.params.section !== prevProps.match.params.section) {
     this.props.dispatch({
       type: 'FETCH_SECTION',
       payload: {
@@ -66,6 +67,7 @@ class Section extends Component {
       },
     });
   }
+}
   // this.forceUpdate();
 
   saveAndContinue = () => {

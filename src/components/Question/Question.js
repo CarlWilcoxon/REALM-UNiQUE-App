@@ -17,16 +17,15 @@ class Question extends Component {
         <FormControl className={classes.formContainerSection}>
           <div className={classes.QandAContainerSection}>
             <div className={classes.sectionQuestion}>
-              <Typography>{question.content}</Typography>
+              <Typography onClick={this.props.changeHandler(`answer${question.id}`, question.answer)}>{question.content}</Typography>
             </div>
             <TextField
               id="standard-name"
-              label="Answer"
+              // label="Answer"
               type="text"
               multiline
               className={classes.inputControlSection}
-              // value={this.props.local[`answer${question.id}`]}
-              defaultValue={question.answer}
+              value={this.props.local[`answer${question.id}`]}
               onChange={this.props.changeHandler(`answer${question.id}`)}
               margin="normal"
             />{" "}

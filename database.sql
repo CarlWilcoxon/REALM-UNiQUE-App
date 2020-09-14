@@ -209,7 +209,7 @@ CREATE TABLE "question" (
 
 INSERT INTO "question" ( "section_id", "question_index", "content", "answer" )
 VALUES
-( 1, 0, 'How much do we really know about the mind?', 'We don''t know much about the humnan mind.' ),
+( 1, 0, 'How much do we really know about the mind?', 'We don''t know much about the human mind.' ),
 ( 2, 0, 'What do you think about most of the time?', 'Video Games, socioeconomic political theories and their implications for modern society, cool cars. Normal stuff.' ),
 ( 2, 1, 'How many negative thoughts do you think about yourself?', '3 a day.' ),
 ( 2, 2, 'How many positive thoughts do you think about yourself?', '2 a week.' ),

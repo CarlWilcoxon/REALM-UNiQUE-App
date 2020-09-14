@@ -10,7 +10,7 @@ class Question extends Component {
     const { classes, question } = this.props;
     return (
       <>
-        <Typography>{ question.content }</Typography>
+        <Typography>{question.content}</Typography>
 
         <TextField
           label="Answer"
@@ -19,7 +19,8 @@ class Question extends Component {
           multiline
           rows={2}
           className={classes.inputControlSection}
-          value={this.props.local[`answer${question.id}`]}
+          // value={this.props.local[`answer${question.id}`]}
+          defaultValue={question.answer}
           onChange={this.props.changeHandler(`answer${question.id}`)}
           InputProps={{
             classes: {

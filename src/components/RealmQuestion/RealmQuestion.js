@@ -62,7 +62,8 @@ class Question extends Component {
             /> */}
             <TextField
               className={classes.inputControl}
-              value={this.props.local[`answer${question.id}`]}
+              // value={this.props.local[`answer${question.id}`]}
+              defaultValue={question.answer}
               onChange={this.props.changeHandler(`answer${question.id}`)}
               multiline
             />

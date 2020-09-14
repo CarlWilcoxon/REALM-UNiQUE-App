@@ -39,6 +39,7 @@ import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
 import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
 import RealmFeedback from '../RealmFeedback/RealmFeedback';
 import RealmHome from '../RealmHome/RealmHome';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import './App.css';
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         <div>
           {this.props.user.id ? <Nav /> : <span />}
           {/* <Nav /> */}

@@ -5,11 +5,13 @@ const styles = (theme) => ({
     font: '400 20px Poppins, sans-serif',
     'text-align': 'center',
     color: '#1f3556',
+    margin: '0px 0px 10px 0px',
   },
   exploreInvitation: {
     font: '400 30px Poppins, sans-serif',
     'text-align': 'center',
     color: '#1f3556',
+    margin: '0px 0px 20px 0px',
   },
   GridListRoot: {
     display: 'flex',

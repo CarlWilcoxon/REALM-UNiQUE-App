@@ -19,9 +19,9 @@ import {
 import styles from '../../../../themes/adminTheme.js';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import AddIcon from '@material-ui/icons/Add';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+// import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-
 
 class ViewRealmsPage extends Component {
   componentDidMount = () => {
@@ -37,9 +37,8 @@ class ViewRealmsPage extends Component {
   };
 
   handleDeleteClick = (realmId) => {
-    this.props.dispatch({ type: 'DELETE_REALM' , payload: realmId });
+    this.props.dispatch({ type: 'DELETE_REALM', payload: realmId });
   };
-
 
   handleNewRealmClick = () => {
     this.props.history.push(`/add-realm`);
@@ -83,7 +82,7 @@ class ViewRealmsPage extends Component {
               </div>
             </Toolbar>
           </AppBar> */}
-          <Paper className={classes.paperView}>
+          <Paper className={classes.paperViewRealm}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -119,8 +118,6 @@ class ViewRealmsPage extends Component {
                     <TableCell>
                       <IconButton
                         variant="contained"
-                        color="primary"
-                        size="large"
                         aria-label="preview"
                         className={classes.viewSectionIcon}
                         onClick={() => this.handleClick(realm.id)}
@@ -131,14 +128,12 @@ class ViewRealmsPage extends Component {
                     <TableCell>
                       <IconButton
                         variant="contained"
-                        color="primary"
                         size="large"
                         aria-label="delete"
-                        className={classes.viewSectionIcon}
-                        style={{color:"red"}}
+                        className={classes.viewSectionDeleteIcon}
                         onClick={() => this.handleDeleteClick(realm.id)}
                       >
-                        <DeleteForeverIcon fontSize="large" />
+                        <DeleteIcon fontSize="large" />
                       </IconButton>
                     </TableCell>
                   </TableRow>

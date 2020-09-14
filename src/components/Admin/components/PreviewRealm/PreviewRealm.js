@@ -4,7 +4,8 @@ import { withRouter } from 'react-router';
 import styles from '../../../../themes/adminTheme.js';
 import {
   withStyles,
-  // Grid, Button, Typography
+  Grid,
+  // Button, Typography
 } from '@material-ui/core';
 
 class PreviewRealmPage extends Component {
@@ -16,14 +17,14 @@ class PreviewRealmPage extends Component {
       },
     });
   }
-  componentDidMount() {
-    this.props.dispatch({
-      type: 'FETCH_REALM_SECTIONS',
-      payload: {
-        realmId: this.props.match.params.id,
-      },
-    });
-  }
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: 'FETCH_REALM_SECTIONS',
+  //     payload: {
+  //       realmId: this.props.match.params.id,
+  //     },
+  //   });
+  // }
 
   render() {
     const { classes, realm } = this.props;
@@ -31,6 +32,9 @@ class PreviewRealmPage extends Component {
     return (
       <div>
         <h1 className={classes.headerView}>Preview</h1>
+        {/* {this.props.reduxState !== undefined
+          ? JSON.stringify(this.props.reduxState)
+          : 'loading'} */}
         {realm.realm_name !== undefined ? (
           <p className={classes.sectionTitle}>
             {' '}
@@ -40,6 +44,20 @@ class PreviewRealmPage extends Component {
         ) : (
           'loading'
         )}
+        <br></br>
+
+        <br></br>
+        <div className={classes.sectionCoverContainer}>
+          (Cover Photo)
+          <br></br>
+          <br></br>
+          <img
+            className={classes.sectionImage}
+            src={realm.cover_photo}
+            alt={realm.realm_name + ' image'}
+          />
+        </div>
+
         <br></br>
         {realm.description !== undefined ? (
           <p className={classes.sectionDescription}>
@@ -51,9 +69,9 @@ class PreviewRealmPage extends Component {
         ) : (
           'null'
         )}
-        (Sections)<br></br>
+        {/* (Sections)<br></br>
         (Section id)
-        <div className={classes.headerLess}>{realm.section_id}</div> <br></br>
+        <div className={classes.headerLess}>{realm.section_id}</div> <br></br> */}
       </div>
     );
   }

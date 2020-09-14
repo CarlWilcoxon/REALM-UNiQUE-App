@@ -25,23 +25,23 @@ class AddSectionsToNewRealmPage extends Component {
   };
 
   submitRealmWithSections = () => {
-     this.props.dispatch({
-       type: "POST_NEW_REALM",
-       payload: {
-       chosenSections: this.props.chosenSections,
-       realm: this.props.realm
-       }
-     })
-     this.forwardviewRealm()
+    this.props.dispatch({
+      type: 'POST_NEW_REALM',
+      payload: {
+        chosenSections: this.props.chosenSections,
+        realm: this.props.realm,
+      },
+    });
+    this.forwardviewRealm();
   };
 
   backtoAddRealm = () => {
-    this.props.history.push('/add-realm')
-  }
+    this.props.history.push('/add-realm');
+  };
 
   forwardviewRealm = () => {
-    this.props.history.push('/view-realms')
-  }
+    this.props.history.push('/view-realms');
+  };
 
   render() {
     const { classes } = this.props;
@@ -50,8 +50,8 @@ class AddSectionsToNewRealmPage extends Component {
       <div>
         <center>
           {/* maybe classes.headerLess */}
-          <h1 className={classes.header}>Add Sections to New Realm</h1>
-          <h3>Select sections in the order you wish for them to appear</h3>
+          <h1 className={classes.headerMore}>Add Sections to New Realm</h1>
+
           {/* <AppBar position="static">
           <Toolbar>
             <div className={classes.grow} />
@@ -69,8 +69,11 @@ class AddSectionsToNewRealmPage extends Component {
             </div>
           </Toolbar>
         </AppBar> */}
-          <h1 className={classes.headerLess}>All Sections</h1>
-          <Paper className={classes.paper}>
+          <h1 className={classes.headerLesser}>All Sections</h1>
+          <h3 className={classes.headerLeast}>
+            (Select sections in the order you wish to see them)
+          </h3>
+          <Paper className={classes.paperView}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -99,9 +102,12 @@ class AddSectionsToNewRealmPage extends Component {
               </TableBody>
             </Table>
           </Paper>
-          <h2 className={classes.header}>Chosen Sections</h2>
-          <h3>Sections will be saved in the order they appear below</h3>
-          <Paper className={classes.paper}>
+          <br></br>
+          <h2 className={classes.headerLesser}>Chosen Sections</h2>
+          <h3 className={classes.headerLeast}>
+            (Sections will appear from top to bottom)
+          </h3>
+          <Paper className={classes.paperView}>
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
@@ -136,7 +142,7 @@ class AddSectionsToNewRealmPage extends Component {
               name="submit"
               // onClick={this.submitSection}
               className={classes.adminButtonAdd}
-              onClick= {this.backtoAddRealm}
+              onClick={this.backtoAddRealm}
             >
               Back to Name Realm
             </Button>
@@ -146,7 +152,7 @@ class AddSectionsToNewRealmPage extends Component {
               name="submit"
               // onClick={this.submitSection}
               className={classes.adminButtonAdd}
-              onClick= {this.submitRealmWithSections}
+              onClick={this.submitRealmWithSections}
             >
               Save Realm with Sections
             </Button>
@@ -160,7 +166,7 @@ class AddSectionsToNewRealmPage extends Component {
 const mapReduxStateToProps = (reduxState) => ({
   sections: reduxState.allSections,
   chosenSections: reduxState.chosenSections,
-  realm: reduxState.realm
+  realm: reduxState.realm,
 });
 
 AddSectionsToNewRealmPage.propTypes = {

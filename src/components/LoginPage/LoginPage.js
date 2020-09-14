@@ -46,17 +46,18 @@ class LoginPage extends Component {
 
     return (
       <Grid id="LoginPageContainer" container spacing={0}>
-        {/* <img */}
-        <video
-          // alt="a calming ocean view with a rainbow"
+        <img
+          // <video
+          alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
+          // src="file:/goodVideo.mp4/"
           // src="/Users/brunoreyes/Desktop/videosGit/goodVideo.mp4"
-        />{' '}
-        {/* src="/images/scenery-2846778.jpg" */}
+          src="/images/scenery-2846778.jpg"
+        />
         {/* <iframe
           src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
           className={classes.videoContainerMobile}

@@ -98,6 +98,7 @@ class RealmHome extends Component {
 
           {realm.description !== undefined ? (
             <Grid item>
+              <br></br>
               <Typography className={classes.realmDescription}>
                 {realm.description}
               </Typography>

@@ -16,7 +16,7 @@ class Section extends Component {
   state = {};
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log('old state:', this.state)
+    console.log('old state:', this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
@@ -82,24 +82,26 @@ class Section extends Component {
     let next_section = -1;
 
     // loop through the section order array
-    for (let i=0; i < section_order.length; i++) {
+    for (let i = 0; i < section_order.length; i++) {
       // if there is still a section after this one
-      if (section_order[i].section_id == this.props.match.params.section &&
-      (i+1 < section_order.length) ) {
-        next_section = section_order[i+1].section_id;
+      if (
+        section_order[i].section_id == this.props.match.params.section &&
+        i + 1 < section_order.length
+      ) {
+        next_section = section_order[i + 1].section_id;
       }
     }
 
-    if (next_section === -1 ) {
+    if (next_section === -1) {
       this.props.history.push(
-        `/realm-feedback/${this.props.match.params.realm}`)
+        `/realm-feedback/${this.props.match.params.realm}`
+      );
     } else {
       this.props.history.push(
         `/section/${this.props.match.params.realm}/${next_section}`
       );
     }
   };
-
 
   saveAndReturn = () => {
     this.props.dispatch({
@@ -139,15 +141,16 @@ class Section extends Component {
                   title={section.title + ' video'}
                   frameborder="0"
                   className={classes.sectionVideo}
-                  src={ section.video_link.includes('youtube') ?
-                    section.video_link.replace('/watch?v=', '/embed/')
-                  :
-                    section.video_link.includes('ted.com/') ?
-
-                    section.video_link.replace('//www.ted.com/', '//embed.ted.com/')
-                  :
-                    'invalid video source: only youtube and ted.com are supported'
-                }
+                  src={
+                    section.video_link.includes('youtube')
+                      ? section.video_link.replace('/watch?v=', '/embed/')
+                      : section.video_link.includes('ted.com/')
+                      ? section.video_link.replace(
+                          '//www.ted.com/',
+                          '//embed.ted.com/'
+                        )
+                      : 'invalid video source: only youtube and ted.com are supported'
+                  }
                 />
               </Grid>
             ) : (
@@ -174,12 +177,15 @@ class Section extends Component {
           )}
 
           {section.description !== undefined ? (
-            <p className={classes.sectionDescription}>{section.description}</p>
+            <p className={classes.sectionDescription}>
+              {section.description}
+              {/* <br></br> */}
+            </p>
           ) : (
             'loading'
           )}
 
-            {/* {section !== undefined
+          {/* {section !== undefined
               ? JSON.stringify(this.state)
               : 'loading'} */}
 
@@ -190,6 +196,8 @@ class Section extends Component {
               alignItems="center"
               justify="space-evenly"
             >
+              {' '}
+              <br></br>
               {section.questions.map((q, i) => (
                 <Grid
                   item

@@ -173,7 +173,7 @@ const styles = (theme) => ({
     'text-align': 'left',
     // borderBottom: '#1f3556 solid 1px',
   },
-  boldTOC: { font: '500 12px Poppins, sans-serif' },
+  boldTOC: { font: '500 13px Poppins, sans-serif' },
   estimatedTimeOfCompletion: {
     font: '300 14px Poppins, sans-serif',
     color: '#1f3556',

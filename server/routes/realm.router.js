@@ -46,7 +46,7 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
 
   try {
     await connection.query('BEGIN');
-  const queryText = `SELECT * FROM "realm"
+    const queryText = `SELECT * FROM "realm"
     WHERE "realm"."id"= $1
     ORDER BY "realm"."id" ASC;`;
     const queryValue = [req.params.realm];
@@ -71,36 +71,29 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
   } finally {
     connection.release();
   }
-
 });
 
 router.delete('/remove/:realm', async (req, res) => {
-
   const realmId = req.params.realm;
-  console.log( "Deleteing RealmID:", realmId);
+  console.log('Deleteing RealmID:', realmId);
 
   try {
     await connection.query('BEGIN');
 
-    const removeRealmQuery =
-    `DELETE FROM "realm"
+    const removeRealmQuery = `DELETE FROM "realm"
     WHERE "realm"."id" = $1`;
 
-    await connection.query(removeRealmQuery, [realmId] );
+    await connection.query(removeRealmQuery, [realmId]);
 
-    const removeSectionOrderQuery =
-    `DELETE FROM "section_order"
+    const removeSectionOrderQuery = `DELETE FROM "section_order"
     WHERE "realm_id" = $1`;
 
-    await connection.query(removeSectionOrderQuery, [realmId] );
+    await connection.query(removeSectionOrderQuery, [realmId]);
 
-    const removeProgressQuery =
-    `DELETE FROM "student_progress"
+    const removeProgressQuery = `DELETE FROM "student_progress"
     WHERE "realm_id" = $1`;
 
-    await connection.query(removeProgressQuery, [realmId] );
-
-
+    await connection.query(removeProgressQuery, [realmId]);
 
     await connection.query('COMMIT');
     console.log('DELETE successful');
@@ -114,7 +107,7 @@ router.delete('/remove/:realm', async (req, res) => {
   }
 
   // delete from "realm"  "section_order" "student_progress"
-})
+});
 
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE
 router.get('/all', (req, res) => {
@@ -135,7 +128,7 @@ router.get('/all', (req, res) => {
 });
 
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/add-new-realm',  async (req, res) => {
+router.post('/add-new-realm', async (req, res) => {
   // console.log( "in post route:", req.body );
 
   const realm = req.body.realm;
@@ -155,52 +148,38 @@ router.post('/add-new-realm',  async (req, res) => {
     const realmId = result.rows[0].id;
     // console.log(realmId);
 
-    const formQuery =
-    `INSERT INTO "section" ("type")
-    VALUES ( 5 ) RETURNING "id"`
+    const formQuery = `INSERT INTO "section" ("type")
+    VALUES ( 5 ) RETURNING "id"`;
     const tempResult = await connection.query(formQuery);
 
-    const formId = tempResult.rows[0].id
-    const formConnectionQuery =
-    `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+    const formId = tempResult.rows[0].id;
+    const formConnectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
     VALUES ($1, $2, $3);`;
-    formConnectionValues = [
-      realmId,
-      0,
-      formId
-    ]
+    formConnectionValues = [realmId, 0, formId];
     await connection.query(formConnectionQuery, formConnectionValues);
 
     if (realm.questions !== undefined) {
       const questionPairs = Object.entries(realm.questions);
-      console.log("questionPairs", questionPairs)
+      console.log('questionPairs', questionPairs);
 
       for (question of questionPairs) {
-
         let qIndex = parseInt(question[0].substring(1));
-        console.log("qIndex", qIndex);
+        console.log('qIndex', qIndex);
 
-        const questionQuery =
-        `INSERT INTO "question" ("section_id", "question_index", "content")
+        const questionQuery = `INSERT INTO "question" ("section_id", "question_index", "content")
         VALUES ($1, $2, $3 );`;
-        const questionValues = [
-          formId,
-          qIndex,
-          question[1]
-        ]
-        await connection.query(questionQuery, questionValues)
+        const questionValues = [formId, qIndex, question[1]];
+        await connection.query(questionQuery, questionValues);
       }
     }
 
-
     // LOOP THROUGH CHOSEN SECTIONS INTO SECTION ORDER TABLE
     for (let i = 0; i < chosenSections.length; i++) {
-      const orderSectionQuery =
-      `INSERT INTO "section_order" ("realm_id", "index", "section_id")
+      const orderSectionQuery = `INSERT INTO "section_order" ("realm_id", "index", "section_id")
       VALUES ($1, $2, $3);`;
       await connection.query(orderSectionQuery, [
         realmId,
-        i+1,
+        i + 1,
         chosenSections[i].id,
       ]);
     }

@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, TextField, Typography } from '@material-ui/core';
+import {
+  FormControl,
+  withStyles,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
-
   render() {
     // Deconstructing more props
     const { classes, question } = this.props;
     return (
       <>
-        <Typography>{question.content}</Typography>
-
-        <TextField
-          label="Answer"
-          type="text"
-          variant="outlined"
-          multiline
-          rows={2}
-          className={classes.inputControlSection}
-          // value={this.props.local[`answer${question.id}`]}
-          defaultValue={question.answer}
-          onChange={this.props.changeHandler(`answer${question.id}`)}
-          InputProps={{
-            classes: {
-              input: classes.input,
-              root: classes.cssOutlinedInput,
-              notchedOutline: classes.notchedOutline,
-            },
-          }}
-        />
+        <FormControl className={classes.formContainerSection}>
+          <div className={classes.QandAContainerSection}>
+            <div className={classes.sectionQuestion}>
+              <Typography>{question.content}</Typography>
+            </div>
+            <TextField
+              id="standard-name"
+              label="Answer"
+              type="text"
+              multiline
+              className={classes.inputControlSection}
+              // value={this.props.local[`answer${question.id}`]}
+              defaultValue={question.answer}
+              onChange={this.props.changeHandler(`answer${question.id}`)}
+              margin="normal"
+            />{" "}
+          </div>
+        </FormControl>
       </>
     );
   }

@@ -120,7 +120,7 @@ class ViewSectionsPage extends Component {
   };
 
   getAllSections = () => {
-    this.props.dispatch({ type: "FETCH_ALL_SECTIONS" });
+    this.props.dispatch({ type: 'FETCH_ALL_SECTIONS' });
   };
 
   handleClick = (sectionId) => {
@@ -210,26 +210,25 @@ class ViewSectionsPage extends Component {
                       {section.title}
                     </TableCell>
                     <TableCell align="left">
-                      {section.type_name === "image" ? (
+                      {section.type_name === 'image' ? (
                         <ImageIcon className={classes.addSectionResourceIcon} />
                       ) : (
-                        ""
+                        ''
                       )}
-                      {section.type_name === "video" ? (
+                      {section.type_name === 'video' ? (
                         <YouTubeIcon
                           className={classes.addSectionResourceIcon}
                         />
                       ) : (
-                        ""
+                        ''
                       )}
-                      {section.type_name === "text" ? (
+                      {section.type_name === 'text' ? (
                         <DescriptionIcon
                           className={classes.addSectionResourceIcon}
                         />
                       ) : (
-                        ""
+                        ''
                       )}
-
                     </TableCell>{' '}
                     <TableCell>
                       <IconButton
@@ -249,7 +248,7 @@ class ViewSectionsPage extends Component {
                         size="large"
                         // onClick={this.handleDeleteClick}
                         aria-label="delete"
-                        className={classes.viewSectionIcon}
+                        className={classes.viewSectionDeleteIcon}
                         onClick={(event) =>
                           this.handleDeleteSectionClick(section.id)
                         }

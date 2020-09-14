@@ -61,12 +61,15 @@ class LoginPage extends Component {
     return (
       <Grid id="LoginPageContainer" container spacing={0}>
         <img
+          // <video
           alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
+          // src="file:/goodVideo.mp4/"
+          // src="/Users/brunoreyes/Desktop/videosGit/goodVideo.mp4"
           src="/images/scenery-2846778.jpg"
         />
         {/* <iframe
@@ -78,7 +81,6 @@ class LoginPage extends Component {
           // allow="autoplay; fullscreen"
         ></iframe> */}
         {/* The one at the top only shows up bc I have video speed controller on */}
-
         <Hidden smDown>
           <Grid className={classes.leftSideFlex} item md={6} lg={6}>
             {/* To input video on one side of a page we simply place it in one of the child grids */}

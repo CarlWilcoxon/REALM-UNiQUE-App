@@ -4,7 +4,6 @@ import styles from '../../themes/realmHomeTheme';
 import { withStyles, Grid, Button } from '@material-ui/core';
 
 class RealmFormIntro extends Component {
-
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_SECTION',
@@ -18,26 +17,25 @@ class RealmFormIntro extends Component {
         realmId: this.props.match.params.realm,
       },
     });
-
   }
-
 
   saveAndContinue = (event) => {
     // Go to this realm's form
     // /section/:realm/:section
     this.props.history.push(
-      `/section/${
-        this.props.match.params.realm
-      }/${
-        ( ( this.props.realm !== undefined )
-         ?
-        this.props.realm.section[0].section_id : '' )}`)
+      `/section/${this.props.match.params.realm}/${
+        this.props.realm !== undefined
+          ? this.props.realm.section[0].section_id
+          : ''
+      }`
+    );
   };
 
-  goBack = () => this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
+  goBack = () =>
+    this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   start = () => {
     // if they have no saved progress, create a place to save it.
-    if ( this.props.state.progress.butts === undefined ) {
+    if (this.props.state.progress.butts === undefined) {
       this.props.dispatch({
         type: 'CREATE_PROGRESS',
         payload: {
@@ -48,8 +46,9 @@ class RealmFormIntro extends Component {
     }
 
     this.props.history.push(
-      `/realm-form/${this.props.match.params.realm
-      }/${this.props.match.params.section}`)};
+      `/realm-form/${this.props.match.params.realm}/${this.props.match.params.section}`
+    );
+  };
 
   render() {
     const { classes } = this.props;
@@ -77,8 +76,8 @@ class RealmFormIntro extends Component {
                 wellness before beginning the realm course.
               </p>
               <p className={classes.estimatedTimeOfCompletion}>
-                Estimated time to complete:{' '}
-                <span className={classes.boldTOC}>5-8 minutes</span>
+                Estimated time:
+                <span className={classes.boldTOC}> 5-8 minutes</span>
               </p>
             </div>
           </Grid>{' '}

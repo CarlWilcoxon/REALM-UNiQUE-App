@@ -15,8 +15,8 @@ import Fade from 'react-reveal/Fade';
 
 class LoginPage extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   login = (event) => {
@@ -24,14 +24,14 @@ class LoginPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: "LOGIN",
+        type: 'LOGIN',
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
+      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
 
@@ -43,15 +43,15 @@ class LoginPage extends Component {
 
   populateAdminInputs = () => {
     this.setState({
-      username: "mase",
-      password: "mase",
+      username: 'mase',
+      password: 'mase',
     });
   };
 
   populateUserInputs = () => {
     this.setState({
-      username: "bruno",
-      password: "brunocatdog",
+      username: 'bruno',
+      password: 'brunocatdog',
     });
   };
 
@@ -137,7 +137,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.username}
-                    onChange={this.handleInputChangeFor("username")}
+                    onChange={this.handleInputChangeFor('username')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -167,7 +167,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.password}
-                    onChange={this.handleInputChangeFor("password")}
+                    onChange={this.handleInputChangeFor('password')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -203,7 +203,7 @@ class LoginPage extends Component {
               <Button
                 className={classes.register}
                 onClick={() => {
-                  this.props.dispatch({ type: "SET_TO_REGISTER_MODE" });
+                  this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
                 }}
               >
                 Sign Up

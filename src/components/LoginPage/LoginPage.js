@@ -44,7 +44,7 @@ class LoginPage extends Component {
   populateAdminInputs = () => {
     this.setState({
       username: 'mase',
-      password: 'mase',
+      password: 'masemase',
     });
   };
 

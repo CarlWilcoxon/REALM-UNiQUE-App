@@ -61,6 +61,13 @@ class EmotionalSec3 extends Component {
     })
   }
 
+  handleFeedbackClick = () => {
+    this.setState({
+      ...this.state,
+      feedback: 'Loved it!',
+    })
+  }
+
   handleFeedbackChange = (event) => {
     this.setState({
       ...this.state,
@@ -96,7 +103,7 @@ class EmotionalSec3 extends Component {
               {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               { this.props.state.realm.realm_name !== undefined ? (
             <Grid item>
-              <h3 className={classes.realmTitle} >
+              <h3 className={classes.realmTitle}>
                 Realm of {this.props.state.realm.realm_name} Wellness
               </h3>
             </Grid>
@@ -117,7 +124,7 @@ class EmotionalSec3 extends Component {
               component="fieldset"
             >
               <div className={classes.QandAContainerSection}>
-                <div className={classes.sectionQuestion}>
+                <div className={classes.sectionQuestion} onClick={this.handleFeedbackClick}>
                   How did you feel about the course?
                 </div>
                 {/* <Box component="fieldset" mb={3} borderColor="transparent">
@@ -252,7 +259,7 @@ class EmotionalSec3 extends Component {
 
                 <CssTextField
                   className={classes.inputControl}
-                  label="Feedback"
+                  // label="Feedback"
                   multiline
                   value={this.state.feedback}
                   onChange={this.handleFeedbackChange}

@@ -268,9 +268,9 @@ const styles = (theme) => ({
     // borderBottom: '#1f3556 solid 1px',
   },
   sectionQuestionRealmFeedback: {
-    font: '400 90% Poppins, sans-serif',
+    font: '400 93% Poppins, sans-serif',
     color: '#1f3556',
-    padding: '0px 10% 0px 10%',
+    padding: '0px 7% 0px 7%',
     margin: '10% 0px 10px 0px',
     // width: '90%',
     'text-align': 'center',

@@ -7,9 +7,6 @@ import {
   Grid,
   Button,
   Typography,
-  // FormControl,
-  // TextField,
-  // Paper,
 } from '@material-ui/core';
 
 class Section extends Component {
@@ -45,28 +42,30 @@ class Section extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: this.props.match.params.section,
-      },
-    });
-    this.props.dispatch({
-      type: 'FETCH_REALM',
-      payload: {
-        realmId: this.props.match.params.realm,
-      },
-    });
-    this.props.dispatch({
-      type: 'UPDATE_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-        sectionId: this.props.match.params.section,
-      },
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.section !== prevProps.match.params.section) {
+      this.props.dispatch({
+        type: 'FETCH_SECTION',
+        payload: {
+          sectionId: this.props.match.params.section,
+        },
+      });
+      this.props.dispatch({
+        type: 'FETCH_REALM',
+        payload: {
+          realmId: this.props.match.params.realm,
+        },
+      });
+      this.props.dispatch({
+        type: 'UPDATE_PROGRESS',
+        payload: {
+          realmId: this.props.match.params.realm,
+          sectionId: this.props.match.params.section,
+        },
+      });
+    }
   }
-  // this.forceUpdate();
+    // this.forceUpdate();
 
   saveAndContinue = () => {
     this.props.dispatch({

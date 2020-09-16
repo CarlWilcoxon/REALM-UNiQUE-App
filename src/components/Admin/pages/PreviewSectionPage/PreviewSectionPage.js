@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import PreviewSection from '../../components/PreviewSection/PreviewSection';
 import EditSection from '../../components/EditSection/EditSection';
@@ -8,9 +7,6 @@ import styles from '../../../../themes/adminTheme.js';
 import { withStyles, Grid, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import AddIcon from '@material-ui/icons/Add';
-// const styles = (theme) => ({
-// });
 
 class PreviewSectionPage extends Component {
   // componentDidMount() {
@@ -46,9 +42,7 @@ class PreviewSectionPage extends Component {
                   <PreviewSection />
                   <Button
                     variant="contained"
-                    className="submit-new-section"
-                    // type="submit"
-                    // name="submit"
+                    id="submit-new-section-btn"
                     // onClick={this.submitSection}
                     className={classes.adminButtonPreview}
                     onClick={this.toggleEdit}
@@ -63,7 +57,7 @@ class PreviewSectionPage extends Component {
 
                   <Button
                     variant="contained"
-                    className="submit-new-section"
+                    id="submit-new-section-btn"
                     // type="submit"
                     // name="submit"
                     // onClick={this.submitSection}

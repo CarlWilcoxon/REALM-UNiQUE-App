@@ -3,27 +3,24 @@ import { connect } from 'react-redux';
 import styles from '../../../../themes/adminTheme.js';
 import {
   withStyles,
-  FormControl,
   Grid,
-  TextField,
   Button,
-  MenuItem,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
   DialogTitle,
-  MuiDialogTitle,
-  MuiDialogContent,
-  MuiDialogActions,
-  IconButton,
-  CloseIcon,
-  Typography,
 } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import { CSVLink } from 'react-csv';
 
 class StatisticsPage extends Component {
+
+  state = {
+    openCurriculum: false,
+    openDemographics: false,
+    openFeedback: false,
+  };
+
+
   componentDidMount() {
     this.props.dispatch({
       type: 'FETCH_CURRICULUM',
@@ -46,12 +43,6 @@ class StatisticsPage extends Component {
   handleRealmsClick = () => {
     this.props.history.push(`/view-realms`);
   };
-  state = {
-    openCurriculum: false,
-    openDemographics: false,
-    openFeedback: false,
-  };
-
   handleClickOpenCurriculum = () => {
     this.props.dispatch({ type: 'FETCH_CURRICULUM' });
     this.setState({ openCurriculum: true });
@@ -85,7 +76,6 @@ class StatisticsPage extends Component {
         {' '}
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid
-            // className={classes.leftSideFlex}
             item
             xs={12}
             sm={12}
@@ -184,7 +174,6 @@ class StatisticsPage extends Component {
               <GetAppIcon className={classes.downloadIcon} />
               <span className={classes.paddingLR}>Feedback</span>
             </Button>
-            {/* <Button onClick={this.getCurriculum}>lets see</Button> */}
             {/* {this.props.reduxState !== undefined
                 ? JSON.stringify(this.props.reduxState)
                 : 'loading'} */}
@@ -248,9 +237,7 @@ export default withStyles(styles)(
                                 .replace('watch?v=', 'embed/')
                                 .split('&feature=emb_title')[0]
                             } */
-}
 
-{
   /* <Button
                   variant="contained"
                   className={classes.downloadButtonExtended}
@@ -259,7 +246,6 @@ export default withStyles(styles)(
                   <span className={classes.paddingLR}>Curriculum</span>
                 </Button>
               </CSVLink> */
-}
-{
+
   /* <div> */
 }

@@ -38,7 +38,7 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-class EmotionalSec3 extends Component {
+class RealmFeedback extends Component {
 
   state = {
     feedbackScore: "3",
@@ -287,7 +287,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec3));
-
-{
-}
+export default withStyles(styles)(connect(mapStateToProps)(RealmFeedback));

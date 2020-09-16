@@ -445,9 +445,6 @@ const styles = (theme) => ({
   container: {
     display: 'flex',
   },
-  paper: {
-    margin: theme.spacing.unit,
-  },
   svg: {
     width: 100,
     height: 100,

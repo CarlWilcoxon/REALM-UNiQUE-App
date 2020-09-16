@@ -5,8 +5,6 @@ import {
   withStyles,
   Grid,
   Button,
-  FormControl,
-  TextField,
 } from '@material-ui/core';
 import RealmQuestion from '../RealmQuestion/RealmQuestion';
 
@@ -35,28 +33,11 @@ class RealmForm extends Component {
         realmId: this.props.match.params.realm,
       },
     })
-    // this.props.dispatch({
-    //   type: 'UPDATE_PROGRESS',
-    //   payload: {
-    //     realmId: this.props.match.params.realm,
-    // sectionId: this.props.match.params.section,
-      // },
-    // })
-
   }
 
 
 
   goBack = () => {
-
-    // this.props.dispatch({
-    //   type: 'SAVE_PROGRESS',
-    //   payload: {
-    //     ...this.state,
-    //     sectionId: this.props.match.params.section,
-    //   },
-    // });
-
     this.props.history.push(`/realm-home/${this.props.match.params.realm}`)
   };
 
@@ -77,6 +58,7 @@ class RealmForm extends Component {
   };
 
   render() {
+    // deconstructing props so I don't have to type `this.props.` all the time
     const {
       classes,
       section,
@@ -121,7 +103,7 @@ class RealmForm extends Component {
                 Submit
               </Button>
               <Button className={classes.realmButton} onClick={this.goBack}>
-                Save & Return
+                Return to Realm
               </Button>
             </div>
           </Grid>

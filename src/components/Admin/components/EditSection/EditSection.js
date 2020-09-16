@@ -7,44 +7,25 @@ import {
   Grid,
   TextField,
   Button,
-  MenuItem,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Fade from 'react-reveal/Fade';
-// import SaveIcon from '@material-ui/icons/Save';
-// const styles = (theme) => ({
-//   root: {
-//     background: 'blue',
-//     // borderRadius: 3,
-//     // border: 0,
-//     color: 'white',
-//     height: 48,
-//     padding: '0 30px',
-//     fontWeight: 'bold',
-//     margin: '10px',
-//     justify: 'center',
-//   },
-//   textField: {
-//     width: 400,
-//     margin: '10px',
-//   },
-// });
 
-const type = [
-  {
-    value: 2,
-    label: 'Text',
-  },
-  {
-    value: 1,
-    label: 'Video',
-  },
-  {
-    value: 3,
-    label: 'Image',
-  },
-];
+// const type = [
+//   {
+//     value: 2,
+//     label: 'Text',
+//   },
+//   {
+//     value: 1,
+//     label: 'Video',
+//   },
+//   {
+//     value: 3,
+//     label: 'Image',
+//   },
+// ];
 
 class EditSection extends Component {
 

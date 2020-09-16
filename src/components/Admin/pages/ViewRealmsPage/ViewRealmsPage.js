@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   withStyles,
-  FormControl,
-  Grid,
-  TextField,
   Button,
-  MenuItem,
   Table,
   TableBody,
   TableCell,
@@ -17,7 +13,6 @@ import {
   IconButton,
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import AddIcon from '@material-ui/icons/Add';
 // import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -54,7 +49,7 @@ class ViewRealmsPage extends Component {
           <div>
             <Button
               variant="contained"
-              className="submit-new-section"
+              id="submit-new-section"
               // type="submit"
               // name="submit"
               // onClick={this.submitSection}

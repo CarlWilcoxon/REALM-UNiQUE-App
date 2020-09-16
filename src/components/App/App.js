@@ -9,21 +9,21 @@ import {
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 import AboutPage from '../AboutPage/AboutPage';
 import StatisticsPage from '../Admin/pages/StatisticsPage/StatisticsPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
-import InfoPage from '../InfoPage/InfoPage';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSectionPage';
 import PreviewRealmPage from '../Admin/pages/PreviewRealmPage/PreviewRealmPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
+// Client management features were scraped due to lack of time.
 // import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 // import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 // import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
@@ -44,6 +44,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         <div>
           {this.props.user.id ? <Nav /> : <span />}
           {/* <Nav /> */}
@@ -100,8 +101,6 @@ class App extends Component {
               path="/realm-home/:realm"
               component={RealmHome}
             />
-            {/* eventually the paths to sections will be like this
-             <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
             <ProtectedRoute
               exact
               path="/section/:realm/:section"
@@ -114,7 +113,6 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute exact path="/home" component={HomeMobile} />
 
-            <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute
               exact
               path="/realm-feedback/:realm"

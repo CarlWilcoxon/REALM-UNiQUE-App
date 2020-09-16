@@ -68,11 +68,11 @@ class Section extends Component {
     // this.forceUpdate();
 
   saveAndContinue = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
       payload: {

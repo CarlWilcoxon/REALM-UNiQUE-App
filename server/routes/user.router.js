@@ -43,7 +43,13 @@ router.post('/register', async (req, res) => {
     // add the user and save the user's new user id
     const new_user_id = await connection.query(queryText, [username, password])
 
-
+    if (reg_code === process.env.SUPER_SECRET_ADMIN_CODE) {
+      const adminQuery =
+      `UPDATE "user"
+      SET "admin" = TRUE
+      WHERE "user"."id" = $1;`
+      await connection.query(adminQuery, [new_user_id.rows[0].id])
+    }
 
     // use the user id to add their demographics to the 'demographic' table
 

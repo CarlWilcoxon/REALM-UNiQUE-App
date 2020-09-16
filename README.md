@@ -9,7 +9,7 @@ Mase Santos, Tom Hoffmann, Carl Wilcoxon and Bruno Reyes
 ### Video Link to Demo:
 
 ## What is Realm Unlimited?
-Realm Unlimited is a health and wellness startup consulting company founded by Kara Hirdman and Crystal Queen. Their mission statement is “To educate current and future leaders in the use of best practices and strategies to create happy and healthy cultures.” 
+Realm Unlimited is a health and wellness startup consulting company founded by Kara Hirdman and Krystal Queen. Their mission statement is “To educate current and future leaders in the use of best practices and strategies to create happy and healthy cultures.” 
 
 Realm and Unlimited’s main goals include:
 - Organizational Leadership Development and bringing wellness to all on a dynamic level

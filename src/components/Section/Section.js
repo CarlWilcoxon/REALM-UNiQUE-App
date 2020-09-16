@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from '../Question/Question';
 import styles from '../../themes/realmHomeTheme';
-import {
-  withStyles,
-  Grid,
-  Button,
-  Typography,
-  // FormControl,
-  // TextField,
-  // Paper,
-} from '@material-ui/core';
+import { withStyles, Grid, Button, Typography } from '@material-ui/core';
 
 class Section extends Component {
   state = {};
@@ -45,14 +37,7 @@ class Section extends Component {
     });
   }
 
-  scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
   componentDidUpdate() {
-    // window.onbeforeunload = () => {
-
-    // window.scrollTo(0, 0);
-    // this.scrollToTop();
     this.props.dispatch({
       type: 'FETCH_SECTION',
       payload: {
@@ -73,7 +58,6 @@ class Section extends Component {
       },
     });
   }
-  // this.forceUpdate();
 
   saveAndContinue = () => {
     window.scroll({
@@ -131,15 +115,7 @@ class Section extends Component {
     const { classes, section } = this.props;
     return (
       <Grid container spacing={0} alignItems="center" justify="center">
-        <Grid
-          // className={classes.leftSideFlex}
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-        >
-          {/* <h1>THIS IS SECTION {this.props.match.params.section}</h1> */}
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           {section.title !== undefined ? (
             <h3 className={classes.sectionTitle}>{section.title}</h3>
           ) : (
@@ -189,17 +165,10 @@ class Section extends Component {
           )}
 
           {section.description !== undefined ? (
-            <p className={classes.sectionDescription}>
-              {section.description}
-              {/* <br></br> */}
-            </p>
+            <p className={classes.sectionDescription}>{section.description}</p>
           ) : (
             'loading'
           )}
-
-          {/* {section !== undefined
-              ? JSON.stringify(this.state)
-              : 'loading'} */}
 
           {section.questions !== undefined ? (
             <Grid
@@ -250,5 +219,4 @@ const mapStateToProps = (state) => ({
   realm: state.realm,
 });
 
-// this allows us to use <App /> in index.js
 export default withStyles(styles)(connect(mapStateToProps)(Section));

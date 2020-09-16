@@ -23,43 +23,13 @@ class Question extends Component {
   render() {
     // Deconstructing more props
     const { classes, question } = this.props;
-    // const CssTextField = withStyles({
-    //   root: {
-    //     color: '#1f3556',
-    //     '& label.Mui-focused': {
-    //       color: '#1f3556',
-    //     },
-    //     '& label.Mui': { color: '#1f3556' },
-    //     '& .MuiInput-underline:after': {
-    //       borderBottom: '#1f3556 solid 2px',
-    //       color: '#1f3556',
-    //     },
-    //     '& .MuiInput-underline:before': {
-    //       borderBottom: '#1f3556 solid 1px',
-    //       color: '#1f3556',
-    //     },
-    //   },
-    // })(TextField);
+
     return (
       <>
         <FormControl className={classes.formContainer}>
           <div className={classes.QandAContainer}>
             <div className={classes.formQuestion}>{question.content}</div>
-            {/* <TextField
-              variant="outlined"
-              multiline
-              rows={2}
-              className={classes.inputControl}
-              value={this.props.local[`answer${question.id}`]}
-              onChange={this.props.changeHandler(`answer${question.id}`)}
-              InputProps={{
-                classes: {
-                  input: classes.input,
-                  root: classes.cssOutlinedInput,
-                  notchedOutline: classes.notchedOutline,
-                },
-              }}
-            /> */}
+
             <TextField
               className={classes.inputControl}
               value={this.props.local[`answer${question.id}`]}

@@ -12,7 +12,6 @@ import {
   Select,
   MenuItem,
   InputLabel,
-  // FormHelperText,
 } from '@material-ui/core';
 
 // PaperProps handle the scrollable selector
@@ -46,7 +45,7 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
     console.log('this.state:', this.state);
-    // make sure password and confirm password are the same
+
     if (
       this.state.username &&
       this.state.password &&
@@ -131,28 +130,18 @@ class RegisterPage extends Component {
             md={0}
             lg={6}
           >
-            {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
-              {/* <Fade> */}
               <img
                 className={classes.colorLogo}
                 alt="realm logo"
                 src="images/logo.png"
               />
-              {/* </Fade> */}
+
               <p className={classes.infinitytext}>Aspire to Inspire</p>
             </div>
           </Grid>
         </Hidden>
-        <Grid
-          className={classes.rightSide}
-          // backgroundImage="images/scenery-2846778.jpg"
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={6}
-        >
+        <Grid className={classes.rightSide} item xs={12} sm={12} md={12} lg={6}>
           <form
             className={
               window.screen.width > 420
@@ -173,9 +162,7 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Username*"
-                  // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.username || ''}
@@ -202,7 +189,6 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Password*"
                   type="password"
                   autoComplete="current-password"
@@ -232,7 +218,6 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Confirm Password*"
                   variant="outlined"
                   type="password"
@@ -291,9 +276,7 @@ class RegisterPage extends Component {
             <FormControl className={classes.formControlRegistration}>
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Last Name*"
-                  // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.last_name || ''}
@@ -326,9 +309,7 @@ class RegisterPage extends Component {
             >
               <div>
                 <TextField
-                  // id="outlined-helperText"
                   label="Email*"
-                  // helperText="Required"
                   variant="outlined"
                   className={classes.inputControl}
                   value={this.state.email || ''}
@@ -454,8 +435,6 @@ class RegisterPage extends Component {
                 MenuProps={CategorySelectorProps}
                 value={this.state.age || ''}
                 onChange={this.handleInputChangeFor('age')}
-                // className={classes.select}
-                // className={classes.overrides}
                 inputProps={{
                   classes: {
                     icon: classes.icon,
@@ -600,12 +579,6 @@ class RegisterPage extends Component {
                   },
                 }}
               >
-                {/* {this.props.categories.map((category, index) => (
-                  <MenuItem key={index} value={category.id}>
-                    {category.name}
-                  </MenuItem>
-                ))} */}
-                {/* <MenuItem value={11}>New Category</MenuItem> */}
                 <MenuItem value=""></MenuItem>
                 <MenuItem value={1}>Asian - Chinese</MenuItem>
                 <MenuItem value={2}>Asian - Filipino</MenuItem>
@@ -625,10 +598,6 @@ class RegisterPage extends Component {
                 <MenuItem value={14}>White</MenuItem>
                 <MenuItem value={15}>Some Other Race</MenuItem>
               </Select>
-              {/* <FormHelperText>
-                Required *
-                <span className={classes.invisibleText}>invisible</span>
-              </FormHelperText> */}
             </FormControl>
             <FormControl
               variant="outlined"
@@ -642,8 +611,6 @@ class RegisterPage extends Component {
                 MenuProps={CategorySelectorProps}
                 value={this.state.gender || ''}
                 onChange={this.handleInputChangeFor('gender')}
-                // className={classes.select}
-                // className={classes.overrides}
                 inputProps={{
                   classes: {
                     icon: classes.icon,
@@ -657,12 +624,6 @@ class RegisterPage extends Component {
                   },
                 }}
               >
-                {/* {this.props.categories.map((category, index) => (
-                  <MenuItem key={index} value={category.id}>
-                    {category.name}
-                  </MenuItem>
-                ))} */}
-                {/* <MenuItem value={11}>New Category</MenuItem> */}
                 <MenuItem value=""></MenuItem>
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
@@ -682,8 +643,6 @@ class RegisterPage extends Component {
                 MenuProps={CategorySelectorProps}
                 value={this.state.income || ''}
                 onChange={this.handleInputChangeFor('income')}
-                // className={classes.select}
-                // className={classes.overrides}
                 inputProps={{
                   classes: {
                     icon: classes.icon,
@@ -740,12 +699,6 @@ class RegisterPage extends Component {
                   },
                 }}
               >
-                {/* {this.props.categories.map((category, index) => (
-                  <MenuItem key={index} value={category.id}>
-                    {category.name}
-                  </MenuItem>
-                ))} */}
-                {/* <MenuItem value={11}>New Category</MenuItem> */}
                 <MenuItem value=""></MenuItem>
                 <MenuItem value={1}>Some High School</MenuItem>
                 <MenuItem value={2}>High School</MenuItem>
@@ -757,11 +710,6 @@ class RegisterPage extends Component {
                 <MenuItem value={8}>Doctorate</MenuItem>
                 <MenuItem value={9}>Professional</MenuItem>
               </Select>
-              {/* <FormHelperText>
-                <span className={classes.invisibleText}>
-                  invisible text is goine
-                </span>
-              </FormHelperText> */}
             </FormControl>
             <FormControl
               className={

@@ -1,5 +1,3 @@
-// import { withTheme } from '@material-ui/core';
-
 const styles = (theme) => ({
   welcomeMessage: {
     font: '400 20px Poppins, sans-serif',
@@ -15,7 +13,6 @@ const styles = (theme) => ({
   },
   GridListRoot: {
     display: 'flex',
-    // flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
   gridList: {
@@ -25,7 +22,6 @@ const styles = (theme) => ({
   gridListTile: { width: '100%' },
   buttonContainer: { width: '95%', padding: '0px' },
   buttonPaper: {
-    // width: '100%', padding: 0
     '&:hover': {
       elevation: 10,
     },
@@ -35,6 +31,10 @@ const styles = (theme) => ({
     font: ' 300  16px  Poppins , sans-serif',
     color: 'white',
     backgroundColor: '#457b9d',
+    'text-transform': 'capitalize',
+    'text-align': 'center',
+    width: '100%',
+    'border-radius': '5px',
     '&:hover': {
       backgroundColor: '#a8dadc',
       color: '#457b9d',
@@ -43,11 +43,6 @@ const styles = (theme) => ({
       backgroundColor: 'a8dadc',
       color: '#457b9d',
     },
-    'text-transform': 'capitalize',
-    'text-align': 'center',
-    // border: '#000 solid 2px',
-    width: '100%',
-    'border-radius': '5px',
   },
   icon: {
     marginTop: 15,

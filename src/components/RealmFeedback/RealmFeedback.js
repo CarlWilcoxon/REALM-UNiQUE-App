@@ -7,11 +7,9 @@ import {
   Button,
   FormControl,
   TextField,
-  // Box,
   RadioGroup,
   FormControlLabel,
   Radio,
-  // Paper,
 } from '@material-ui/core';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
@@ -83,16 +81,12 @@ class EmotionalSec3 extends Component {
 
   render() {
     const { classes } = this.props;
-    // function IconContainer(props: IconContainerProps) {
-    //   const { value, ...other } = props;
-    //   return <span {...other}>{customIcons[value].icon}</span>;
-    // }
+
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <div>
-              {/* <img classname={classes.realmImage} src={Emotional} alt="realm logo" /> */}
               {this.props.state.realm.realm_name !== undefined ? (
                 <Grid item>
                   <h3 className={classes.realmTitle}>
@@ -107,10 +101,6 @@ class EmotionalSec3 extends Component {
                 <span className={classes.sectionOrder}> </span>
               </h3>
 
-              {/* <p className={classes.sectionDescription}>
-                <br></br>
-                <br></br>
-              </p> */}
               <br></br>
             </div>
             <FormControl
@@ -121,14 +111,7 @@ class EmotionalSec3 extends Component {
                 <div className={classes.sectionQuestion}>
                   How did you feel about the course?
                 </div>
-                {/* <Box component="fieldset" mb={3} borderColor="transparent">
-                  <Rating
-                    name="customized-icons"
-                    // defaultValue={2}
-                    getLabelText={(value: number) => customIcons[value].label}
-                    IconContainerComponent={IconContainer}
-                  />
-                </Box> */}
+
                 <div className={classes.radioContainer}>
                   <RadioGroup
                     aria-label="Feedback"
@@ -284,12 +267,6 @@ class EmotionalSec3 extends Component {
                   >
                     Save & Complete Realm
                   </Button>
-                  {/* <Button
-                  className={classes.realmButton}
-                  onClick={this.saveAndReturn}
-                >
-                  Save & Exit
-                </Button> */}
                 </div>
               </div>
             </FormControl>
@@ -304,7 +281,6 @@ const mapStateToProps = (state) => ({
   state,
 });
 
-// this allows us to use <App /> in index.js
 export default withStyles(styles)(connect(mapStateToProps)(EmotionalSec3));
 
 {

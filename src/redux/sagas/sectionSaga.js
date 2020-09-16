@@ -5,12 +5,12 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* submitSection(action) {
   try {
     yield axios.post('/api/section/add', action.payload);
-
   } catch (error) {
     console.log('User get request failed', error);
   }
 }
 
+// this get call takes care of getting all sections from the database
 function* getAllSections() {
   try {
     const response = yield axios.get('/api/section/all');
@@ -21,6 +21,7 @@ function* getAllSections() {
   }
 }
 
+// this get call takes care of getting a section from the database
 function* getSection(action) {
   try {
     const config = {
@@ -46,6 +47,8 @@ function* getSection(action) {
     console.log('User get request failed', error);
   }
 }
+
+// this delete calls takes care of deleting sections from the database
 function* deleteSection(action) {
   try {
     // const response =
@@ -59,6 +62,7 @@ function* deleteSection(action) {
   }
 }
 
+// this post calls takes care of adding questions to the database
 function* appendQuestion(action) {
   try {
     yield axios.post('/api/section/add-one-question', action.payload);
@@ -68,6 +72,7 @@ function* appendQuestion(action) {
   }
 }
 
+// this put calls takes care of updating questions on the database
 function* editQuestions(action) {
   try {
     yield axios.put('/api/section/edit-questions', action.payload);
@@ -76,13 +81,12 @@ function* editQuestions(action) {
   }
 }
 
-
-
+// this put calls takes care of updating section on the database
 function* changeSectionSaga(action) {
   try {
-    yield axios.put("/api/section/update", action.payload);
+    yield axios.put('/api/section/update', action.payload);
   } catch (err) {
-    console.log("error", err);
+    console.log('error', err);
   }
 }
 
@@ -91,9 +95,9 @@ function* sectionSaga() {
   yield takeLatest('FETCH_ALL_SECTIONS', getAllSections);
   yield takeLatest('DELETE_SECTION', deleteSection);
   yield takeLatest('FETCH_SECTION', getSection);
-  yield takeLatest('CHANGE_SECTION',changeSectionSaga);
-  yield takeLatest('ADD_SINGLE_QUESTION',appendQuestion);
-  yield takeLatest('UPDATE_QUESTIONS',editQuestions);
+  yield takeLatest('CHANGE_SECTION', changeSectionSaga);
+  yield takeLatest('ADD_SINGLE_QUESTION', appendQuestion);
+  yield takeLatest('UPDATE_QUESTIONS', editQuestions);
 }
 
 export default sectionSaga;

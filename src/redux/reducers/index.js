@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
   chosenSections, //holds chosen sections for a given realm before they are POSTed
   progress, //holds the users progress in their current realm
   responses, // holds users saved responses
-  statistics, // holds users data
+  statistics, // holds site data
 });
 
 export default rootReducer;

@@ -73,7 +73,7 @@ const styles = (theme) => ({
     'text-align': 'center',
     position: 'relative',
     color: '#f1f1f1',
-    width: '75%',
+    width: '96%',
     padding: '10px 0px 0px 0px',
   },
   brandNameControl: {

@@ -383,7 +383,6 @@ class AddNewSectionPage extends Component {
                   variant="contained"
                   onClick={this.appendNewQuestion}
                   className={classes.adminButton}
-                  classes={{ root: classes.root }}
                 >
                   Add Question
                 </Button>

@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import styles from '../../../../themes/adminTheme.js';
 import {
   withStyles,
-  FormControl,
-  Grid,
-  TextField,
   Button,
-  MenuItem,
   Table,
   TableBody,
   TableCell,
@@ -24,95 +19,6 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import DescriptionIcon from '@material-ui/icons/Description';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-// import Checkbox from "@material-ui/core/Checkbox";
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
-// import InputBase from "@material-ui/core/InputBase";
-// import SearchIcon from "@material-ui/icons/Search";
-
-// const styles = (theme) => ({
-//   button: {
-//     font: ' 300  16px  Poppins , sans-serif',
-//     color: 'white',
-//     backgroundColor: '#457b9d',
-//     '&:hover': {
-//       backgroundColor: '#a8dadc',
-//       color: '#457b9d',
-//     },
-//     '&:focus': {
-//       backgroundColor: 'a8dadc',
-//       color: '#457b9d',
-//     },
-//     'text-transform': 'capitalize',
-//     'text-align': 'center',
-//     'margin-top': '10px',
-//     'border-radius': '5px',
-//   },
-//   root: {
-//     width: '60%',
-//     marginTop: '5%',
-//     marginBottom: '3%',
-//     overflowX: 'auto',
-//   },
-//   table: {
-//     // minWidth: "50%",
-//   },
-//   grow: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginLeft: -12,
-//     marginRight: 20,
-//   },
-//   title: {
-//     display: 'none',
-//     [theme.breakpoints.up('sm')]: {
-//       display: 'block',
-//     },
-//   },
-//   search: {
-//     position: 'relative',
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: fade('#ffffff', 0.15),
-//     '&:hover': {
-//       backgroundColor: fade('#ffffff', 0.25),
-//     },
-//     marginLeft: 0,
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       marginLeft: theme.spacing.unit,
-//       width: 'auto',
-//     },
-//   },
-//   searchIcon: {
-//     width: theme.spacing.unit * 9,
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   inputRoot: {
-//     color: 'inherit',
-//     width: '100%',
-//   },
-//   inputInput: {
-//     paddingTop: theme.spacing.unit,
-//     paddingRight: theme.spacing.unit,
-//     paddingBottom: theme.spacing.unit,
-//     paddingLeft: theme.spacing.unit * 10,
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       width: 160,
-//       '&:focus': {
-//         width: 200,
-//       },
-//     },
-//   },
-// });
 
 class ViewSectionsPage extends Component {
   componentDidMount = () => {
@@ -148,7 +54,7 @@ class ViewSectionsPage extends Component {
           <div>
             <Button
               variant="contained"
-              className="submit-new-section"
+              id="submit-new-section-btn"
               className={classes.adminButtonPreview}
               onClick={this.handleNewSectionClick}
             >

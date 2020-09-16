@@ -18,7 +18,6 @@ import AboutPage from '../AboutPage/AboutPage';
 import StatisticsPage from '../Admin/pages/StatisticsPage/StatisticsPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import InfoPage from '../InfoPage/InfoPage';
-import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSectionPage';
@@ -32,11 +31,7 @@ import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddS
 import Section from '../Section/Section';
 import RealmFormIntro from '../RealmFormIntro/RealmFormIntro';
 import RealmForm from '../RealmForm/RealmForm';
-import EmotionalForm from '../EmotionalForm/EmotionalForm';
 import RealmFormFinished from '../RealmFormFinished/RealmFormFinished';
-import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
-import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
-import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
 import RealmFeedback from '../RealmFeedback/RealmFeedback';
 import RealmHome from '../RealmHome/RealmHome';
 import './App.css';
@@ -67,7 +62,7 @@ class App extends Component {
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
-            {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
+            {/* AdminRoutes test to see if the user is a admin before displaying the page */}
             <AdminRoute
               exact
               path="/add-section"
@@ -128,11 +123,6 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/EmotionalHome"
-              component={EmotionalHome}
-            />
-            <ProtectedRoute
-              exact
               path="/realm-form-intro/:realm/:section"
               component={RealmFormIntro}
             />
@@ -143,33 +133,12 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/EmotionalForm"
-              component={EmotionalForm}
-            />
-            <ProtectedRoute
-              exact
               path="/realm-form-finished/:realm/:section"
               component={RealmFormFinished}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec1"
-              component={EmotionalSec1}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec2"
-              component={EmotionalSec2}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec3"
-              component={EmotionalSec3}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          {/* {this.props.user.id ? <Footer /> : <span />} We aren't rendering the footer anyway*/}
         </div>
       </Router>
     );

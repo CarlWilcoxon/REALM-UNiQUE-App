@@ -214,7 +214,7 @@ const mapReduxStateToProps = (reduxState) => ({
 
 export default withStyles(styles)(
   connect(mapReduxStateToProps)(StatisticsPage)
-);
+)
 
 {
 }

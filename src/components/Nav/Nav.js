@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import { CSVLink } from 'react-csv';
 import './Nav.css';
 import styles from '../../themes/adminTheme';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
-import { withStyles, Button } from '@material-ui/core';
-import SimpleMenu from '../DownloadData/DownloadData';
+import {
+  withStyles,
+} from '@material-ui/core';
+// const { classes }
 const Nav = (props) => (
   <div className="nav">
     {props.user.admin ? (

@@ -39,7 +39,7 @@ class RealmFormFinished extends Component {
     // loop through the section order array
     for (let i=0; i < section_order.length; i++) {
       // if there is still a section after this one
-      if (section_order[i].section_id == this.props.match.params.section &&
+      if (section_order[i].section_id === parseInt(this.props.match.params.section) &&
       (i + 1 < section_order.length) ) {
         next_section = section_order[i+1].section_id;
       }

@@ -12,7 +12,6 @@ import ImageIcon from '@material-ui/icons/Image';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import DescriptionIcon from '@material-ui/icons/Description';
 import AddIcon from '@material-ui/icons/Add';
-import Fade from 'react-reveal/Fade';
 
 class SectionToChoose extends Component {
   addchosen = (section) => (event) => {

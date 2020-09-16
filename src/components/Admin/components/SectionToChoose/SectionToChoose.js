@@ -15,7 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 class SectionToChoose extends Component {
   addchosen = (section) => (event) => {
-    console.log('addchosen clicked', section);
+    // console.log('addchosen clicked', section);
     this.props.dispatch({ type: 'ADD_CHOSEN', payload: section });
     this.props.dispatch({
       type: 'REMOVE_SECTION_ALLSECTIONS',

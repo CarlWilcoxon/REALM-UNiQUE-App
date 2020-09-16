@@ -43,7 +43,7 @@ class RegisterPage extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
-    console.log('this.state:', this.state);
+    // console.log('this.state:', this.state);
 
     if (
       this.state.username &&

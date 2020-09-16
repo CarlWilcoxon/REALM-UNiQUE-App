@@ -45,7 +45,7 @@ class EditClientPage extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    // console.log('state:', this.state);
   };
 
   render() {

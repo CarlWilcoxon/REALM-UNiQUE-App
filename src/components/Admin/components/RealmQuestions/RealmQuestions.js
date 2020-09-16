@@ -11,7 +11,7 @@ class RealmQuestions extends Component {
   };
 
   handleQuestionChange = (event) => {
-    console.log('old state:', this.state);
+    // console.log('old state:', this.state);
     let newValue = event.target.value;
     this.setState({
       ...this.state,

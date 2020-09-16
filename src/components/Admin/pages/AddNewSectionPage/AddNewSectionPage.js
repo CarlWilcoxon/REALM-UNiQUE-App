@@ -44,7 +44,7 @@ class AddNewSectionPage extends Component {
   //Packaging new section details and sending to saga to send to database
   submitSection = (event) => {
     event.preventDefault();
-    console.log('this.state:', this.state);
+    // console.log('this.state:', this.state);
     this.props.dispatch({
       type: 'SUBMIT_SECTION',
       payload: {
@@ -55,7 +55,7 @@ class AddNewSectionPage extends Component {
   };
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log('old state:', this.state);
+    // console.log('old state:', this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,
@@ -63,7 +63,7 @@ class AddNewSectionPage extends Component {
   };
 
   handleQuestionChange = (propertyName) => (event) => {
-    console.log('old state:', this.state);
+    // console.log('old state:', this.state);
     this.setState({
       ...this.state,
       questions: {
@@ -74,13 +74,13 @@ class AddNewSectionPage extends Component {
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
+    // console.log('You clicked add new questions');
     this.setState({
       qmap: [...this.state.qmap, this.state.qmap.length],
     });
   };
   toggleResourcePreview = () => {
-    console.log('You clicked the preview icon');
+    // console.log('You clicked the preview icon');
     this.setState({
       preview: !this.state.preview,
     });

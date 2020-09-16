@@ -8,7 +8,7 @@ class Section extends Component {
   state = {};
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log('old state:', this.state);
+    // console.log('old state:', this.state);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value,

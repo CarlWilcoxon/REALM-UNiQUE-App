@@ -14,7 +14,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
-import AboutPage from '../AboutPage/AboutPage';
 import StatisticsPage from '../Admin/pages/StatisticsPage/StatisticsPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
@@ -23,7 +22,7 @@ import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSection
 import PreviewRealmPage from '../Admin/pages/PreviewRealmPage/PreviewRealmPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
-// Client management features were scraped due to lack of time.
+// Client management features were scraped due to time constraints.
 // import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 // import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 // import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
@@ -60,9 +59,7 @@ class App extends Component {
                   : '/home'
               }
             /> */}
-            {/* Visiting localhost:3000/about will show the about page.
-            This is a route anyone can see, no login necessary */}
-            <Route exact path="/about" component={AboutPage} />
+
             {/* AdminRoutes test to see if the user is a admin before displaying the page */}
             <AdminRoute
               exact
@@ -92,7 +89,8 @@ class App extends Component {
               path="/view-sections"
               component={ViewSectionsPage}
             />
-            {/* <AdminRoute exact path="/add-client" component={AddNewClientPage} />
+            {/* These routes were scraped, due to time constraints.
+                <AdminRoute exact path="/add-client" component={AddNewClientPage} />
                 <AdminRoute exact path="/view-clients" component={ViewClientsPage} />
                 <AdminRoute exact path="/edit-client" component={EditClientPage} /> */}
 

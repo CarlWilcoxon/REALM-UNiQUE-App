@@ -52,7 +52,7 @@ class EditSection extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    // console.log('state:', this.state);
   };
 
   handleQuestionChangeFor = (propertyName) => (event) => {
@@ -63,7 +63,7 @@ class EditSection extends Component {
         [propertyName]: event.target.value,
       },
     });
-    console.log('state:', this.state);
+    // console.log('state:', this.state);
   };
 
   appendNewQuestion = () => {
@@ -84,10 +84,10 @@ class EditSection extends Component {
         qIndex: this.state.questions.length,
       },
     });
-    console.log('You clicked add new questions');
+    // console.log('You clicked add new questions');
   };
   toggleResourcePreview = () => {
-    console.log('You clicked the preview icon');
+    // console.log('You clicked the preview icon');
     this.setState({
       preview: !this.state.preview,
     });

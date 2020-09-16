@@ -5,7 +5,7 @@ import styles from '../../themes/realmHomeTheme';
 
 class Question extends Component {
   componentWillMount() {
-    console.log(this.props.question);
+    // console.log(this.props.question);
     this.setState({
       answer: '',
     });
@@ -16,8 +16,6 @@ class Question extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
-    console.log('this.props', this.props);
   };
 
   render() {

@@ -222,9 +222,8 @@ const mapReduxStateToProps = (reduxState) => ({
 
 export default withStyles(styles)(
   connect(mapReduxStateToProps)(StatisticsPage)
-);
+)
 
-{
   /* <CSVLink
                 data={'data'}
                 className={classes.downloadButtonLink}
@@ -248,4 +247,3 @@ export default withStyles(styles)(
               </CSVLink> */
 
   /* <div> */
-}

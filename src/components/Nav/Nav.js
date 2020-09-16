@@ -2,20 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import { CSVLink } from 'react-csv';
 import './Nav.css';
 import styles from '../../themes/adminTheme';
-import GetAppIcon from '@material-ui/icons/GetApp';
 
 import {
   withStyles,
-  // FormControl,
-  // Grid,
-  // TextField,
-  Button,
-  // MenuItem,
 } from '@material-ui/core';
-import SimpleMenu from '../DownloadData/DownloadData';
 // const { classes }
 const Nav = (props) => (
   // const { classes } = props;
@@ -66,7 +58,6 @@ const Nav = (props) => (
           </Link> */}
           <Link className="nav-link" to="/statistics">
             Statistics
-            {/* <SimpleMenu /> */}
           </Link>
           {/* <CSVLink data={'data'} className="nav-link-csv" target="_blank"> */}
           {/* <CSVLink data={'data'} className="nav-link" target="_blank">
@@ -75,7 +66,6 @@ const Nav = (props) => (
           {/* <br className="download"></br> */}
           {/* Data
           </CSVLink> */}
-          {/* <SimpleMenu /> */}
           <LogOutButton className="nav-link" />
         </>
       ) : (

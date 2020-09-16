@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   withStyles,
-  Button,
   TableCell,
   TableRow,
   IconButton,

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import styles from '../../../../themes/adminTheme.js';
-import {
-  withStyles,
-  Grid,
-  // Button, Typography
-} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 class PreviewRealmPage extends Component {
   componentDidMount() {

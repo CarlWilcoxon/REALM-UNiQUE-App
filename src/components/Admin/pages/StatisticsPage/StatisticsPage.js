@@ -13,13 +13,11 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import { CSVLink } from 'react-csv';
 
 class StatisticsPage extends Component {
-
   state = {
     openCurriculum: false,
     openDemographics: false,
     openFeedback: false,
   };
-
 
   componentDidMount() {
     this.props.dispatch({
@@ -75,13 +73,7 @@ class StatisticsPage extends Component {
       <div>
         {' '}
         <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-          >
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             {' '}
             <h1 className={classes.statisticsHeader} id="welcome">
               Statistics
@@ -225,27 +217,4 @@ export default withStyles(styles)(
 );
 
 {
-  /* <CSVLink
-                data={'data'}
-                className={classes.downloadButtonLink}
-                target="_blank"
-                filename={'Curriculum ' + date + '.csv'}
-                onClick={this.getCurriculum}
-              >
-                {/* src={
-                              this.state.videoLink
-                                .replace('watch?v=', 'embed/')
-                                .split('&feature=emb_title')[0]
-                            } */
-
-  /* <Button
-                  variant="contained"
-                  className={classes.downloadButtonExtended}
-                >
-                  <GetAppIcon className={classes.downloadIcon} />
-                  <span className={classes.paddingLR}>Curriculum</span>
-                </Button>
-              </CSVLink> */
-
-  /* <div> */
 }

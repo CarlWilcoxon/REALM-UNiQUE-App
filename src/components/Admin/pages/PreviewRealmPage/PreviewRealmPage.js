@@ -17,7 +17,6 @@ class PreviewRealmPage extends Component {
     });
   };
 
-
   render() {
     const { classes } = this.props;
     return (
@@ -25,7 +24,6 @@ class PreviewRealmPage extends Component {
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={12} sm={12} md={5} lg={5}>
             <center>
-              {/* <h1 className={classes.header}>(section name)</h1> */}
               {this.state.edit ? (
                 <div>
                   <PreviewRealm />
@@ -36,23 +34,16 @@ class PreviewRealmPage extends Component {
                     <Button
                       variant="contained"
                       className={classes.adminButtonAdd}
-                      // onClick={this.toggleEdit}
                     >
-                      {/* <EditIcon className={classes.editSectionPreviewIcon} /> */}
                       Back to Realms
                     </Button>
                   </Link>
                 </div>
               ) : (
                 <div>
-                  {/* <EditRealm /> */}
-
                   <Button
                     variant="contained"
                     id="submit-new-section-btn"
-                    // type="submit"
-                    // name="submit"
-                    // onClick={this.submitSection}
                     className={classes.adminButtonPreviewAgain}
                     onClick={this.toggleEdit}
                   >

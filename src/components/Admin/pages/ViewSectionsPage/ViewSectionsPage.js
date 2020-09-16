@@ -61,23 +61,7 @@ class ViewSectionsPage extends Component {
               <AddIcon className={classes.addSectionViewIcon} /> New Section
             </Button>
           </div>
-          {/* <AppBar position="static">
-                        <Toolbar>
-                            <div className={classes.grow} />
-                            <div className={classes.search}>
-                                <div className={classes.searchIcon}>
-                                    <SearchIcon />
-                                </div>
-                                <InputBase
-                                    placeholder="Search Sections…"
-                                    classes={{
-                                        root: classes.inputRoot,
-                                        input: classes.inputInput,
-                                    }}
-                                />
-                            </div>
-                        </Toolbar>
-                    </AppBar> */}
+
           <Paper className={classes.paperView}>
             <Table className={classes.table}>
               <TableHead>
@@ -141,7 +125,6 @@ class ViewSectionsPage extends Component {
                         variant="contained"
                         size="large"
                         onClick={() => this.handleClick(section.id)}
-                        // onClick={(event) => this.handleClick(section.id)}
                         aria-label="delete"
                         className={classes.viewSectionIcon}
                       >
@@ -152,7 +135,6 @@ class ViewSectionsPage extends Component {
                       <IconButton
                         variant="contained"
                         size="large"
-                        // onClick={this.handleDeleteClick}
                         aria-label="delete"
                         className={classes.viewSectionDeleteIcon}
                         onClick={(event) =>

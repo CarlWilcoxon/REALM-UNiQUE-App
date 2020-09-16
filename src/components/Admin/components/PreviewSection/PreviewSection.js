@@ -22,13 +22,13 @@ class PreviewSectionPage extends Component {
         <h1 className={classes.headerView}>Preview</h1>
         {section.title !== undefined ? (
           <p className={classes.sectionTitle}>
-            {" "}
+            {' '}
             (Name)
             <div className={classes.headerLess}>{section.title}</div> <br></br>
-            <br></br>{" "}
+            <br></br>{' '}
           </p>
         ) : (
-          "loading"
+          'loading'
         )}
         (Content)<br></br>
         <br></br>
@@ -36,14 +36,14 @@ class PreviewSectionPage extends Component {
           {section.video_link !== undefined && section.type === 1 ? (
             <Grid className={classes.sectionVideoContainer}>
               <iframe
-                title={section.title + " video"}
+                title={section.title + ' video'}
                 frameborder="0"
                 className={classes.sectionVideo}
-                src={section.video_link.replace("/watch?v=", "/embed/")}
+                src={section.video_link.replace('/watch?v=', '/embed/')}
               />
             </Grid>
           ) : (
-            ""
+            ''
           )}
         </Grid>
         {section.text_content !== undefined && section.type === 2 ? (
@@ -51,18 +51,18 @@ class PreviewSectionPage extends Component {
             {section.text_content}
           </Typography>
         ) : (
-          ""
+          ''
         )}
         {section.image_link !== undefined && section.type === 3 ? (
           <Grid className={classes.sectionCoverContainer}>
             <img
               className={classes.realmCover}
               src={section.image_link}
-              alt={section.title + " image"}
+              alt={section.title + ' image'}
             />
           </Grid>
         ) : (
-          ""
+          ''
         )}
         {section.description !== undefined ? (
           <p className={classes.sectionDescription}>
@@ -72,21 +72,15 @@ class PreviewSectionPage extends Component {
             {section.description}
           </p>
         ) : (
-          "null"
+          'null'
         )}
-        {/* {section.description !== undefined ? ( */}
         <p className={classes.sectionDescription}>
           (Questions)
           <br></br>
         </p>
-        {section.questions !== undefined ? (
-          section.questions.map((q) => (
-          <p>{q.content}</p>
-        ))
-        ) : (
-          "null"
-        )}
-
+        {section.questions !== undefined
+          ? section.questions.map((q) => <p>{q.content}</p>)
+          : 'null'}
       </div>
     );
   }

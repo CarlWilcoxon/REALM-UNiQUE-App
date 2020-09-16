@@ -7,19 +7,9 @@ import './Nav.css';
 import styles from '../../themes/adminTheme';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-import {
-  withStyles,
-  // FormControl,
-  // Grid,
-  // TextField,
-  Button,
-  // MenuItem,
-} from '@material-ui/core';
+import { withStyles, Button } from '@material-ui/core';
 import SimpleMenu from '../DownloadData/DownloadData';
-// const { classes }
 const Nav = (props) => (
-  // const { classes } = props;
-
   <div className="nav">
     {props.user.admin ? (
       <Link to="/home">
@@ -35,17 +25,6 @@ const Nav = (props) => (
       </Link>
     )}
     <div className="nav-right">
-      {/* <Link className="nav-link" to="/home">
-        {/* Show this link if they are logged in or not,
-        but call this link 'Home' if they are logged in,
-        and call this link 'Login / Register' if they are not */}
-      {/* {props.user.id ? ( */}
-      {/* // <img className="logo" src="/images/logo.png"></img>
-          <span></span>
-        ) : (
-          'Login / Register'
-        )}
-      </Link> */}
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.admin ? (
         <>
@@ -55,27 +34,9 @@ const Nav = (props) => (
           <Link className="nav-link" to="/view-sections">
             Sections
           </Link>
-          {/* <Link className="nav-link" to="/view-sections">
-            Curriculum
-          </Link>
-          <Link className="nav-link" to="/view-sections">
-            Demographics
-          </Link>
-          <Link className="nav-link" to="/view-sections">
-            Feedback
-          </Link> */}
           <Link className="nav-link" to="/statistics">
             Statistics
-            {/* <SimpleMenu /> */}
           </Link>
-          {/* <CSVLink data={'data'} className="nav-link-csv" target="_blank"> */}
-          {/* <CSVLink data={'data'} className="nav-link" target="_blank">
-            {/* <Button variant="contained" className={this.props.downloadButton}> */}
-          {/* <GetAppIcon></GetAppIcon> */}
-          {/* <br className="download"></br> */}
-          {/* Data
-          </CSVLink> */}
-          {/* <SimpleMenu /> */}
           <LogOutButton className="nav-link" />
         </>
       ) : (
@@ -87,9 +48,6 @@ const Nav = (props) => (
       )}
 
       {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about">
-        About
-      </Link> */}
     </div>
   </div>
 );

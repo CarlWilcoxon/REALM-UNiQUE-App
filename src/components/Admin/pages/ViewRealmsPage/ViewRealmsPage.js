@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import AddIcon from '@material-ui/icons/Add';
-// import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -50,9 +49,6 @@ class ViewRealmsPage extends Component {
             <Button
               variant="contained"
               id="submit-new-section"
-              // type="submit"
-              // name="submit"
-              // onClick={this.submitSection}
               className={classes.adminButtonPreview}
               classes={{ root: classes.button }}
               onClick={this.handleNewRealmClick}
@@ -60,23 +56,7 @@ class ViewRealmsPage extends Component {
               <AddIcon className={classes.addSectionViewIcon} /> New Realm
             </Button>
           </div>
-          {/* <AppBar position="static">
-            <Toolbar>
-              <div className={classes.grow} />
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search Sections…"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                />
-              </div>
-            </Toolbar>
-          </AppBar> */}
+
           <Paper className={classes.paperViewRealm}>
             <Table className={classes.table}>
               <TableHead>

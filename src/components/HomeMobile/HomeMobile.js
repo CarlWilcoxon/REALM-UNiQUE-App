@@ -44,7 +44,6 @@ class HomeMobile extends Component {
                   >
                     {this.props.realms.map((realm, index) => (
                       <GridListTile
-                        // component={Button}
                         key={index}
                         onClick={() => this.goRealm(realm.id)}
                         className={classes.gridListTile}

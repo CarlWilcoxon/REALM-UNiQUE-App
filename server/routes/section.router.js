@@ -50,18 +50,14 @@ router.get('/get-section/:section', async (req, res) => {
 // ADD ONE QUESTION TO THE DATABASE
 router.post('/add-one-question', (req, res) => {
   console.log('Getting section for', req.user);
-  const queryText =
-  `INSERT INTO "question" ("section_id", "question_index")
+  const queryText = `INSERT INTO "question" ("section_id", "question_index")
   VALUES ( $1, $2 );`;
-  const queryValues =[
-    req.body.sectionId,
-    req.body.qIndex
-  ]
-  pool.query(queryText, queryValues)
+  const queryValues = [req.body.sectionId, req.body.qIndex];
+  pool
+    .query(queryText, queryValues)
     .then((result) => res.send(result.rows))
     .catch(() => res.sendStatus(500));
 });
-
 
 // UPDATE THE QUESTIONS IN THE DATABASE
 router.put('/edit-questions', async (req, res) => {
@@ -69,26 +65,21 @@ router.put('/edit-questions', async (req, res) => {
 
   try {
     await connection.query('BEGIN');
-    console.log('req.body', req.body)
+    console.log('req.body', req.body);
 
     // Outputs key value pairs of req.body.state in [[key1, value1], [key2, value2]...] format
     const questionPairs = Object.entries(req.body.changedQuestions);
-    console.log("questionPairs", questionPairs)
+    console.log('questionPairs', questionPairs);
 
     for (question of questionPairs) {
-
       let qId = parseInt(question[0].substring(1));
-      console.log("questionID", qId);
+      console.log('questionID', qId);
 
-      const questionQuery =
-      `UPDATE "question"
+      const questionQuery = `UPDATE "question"
       SET "content" = $1
-      WHERE "question"."id" = $2`
-      const questionValues = [
-        question[1],
-        qId,
-      ]
-      await connection.query(questionQuery, questionValues)
+      WHERE "question"."id" = $2`;
+      const questionValues = [question[1], qId];
+      await connection.query(questionQuery, questionValues);
     }
 
     await connection.query('COMMIT');
@@ -100,8 +91,7 @@ router.put('/edit-questions', async (req, res) => {
   } finally {
     connection.release();
   }
-})
-
+});
 
 // Route for creating a new Section
 // router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
@@ -139,39 +129,31 @@ router.post('/add', async (req, res) => {
     const sectionId = result.rows[0].id;
 
     const questionPairs = Object.entries(questions);
-    console.log("questionPairs", questionPairs)
+    console.log('questionPairs', questionPairs);
 
     for (question of questionPairs) {
-
       let questionId = parseInt(question[0].substring(8));
-      console.log("questionID", questionId);
+      console.log('questionID', questionId);
 
-      const questionQuery =
-      `INSERT INTO "question" ("section_id", "question_index", "content")
+      const questionQuery = `INSERT INTO "question" ("section_id", "question_index", "content")
       VALUES ($1, $2, $3 );`;
-      const questionValues = [
-        sectionId,
-        questionId,
-        question[1]
-      ]
-      await connection.query(questionQuery, questionValues)
+      const questionValues = [sectionId, questionId, question[1]];
+      await connection.query(questionQuery, questionValues);
     }
 
     {
-    // // Loop through the questions
-    // for (let i = 0; i < questions.length; i++) {
-    //   // Insert question into question db
-    //   const addQuestionQuery =
-    //   `INSERT INTO "question" ("section_id", "question_index", "content")
-    //   VALUES ($1, $2, $3 ) RETURNING "id";`;
-    //   const addQuestionValues = [sectionId, i, questions[i]];
-
-    //   const questionResponse = await connection.query(
-    //     addQuestionQuery,
-    //     addQuestionValues
-    //   );
-    //   const questionId = questionResponse.rows[0].id;
-
+      // // Loop through the questions
+      // for (let i = 0; i < questions.length; i++) {
+      //   // Insert question into question db
+      //   const addQuestionQuery =
+      //   `INSERT INTO "question" ("section_id", "question_index", "content")
+      //   VALUES ($1, $2, $3 ) RETURNING "id";`;
+      //   const addQuestionValues = [sectionId, i, questions[i]];
+      //   const questionResponse = await connection.query(
+      //     addQuestionQuery,
+      //     addQuestionValues
+      //   );
+      //   const questionId = questionResponse.rows[0].id;
       /* If the question is multiple choice...
        if (req.body.questions[i].questionType === 'multiple_choice') {
          // ...loop through the array of answers, inserting each into the 'multiple_choice' db
@@ -185,7 +167,7 @@ router.post('/add', async (req, res) => {
            await connection.query( choiceQuery, choiceValues );
          }
       } */
-    // }
+      // }
     }
 
     await connection.query('COMMIT');
@@ -198,16 +180,6 @@ router.post('/add', async (req, res) => {
     connection.release();
   }
 });
-
-//GETTING ALL SECTIONS FOR "VIEW SECTIONS" PAGE
-
-// router.get("/all", (req, res) => {
-//   // router.get("/", rejectUnauthenticated, (req, res) => {
-
-//   // get back all sections besides the form ones.
-//   const queryText = `SELECT * FROM "section"
-//   JOIN "resource_type" ON "resource_type"."id" = "section"."type"
-//   WHERE type = 1 OR type = 2 OR type = 3;`;
 
 router.get('/all', (req, res) => {
   const queryText = `SELECT "section".*, "resource_type"."type_name" FROM "section"
@@ -260,17 +232,18 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.put("/update", rejectUnauthenticated, (req, res) => {
+router.put('/update', rejectUnauthenticated, (req, res) => {
   const {
     title,
     type,
     description,
     imageLink,
     videoLink,
-    textContent } = req.body;
+    textContent,
+  } = req.body;
   const id = req.body.sectionId;
 
-  console.log("req.body is", req.body);
+  console.log('req.body is', req.body);
   const queryText = `UPDATE "section"
     SET
     "title"=$1,
@@ -288,10 +261,10 @@ router.put("/update", rejectUnauthenticated, (req, res) => {
       imageLink,
       videoLink,
       textContent,
-      id
+      id,
     ])
     .then((result) => {
-      console.log("in /api/section PUT");
+      console.log('in /api/section PUT');
       res.send(result.rows);
     })
     .catch((error) => {
@@ -299,6 +272,5 @@ router.put("/update", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-
 
 module.exports = router;

@@ -30,7 +30,7 @@ router.get('/get-realm/:realm', async (req, res) => {
     result.rows[0].section = section.rows;
 
     await connection.query('COMMIT');
-    // console.log('success!', result.rows[0]);
+
     res.send(result.rows[0]);
   } catch (error) {
     await connection.query('ROLLBACK');
@@ -41,7 +41,6 @@ router.get('/get-realm/:realm', async (req, res) => {
   }
 });
 router.get('/get-realm-sections/:realm', async (req, res) => {
-  // console.log('Getting realm for', req.user);
   const connection = await pool.connect();
 
   try {
@@ -62,7 +61,7 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
     result.rows[0].section = section.rows;
 
     await connection.query('COMMIT');
-    // console.log('success!', result.rows[0]);
+
     res.send(result.rows[0]);
   } catch (err) {
     console.log('error on DELETE', err);

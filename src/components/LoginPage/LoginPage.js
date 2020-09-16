@@ -4,19 +4,17 @@ import {
   withStyles,
   FormControl,
   Grid,
-  Link,
   TextField,
   Button,
   Hidden,
 } from '@material-ui/core';
-// import RegisterPage from '../RegisterPage/RegisterPage';
 import styles from '../../themes/loginRegisterTheme';
 import Fade from 'react-reveal/Fade';
 
 class LoginPage extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
   login = (event) => {
@@ -24,14 +22,14 @@ class LoginPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: "LOGIN",
+        type: 'LOGIN',
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
+      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
 
@@ -65,24 +63,12 @@ class LoginPage extends Component {
                   src="images/logo.png"
                 />
 
-                <p
-                  className={classes.infinitytext}
-                >
-                  Aspire to Inspire
-                </p>
+                <p className={classes.infinitytext}>Aspire to Inspire</p>
               </Fade>
             </div>
           </Grid>
         </Hidden>
-        <Grid
-          className={classes.rightSide}
-          // backgroundImage="images/scenery-2846778.jpg"
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-        >
+        <Grid className={classes.rightSide} item xs={12} sm={12} md={6} lg={6}>
           <div className="loginPage">
             {this.props.errors.loginMessage && (
               <h2 className="alert" role="alert">
@@ -98,21 +84,16 @@ class LoginPage extends Component {
               onSubmit={this.login}
               autoComplete="off"
             >
-              <h2
-                className={classes.brandNameControl}
-              >
-                UNiQUE
-              </h2>
+              <h2 className={classes.brandNameControl}>UNiQUE</h2>
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    // id="outlined-helperText"
                     label="Username"
                     helperText="Required"
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.username}
-                    onChange={this.handleInputChangeFor("username")}
+                    onChange={this.handleInputChangeFor('username')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -135,14 +116,13 @@ class LoginPage extends Component {
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    // id="outlined-helperText"
                     label="Password"
                     type="password"
                     helperText="Required"
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.password}
-                    onChange={this.handleInputChangeFor("password")}
+                    onChange={this.handleInputChangeFor('password')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -178,7 +158,7 @@ class LoginPage extends Component {
               <Button
                 className={classes.register}
                 onClick={() => {
-                  this.props.dispatch({ type: "SET_TO_REGISTER_MODE" });
+                  this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
                 }}
               >
                 Sign Up

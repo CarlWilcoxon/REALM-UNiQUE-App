@@ -13,7 +13,6 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../../../../themes/adminTheme.js';
 import RemoveIcon from '@material-ui/icons/Remove';
-import Fade from 'react-reveal/Fade';
 
 class ChosenSection extends Component {
   removechosen = (section) => (event) => {

@@ -15,8 +15,8 @@ import Fade from 'react-reveal/Fade';
 
 class LoginPage extends Component {
   state = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   login = (event) => {
@@ -24,14 +24,14 @@ class LoginPage extends Component {
 
     if (this.state.username && this.state.password) {
       this.props.dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: this.state.username,
           password: this.state.password,
         },
       });
     } else {
-      this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      this.props.dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
@@ -47,29 +47,16 @@ class LoginPage extends Component {
     return (
       <Grid id="LoginPageContainer" container spacing={0}>
         <img
-          // <video
           alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
-          // src="file:/goodVideo.mp4/"
-          // src="/Users/brunoreyes/Desktop/videosGit/goodVideo.mp4"
           src="/images/scenery-2846778.jpg"
         />
-        {/* <iframe
-          src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
-          className={classes.videoContainerMobile}
-          frameborder="0"
-          webkitallowfullscreen
-          mozallowfullscreen
-          // allow="autoplay; fullscreen"
-        ></iframe> */}
-        {/* The one at the top only shows up bc I have video speed controller on */}
         <Hidden smDown>
           <Grid className={classes.leftSideFlex} item md={6} lg={6}>
-            {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               <Fade>
                 <img
@@ -78,7 +65,11 @@ class LoginPage extends Component {
                   src="images/logo.png"
                 />
 
-                <p className={classes.infinitytext}>Aspire to Inspire</p>
+                <p
+                  className={classes.infinitytext}
+                >
+                  Aspire to Inspire
+                </p>
               </Fade>
             </div>
           </Grid>
@@ -107,7 +98,11 @@ class LoginPage extends Component {
               onSubmit={this.login}
               autoComplete="off"
             >
-              <h2 className={classes.brandNameControl}>UNiQUE</h2>
+              <h2
+                className={classes.brandNameControl}
+              >
+                UNiQUE
+              </h2>
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
@@ -117,7 +112,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.username}
-                    onChange={this.handleInputChangeFor('username')}
+                    onChange={this.handleInputChangeFor("username")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -147,7 +142,7 @@ class LoginPage extends Component {
                     variant="outlined"
                     className={classes.inputControl}
                     value={this.state.password}
-                    onChange={this.handleInputChangeFor('password')}
+                    onChange={this.handleInputChangeFor("password")}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -183,7 +178,7 @@ class LoginPage extends Component {
               <Button
                 className={classes.register}
                 onClick={() => {
-                  this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' });
+                  this.props.dispatch({ type: "SET_TO_REGISTER_MODE" });
                 }}
               >
                 Sign Up

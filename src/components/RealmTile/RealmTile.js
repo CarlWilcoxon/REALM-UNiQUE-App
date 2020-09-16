@@ -15,8 +15,8 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import SpaIcon from '@material-ui/icons/Spa';
 import styles from '../../themes/homeTheme';
 
+// this components just renders the icons and names of each realm for MobileHome
 class RealmTile extends Component {
-  // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     const { classes } = this.props;
     return (

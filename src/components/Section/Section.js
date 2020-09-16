@@ -37,34 +37,37 @@ class Section extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: this.props.match.params.section,
-      },
-    });
-    this.props.dispatch({
-      type: 'FETCH_REALM',
-      payload: {
-        realmId: this.props.match.params.realm,
-      },
-    });
-    this.props.dispatch({
-      type: 'UPDATE_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-        sectionId: this.props.match.params.section,
-      },
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.section !== prevProps.match.params.section) {
+      this.props.dispatch({
+        type: 'FETCH_SECTION',
+        payload: {
+          sectionId: this.props.match.params.section,
+        },
+      });
+      this.props.dispatch({
+        type: 'FETCH_REALM',
+        payload: {
+          realmId: this.props.match.params.realm,
+        },
+      });
+      this.props.dispatch({
+        type: 'UPDATE_PROGRESS',
+        payload: {
+          realmId: this.props.match.params.realm,
+          sectionId: this.props.match.params.section,
+        },
+      });
+    }
   }
+  // this.forceUpdate();
 
   saveAndContinue = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
       payload: {

@@ -37,7 +37,6 @@ const CssTextField = withStyles({
 })(TextField);
 
 class RealmFeedback extends Component {
-
   state = {
     feedbackScore: '3',
     feedback: '',
@@ -66,8 +65,6 @@ class RealmFeedback extends Component {
     });
   };
 
-  // saveAndContinue = () => this.props.history.push('/EmotionalSec4');
-  // EmotionalSec4 doesn't exist
   saveAndReturn = () => {
     this.props.dispatch({
       type: 'SUBMIT_FEEDBACK',

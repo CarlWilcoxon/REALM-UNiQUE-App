@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
-import {
-  withStyles,
-  Grid,
-  Button,
-} from '@material-ui/core';
+import { withStyles, Grid, Button } from '@material-ui/core';
 import RealmQuestion from '../RealmQuestion/RealmQuestion';
 
 class RealmForm extends Component {
-
   state = {};
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -18,7 +13,6 @@ class RealmForm extends Component {
       [propertyName]: event.target.value,
     });
   };
-
 
   componentDidMount() {
     this.props.dispatch({
@@ -32,13 +26,11 @@ class RealmForm extends Component {
       payload: {
         realmId: this.props.match.params.realm,
       },
-    })
+    });
   }
 
-
-
   goBack = () => {
-    this.props.history.push(`/realm-home/${this.props.match.params.realm}`)
+    this.props.history.push(`/realm-home/${this.props.match.params.realm}`);
   };
 
   complete = () => {
@@ -52,49 +44,42 @@ class RealmForm extends Component {
     });
 
     this.props.history.push(
-      `/realm-form-finished/${
-        this.props.match.params.realm}/${
-          this.props.match.params.section}`)
+      `/realm-form-finished/${this.props.match.params.realm}/${this.props.match.params.section}`
+    );
   };
 
   render() {
     // deconstructing props so I don't have to type `this.props.` all the time
-    const {
-      classes,
-      section,
-      realm,
-    } = this.props;
+    const { classes, section, realm } = this.props;
 
     return (
       <div>
         <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-          >
-            <h3 className={classes.realmTitle}> {realm.realm_name} Realm Form</h3>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <h3 className={classes.realmTitle}>
+              {' '}
+              {realm.realm_name} Realm Form
+            </h3>
 
             {section.questions !== undefined ? (
               <Grid
-              container
-              direction="column"
-              alignItems="center"
-              justify="space-evenly"
+                container
+                direction="column"
+                alignItems="center"
+                justify="space-evenly"
               >
-                {section.questions.map( (q, i) =>
-                <Grid
-                item
-                component={RealmQuestion}
-                question={q}
-                local={this.state}
-                changeHandler={this.handleInputChangeFor}
-                key={i}
-                />)}
+                {section.questions.map((q, i) => (
+                  <Grid
+                    item
+                    component={RealmQuestion}
+                    question={q}
+                    local={this.state}
+                    changeHandler={this.handleInputChangeFor}
+                    key={i}
+                  />
+                ))}
               </Grid>
-              ) : (
+            ) : (
               'loading'
             )}
 

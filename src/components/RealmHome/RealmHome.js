@@ -66,7 +66,7 @@ class RealmHome extends Component {
           md={6}
           lg={6}
         >
-          {/* <h1>THIS IS SECTION {this.props.match.params.id}</h1> */}
+      
           {realm.realm_name !== undefined ? (
             <Grid item>
               <Typography

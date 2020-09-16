@@ -29,7 +29,7 @@ class Question extends Component {
               value={this.props.local[`answer${question.id}`]}
               onChange={this.props.changeHandler(`answer${question.id}`)}
               margin="normal"
-            />{" "}
+            />{' '}
           </div>
         </FormControl>
       </>

@@ -63,10 +63,8 @@ class RealmFormFinished extends Component {
           spacing={0}
           alignItems="center"
           justify="center"
-          // direction="column"
         >
           <Grid
-            // className={classes.leftSideFlex}
             item
             xs={12}
             sm={12}

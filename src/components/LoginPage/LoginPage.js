@@ -90,7 +90,11 @@ class LoginPage extends Component {
               </h2>
             )}
             <form
-              className={classes.formContainer}
+              className={
+                window.screen.width > 420
+                  ? classes.formContainer
+                  : classes.formContainerMobile
+              }
               onSubmit={this.login}
               autoComplete="off"
             >

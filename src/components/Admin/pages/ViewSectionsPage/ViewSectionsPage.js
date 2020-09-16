@@ -37,7 +37,7 @@ class ViewSectionsPage extends Component {
     this.props.history.push(`/add-section`);
   };
   handleDeleteSectionClick = (sectionId) => {
-    console.log('delete was clicked!', sectionId);
+    // console.log('delete was clicked!', sectionId);
     this.props.dispatch({
       type: 'DELETE_SECTION',
       payload: sectionId,

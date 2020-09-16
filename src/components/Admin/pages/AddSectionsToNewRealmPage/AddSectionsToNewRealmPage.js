@@ -45,7 +45,7 @@ class AddSectionsToNewRealmPage extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log('rendering');
+    // console.log('rendering');
     return (
       <div>
         <center>

@@ -58,7 +58,7 @@ class AddNewRealmPage extends Component {
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log('state:', this.state);
+    // console.log('state:', this.state);
   };
 
   handleQuestionChangeFor = (propertyName) => (event) => {
@@ -69,11 +69,11 @@ class AddNewRealmPage extends Component {
         [propertyName]: event.target.value,
       },
     });
-    console.log('state:', this.state);
+    // console.log('state:', this.state);
   };
 
   appendNewQuestion = () => {
-    console.log('You clicked add new questions');
+    // console.log('You clicked add new questions');
     this.setState({
       ...this.state,
       questions:
@@ -83,7 +83,7 @@ class AddNewRealmPage extends Component {
   };
 
   toggleCoverPreview = () => {
-    console.log('You clicked the preview icon');
+    // console.log('You clicked the preview icon');
     this.setState({
       preview: !this.state.preview,
     });

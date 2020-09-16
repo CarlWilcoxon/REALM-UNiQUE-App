@@ -20,7 +20,7 @@ class RealmHome extends Component {
   }
 
   goContinue = (event) => {
-    console.log(this.props.state);
+    // console.log(this.props.state);
     // Use the user's progress to determine where to send them
     // If the user has progress saved use it
     if (this.props.progress.realm_id !== undefined) {
@@ -66,7 +66,7 @@ class RealmHome extends Component {
           md={6}
           lg={6}
         >
-      
+
           {realm.realm_name !== undefined ? (
             <Grid item>
               <Typography

@@ -13,9 +13,10 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import styles from '../../../../themes/adminTheme.js';
 import RemoveIcon from '@material-ui/icons/Remove';
 
+// This component renders the table of chosen sections for AddSectionsToNewRealm
 class ChosenSection extends Component {
   removechosen = (section) => (event) => {
-    console.log('addchosen clicked', section);
+    // console.log('addchosen clicked', section);
     this.props.dispatch({ type: 'ADD_SECTION_ALLSECTIONS', payload: section });
     this.props.dispatch({ type: 'REMOVE_CHOSEN', payload: section });
   };

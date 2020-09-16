@@ -43,7 +43,7 @@ router.post('/register', async (req, res) => {
     // add the user and save the user's new user id
     const new_user_id = await connection.query(queryText, [username, password])
 
-    if (reg_code === process.env.SUPER_SECRET_ADMIN_CODE) {
+    if (reg_code === process.env.ADMIN_REGISTRATION_CODE) {
       const adminQuery =
       `UPDATE "user"
       SET "admin" = TRUE

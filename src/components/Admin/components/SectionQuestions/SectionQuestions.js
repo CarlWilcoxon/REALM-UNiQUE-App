@@ -12,7 +12,7 @@ class SectionQuestions extends Component {
   };
 
   handleQuestionChange = (event) => {
-    console.log('old state:', this.state);
+    // console.log('old state:', this.state);
     let newValue = event.target.value;
     this.setState({
       ...this.state,
@@ -33,7 +33,7 @@ class SectionQuestions extends Component {
     return (
       <>
         {/* QUESTION TYPE (ETC.)
-          
+
         {/* SECTION DESCRIPTION */}
         <div>
           <TextField

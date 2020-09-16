@@ -9,45 +9,47 @@ import {
   Grid,
   TextField,
   Button,
-  // MenuItem,
 } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-// import HelpIcon from '@material-ui/icons/Help';
-// import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-// import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-// import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-// import EcoIcon from '@material-ui/icons/Eco';
-// import PlaceIcon from '@material-ui/icons/Place';
-// import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-// import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-// import SpaIcon from '@material-ui/icons/Spa';
+
 import Fade from 'react-reveal/Fade';
 
 class AddNewRealmPage extends Component {
-  state = (this.props.state.realm.name === undefined ? {
-    name: "",
-    photoLink: "",
-    description: "",
-    preview: false,
-    questionInputs: [],
-    icon: "",
-  } :
-  this.props.state.realm);
+  state =
+    this.props.state.realm.name === undefined
+      ? {
+          name: '',
+          photoLink: '', //https://assets.entrepreneur.com/content/3x2/2000/1596647278-GettyImages-168491057.jpg?width=700&crop=2:1
+          description: '',
+          preview: false,
+          questionInputs: [],
+          icon: '',
+        }
+      : this.props.state.realm;
   // Be wary of constructors, they can over ride info
 
+  populateNewRealmInputs = () => {
+    this.setState({
+      name: 'Financial',
+      photoLink:
+        'https://assets.entrepreneur.com/content/3x2/2000/1596647278-GettyImages-168491057.jpg?width=700&crop=2:1',
+      description:
+        'Understanding how financial wellness is interconnected with our other realms of wellness is the first step to gain a better relationship with money. In this realm we will learn how to create a responsible relationship with money, that both your current and future self will appreciate!',
+    });
+  };
   //Store new realm in a reducer
   storeRealm = (event) => {
     this.props.dispatch({
-      type: "SET_REALM",
+      type: 'SET_REALM',
       payload: {
-          ...this.state,
+        ...this.state,
       },
-  });
-  this.goNext();
-};
+    });
+    this.goNext();
+  };
 
-//Navigate to next page
-goNext =() => this.props.history.push('/add-sections-to-realm')
+  //Navigate to next page
+  goNext = () => this.props.history.push('/add-sections-to-realm');
 
   //CAPTURE INPUTS IN STATE
 
@@ -56,7 +58,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
       ...this.state,
       [propertyName]: event.target.value,
     });
-    console.log("state:", this.state);
+    console.log('state:', this.state);
   };
 
   handleQuestionChangeFor = (propertyName) => (event) => {
@@ -67,20 +69,21 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
         [propertyName]: event.target.value,
       },
     });
-    console.log("state:", this.state);
+    console.log('state:', this.state);
   };
 
   appendNewQuestion = () => {
-    console.log("You clicked add new questions");
+    console.log('You clicked add new questions');
     this.setState({
       ...this.state,
-      questions: (this.state.questions === undefined ? {} : {...this.state.questions}),
+      questions:
+        this.state.questions === undefined ? {} : { ...this.state.questions },
       questionInputs: [...this.state.questionInputs, 'bob'],
     });
   };
 
   toggleCoverPreview = () => {
-    console.log("You clicked the preview icon");
+    console.log('You clicked the preview icon');
     this.setState({
       preview: !this.state.preview,
     });
@@ -94,7 +97,12 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
         <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <form>
-              <h1 className={classes.header}>New Realm</h1>
+              <h1
+                className={classes.header}
+                onClick={this.populateNewRealmInputs}
+              >
+                New Realm
+              </h1>
 
               <FormControl className={classes.formContainer}>
                 <div>
@@ -106,7 +114,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                     inputProps={{ maxLength: 15 }}
                     className={classes.inputControl}
                     value={this.state.name}
-                    onChange={this.handleInputChangeFor("name")}
+                    onChange={this.handleInputChangeFor('name')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -127,63 +135,6 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                 </div>
               </FormControl>
 
-              {/* <FormControl className={classes.formContainer}>
-                <div> */}
-                  {/* <TextField
-                    select
-                    required
-                    label="Realm Icon"
-                    helperText=""
-                    variant="outlined"
-                    className={classes.inputControlIconSelector}
-                    value={this.state.icon}
-                    onChange={this.handleInputChangeFor("icon")}
-                    InputLabelProps={{
-                      classes: {
-                        root: classes.cssLabel,
-                        className: classes.floatingLabelFocusStyle,
-                      },
-                    }}
-                    InputProps={{
-                      classes: {
-                        input: classes.input,
-                        root: classes.cssOutlinedInput,
-                        notchedOutline: classes.notchedOutline,
-                      },
-                    }}
-                    FormHelperTextProps={{
-                      classes: { root: classes.helperText },
-                    }}
-                  >
-                    <MenuItem value="<AttachMoneyIcon/>">
-                      <AttachMoneyIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<FitnessCenterIcon/>">
-                      <FitnessCenterIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<EmojiEmotionsIcon/>">
-                      <EmojiEmotionsIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<EcoIcon/>">
-                      {" "}
-                      <EcoIcon />
-                    </MenuItem>
-                    <MenuItem value="<EmojiPeopleIcon/>">
-                      <EmojiPeopleIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<EmojiObjectsIcon/>">
-                      <EmojiObjectsIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<SpaIcon/>">
-                      <SpaIcon />{" "}
-                    </MenuItem>
-                    <MenuItem value="<PlaceIcon/>">
-                      <PlaceIcon />{" "}
-                    </MenuItem>
-                  </TextField>
-                </div>
-              </FormControl> */}
-
               <div>
                 <FormControl className={classes.formContainer}>
                   <div>
@@ -194,7 +145,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                       variant="outlined"
                       className={classes.inputControlLink}
                       value={this.state.photoLink}
-                      onChange={this.handleInputChangeFor("photoLink")}
+                      onChange={this.handleInputChangeFor('photoLink')}
                       InputLabelProps={{
                         classes: {
                           root: classes.cssLabel,
@@ -212,7 +163,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                         classes: { root: classes.helperText },
                       }}
                     />
-                    {this.state.photoLink !== "" ? (
+                    {this.state.photoLink !== '' ? (
                       <VisibilityIcon
                         onClick={this.toggleCoverPreview}
                         className={
@@ -227,7 +178,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                   </div>
                 </FormControl>
 
-                {this.state.preview && this.state.photoLink !== "" ? (
+                {this.state.preview && this.state.photoLink !== '' ? (
                   <FormControl className={classes.formContainerVideo}>
                     <Fade>
                       <h1 className={classes.previewTitle}>
@@ -260,7 +211,7 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                     rows={9}
                     className={classes.inputControlContentDescription}
                     value={this.state.description}
-                    onChange={this.handleInputChangeFor("description")}
+                    onChange={this.handleInputChangeFor('description')}
                     InputLabelProps={{
                       classes: {
                         root: classes.cssLabel,
@@ -288,15 +239,15 @@ goNext =() => this.props.history.push('/add-sections-to-realm')
                 <FormControl className={classes.formContainerQuestion}>
                   <div id="new-question">
                     {this.state.questionInputs.map((q, i) => (
-                <Grid
-                item
-                component={RealmQuestion}
-                index={i}
-                local={this.state.questions}
-                changeHandler={this.handleQuestionChangeFor}
-                key={i}
-              />
-                  ))}
+                      <Grid
+                        item
+                        component={RealmQuestion}
+                        index={i}
+                        local={this.state.questions}
+                        changeHandler={this.handleQuestionChangeFor}
+                        key={i}
+                      />
+                    ))}
                   </div>
                 </FormControl>
               </div>
@@ -335,6 +286,4 @@ const mapStateToProps = (state) => ({
   state,
 });
 
-export default withStyles(styles)(
-  connect(mapStateToProps)(AddNewRealmPage)
-);
+export default withStyles(styles)(connect(mapStateToProps)(AddNewRealmPage));

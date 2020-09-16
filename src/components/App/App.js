@@ -9,22 +9,21 @@ import {
 import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-// import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 import AboutPage from '../AboutPage/AboutPage';
 import StatisticsPage from '../Admin/pages/StatisticsPage/StatisticsPage';
 import HomeMobile from '../HomeMobile/HomeMobile';
-import InfoPage from '../InfoPage/InfoPage';
-import EmotionalHome from '../EmotionalHome/EmotionalHome';
 import ViewSectionsPage from '../Admin/pages/ViewSectionsPage/ViewSectionsPage';
 import AddNewSectionPage from '../Admin/pages/AddNewSectionPage/AddNewSectionPage.js';
 import PreviewSectionPage from '../Admin/pages/PreviewSectionPage/PreviewSectionPage';
 import PreviewRealmPage from '../Admin/pages/PreviewRealmPage/PreviewRealmPage';
 import ViewRealmsPage from '../Admin/pages/ViewRealmsPage/ViewRealmsPage';
 import AddNewRealmPage from '../Admin/pages/AddNewRealmPage/AddNewRealmPage';
+// Client management features were scraped due to lack of time.
 // import ViewClientsPage from '../Admin/pages/ViewClientsPage/ViewClientsPage';
 // import AddNewClientPage from '../Admin/pages/AddNewClientPage/AddNewClientPage';
 // import EditClientPage from '../Admin/pages/EditClientPage/EditClientPage';
@@ -32,11 +31,7 @@ import AddSectionsToNewRealm from '../Admin/pages/AddSectionsToNewRealmPage/AddS
 import Section from '../Section/Section';
 import RealmFormIntro from '../RealmFormIntro/RealmFormIntro';
 import RealmForm from '../RealmForm/RealmForm';
-import EmotionalForm from '../EmotionalForm/EmotionalForm';
 import RealmFormFinished from '../RealmFormFinished/RealmFormFinished';
-import EmotionalSec1 from '../EmotionalSec1/EmotionalSec1';
-import EmotionalSec2 from '../EmotionalSec2/EmotionalSec2';
-import EmotionalSec3 from '../EmotionalSec3/EmotionalSec3';
 import RealmFeedback from '../RealmFeedback/RealmFeedback';
 import RealmHome from '../RealmHome/RealmHome';
 import './App.css';
@@ -49,6 +44,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         <div>
           {this.props.user.id ? <Nav /> : <span />}
           {/* <Nav /> */}
@@ -67,7 +63,7 @@ class App extends Component {
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
-            {/* ROUTES BELOW ARE UNPROTECTED FOR TESTING PURPOSES ONLY */}
+            {/* AdminRoutes test to see if the user is a admin before displaying the page */}
             <AdminRoute
               exact
               path="/add-section"
@@ -105,8 +101,6 @@ class App extends Component {
               path="/realm-home/:realm"
               component={RealmHome}
             />
-            {/* eventually the paths to sections will be like this
-             <ProtectedRoute exact path="/realm/:realm/section/:section" component={Section} /> */}
             <ProtectedRoute
               exact
               path="/section/:realm/:section"
@@ -119,18 +113,12 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute exact path="/home" component={HomeMobile} />
 
-            <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute
               exact
               path="/realm-feedback/:realm"
               component={RealmFeedback}
             />
 
-            <ProtectedRoute
-              exact
-              path="/EmotionalHome"
-              component={EmotionalHome}
-            />
             <ProtectedRoute
               exact
               path="/realm-form-intro/:realm/:section"
@@ -143,33 +131,12 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/EmotionalForm"
-              component={EmotionalForm}
-            />
-            <ProtectedRoute
-              exact
               path="/realm-form-finished/:realm/:section"
               component={RealmFormFinished}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec1"
-              component={EmotionalSec1}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec2"
-              component={EmotionalSec2}
-            />
-            <ProtectedRoute
-              exact
-              path="/EmotionalSec3"
-              component={EmotionalSec3}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          {/* {this.props.user.id ? <Footer /> : <span />} We aren't rendering the footer anyway*/}
         </div>
       </Router>
     );

@@ -1,16 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-// function* getCurriculum() {
-//   try {
-//     const response = yield axios.get('/api/statistic/curriculum');
-//     yield put({ type: 'SET_ALL_STATS', payload: response.data });
-//     console.log('test console:', response.data);
-//   } catch (error) {
-//     console.log('Error with GET:', error);
-//   }
-// }
-
+// this get calls  takes care of getting curriculum from the database
 function* getCurriculum(action) {
   try {
     const response = yield axios.get(`/api/statistic/get/curriculum`);
@@ -20,6 +11,8 @@ function* getCurriculum(action) {
     console.log('User get request failed', error);
   }
 }
+
+// this get calls  takes care of getting demographics from the database
 function* getDemographics(action) {
   try {
     const response = yield axios.get(`/api/statistic/get/demographics`);
@@ -29,6 +22,7 @@ function* getDemographics(action) {
     console.log('User get request failed', error);
   }
 }
+// this get calls  takes care of getting user feedback from the database
 function* getFeedback(action) {
   try {
     const response = yield axios.get(`/api/statistic/get/feedback`);

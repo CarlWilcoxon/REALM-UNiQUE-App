@@ -49,26 +49,8 @@ class AddSectionsToNewRealmPage extends Component {
     return (
       <div>
         <center>
-          {/* maybe classes.headerLess */}
           <h1 className={classes.headerMore}>Add Sections to New Realm</h1>
 
-          {/* <AppBar position="static">
-          <Toolbar>
-            <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search Sections…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
-          </Toolbar>
-        </AppBar> */}
           <h1 className={classes.headerLesser}>All Sections</h1>
           <h3 className={classes.headerLeast}>
             (Select sections in the order you wish to see them)
@@ -140,7 +122,6 @@ class AddSectionsToNewRealmPage extends Component {
               variant="contained"
               type="submit"
               name="submit"
-              // onClick={this.submitSection}
               className={classes.adminButtonAdd}
               onClick={this.backtoAddRealm}
             >
@@ -150,7 +131,6 @@ class AddSectionsToNewRealmPage extends Component {
               variant="contained"
               type="submit"
               name="submit"
-              // onClick={this.submitSection}
               className={classes.adminButtonAdd}
               onClick={this.submitRealmWithSections}
             >

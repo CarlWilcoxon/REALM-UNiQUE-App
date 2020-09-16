@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import styles from '../../../../themes/adminTheme.js';
-import {
-  withStyles,
-  Grid,
-  // Button, Typography
-} from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 class PreviewRealmPage extends Component {
   componentDidMount() {
@@ -17,14 +13,6 @@ class PreviewRealmPage extends Component {
       },
     });
   }
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: 'FETCH_REALM_SECTIONS',
-  //     payload: {
-  //       realmId: this.props.match.params.id,
-  //     },
-  //   });
-  // }
 
   render() {
     const { classes, realm } = this.props;
@@ -69,9 +57,6 @@ class PreviewRealmPage extends Component {
         ) : (
           'null'
         )}
-        {/* (Sections)<br></br>
-        (Section id)
-        <div className={classes.headerLess}>{realm.section_id}</div> <br></br> */}
       </div>
     );
   }

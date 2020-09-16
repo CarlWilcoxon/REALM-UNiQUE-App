@@ -7,6 +7,4 @@ const statistic = (state = {}, action) => {
   }
 };
 
-// user will be on the redux state at:
-// state.realm
 export default statistic;

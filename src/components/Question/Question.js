@@ -19,6 +19,7 @@ class Question extends Component {
             <div className={classes.sectionQuestion}>
               <Typography>{question.content}</Typography>
             </div>
+            <br></br>
             <TextField
               id="standard-name"
               label="Answer"

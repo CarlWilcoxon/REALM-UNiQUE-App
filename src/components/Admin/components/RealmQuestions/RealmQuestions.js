@@ -4,69 +4,33 @@ import PropTypes from 'prop-types';
 import { withStyles, TextField } from '@material-ui/core/';
 import styles from '../../../../themes/adminTheme.js';
 
-
-// const questionTypes = [
-//     {
-//         value: "Open-Ended",
-//         label: "Open-Ended",
-//     }
-// ];
-
 class RealmQuestions extends Component {
   state = {
-    // questionType: "",
-    question: "",
+    question: '',
     question_index: this.props.index,
-};
+  };
 
-
-
-handleQuestionChange = (event) => {
-    console.log("old state:", this.state);
+  handleQuestionChange = (event) => {
+    console.log('old state:', this.state);
     let newValue = event.target.value;
     this.setState({
       ...this.state,
-      question : newValue,
-    })
+      question: newValue,
+    });
 
     this.props.dispatch({
       type: 'UPDATE_QUESTIONS',
       payload: {
         question: newValue,
         question_index: this.state.question_index,
-      }})
+      },
+    });
   };
-
 
   render() {
     const { classes } = this.props;
     return (
       <div>
-                {/* QUESTION TYPE (ETC.)
-                        <div>
-                            <TextField
-                                select
-                                required
-                                label="Question Type"
-                                className={classes.textField}
-                                value={this.state.questionType}
-                                onChange={this.handleInputChangeFor("questionType")}
-                                SelectProps={{
-                                    MenuProps: {
-                                        className: classes.menu,
-                                    },
-                                }}
-                                margin="normal"
-                            >
-                                {type.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </div> */}
-        {/* SECTION DESCRIPTION */}
-
         <TextField
           required
           label="Question"

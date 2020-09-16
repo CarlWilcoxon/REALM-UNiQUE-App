@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 import styles from '../../../../themes/adminTheme.js';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-// import HelpIcon from '@material-ui/icons/Help';
 import Fade from 'react-reveal/Fade';
 const type = [
   {
@@ -69,19 +68,15 @@ class AddNewSectionPage extends Component {
       ...this.state,
       questions: {
         ...this.state.questions,
-        [propertyName]: event.target.value
+        [propertyName]: event.target.value,
       },
     });
   };
 
-
   appendNewQuestion = () => {
     console.log('You clicked add new questions');
     this.setState({
-      qmap: [
-        ...this.state.qmap,
-        this.state.qmap.length,
-      ],
+      qmap: [...this.state.qmap, this.state.qmap.length],
     });
   };
   toggleResourcePreview = () => {
@@ -422,47 +417,3 @@ const mapReduxStateToProps = (reduxState) => ({
 export default withStyles(styles)(
   connect(mapReduxStateToProps)(AddNewSectionPage)
 );
-
-// {/* SECTION TYPE (VIDEO, TEXT, ETC.) */}
-// <div>
-//   <TextField
-//     select
-//     required
-//     label="Resource Type"
-//     variant="outlined"
-//     className={classes.textField}
-//     value={this.state.type}
-//     onChange={this.handleInputChangeFor("type")}
-//     SelectProps={{
-//       MenuProps: {
-//         className: classes.menu,
-//       },
-//     }}
-//     margin="normal"
-//   >
-//     {type.map((option) => (
-//       <MenuItem key={option.value} value={option.value}>
-//         {option.label}
-//       </MenuItem>
-//     ))}
-//   </TextField>
-// </div>
-// {/* DYNAMIC INFORMATION SECTION */}
-// {/* 1=video, 2=text, 3=image */}
-// {this.state.type === 1 ? (
-//   <div>
-//     <TextField
-//       required
-//       label="Video Link"
-//       variant="outlined"
-//       type="text"
-//       value={this.state.videoLink}
-//       onChange={this.handleInputChangeFor("videoLink")}
-//       className={classes.textField}
-//       margin="normal"
-
-//       variant="outlined"
-//       value={this.state.description}
-//       onChange={this.handleInputChangeFor("description")}
-//       className={classes.textField}
-//       margin="normal"

@@ -4,12 +4,10 @@ import {
   withStyles,
   FormControl,
   Grid,
-  Link,
   TextField,
   Button,
   Hidden,
 } from '@material-ui/core';
-// import RegisterPage from '../RegisterPage/RegisterPage';
 import styles from '../../themes/loginRegisterTheme';
 import Fade from 'react-reveal/Fade';
 
@@ -47,29 +45,16 @@ class LoginPage extends Component {
     return (
       <Grid id="LoginPageContainer" container spacing={0}>
         <img
-          // <video
           alt="a calming ocean view with a rainbow"
           className={
             window.screen.width > 420
               ? classes.videoContainer
               : classes.videoContainerMobile
           }
-          // src="file:/goodVideo.mp4/"
-          // src="/Users/brunoreyes/Desktop/videosGit/goodVideo.mp4"
           src="/images/scenery-2846778.jpg"
         />
-        {/* <iframe
-          src="https://player.vimeo.com/video/454034298?autoplay=1&loop=1&autopause=0&background=1&muted=1&controls=0&portrait=0&sidedock=0&title=0&byline=0; fullscreen"
-          className={classes.videoContainerMobile}
-          frameborder="0"
-          webkitallowfullscreen
-          mozallowfullscreen
-          // allow="autoplay; fullscreen"
-        ></iframe> */}
-        {/* The one at the top only shows up bc I have video speed controller on */}
         <Hidden smDown>
           <Grid className={classes.leftSideFlex} item md={6} lg={6}>
-            {/* To input video on one side of a page we simply place it in one of the child grids */}
             <div className={classes.infinityControl}>
               <Fade>
                 <img
@@ -83,15 +68,7 @@ class LoginPage extends Component {
             </div>
           </Grid>
         </Hidden>
-        <Grid
-          className={classes.rightSide}
-          // backgroundImage="images/scenery-2846778.jpg"
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-        >
+        <Grid className={classes.rightSide} item xs={12} sm={12} md={6} lg={6}>
           <div className="loginPage">
             {this.props.errors.loginMessage && (
               <h2 className="alert" role="alert">
@@ -99,7 +76,11 @@ class LoginPage extends Component {
               </h2>
             )}
             <form
-              className={classes.formContainer}
+              className={
+                window.screen.width > 420
+                  ? classes.formContainer
+                  : classes.formContainerMobile
+              }
               onSubmit={this.login}
               autoComplete="off"
             >
@@ -107,7 +88,6 @@ class LoginPage extends Component {
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    // id="outlined-helperText"
                     label="Username"
                     helperText="Required"
                     variant="outlined"
@@ -136,7 +116,6 @@ class LoginPage extends Component {
               <FormControl className={classes.formControl}>
                 <div>
                   <TextField
-                    // id="outlined-helperText"
                     label="Password"
                     type="password"
                     helperText="Required"

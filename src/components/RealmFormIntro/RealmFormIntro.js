@@ -61,14 +61,7 @@ class RealmFormIntro extends Component {
           justify="center"
           direction="column"
         >
-          <Grid
-            // className={classes.leftSideFlex}
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-          >
+          <Grid item xs={12} sm={12} md={6} lg={6}>
             <h3 className={classes.realmTitle}>Realm Form Introduction</h3>
             <div className={classes.formDescriptionContainer}>
               <p className={classes.formDescription}>

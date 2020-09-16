@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from '../Question/Question';
 import styles from '../../themes/realmHomeTheme';
-import {
-  withStyles,
-  Grid,
-  Button,
-  Typography,
-  // FormControl,
-  // TextField,
-  // Paper,
-} from '@material-ui/core';
+import { withStyles, Grid, Button, Typography } from '@material-ui/core';
 
 class Section extends Component {
   state = {};
@@ -45,30 +37,37 @@ class Section extends Component {
     });
   }
 
-  componentDidUpdate() {
-    this.props.dispatch({
-      type: 'FETCH_SECTION',
-      payload: {
-        sectionId: this.props.match.params.section,
-      },
-    });
-    this.props.dispatch({
-      type: 'FETCH_REALM',
-      payload: {
-        realmId: this.props.match.params.realm,
-      },
-    });
-    this.props.dispatch({
-      type: 'UPDATE_PROGRESS',
-      payload: {
-        realmId: this.props.match.params.realm,
-        sectionId: this.props.match.params.section,
-      },
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.section !== prevProps.match.params.section) {
+      this.props.dispatch({
+        type: 'FETCH_SECTION',
+        payload: {
+          sectionId: this.props.match.params.section,
+        },
+      });
+      this.props.dispatch({
+        type: 'FETCH_REALM',
+        payload: {
+          realmId: this.props.match.params.realm,
+        },
+      });
+      this.props.dispatch({
+        type: 'UPDATE_PROGRESS',
+        payload: {
+          realmId: this.props.match.params.realm,
+          sectionId: this.props.match.params.section,
+        },
+      });
+    }
   }
   // this.forceUpdate();
 
   saveAndContinue = () => {
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
     this.props.dispatch({
       type: 'SUBMIT_RESPONSE',
       payload: {
@@ -85,7 +84,7 @@ class Section extends Component {
     for (let i = 0; i < section_order.length; i++) {
       // if there is still a section after this one
       if (
-        section_order[i].section_id == this.props.match.params.section &&
+        section_order[i].section_id === parseInt(this.props.match.params.section) &&
         i + 1 < section_order.length
       ) {
         next_section = section_order[i + 1].section_id;
@@ -119,15 +118,7 @@ class Section extends Component {
     const { classes, section } = this.props;
     return (
       <Grid container spacing={0} alignItems="center" justify="center">
-        <Grid
-          // className={classes.leftSideFlex}
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          lg={6}
-        >
-          {/* <h1>THIS IS SECTION {this.props.match.params.section}</h1> */}
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           {section.title !== undefined ? (
             <h3 className={classes.sectionTitle}>{section.title}</h3>
           ) : (
@@ -177,17 +168,10 @@ class Section extends Component {
           )}
 
           {section.description !== undefined ? (
-            <p className={classes.sectionDescription}>
-              {section.description}
-              {/* <br></br> */}
-            </p>
+            <p className={classes.sectionDescription}>{section.description}</p>
           ) : (
             'loading'
           )}
-
-          {/* {section !== undefined
-              ? JSON.stringify(this.state)
-              : 'loading'} */}
 
           {section.questions !== undefined ? (
             <Grid
@@ -238,5 +222,4 @@ const mapStateToProps = (state) => ({
   realm: state.realm,
 });
 
-// this allows us to use <App /> in index.js
 export default withStyles(styles)(connect(mapStateToProps)(Section));

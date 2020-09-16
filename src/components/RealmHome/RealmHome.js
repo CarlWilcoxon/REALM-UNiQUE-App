@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from '../../themes/realmHomeTheme';
 import { withStyles, Grid, Button, Typography } from '@material-ui/core';
-// import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-// import CheckBoxIcon from '@material-ui/icons/CheckBox';
-// import LockIcon from '@material-ui/icons/Lock';
 
 class RealmHome extends Component {
   componentDidMount() {
@@ -69,7 +66,7 @@ class RealmHome extends Component {
           md={6}
           lg={6}
         >
-          {/* <h1>THIS IS SECTION {this.props.match.params.id}</h1> */}
+      
           {realm.realm_name !== undefined ? (
             <Grid item>
               <Typography
@@ -106,10 +103,6 @@ class RealmHome extends Component {
           ) : (
             'loading'
           )}
-
-          {/* {this.props.state.progress !== undefined ? (
-            JSON.stringify(this.props.state)
-            ) : 'loading' } */}
 
           <Grid className={classes.realmButtonContainer}>
             {realm !== undefined ? (

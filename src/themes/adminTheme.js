@@ -169,7 +169,6 @@ const styles = (theme) => ({
     margin: '-1% 0px 0px 0px',
     'text-align': 'left',
   },
-
   helperText: {
     color: '#1f3556',
   },
@@ -194,7 +193,6 @@ const styles = (theme) => ({
   },
   menu: { color: 'blue' },
   adminButtonContainer: {
-    // display: 'flex',
     padding: '0px 0px 10px 0px',
     margin: '0% 0px -0% 0px',
     width: '100%',
@@ -218,7 +216,6 @@ const styles = (theme) => ({
     backgroundColor: '#1f3556',
     color: '#fff',
     'border-radius': '7px',
-    // width: '10%',
     padding: '10px 20px 10px 20px',
     margin: '0px 0px 0% 0%',
     'text-transform': 'capitalize',
@@ -327,10 +324,10 @@ const styles = (theme) => ({
     padding: '40px 0px 40px 0px',
     margin: '0px 2% 4% 2%',
     'text-transform': 'capitalize',
+    'text-decoration': 'none',
     '&:hover': {
       backgroundColor: '#457b9d',
     },
-    'text-decoration': 'none',
   },
   dialogContent: { margin: '5px 0px -5px 0px' },
   downloadButtonExtended: {
@@ -341,19 +338,16 @@ const styles = (theme) => ({
     width: '25%',
     padding: '40px 10px 40px 10px',
     margin: '0px 4% 4% 4%',
-    // margin: 'auto',
     'text-transform': 'capitalize',
+    'text-decoration': 'none',
     '&:hover': {
       backgroundColor: '#457b9d',
     },
-    'text-decoration': 'none',
   },
   downloadButtonLink: {
     color: '#fff',
-    // 'border-radius': '25px',
     'text-decoration': 'none',
   },
-
   statisticsHeader: {
     'text-align': 'center',
     width: '100%',
@@ -409,34 +403,28 @@ const styles = (theme) => ({
     'font-size': '35px',
   },
   addSectionViewIcon: {
-    // color: '#1f3556',
     'font-size': '26px',
     marginTop: '-.5%',
     marginRight: '.5%',
   },
   editSectionPreviewIcon: {
-    // color: '#1f3556',
     'font-size': '20px',
     marginTop: '-.5%',
     marginRight: '2%',
   },
   previewSectionPreviewIcon: {
-    // color: '#1f3556',
     'font-size': '18px',
-    // marginTop: '0%',
     marginRight: '1%',
   },
   viewSectionDeleteIcon: {
     color: '#e92f26',
     'font-size': '26px',
     marginTop: '9%',
-    // marginRight: '.5%',
   },
   viewSectionIcon: {
     color: '#1f3556',
     'font-size': '26px',
     marginTop: '6%',
-    // marginRight: '.5%',
   },
   noDecoration: { 'text-decoration': 'none' },
   root: {
@@ -444,9 +432,6 @@ const styles = (theme) => ({
   },
   container: {
     display: 'flex',
-  },
-  paper: {
-    margin: theme.spacing.unit,
   },
   svg: {
     width: 100,

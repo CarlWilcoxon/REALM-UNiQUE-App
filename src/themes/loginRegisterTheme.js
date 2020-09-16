@@ -2,14 +2,11 @@ const styles = (theme) => ({
   allContainer: {},
   videoContainer: {
     position: 'absolute',
-    // height: '765px',
     height: '100%',
     width: '100%',
     overflow: 'hidden',
     'object-fit': 'cover',
-    // margin: '-50px 0px -30px 0px',
   },
-
   videoContainerMobile: {
     position: 'absolute',
     height: '135%',
@@ -19,14 +16,12 @@ const styles = (theme) => ({
   },
   videoContainerRegister: {
     position: 'absolute',
-    // height: '765px',
+
     height: '150%',
     width: '100%',
     overflow: 'hidden',
     'object-fit': 'cover',
-    // margin: '-50px 0px -30px 0px',
   },
-
   videoContainerRegisterMobile: {
     position: 'absolute',
     height: '150%',
@@ -38,15 +33,10 @@ const styles = (theme) => ({
     'text-align': 'center',
     position: 'relative',
     width: '100%',
-    // margin: 'auto',
     margin: '35% auto 50% auto',
-    // 'background-color': 'transparent',
-    // 'text-align': 'center',
-    // position: 'relative',
   },
   colorLogo: {
     width: '30%',
-    // filter: 'grayscale(100%)',
     filter: 'brightness(0) invert(1)',
   },
   infinitytext: {
@@ -58,7 +48,6 @@ const styles = (theme) => ({
     flexGrow: 1,
     height: '765px',
     display: 'flex',
-    // display: 'none',
   },
   leftSide: {
     flexGrow: 1,
@@ -70,22 +59,22 @@ const styles = (theme) => ({
     height: '765px',
   },
   formContainer: {
-    margin: '10% auto 20px auto',
+    margin: '15% auto 20px auto',
     'background-color': 'transparent',
     'text-align': 'center',
     position: 'relative',
     color: '#f1f1f1',
     width: '55%',
-    padding: '40px 0px 0px 0px',
+    padding: '10px 0px 0px 0px',
   },
   formContainerMobile: {
-    margin: '5% auto 20px auto',
+    margin: '10% auto 0px auto',
     'background-color': 'transparent',
     'text-align': 'center',
     position: 'relative',
     color: '#f1f1f1',
-    width: '95%',
-    padding: '40px 0px 0px 0px',
+    width: '75%',
+    padding: '10px 0px 0px 0px',
   },
   brandNameControl: {
     font: '600 50px Poppins, sans-serif',
@@ -134,7 +123,6 @@ const styles = (theme) => ({
     margin: '0px 5px 10px 5px',
     width: '47%',
   },
-
   cssLabel: {
     color: 'white',
     '&.Mui-focused': {
@@ -147,7 +135,6 @@ const styles = (theme) => ({
       },
     },
   },
-
   notchedOutline: {
     borderWidth: '2px',
     borderColor: 'white !important',
@@ -158,7 +145,6 @@ const styles = (theme) => ({
   submitButtonContainer: { width: '100%', position: 'relative' },
   submitButton: {
     color: { opacity: 0 },
-    // 'mix-blend-mode': 'color-burn',
     'mix-blend-mode': 'screen',
     'background-color': 'white',
     font: '600 16px Poppins, sans-serif',
@@ -177,7 +163,6 @@ const styles = (theme) => ({
   },
   submitButtonRegister: {
     color: { opacity: 0 },
-    // 'mix-blend-mode': 'color-burn',
     'mix-blend-mode': 'screen',
     'background-color': 'white',
     font: '600 16px Poppins, sans-serif',

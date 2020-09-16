@@ -5,15 +5,6 @@ const styles = (theme) => ({
     height: '100%',
     position: 'relative',
   },
-  // realmCoverPaper: {
-  //   'text-align': 'center',
-  //   width: '100%',
-  //   height: '100%',
-  //   'border-radius': '7px',
-  //   justifyContent: 'space-around',
-  //   overflow: 'hidden',
-  //   paddingBottom: '-10px',
-  // },
   realmCover: {
     'text-align': 'center',
     width: '92%',
@@ -22,7 +13,6 @@ const styles = (theme) => ({
     overflow: 'hidden',
     paddingBottom: '-10px',
   },
-
   realmTitle: {
     font: '400 20px Poppins, sans-serif',
     color: '#1f3556',
@@ -36,7 +26,6 @@ const styles = (theme) => ({
     margin: '-1% 0px 0px 0px',
     'text-align': 'left',
   },
-
   realmTableofContent: {
     padding: '0px 10% 0px 10%',
     margin: '5% 0px 2% 0px',
@@ -44,7 +33,6 @@ const styles = (theme) => ({
   realmTableofContentTitle: {
     font: '400 22px Poppins, sans-serif',
     color: '#1f3556',
-    // padding: '0px 10% 0px 10%',
     margin: '0px 0px 5px 0px',
     'text-align': 'center',
   },
@@ -55,7 +43,6 @@ const styles = (theme) => ({
     padding: '5px 0px 10px 0px',
     margin: '0px 0px 10px 0px',
     borderBottom: '#1f3556 solid 1px',
-    // 'border-radius': '5px',
     'text-align': 'left',
     width: '100%',
     '&:hover > div': {
@@ -90,32 +77,17 @@ const styles = (theme) => ({
     },
   },
   realmButtonContainer: {
-    // display: 'flex',
     padding: '5px 0px 10px 0px',
     margin: '5% 0px -100% 0px',
     width: '100%',
     'text-align': 'center',
   },
-
   formButtonContainer: {
     padding: '5px 0px 0px 0px',
     margin: '20% 0px 40% 0px',
-
     width: '100%',
     'text-align': 'center',
   },
-  // cssLabel: {
-  //   color: '#1f3556',
-  //   '&.Mui-focused': {
-  //     color: '#1f3556',
-  //   },
-  //   cssOutlinedSelect: {
-  //     '&$cssFocused $notchedOutline': {
-  //       borderColor: `#1f3556 !important`,
-  //       color: '#1f3556',
-  //     },
-  //   },
-  // },
   inputControlTextArea: {
     margin: '0px 0px 0px 0px',
     padding: '0px 0px 0px 0px',
@@ -128,14 +100,9 @@ const styles = (theme) => ({
     borderColor: '#1f3556 !important',
     color: '#1f3556 !important',
   },
-  // helperText: {
-  //   color: '#1f3556',
-  // },
   cssOutlinedInput: {
-    // padding: 0
     color: '#1f3556',
     borderColor: `#1f3556 !important`,
-    // backgroundColor: '#a8dadc',
     '&$cssSelected $notchedOutline': {
       backgroundColor: '#a8dadc',
       borderColor: `#1f3556 !important`,
@@ -144,12 +111,10 @@ const styles = (theme) => ({
   input: {
     color: '#1f3556',
     borderColor: `#1f3556 !important`,
-    // backgroundColor: '#a8dadc',
     padding: '10px 5px 10px 5px',
   },
   formDescriptionContainer: {
     width: '85%',
-    // 'text-align': 'center',
     margin: 'auto',
     borderTop: '#1f3556 solid 1px',
     paddingTop: '15px',
@@ -157,7 +122,6 @@ const styles = (theme) => ({
   },
   formDescriptionContainerThankYou: {
     width: '85%',
-    // 'text-align': 'center',
     margin: 'auto',
     borderTop: '#1f3556 solid 1px',
     paddingTop: '15px',
@@ -171,18 +135,15 @@ const styles = (theme) => ({
     margin: '-1% 0px 0px 0px',
     width: '90%',
     'text-align': 'left',
-    // borderBottom: '#1f3556 solid 1px',
   },
   boldTOC: { font: '500 13px Poppins, sans-serif' },
   estimatedTimeOfCompletion: {
     font: '300 14px Poppins, sans-serif',
     color: '#1f3556',
     padding: '0px 10% 0px 5%',
-    // margin: '1% 10px 0px 0px',
     width: '90%',
     'text-align': 'left',
   },
-
   formContainer: { 'text-align': 'center', width: '100%' },
   formContainerSection: { 'text-align': 'center', width: '100%' },
   QandAContainer: { 'text-align': 'center', margin: '0px 0px 0px 0px' },
@@ -192,9 +153,7 @@ const styles = (theme) => ({
     color: '#1f3556',
     padding: '0px 10% 0px 10%',
     margin: '10% 0px 0px 0px',
-    // width: '90%',
     'text-align': 'center',
-    // borderBottom: '#1f3556 solid 1px',
   },
   inputControl: {
     margin: '0px 0px 0px 0px',
@@ -222,8 +181,6 @@ const styles = (theme) => ({
     marginBottom: '20px',
   },
   sectionVideoContainer: {
-    // 'text-align': 'center',
-    // width: '90%',
     margin: 'auto auto auto auto',
     position: 'relative',
     overflow: 'hidden',
@@ -263,9 +220,14 @@ const styles = (theme) => ({
     color: '#1f3556',
     padding: '0px 15% 0px 15%',
     margin: '10% 0px 10px 0px',
-    // width: '90%',
     'text-align': 'center',
-    // borderBottom: '#1f3556 solid 1px',
+  },
+  sectionQuestionRealmFeedback: {
+    font: '400 93% Poppins, sans-serif',
+    color: '#1f3556',
+    padding: '0px 7% 0px 7%',
+    margin: '10% 0px 10px 0px',
+    'text-align': 'center',
   },
   sectionRadio: {
     font: '400 120% Poppins, sans-serif',
@@ -273,8 +235,6 @@ const styles = (theme) => ({
     width: '60%',
     'text-align': 'center',
     margin: '7% 21% 5% 21%',
-
-    // margin: 'auto',
   },
   radioContainer: { position: 'relative', margin: 'auto' },
   sectionRadioIcon: { color: 'blue' },
@@ -322,15 +282,10 @@ const styles = (theme) => ({
     font: '400 90% Poppins, sans-serif',
     margin: '0px 0px 0px 0px',
   },
-  // rotate: {
-  //   transform: 'rotate(180deg)' /*
-  // },
   bottomNav: {
     width: '100%',
     bottom: 10,
-
     position: 'absolute',
-
     'text-align': 'center',
   },
 });

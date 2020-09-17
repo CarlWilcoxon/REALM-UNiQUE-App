@@ -20,18 +20,19 @@ function* submitFeedback(action) {
   }
 }
 
+// WORK IN PROGRESS, UNUSED
 // worker Saga: will be fired on "UPDATE_RESPONSE" actions
-function* updateResponse(action) {
-  try {
-    yield axios.put('/api/answer/update', action.payload);
-  } catch (error) {
-    console.log('User get request failed', error);
-  }
-}
+// function* updateResponse(action) {
+//   try {
+//     yield axios.put('/api/answer/update', action.payload);
+//   } catch (error) {
+//     console.log('User get request failed', error);
+//   }
+// }
 
 function* responseSaga() {
   yield takeLatest('SUBMIT_RESPONSE', submitResponse);
-  yield takeLatest('UPDATE_RESPONSE', updateResponse);
+  // yield takeLatest('UPDATE_RESPONSE', updateResponse);
   yield takeLatest('SUBMIT_FEEDBACK', submitFeedback);
 }
 

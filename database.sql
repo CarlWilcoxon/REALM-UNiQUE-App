@@ -221,7 +221,7 @@ VALUES
 ( 2, 8, 'Do you take any medication to sleep?'),
 ( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?'),
 ( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?'),
-( 2, 11, 'Do you eat or drink alcohol when upset or celebrating?', 'Celebrating, but only in moderation' ),
+( 2, 11, 'Do you eat or drink alcohol when upset or celebrating?'),
 ( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?'),
 ( 4, 0, 'What do you feel you think about most of the time?'),
 (4, 1, 'How many negative thoughts can you think about yourself?'),

@@ -207,26 +207,26 @@ CREATE TABLE "question" (
   "answer" VARCHAR(150)
 );
 
-INSERT INTO "question" ( "section_id", "question_index", "content", "answer" )
+INSERT INTO "question" ( "section_id", "question_index", "content")
 VALUES
-( 1, 0, 'How much do we really know about the mind?', 'We don''t know much about the human mind.' ),
-( 2, 0, 'What do you think about most of the time?', 'Video Games, socioeconomic political theories and their implications for modern society, cool cars. Normal stuff.' ),
-( 2, 1, 'How many negative thoughts do you think about yourself?', '3 a day.' ),
-( 2, 2, 'How many positive thoughts do you think about yourself?', '2 a week.' ),
-( 2, 3, 'List things you are afraid of. Can you control these things?', 'Spiders... Not literally, but a Kleenex tends to handle them.' ),
-( 2, 4, 'List some memories. Are they mainly positive or negative?', 'Laughter, Running, Arguing, Resting, Cooking, lavender and roses .... I guess they are mostly positive.' ),
-( 2, 5, 'How much sleep do you get at night?', 'a few hours' ),
-( 2, 6, 'What time do you normally go to bed?', '2am' ),
-( 2, 7, 'What time do you normally get out of bed?', '8am' ),
-( 2, 8, 'Do you take any medication to sleep?', 'Yes, some Melatonin.' ),
-( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?', 'Every night.' ),
-( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?', 'I face them head on and try to research the ones that I can''t handle, so I can better deal with them the next time.'),
+( 1, 0, 'How much do we really know about the mind?'),
+( 2, 0, 'What do you think about most of the time?'),
+( 2, 1, 'How many negative thoughts do you think about yourself?'),
+( 2, 2, 'How many positive thoughts do you think about yourself?'),
+( 2, 3, 'List things you are afraid of. Can you control these things?'),
+( 2, 4, 'List some memories. Are they mainly positive or negative?'),
+( 2, 5, 'How much sleep do you get at night?'),
+( 2, 6, 'What time do you normally go to bed?'),
+( 2, 7, 'What time do you normally get out of bed?'),
+( 2, 8, 'Do you take any medication to sleep?'),
+( 2, 9, 'Do you look at your phone, watch tv, or work on a computer right before bed?'),
+( 2, 10, 'How do you face, deal with, and/or overcome responsibilities, problems, or difficulties?'),
 ( 2, 11, 'Do you eat or drink alcohol when upset or celebrating?', 'Celebrating, but only in moderation' ),
 ( 2, 12, 'Do you go to the gym when stressed out, or do you get depressed and sleep?', 'Typically' ),
-( 4, 0, 'What do you feel you think about most of the time?', 'Normal things, like post-enlightenment philosophy, Cartesian Method, Socratic Method, superheroes, storytelling, '),
-(4, 1, 'How many negative thoughts can you think about yourself?', '1 a day' ),
-(4, 2, 'How many positive thoughts can you think about yourself?', '4 a week' ),
-(4, 3, 'List things you are afraid of.', 'Spiders, heights, ');
+( 4, 0, 'What do you feel you think about most of the time?'),
+(4, 1, 'How many negative thoughts can you think about yourself?'),
+(4, 2, 'How many positive thoughts can you think about yourself?'),
+(4, 3, 'List things you are afraid of.');
 
 CREATE TABLE "student_response" (
   "id" SERIAL PRIMARY KEY,

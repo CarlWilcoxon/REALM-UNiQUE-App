@@ -36,11 +36,20 @@ class PreviewSectionPage extends Component {
           {section.video_link !== undefined && section.type === 1 ? (
             <Grid className={classes.sectionVideoContainer}>
               <iframe
-                title={section.title + ' video'}
-                frameborder="0"
-                className={classes.sectionVideo}
-                src={section.video_link.replace('/watch?v=', '/embed/')}
-              />
+                  title={section.title + ' video'}
+                  frameborder="0"
+                  className={classes.sectionVideo}
+                  src={
+                    section.video_link.includes('youtube')
+                      ? section.video_link.replace('/watch?v=', '/embed/')
+                      : section.video_link.includes('ted.com/')
+                      ? section.video_link.replace(
+                          '//www.ted.com/',
+                          '//embed.ted.com/'
+                        )
+                      : 'invalid video source: only youtube and ted.com are supported'
+                  }
+                />
             </Grid>
           ) : (
             ''

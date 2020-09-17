@@ -33,11 +33,7 @@ router.get('/get', (req, res) => {
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
 router.post('/feedback/add', (req, res) => {
 
-  const {
-    realmId,
-    feedback,
-    feedbackScore
-  } = req.body
+  const { realmId  } = req.body
 
   const feedbackQuery =
   `INSERT INTO "student_response" ( "user_id", "realm_id", "response", "feedback_score" )
@@ -45,8 +41,8 @@ router.post('/feedback/add', (req, res) => {
   const feedbackValues = [
     req.user.id,
     realmId,
-    feedback,
-    feedbackScore,
+    req.body.state.feedback,
+    req.body.state.feedbackScore,
   ]
 
   pool

@@ -98,7 +98,7 @@ class RegisterPage extends Component {
         <img
           alt="a calming ocean view with a rainbow"
           className={
-            window.screen.width > 420
+            window.screen.width > 300
               ? classes.videoContainerRegister
               : classes.videoContainerRegisterMobile
           }

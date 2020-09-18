@@ -72,10 +72,10 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
   }
 });
 
-router.delete('/remove/:realm', async (req, res) => {
+router.delete('/remove/:realm', rejectUnauthenticated, async (req, res) => {
   const realmId = req.params.realm;
-  console.log('Deleteing RealmID:', realmId);
-
+  console.log('Deleting RealmID:', realmId);
+  const connection = await pool.connect();
   try {
     await connection.query('BEGIN');
 

@@ -7,7 +7,7 @@ const {
 
 // Get route for each realm
 //CREATING A NEW STUDENT PROGRESS ENTRY
-router.get('/get-save/:realm', (req, res) => {
+router.get('/get-save/:realm', rejectUnauthenticated, (req, res) => {
   console.log(req.user.id, req.params);
   const queryText =
     `SELECT * FROM "student_progress"
@@ -28,7 +28,7 @@ router.get('/get-save/:realm', (req, res) => {
 
 
 //CREATING A NEW STUDENT PROGRESS ENTRY
-router.post('/create-save', (req, res) => {
+router.post('/create-save', rejectUnauthenticated, (req, res) => {
   const queryText =
   `INSERT INTO "student_progress" ("user_id", "realm_id", "section_id")
   VALUES ( $1 , $2 , $3 );`;
@@ -52,7 +52,7 @@ router.post('/create-save', (req, res) => {
 });
 
 // UPDATING STUDENT PROGRESS ENTRY
-router.put('/update-save', (req, res) => {
+router.put('/update-save', rejectUnauthenticated, (req, res) => {
   const queryText =
   `UPDATE "student_progress"
   SET "section_id" = $1
@@ -77,7 +77,7 @@ router.put('/update-save', (req, res) => {
 });
 
 // UPDATING STUDENT PROGRESS ENTRY
-router.put('/update-save/completed', (req, res) => {
+router.put('/update-save/completed', rejectUnauthenticated, (req, res) => {
   const queryText =
   `UPDATE "student_progress"
   SET "completed" = TRUE, "section_id" = NULL, "started" = FALSE
@@ -101,7 +101,7 @@ router.put('/update-save/completed', (req, res) => {
 });
 
 // UPDATING STUDENT PROGRESS ENTRY
-router.put('/update-form', (req, res) => {
+router.put('/update-form', rejectUnauthenticated, (req, res) => {
   const queryText =
   `UPDATE "student_progress"
   SET "started" = $4

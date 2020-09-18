@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 // Get route for each realm
-router.get('/get', (req, res) => {
+router.get('/get', rejectUnauthenticated, (req, res) => {
   console.log('Getting progress for', req.user);
 
   const queryText =
@@ -31,7 +31,7 @@ router.get('/get', (req, res) => {
 // TODO write post routes for student responses and feedback
 
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/feedback/add', (req, res) => {
+router.post('/feedback/add', rejectUnauthenticated, (req, res) => {
 
   const { realmId  } = req.body
 
@@ -59,7 +59,7 @@ router.post('/feedback/add', (req, res) => {
 
 
 
-router.post('/add', async (req, res) => {
+router.post('/add', rejectUnauthenticated, async (req, res) => {
 
   const {
     realmId,

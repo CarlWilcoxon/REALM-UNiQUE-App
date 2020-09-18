@@ -3,10 +3,11 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {
   rejectUnauthenticated,
+  rejectUnauthenticatedAdmin,
 } = require('../modules/authentication-middleware');
 
 // Get route for each realm
-router.get('/get-realm/:realm', async (req, res) => {
+router.get('/get-realm/:realm', rejectUnauthenticated, async (req, res) => {
   // console.log('Getting realm for', req.user);
 
   const connection = await pool.connect();
@@ -40,7 +41,8 @@ router.get('/get-realm/:realm', async (req, res) => {
     connection.release();
   }
 });
-router.get('/get-realm-sections/:realm', async (req, res) => {
+
+router.get('/get-realm-sections/:realm', rejectUnauthenticated, async (req, res) => {
   const connection = await pool.connect();
 
   try {
@@ -72,7 +74,7 @@ router.get('/get-realm-sections/:realm', async (req, res) => {
   }
 });
 
-router.delete('/remove/:realm', async (req, res) => {
+router.delete('/remove/:realm', rejectUnauthenticatedAdmin, async (req, res) => {
   const realmId = req.params.realm;
   console.log('Deleteing RealmID:', realmId);
 
@@ -109,8 +111,8 @@ router.delete('/remove/:realm', async (req, res) => {
 });
 
 //GETTING ALL REALMS FOR "VIEW REALMS" PAGE
-router.get('/all', (req, res) => {
-  // router.get("/all", rejectUnauthenticated, (req, res) => {
+// router.get('/all', (req, res) => {
+router.get("/all", rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT * FROM "realm"
   ORDER BY "realm"."id" ASC;`;
 
@@ -127,7 +129,7 @@ router.get('/all', (req, res) => {
 });
 
 //POST ROUTE FOR CREATING A NEW REALM WITH SECTIONS IN ORDER DESIRED
-router.post('/add-new-realm', async (req, res) => {
+router.post('/add-new-realm', rejectUnauthenticatedAdmin, async (req, res) => {
   // console.log( "in post route:", req.body );
 
   const realm = req.body.realm;

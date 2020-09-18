@@ -7,7 +7,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 // Get route for each Section
-router.get('/get-section/:section', async (req, res) => {
+router.get('/get-section/:section', rejectUnauthenticated, async (req, res) => {
   // console.log('Getting section for', req.user);
 
   const connection = await pool.connect();
@@ -48,7 +48,7 @@ router.get('/get-section/:section', async (req, res) => {
 });
 
 // ADD ONE QUESTION TO THE DATABASE
-router.post('/add-one-question', (req, res) => {
+router.post('/add-one-question', rejectUnauthenticatedAdmin, (req, res) => {
   console.log('Getting section for', req.user);
   const queryText = `INSERT INTO "question" ("section_id", "question_index")
   VALUES ( $1, $2 );`;
@@ -60,7 +60,7 @@ router.post('/add-one-question', (req, res) => {
 });
 
 // UPDATE THE QUESTIONS IN THE DATABASE
-router.put('/edit-questions', async (req, res) => {
+router.put('/edit-questions', rejectUnauthenticatedAdmin, async (req, res) => {
   const connection = await pool.connect();
 
   try {
@@ -95,7 +95,7 @@ router.put('/edit-questions', async (req, res) => {
 
 // Route for creating a new Section
 // router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
-router.post('/add', async (req, res) => {
+router.post('/add', rejectUnauthenticatedAdmin, async (req, res) => {
   // Deconstructing most of req.body to make references later clearer to read.
   const {
     title,
@@ -181,7 +181,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-router.get('/all', (req, res) => {
+router.get('/all', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT "section".*, "resource_type"."type_name" FROM "section"
   JOIN "resource_type" ON "section"."type" = "resource_type"."id"
   WHERE type = 1 OR type = 2 OR type = 3;;`;
@@ -198,9 +198,8 @@ router.get('/all', (req, res) => {
     });
 });
 
-//WORK ON THIS
 // This route *should* DELETE an task for the logged in user
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticatedAdmin, (req, res) => {
   // router.delete('/:id', rejectUnauthenticated, (req, res) => {
   // const queryValues = [req.user.id, req.params.id];
   const queryValues = [

@@ -43,6 +43,8 @@ VALUES
 (14, 'White'),
 (15, 'Some Other Race');
 
+SELECT setval('ethnicity_id_seq', (SELECT max("id") FROM "ethnicity"));
+
 CREATE TABLE "income_level" (
   "id" SERIAL PRIMARY KEY,
   "range" VARCHAR(20)
@@ -62,6 +64,8 @@ VALUES
 (10, '$90,001 - $100,000'),
 (11, '$100,000+');
 
+SELECT setval('income_level_id_seq', (SELECT max("id") FROM "income_level"));
+
 CREATE TABLE "education_level" (
   "id" SERIAL PRIMARY KEY,
   "education_level" VARCHAR(20)
@@ -79,6 +83,8 @@ VALUES
 (8, 'Doctorate'),
 (9, 'Professional');
 
+SELECT setval('education_level_id_seq', (SELECT max("id") FROM "education_level"));
+
 CREATE TABLE "section_order" (
   "id" SERIAL PRIMARY KEY,
   "realm_id" int,
@@ -93,6 +99,8 @@ VALUES
 (1, 2, 3),
 (1, 3, 4);
 
+SELECT setval('section_order_id_seq', (SELECT max("id") FROM "section_order"));
+
 CREATE TABLE "client_list" (
   "id" SERIAL PRIMARY KEY,
   "client_name" VARCHAR(100),
@@ -104,6 +112,8 @@ CREATE TABLE "client_list" (
 INSERT INTO "client_list" ("id", "client_name", "other_info")
 VALUES (1, 'PUBLIC', 'This is a client representing the public curriculum.');
 
+SELECT setval('client_list_id_seq', (SELECT max("id") FROM "client_list"));
+
 CREATE TABLE "project" (
   "id" SERIAL PRIMARY KEY,
   "project_name" VARCHAR(50),
@@ -114,6 +124,8 @@ CREATE TABLE "project" (
 
 INSERT INTO "project" ("id", "project_name", "client_id")
 VALUES (1, 'PUBLIC', 1);
+
+SELECT setval('project_id_seq', (SELECT max("id") FROM "project"));
 
 CREATE TABLE "realm" (
   "id" SERIAL PRIMARY KEY,
@@ -136,6 +148,8 @@ Being emotionally healthy does not mean you are happy all the time. It means you
 ( 6, 'Environmental', 'Environmental description', '/coverPhoto' ),
 ( 7, 'Social', 'Social description', '/coverPhoto' ),
 ( 8, 'Intellectual', 'Intellectual description', '/coverPhoto' );
+
+SELECT setval('realm_id_seq', (SELECT max("id") FROM "realm"));
 
 -- WRITTEN FOR FUTURE USE
 -- CREATE TABLE "multiple_choice" (
@@ -175,6 +189,8 @@ null,
 1,
 null,
 'https://www.ted.com/talks/robert_waldinger_what_makes_a_good_life_lessons_from_the_longest_study_on_happiness', null);
+
+SELECT setval('section_id_seq', (SELECT max("id") FROM "section"));
 
 
 CREATE TABLE "resource_type" (
